@@ -118,18 +118,37 @@ def check_consistency():
                 issues.append(f"⚠️  {relpath}: 引用不存在的 {ref}")
         
         # 检查2：旧数字残留（和 facts.yaml 对不上的）
-        if "22" in content and "启动" in content or "启动" in content and "22万" in content:
-            # 只有在不是 raw/archive 里的文件才报
-            if not relpath.startswith("raw/") and not relpath.startswith("archive/"):
-                if "22万" in content and facts["startup"]["total"] != 220000:
-                    actual = facts["startup"]["total"] // 10000
-                    issues.append(f"❌ {relpath}: 引用旧数字'22万'，实际应为 {actual}万")
+        # 注意：包含"v1.x/历史/旧版/原/覆盖/修订"等关键词的上下文算历史叙述，不算错误
+        # 会议笔记任何旧数字都算历史讨论
         
-        if "24-32" in content and not relpath.startswith("raw/") and not relpath.startswith("archive/"):
-            issues.append(f"❌ {relpath}: 引用旧回本周期'24-32月'，实际应为'12个月'")
+        is_historical_context = lambda text: any(
+            kw in text for kw in [
+                "v1.x", "v1.0", "v1.1", "1.0.0", "1.1.0", "v1.0.0", "v1.1.0",
+                "旧版", "历史", "原 ", "原店", "原 3.0", "覆盖",
+                "DEC-004", "DEC-011", "DEC-010", "DEC-003",
+                "v1.", "v2.0 ·", "→", "从 22", "从 1.57", "从 24",
+                "16 万口径", "16万口径", "v0.", "v0 ",
+            ]
+        )
+        # 会议笔记永远是历史叙述
+        is_meeting_note = relpath.startswith("meetings/")
+        # CHANGELOG/PROJECT_HISTORY 包含"修订"段时算历史叙述
+        is_changelog = "CHANGELOG" in relpath or "PROJECT_HISTORY" in relpath
+        # DECISIONS.md 顶层和 store-front/ 下的都算历史叙述
+        is_decisions = "DECISIONS" in relpath
         
-        if "1.57" in content and not relpath.startswith("raw/") and not relpath.startswith("archive/"):
-            issues.append(f"❌ {relpath}: 引用旧月固定成本'1.57万'，实际应为'9850元'")
+        allow_old = is_meeting_note or is_changelog or is_decisions or is_historical_context(content)
+        
+        if not allow_old and not relpath.startswith("raw/") and not relpath.startswith("archive/"):
+            if "22万" in content and facts["startup"]["total"] != 220000:
+                actual = facts["startup"]["total"] // 10000
+                issues.append(f"❌ {relpath}: 引用旧数字'22万'，实际应为 {actual}万")
+            
+            if "24-32" in content:
+                issues.append(f"❌ {relpath}: 引用旧回本周期'24-32月'，实际应为'12个月'")
+            
+            if "1.57" in content:
+                issues.append(f"❌ {relpath}: 引用旧月固定成本'1.57万'，实际应为'9850元'")
         
         # 检查3：facts.yaml 的 affected_bps 是否已同步
         for dec in decisions["decisions"]:

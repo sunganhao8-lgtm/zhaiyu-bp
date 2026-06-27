@@ -2,7 +2,7 @@
 
 > 来自 `data/structure.yaml` 的注解 + 真实文件系统
 > 自动生成于：执行 `python tools/render_directory.py --write`
-> 生成时间：2026-06-27 11:23
+> 生成时间：2026-06-27 11:24
 
 ```
 zhaiyu-bp/  ← 宅域宠物洗护店项目 — 知识库根目录

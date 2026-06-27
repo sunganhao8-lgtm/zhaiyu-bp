@@ -20,96 +20,96 @@ graph TD
     classDef archStyle fill:#6B7280,stroke:#4B5563,color:#fff;
 
     ROOT["<b>zhaiyu-bp/</b><br/>宅域宠物洗护店项目"]
-    n91673["<b>data/</b><br/>唯一事实源"]
-    n53587["<b>data/facts.yaml</b><br/>启动资金/成本/股份/服务定价等所有数字"]
-    n29325["<b>data/decisions.yaml</b><br/>17 条决策记录（含历史、已替换、生效）"]
-    n41368["<b>data/structure.yaml</b><br/>目录结构定义（就是本文件）"]
-    n97968["<b>meetings/</b><br/>会议笔记"]
-    n46695["<b>meetings/_template.md</b><br/>四段式会议笔记模板（强制冲突追踪）"]
-    n32383["<b>meetings/2026-06-26-孙淦浩快速会议.md</b><br/>第一次正式会议（启动资金/股份/分润机制敲定）"]
-    n31889["<b>bps/</b><br/>业务交付物"]
-    n67504["<b>bps/store-front/</b><br/>门店商业计划书（bp.html/bp.md/布局编辑器/选址地图）"]
-    n61865["<b>bps/store-front/bp.html</b><br/>商业计划书网页版（18页幻灯片）"]
-    n1275["<b>bps/store-front/bp.md</b><br/>商业计划书 Markdown 源文档（含财务明细）"]
-    n25419["<b>bps/store-front/site-map.html</b><br/>选址分析地图（高德API + 11个真实POI）"]
-    n84685["<b>bps/store-front/layout-editor.html</b><br/>49㎡ 门店布局编辑器（Konva.js + 碰撞检测）"]
-    n82105["<b>bps/landing-coop/</b><br/>合作着陆页（小红书引流/招合伙人）"]
-    n30429["<b>bps/landing-coop/landing.html</b><br/>合作着陆页主入口"]
-    n60962["<b>bps/landing-coop/index.html</b><br/>合作着陆页重定向页"]
-    n46041["<b>raw/</b><br/>原始素材"]
-    n48901["<b>raw/meetings/</b><br/>各次会议的原始素材"]
-    n94169["<b>raw/meetings/2026-06-26/</b><br/>2026-06-26 会议的原始素材"]
-    n86648["<b>raw/meetings/2026-06-26/元宝纪要.txt</b><br/>元宝AI纪要全量文字（73KB）"]
-    n22034["<b>raw/meetings/2026-06-26/成本收益分析.xlsx</b><br/>会议填写的财务模型"]
-    n97970["<b>raw/meetings/2026-06-26/README.md</b><br/>该素材包的说明 + 录屏位置指引"]
-    n79213["<b>tools/</b><br/>一致性工具"]
-    n89881["<b>tools/verify.py</b><br/>一致性校验（扫旧数字残留/不存在的DEC引用/未同步决议）"]
-    n25996["<b>tools/render_index.py</b><br/>自动生成 INDEX.md"]
-    n56050["<b>tools/render_structure.py</b><br/>自动生成 docs/structure.md（Mermaid图+表格）"]
-    n10986["<b>tools/render_directory.py</b><br/>自动生成 DIRECTORY.md（实景目录树+说明）"]
-    n65212["<b>assets/</b><br/>共享资源（Logo、品牌素材）"]
-    n60801["<b>assets/zhaiyu-logo.png</b><br/>宅域品牌 Logo"]
-    n87721["<b>archive/</b><br/>旧版本/工作过程文件归档"]
-    n85401["<b>archive/2026-06-16/</b><br/>立项当天的工作文件（inputs/outputs/review/wor"]
-    n79743["<b>README.md</b><br/>项目入口（这是什么/怎么用/为什么这样设计）"]
-    n49767["<b>INDEX.md</b><br/>自动生成的知识地图（不要手改）"]
-    n2487["<b>DECISIONS.md</b><br/>决策记录人类可读版（数据源在 data/decisions.yaml）"]
-    n9703["<b>DIRECTORY.md</b><br/>目录结构总览（自动生成，给合伙人看的）"]
-    n2369["<b>docs/</b><br/>自动生成的文档"]
-    n46310["<b>docs/structure.md</b><br/>目录结构 Mermaid 可视化图（自动生成）"]
-    n59742["<b>.gitignore</b><br/>忽略规则（大文件/中间产物不入库）"]
+    n33796["<b>data/</b><br/>唯一事实源"]
+    n90724["<b>data/facts.yaml</b><br/>启动资金/成本/股份/服务定价等所有数字"]
+    n28276["<b>data/decisions.yaml</b><br/>17 条决策记录（含历史、已替换、生效）"]
+    n22517["<b>data/structure.yaml</b><br/>目录结构定义（就是本文件）"]
+    n64374["<b>meetings/</b><br/>会议笔记"]
+    n7616["<b>meetings/_template.md</b><br/>四段式会议笔记模板（强制冲突追踪）"]
+    n97148["<b>meetings/2026-06-26-孙淦浩快速会议.md</b><br/>第一次正式会议（启动资金/股份/分润机制敲定）"]
+    n84381["<b>bps/</b><br/>业务交付物"]
+    n36502["<b>bps/store-front/</b><br/>门店商业计划书（bp.html/bp.md/布局编辑器/选址地图）"]
+    n2092["<b>bps/store-front/bp.html</b><br/>商业计划书网页版（18页幻灯片）"]
+    n26270["<b>bps/store-front/bp.md</b><br/>商业计划书 Markdown 源文档（含财务明细）"]
+    n31849["<b>bps/store-front/site-map.html</b><br/>选址分析地图（高德API + 11个真实POI）"]
+    n1186["<b>bps/store-front/layout-editor.html</b><br/>49㎡ 门店布局编辑器（Konva.js + 碰撞检测）"]
+    n45579["<b>bps/landing-coop/</b><br/>合作着陆页（小红书引流/招合伙人）"]
+    n62276["<b>bps/landing-coop/landing.html</b><br/>合作着陆页主入口"]
+    n61996["<b>bps/landing-coop/index.html</b><br/>合作着陆页重定向页"]
+    n6405["<b>raw/</b><br/>原始素材"]
+    n95079["<b>raw/meetings/</b><br/>各次会议的原始素材"]
+    n21834["<b>raw/meetings/2026-06-26/</b><br/>2026-06-26 会议的原始素材"]
+    n7669["<b>raw/meetings/2026-06-26/元宝纪要.txt</b><br/>元宝AI纪要全量文字（73KB）"]
+    n93137["<b>raw/meetings/2026-06-26/成本收益分析.xlsx</b><br/>会议填写的财务模型"]
+    n50102["<b>raw/meetings/2026-06-26/README.md</b><br/>该素材包的说明 + 录屏位置指引"]
+    n25770["<b>tools/</b><br/>一致性工具"]
+    n95936["<b>tools/verify.py</b><br/>一致性校验（扫旧数字残留/不存在的DEC引用/未同步决议）"]
+    n5734["<b>tools/render_index.py</b><br/>自动生成 INDEX.md"]
+    n19513["<b>tools/render_structure.py</b><br/>自动生成 docs/structure.md（Mermaid图+表格）"]
+    n88895["<b>tools/render_directory.py</b><br/>自动生成 DIRECTORY.md（实景目录树+说明）"]
+    n96374["<b>assets/</b><br/>共享资源（Logo、品牌素材）"]
+    n58320["<b>assets/zhaiyu-logo.png</b><br/>宅域品牌 Logo"]
+    n4500["<b>archive/</b><br/>旧版本/工作过程文件归档"]
+    n79700["<b>archive/2026-06-16/</b><br/>立项当天的工作文件（inputs/outputs/review/wor"]
+    n279["<b>README.md</b><br/>项目入口（这是什么/怎么用/为什么这样设计）"]
+    n47903["<b>INDEX.md</b><br/>自动生成的知识地图（不要手改）"]
+    n72717["<b>DECISIONS.md</b><br/>决策记录人类可读版（数据源在 data/decisions.yaml）"]
+    n83183["<b>DIRECTORY.md</b><br/>目录结构总览（自动生成，给合伙人看的）"]
+    n45792["<b>docs/</b><br/>自动生成的文档"]
+    n15280["<b>docs/structure.md</b><br/>目录结构 Mermaid 可视化图（自动生成）"]
+    n73090["<b>.gitignore</b><br/>忽略规则（大文件/中间产物不入库）"]
 
-    ROOT --> n91673
-    ROOT --> n53587
-    ROOT --> n29325
-    ROOT --> n41368
-    ROOT --> n97968
-    ROOT --> n46695
-    ROOT --> n32383
-    ROOT --> n31889
-    ROOT --> n67504
-    ROOT --> n61865
-    ROOT --> n1275
-    ROOT --> n25419
-    ROOT --> n84685
-    ROOT --> n82105
-    ROOT --> n30429
-    ROOT --> n60962
-    ROOT --> n46041
-    ROOT --> n48901
-    ROOT --> n94169
-    ROOT --> n86648
-    ROOT --> n22034
-    ROOT --> n97970
-    ROOT --> n79213
-    ROOT --> n89881
-    ROOT --> n25996
-    ROOT --> n56050
-    ROOT --> n10986
-    ROOT --> n65212
-    ROOT --> n60801
-    ROOT --> n87721
-    ROOT --> n85401
-    ROOT --> n79743
-    ROOT --> n49767
-    ROOT --> n2487
-    ROOT --> n9703
-    ROOT --> n2369
-    ROOT --> n46310
-    ROOT --> n59742
+    ROOT --> n33796
+    ROOT --> n90724
+    ROOT --> n28276
+    ROOT --> n22517
+    ROOT --> n64374
+    ROOT --> n7616
+    ROOT --> n97148
+    ROOT --> n84381
+    ROOT --> n36502
+    ROOT --> n2092
+    ROOT --> n26270
+    ROOT --> n31849
+    ROOT --> n1186
+    ROOT --> n45579
+    ROOT --> n62276
+    ROOT --> n61996
+    ROOT --> n6405
+    ROOT --> n95079
+    ROOT --> n21834
+    ROOT --> n7669
+    ROOT --> n93137
+    ROOT --> n50102
+    ROOT --> n25770
+    ROOT --> n95936
+    ROOT --> n5734
+    ROOT --> n19513
+    ROOT --> n88895
+    ROOT --> n96374
+    ROOT --> n58320
+    ROOT --> n4500
+    ROOT --> n79700
+    ROOT --> n279
+    ROOT --> n47903
+    ROOT --> n72717
+    ROOT --> n83183
+    ROOT --> n45792
+    ROOT --> n15280
+    ROOT --> n73090
     class ROOT rootStyle;
-    class n53587 dataStyle;
-    class n29325 dataStyle;
-    class n41368 dataStyle;
-    class n46695 docStyle;
-    class n32383 docStyle;
-    class n1275 docStyle;
-    class n97970 docStyle;
-    class n79743 docStyle;
-    class n49767 docStyle;
-    class n2487 docStyle;
-    class n9703 docStyle;
-    class n46310 docStyle;
+    class n90724 dataStyle;
+    class n28276 dataStyle;
+    class n22517 dataStyle;
+    class n7616 docStyle;
+    class n97148 docStyle;
+    class n26270 docStyle;
+    class n50102 docStyle;
+    class n279 docStyle;
+    class n47903 docStyle;
+    class n72717 docStyle;
+    class n83183 docStyle;
+    class n15280 docStyle;
 ```
 
 ---
