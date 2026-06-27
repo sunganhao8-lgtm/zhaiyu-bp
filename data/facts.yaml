@@ -1,0 +1,114 @@
+# ============================================
+# 宅域 (Zhaiyu) — 项目事实库（唯一数据源）
+# 所有文档中的数字/事实必须与此保持一致
+# 修改此文件后运行 tools/verify.py 校验
+# ============================================
+project:
+  name: 宅域
+  english_name: Zhaiyu
+  tagline: "宠主同乐 · 电竞生活空间"
+  founded: 2026-06-16
+  latest_revision: 2026-06-26  # 本次孙淦浩快速会议确认
+
+# ── 启动资金 ──
+startup:
+  total: 120000  # 总启动资金 12万（3人出资，孙淦浩+陈老师+张显坤）
+  version: "2026-06-26 会议最终确认"
+  notes: >
+    Excel 中另有 13.5 万版（含王梦瑶出资 6750），
+    会议最终确认的版本为 12 万，王梦瑶以人力股 5% 方式进入。
+
+shareholders:
+  - name: 孙淦浩
+    role: 运营与谈判
+    investment: 51000
+    equity: 0.425
+    equity_gifted: -0.025  # 赠送王梦瑶
+    notes: 创始人，主抓运营与商务谈判
+  - name: 陈老师
+    role: 财务与质量
+    investment: 39000
+    equity: 0.31
+    equity_gifted: -0.015
+  - name: 张显坤
+    role: 技术与项目管理
+    investment: 30000
+    equity: 0.24
+    equity_gifted: -0.01
+  - name: 王梦瑶
+    role: 人力股（店内运营）
+    investment: 0
+    equity: 0.05  # 从三位原始股东各让渡部分获得
+
+# ── 成本结构（月） ──
+costs:
+  monthly_fixed: 9850     # 月固定成本合计
+  rent: 8000               # 房租（年租96000/12）
+  deposit: 8000            # 押金（一次性，不摊销）
+  utilities: 500           # 水电气（商用预估）
+  misc: 1350               # 杂项（物业/耗材/推广）
+  daily_fixed: 328         # 日固定成本（9850/30）
+
+# ── 营收模型 ──
+revenue:
+  daily_target: 750        # 日目标营收
+  daily_forecast: 699.5    # 当前预测日营收
+  daily_gap: 50.5          # 差距（需补足）
+  breakeven_months: 12     # 目标回本周期
+  annual_net_profit_forecast: 135476  # 年净利润预测（Excel计算值，需验证）
+
+# ── 服务/产品线 ──
+services:
+  - name: 宠物洗护
+    price: "80~130（按体型分级，VIP充800送两次）"
+    daily_target: 3
+    type: core
+  - name: 剪指甲
+    price: 10
+    type: 引流
+  - name: 寄养
+    price: 50
+    type: core
+  - name: 美容造型
+    price: 100
+    type: core
+  - name: 驱虫/疫苗
+    price: 50
+    type: 商品
+  - name: 上门喂养
+    price: 30
+    type: 上门
+  - name: 上门搭电竞房
+    price: 200
+    type: 上门
+  - name: 代理送医
+    price: 200
+    type: 上门
+  - name: 减脂餐
+    price: 5
+    daily_volume: 20
+    type: 拓展
+  - name: 咖啡/果茶
+    price: "7（9.9引流款）"
+    type: 拓展
+  - name: AI编程培训
+    price: "30/节（45分钟小班课）"
+    type: 拓展
+
+# ── 分润规则 ──
+payout:
+  policy: "前期无工资，仅盈利后按股分红。老板无底薪。"
+  commission_v1: 0.30  # 普通业务抽成
+  commission_v2: 0.50  # 高耗时/特殊业务抽成
+  notes: >
+    "谁干谁拿钱"原则。分润在每日营收中直接扣除，
+    剩余利润按股份比例分配。
+    股权永久绑定，后续股权交易需>50%股东决议通过。
+
+# ── 门店参数 ──
+store:
+  address: 临港泥城·万达广场东侧500m
+  area: "49㎡（7m×7m）"
+  lease: "3年（原始合同剩余租期）"
+  transfer_fee: 0  # 已免除转让费，仅付房租
+  renovation_budget: 10000  # 装修预算（粉刷+招牌）

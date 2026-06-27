@@ -1,0 +1,43 @@
+# 宅域项目 .gitignore
+# 参考 Karpathy LLM Wiki 的"原始素材不入库"原则
+
+# ── 操作系统 ──
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── Git ──
+.git/
+
+# ── Python ──
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# ── IDE ──
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# ── 大文件原始素材（不入库，按需引用） ──
+raw/meetings/**/*.mp4
+raw/meetings/**/*.wemtv
+raw/meetings/**/*.wemta
+raw/meetings/**/*.wemtc
+raw/meetings/**/*.wemtvidx
+raw/meetings/**/*.wemtaidx
+
+# ── 旧版大文件（在 archive/ 中，需要时手动引用） ──
+archive/**/*.MP4
+archive/**/*.mp4
+
+# ── 中间产物（非交付物） ──
+# layout work files, temp exports
+*.tmp
+*.temp
+
+# ── 数据缓存（地图瓦片等，按需手动下载） ──
+**/vendor/osm-tiles/

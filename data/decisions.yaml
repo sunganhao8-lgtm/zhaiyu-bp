@@ -1,0 +1,149 @@
+# ============================================
+# 宅域 — 架构决策记录（ADR）
+# 所有决策的完整历史
+# ============================================
+
+decisions:
+  # ── 历史决策（旧项目 v1.0~1.1） ──
+  - id: "DEC-001"
+    date: 2026-06-16
+    title: 选址在临港泥城（万达东侧 500m）
+    status: historical
+    decision: 选择临港泥城片区，万达广场东侧 500m 的 49㎡ 商铺
+
+  - id: "DEC-002"
+    date: 2026-06-16
+    title: 接手 49㎡（7m×7m）门店
+    status: historical
+    decision: 实际可用面积 49㎡，所有交付物按此标准
+
+  - id: "DEC-003"
+    date: 2026-06-16
+    title: 转让费 9-10w（含 2w 押金）
+    status: superseded
+    superseded_by: "DEC-012（转让费已免除，仅付房租）"
+    decision: 原定转让费 9-10 万含押金，后核实无转让费
+
+  - id: "DEC-004"
+    date: 2026-06-16
+    title: 启动资金 22 万 / 月固定成本 1.57 万 / 回本 24-32 月
+    status: superseded
+    superseded_by: "DEC-012（12 万/月固定 9850/目标 12 月回本）"
+    decision: 旧版财务模型，已被 2026-06-26 会议全面修订
+
+  - id: "DEC-005"
+    date: 2026-06-17
+    title: 数据全部本地化（不依赖云 API）
+    status: active
+    decision: 所有 POI 数据本地缓存，离线可演示
+
+  - id: "DEC-006"
+    date: 2026-06-17
+    title: 布局编辑器加碰撞检测 + 边界保护
+    status: active
+    decision: 拖动时实时检测碰撞，边界 clamp
+
+  - id: "DEC-007"
+    date: 2026-06-17
+    title: 高德地图 + 本地 OSM 瓦片混合方案
+    status: active
+    decision: 高德 JS API 负责交互，本地瓦片负责底图
+
+  - id: "DEC-008"
+    date: 2026-06-18
+    title: 公开 GitHub 仓库（MIT License）
+    status: active
+    decision: public repo + MIT License
+
+  - id: "DEC-009"
+    date: 2026-06-18
+    title: 合伙人用 Collaborator 角色（不开组织）
+    status: active
+    decision: 单 repo 加 Collaborator，暂不开组织
+
+  - id: "DEC-010"
+    date: 2026-06-18
+    title: 加电竞展示区（展示型非经营型）
+    status: superseded
+    superseded_by: "DEC-015（电竞转为样板间概念，不单独投入）"
+    decision: 原定电竞展示区 0.66 万投入，现转为"样板间"不单独预算
+
+  - id: "DEC-011"
+    date: 2026-06-18
+    title: 启动资金 22→23.5 万
+    status: superseded
+    superseded_by: "DEC-012（12 万，多版本已废弃）"
+    decision: 过渡版本，已被 2026-06-26 会议废弃
+
+  # ── 2026-06-26 孙淦浩快速会议决策 ──
+  - id: "DEC-012"
+    date: 2026-06-26
+    source_meeting: meetings/2026-06-26-孙淦浩快速会议.md
+    title: 启动资金确认为12万
+    status: active
+    supersedes: ["DEC-003", "DEC-004", "DEC-011"]
+    decision: >
+      总启动资金 12万，三人出资（孙淦浩 51000 + 陈老师 39000 + 张显坤 30000）。
+      无转让费（原店接手只需付房租），装修预算 1万，押金 8000。
+    affected_bps: ["bps/store-front/bp.html", "bps/store-front/bp.md"]
+    affected_docs: ["README.md", "data/facts.yaml"]
+
+  - id: "DEC-013"
+    date: 2026-06-26
+    source_meeting: meetings/2026-06-26-孙淦浩快速会议.md
+    title: 老板无底薪，纯分红
+    status: active
+    supersedes: []
+    decision: >
+      前期全员无工资，仅盈利后按股分红。
+      日常收入按"业务抽成（30%/50%）+ 股东分红"分配。
+      未来招人才发薪。
+    affected_bps: ["bps/store-front/bp.html", "bps/store-front/bp.md"]
+
+  - id: "DEC-014"
+    date: 2026-06-26
+    source_meeting: meetings/2026-06-26-孙淦浩快速会议.md
+    title: 股份结构与激励方案
+    status: active
+    supersedes: []
+    decision: >
+      孙淦浩 42.5% / 陈老师 31% / 张显坤 24% / 王梦瑶 5% (人力股)。
+      三位原始股东各让渡一部分赠予王梦瑶。
+      股权永久绑定，后续交易需 >50% 决议通过。
+    affected_bps: ["bps/store-front/bp.html", "bps/store-front/bp.md"]
+
+  - id: "DEC-015"
+    date: 2026-06-26
+    source_meeting: meetings/2026-06-26-孙淦浩快速会议.md
+    title: 业务聚焦宠物洗护+上门服务
+    status: active
+    supersedes: ["DEC-010"]
+    decision: >
+      核心业务：宠物洗护（日均3单）+ 寄养 + 美容。
+      拓展业务：上门喂养/送医/搭电竞房、减脂餐、AI培训。
+      脑暴项目（酒馆/剧本杀/明星周边/远程喂猫等）暂不投入。
+    affected_bps: ["bps/store-front/bp.html", "bps/store-front/bp.md"]
+
+  - id: "DEC-016"
+    date: 2026-06-26
+    source_meeting: meetings/2026-06-26-孙淦浩快速会议.md
+    title: 分润机制"谁干谁拿钱"
+    status: active
+    supersedes: []
+    decision: >
+      普通业务抽成 30%，高耗时业务抽成 50%。
+      分润在每日营收中直接扣除，剩余按股分红。
+      股权激励：核心运营人员获赠股份，享有抽成。
+    affected_bps: ["bps/store-front/bp.html", "bps/store-front/bp.md"]
+
+  - id: "DEC-017"
+    date: 2026-06-26
+    source_meeting: meetings/2026-06-26-孙淦浩快速会议.md
+    title: 目标日营收 750 元 / 12 个月回本
+    status: active
+    supersedes: []
+    decision: >
+      日目标营收 750 元，日固定成本 328 元。
+      预测日营收 699.5 元（差 50.5 元/天需补足）。
+      目标 12 个月回本。
+    affected_bps: ["bps/store-front/bp.html", "bps/store-front/bp.md"]

@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>邻合烧烤→宅咪宠物店 平面方案 v1</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: #1a1a2e; color: #eee; padding: 20px; }
+h1 { font-size: 22px; margin-bottom: 4px; }
+.subtitle { color: #888; margin-bottom: 20px; font-size: 14px; }
+.tab-bar { display: flex; gap: 8px; margin-bottom: 16px; }
+.tab-btn { padding: 10px 20px; background: #2a2a4a; border: none; color: #aaa; border-radius: 8px; cursor: pointer; font-size: 14px; transition: all 0.2s; }
+.tab-btn.active { background: #e8652a; color: #fff; }
+.tab-btn:hover:not(.active) { background: #3a3a5a; }
+.tab-pane { display: none; }
+.tab-pane.active { display: block; }
+canvas { display: block; margin: 0 auto; max-width: 100%; border-radius: 12px; background: #16213e; box-shadow: 0 4px 24px rgba(0,0,0,0.4); }
+.legend { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+.legend-item { display: flex; align-items: center; gap: 6px; font-size: 13px; color: #bbb; }
+.legend-swatch { width: 16px; height: 16px; border-radius: 3px; border: 1px solid rgba(255,255,255,0.15); }
+.note { margin-top: 16px; background: #2a2a4a; padding: 14px 18px; border-radius: 10px; font-size: 13px; color: #ccc; line-height: 1.6; border-left: 3px solid #e8652a; }
+.note strong { color: #fff; }
+.dim-label { font-size: 11px; fill: #888; text-anchor: middle; }
+</style>
+</head>
+<body>
+
+<h1>🏪 邻合烧烤 → 宅咪宠物店 平面方案</h1>
+<div class="subtitle">实测数据：7m × 7m (49㎡) | 入口 335cm | 右墙 145cm | 洗手池 1.3m 延伸 | 柜体分割 6.6-7m</div>
+
+<div class="tab-bar">
+  <button class="tab-btn active" data-tab="current">现状·烧烤店</button>
+  <button class="tab-btn" data-tab="after">装修后·宠物+电竞展示</button>
+</div>
+
+<div id="tab-current" class="tab-pane active">
+  <canvas id="canvas-current" width="750" height="750"></canvas>
+  <div class="legend">
+    <div class="legend-item"><span class="legend-swatch" style="background:#e8d5b0"></span> 木色吧台/家具</div>
+    <div class="legend-item"><span class="legend-swatch" style="background:#f5a623"></span> 餐饮设备（待拆除）</div>
+    <div class="legend-item"><span class="legend-swatch" style="background:#ff6b35"></span> 油烟/排烟系统</div>
+    <div class="legend-item"><span class="legend-swatch" style="background:#4a90d9"></span> 水池/水吧</div>
+    <div class="legend-item"><span class="legend-swatch" style="background:#888"></span> 储物/更衣</div>
+    <div class="legend-item"><span class="legend-swatch" style="background:#555"></span> 墙体/隔断</div>
+    <div class="legend-item"><span class="legend-swatch" style="background:#7ed321;opacity:0.4"></span> 室外通道</div>
+  </div>
+  <div class="note">
+    <strong>⚠️ 这是基于你的尺寸 + 视频画面重建的推测图</strong><br>
+    ● 后厨 ~5m 深（位于柜体线北侧）<br>
+    ● 进门右边 145cm 墙为洗手池区域（从厨房向南延伸约 1.3m）<br>
+    ● 柜体分割线 660-700cm（一排 47×42 柜体，含 110cm 吧台门通道）<br>
+    ● 吧台区~2m（厨房/柜体线到吧台正面距离）<br>
+    ● 红色为必须拆除的餐饮设备；绿色区域为店外公共走道
+  </div>
+</div>
+
+<div id="tab-after" class="tab-pane">
+  <canvas id="canvas-after" width="750" height="750"></canvas>
+  <div class="legend">
+    <div class="legend-item"><span class="legend-swatch" style="background:#f5a623"></span> 宠物洗护区</div>
+    <div class="legend-item"><span class="legend-swatch" style="background:#7ed321"></span> 电竞展示区</div>
+    <div class="legend-item"><span class="legend-swatch" style="background:#ff6b6b"></span> 主机游戏区</div>
+    <div class="legend-item"><span class="legend-swatch" style="background:#4a90d9"></span> 吧台/收银</div>
+    <div class="legend-item"><span class="legend-swatch" style="background:#b8e986"></span> 寄养/宠物休息</div>
+    <div class="legend-item"><span class="legend-swatch" style="background:#d3a4ff"></span> 储物/更衣</div>
+    <div class="legend-item"><span class="legend-swatch" style="background:#888"></span> 卫生间</div>
+    <div class="legend-item"><span class="legend-swatch" style="background:#555"></span> 墙体/隔断</div>
+  </div>
+  <div class="note">
+    <strong>💡 宠物洗护+电竞展示 复合方案</strong><br>
+    ● 主要设备集中在后厨区：洗护池、烘干箱、美容台<br>
+    ● 前区：吧台收银（南侧）+ 电竞展示区（东侧靠窗）<br>
+    ● 3 个机位：2×PS5 + 1×Switch，靠东侧玻璃窗展示<br>
+    ● 北侧后场：寄养笼架 + 储物 + 卫生间<br>
+    ● 电竞区仅供展示/等位体验，不做收费运营<br><br>
+    <strong>⚠️ 以下位置请现场核验：</strong><br>
+    — 这排 660-700cm 柜体是否完全隔断墙？还是半高柜/操作台？<br>
+    — 入口到吧台距离 2m？入口到柜体的距离呢？<br>
+    — 洗手池 1.3m×1.45m 的位置准不准？<br>
+    — 卫生间在什么位置？视频里没看到
+  </div>
+</div>
+
+<script>
+const W = 700, H = 700;
+const MARGIN = 40;
+const SCALE = W / 700; // 1cm = 1px visual scale
+const CX = MARGIN, CY = MARGIN;
+
+function drawGrid(ctx, w, h) {
+  ctx.strokeStyle = 'rgba(255,255,255,0.04)';
+  ctx.lineWidth = 0.5;
+  for (let x = 0; x <= w; x += 100) {
+    ctx.beginPath(); ctx.moveTo(CX + x, CY); ctx.lineTo(CX + x, CY + h); ctx.stroke();
+  }
+  for (let y = 0; y <= h; y += 100) {
+    ctx.beginPath(); ctx.moveTo(CX, CY + y); ctx.lineTo(CX + w, CY + y); ctx.stroke();
+  }
+}
+
+function drawDim(ctx, x1, y1, x2, y2, label, color='#666') {
+  ctx.strokeStyle = color;
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(x1, y1 - 5); ctx.lineTo(x1, y1 + 5);
+  ctx.moveTo(x2, y2 - 5); ctx.lineTo(x2, y2 + 5);
+  ctx.moveTo(x1, y1); ctx.lineTo(x2, y2);
+  ctx.stroke();
+  ctx.fillStyle = color;
+  ctx.font = '10px sans-serif';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'bottom';
+  ctx.fillText(label, (x1 + x2) / 2, Math.min(y1, y2) - 4);
+}
+
+function draw() {
+  // === Current layout ===
+  const c = document.getElementById('canvas-current').getContext('2d');
+  const w = 700, h = 700;
+  c.clearRect(0, 0, 750, 750);
+  
+  // Background - store area
+  c.fillStyle = '#1a1a2e';
+  c.fillRect(0, 0, 750, 750);
+  
+  // Draw store outline
+  c.strokeStyle = '#4a4a6a';
+  c.lineWidth = 2;
+  c.strokeRect(CX, CY, w, h);
+  
+  // Grid
+  drawGrid(c, w, h);
+  
+  // === ENTRANCE (south side) ===
+  // Entrance opening 335cm on the 700cm front wall
+  c.fillStyle = 'rgba(126, 211, 33, 0.15)';
+  c.fillRect(CX + 180, CY + h, 335, 30);
+  // Glass door markings
+  for (let dx = 0; dx < 335; dx += 70) {
+    c.strokeStyle = 'rgba(126, 211, 33, 0.3)';
+    c.lineWidth = 0.5;
+    c.beginPath();
+    c.moveTo(CX + 180 + dx + 35, CY + h);
+    c.lineTo(CX + 180 + dx + 35, CY + h + 30);
+    c.stroke();
+  }
+  
+  // === WALLS ===
+  c.strokeStyle = '#777';
+  c.lineWidth = 4;
+  // Left wall (west)
+  c.beginPath(); c.moveTo(CX, CY); c.lineTo(CX, CY + h); c.stroke();
+  // Right wall (east)
+  c.beginPath(); c.moveTo(CX + w, CY); c.lineTo(CX + w, CY + h); c.stroke();
+  // Back wall (north)
+  c.beginPath(); c.moveTo(CX, CY); c.lineTo(CX + w, CY); c.stroke();
+  // Front wall (south) - with entrance gap
+  c.beginPath(); c.moveTo(CX, CY + h); c.lineTo(CX + 180, CY + h); c.stroke();
+  c.beginPath(); c.moveTo(CX + 180 + 335, CY + h); c.lineTo(CX + w, CY + h); c.stroke();
+  
+  // === 145cm WALL (right side when entering) ===
+  c.fillStyle = '#555';
+  c.fillRect(CX + w - 145, CY + h - 200, 145, 200);
+  
+  // === SINK AREA (1.3m×1.45m behind the 145cm wall) ===
+  c.fillStyle = '#4a90d9';
+  c.globalAlpha = 0.3;
+  c.fillRect(CX + w - 145, CY + h - 200 - 130, 145, 130);
+  c.globalAlpha = 1;
+  c.strokeStyle = '#4a90d9';
+  c.lineWidth = 1;
+  c.strokeRect(CX + w - 145, CY + h - 200 - 130, 145, 130);
+  // Tap icon
+  c.fillStyle = '#4a90d9';
+  c.font = '14px sans-serif';
+  c.textAlign = 'center';
+  c.textBaseline = 'middle';
+  c.fillText('🚰 洗手池', CX + w - 72, CY + h - 200 - 65);
+  
+  // === CABINET ROW (660-700cm) ===
+  // This spans from left wall to right wall, dividing front from back
+  // Cabinet position: about 200cm from south entrance (bar area depth from kitchen)
+  const cabinetY = CY + h - 200;
+  c.fillStyle = 'rgba(200, 160, 100, 0.3)';
+  c.fillRect(CX, cabinetY - 15, w, 30);
+  c.strokeStyle = '#c8a064';
+  c.lineWidth = 2;
+  c.setLineDash([5, 3]);
+  c.beginPath(); c.moveTo(CX, cabinetY); c.lineTo(CX + w, cabinetY); c.stroke();
+  c.setLineDash([]);
+  
+  // Cabinet markers (47×42 each)
+  for (let i = 0; i < Math.floor(w / 47); i++) {
+    c.fillStyle = 'rgba(200, 160, 100, 0.15)';
+    c.fillRect(CX + i * 47, cabinetY - 12, 42, 24);
+  }
+  
+  // === 110cm BAR DOOR (opening in cabinet row) ===
+  c.fillStyle = 'rgba(126, 211, 33, 0.1)';
+  c.fillRect(CX + 200, cabinetY - 15, 110, 30);
+  c.strokeStyle = '#7ed321';
+  c.lineWidth = 1;
+  c.strokeRect(CX + 200, cabinetY - 15, 110, 30);
+  c.fillStyle = '#7ed321';
+  c.font = '10px sans-serif';
+  c.textAlign = 'center';
+  c.textBaseline = 'middle';
+  c.fillText('🚪 吧台门 110cm', CX + 255, cabinetY);
+  
+  // === BAR COUNTER ===
+  // Located ~2m in front of cabinet row (towards entrance)
+  const barY = CY + h - 200 - 200; // 2m from kitchen
+  c.fillStyle = '#e8d5b0';
+  c.globalAlpha = 0.4;
+  c.fillRect(CX + 50, barY - 70, 500, 70);
+  c.globalAlpha = 1;
+  c.strokeStyle = '#c8a064';
+  c.lineWidth = 2;
+  c.strokeRect(CX + 50, barY - 70, 500, 70);
+  c.fillStyle = '#e8d5b0';
+  c.font = '13px sans-serif';
+  c.textAlign = 'center';
+  c.textBaseline = 'middle';
+  c.fillText('🍺 吧台/收银 区域', CX + 300, barY - 35);
+  
+  // === KITCHEN BACK AREA ===
+  c.fillStyle = 'rgba(255, 107, 53, 0.12)';
+  c.fillRect(CX, CY, w, cabinetY - 15);
+  c.strokeStyle = '#ff6b35';
+  c.lineWidth = 1;
+  c.setLineDash([4, 4]);
+  c.strokeRect(CX, CY, w, cabinetY - 15);
+  c.setLineDash([]);
+  
+  // Kitchen equipment symbols
+  c.fillStyle = '#f5a623';
+  c.globalAlpha = 0.4;
+  // Stove/range
+  c.fillRect(CX + 100, CY + 80, 120, 60);
+  c.fillRect(CX + 280, CY + 60, 100, 80);
+  c.fillRect(CX + 450, CY + 100, 120, 60);
+  c.globalAlpha = 1;
+  
+  // Hood/vent
+  c.fillStyle = '#ff6b35';
+  c.globalAlpha = 0.25;
+  c.fillRect(CX + 80, CY + 30, 160, 40);
+  c.fillRect(CX + 260, CY + 10, 140, 40);
+  c.fillRect(CX + 430, CY + 50, 160, 40);
+  c.globalAlpha = 1;
+  
+  c.fillStyle = '#888';
+  c.font = '10px sans-serif';
+  c.textAlign = 'center';
+  c.fillText('🔥 灶台/排烟', CX + 160, CY + 120);
+  c.fillText('🔥 排烟罩', CX + 330, CY + 100);
+  c.fillText('🔥 烧烤架/排烟', CX + 510, CY + 140);
+  
+  // Storage area
+  c.fillStyle = '#888';
+  c.globalAlpha = 0.25;
+  c.fillRect(CX + 20, CY + 200, 80, 120);
+  c.fillRect(CX + 580, CY + 180, 100, 100);
+  c.globalAlpha = 1;
+  c.fillStyle = '#888';
+  c.font = '9px sans-serif';
+  c.fillText('📦 储物', CX + 60, CY + 260);
+  c.fillText('❓ 更衣/储物', CX + 630, CY + 230);
+  
+  // === DIMENSIONS ===
+  // Store width 700cm
+  drawDim(c, CX, CY + h + 40, CX + w, CY + h + 40, '700cm (7m)', '#555');
+  // Store depth 700cm
+  drawDim(c, CX + w + 15, CY, CX + w + 15, CY + h, '700cm (7m)', '#555');
+  // Entrance 335cm
+  drawDim(c, CX + 180, CY + h + 70, CX + 180 + 335, CY + h + 70, '入口 335cm', '#7ed321');
+  // 145cm wall
+  drawDim(c, CX + w - 145, CY + h, CX + w, CY + h, '145cm 墙 →', '#ff6b6b');
+  // Sink area 1.3m
+  drawDim(c, CX + w + 30, CY + h - 200 - 130, CX + w + 30, CY + h - 200, '1.3m', '#4a90d9');
+  // Cabinet line diff
+  drawDim(c, CX + w + 40, CY + h, CX + w + 40, CY + h - 200, '2m (吧台→厨房)', '#c8a064');
+  
+  // Labels
+  c.fillStyle = 'rgba(255,255,255,0.3)';
+  c.font = '11px sans-serif';
+  c.textAlign = 'center';
+  c.textBaseline = 'top';
+  c.fillText('← 后厨区 (烧烤设备/排烟/储物) →', CX + w/2, CY + 5);
+  
+  c.fillStyle = 'rgba(200,160,100,0.5)';
+  c.fillText('← 前区 吧台/就餐 →', CX + w/2, cabinetY + 35);
+  
+  // ===== NOW DRAW AFTER-RENOVATION =====
+  const c2 = document.getElementById('canvas-after').getContext('2d');
+  c2.clearRect(0, 0, 750, 750);
+  c2.fillStyle = '#1a1a2e';
+  c2.fillRect(0, 0, 750, 750);
+  c2.strokeStyle = '#4a4a6a';
+  c2.lineWidth = 2;
+  c2.strokeRect(CX, CY, w, h);
+  drawGrid(c2, w, h);
+  
+  // === AFTER: Entrance ===
+  c2.fillStyle = 'rgba(126, 211, 33, 0.15)';
+  c2.fillRect(CX + 180, CY + h, 335, 30);
+  
+  // === AFTER: Walls ===
+  c2.strokeStyle = '#777';
+  c2.lineWidth = 4;
+  c2.beginPath(); c2.moveTo(CX, CY); c2.lineTo(CX, CY + h); c2.stroke();
+  c2.beginPath(); c2.moveTo(CX + w, CY); c2.lineTo(CX + w, CY + h); c2.stroke();
+  c2.beginPath(); c2.moveTo(CX, CY); c2.lineTo(CX + w, CY); c2.stroke();
+  c2.beginPath(); c2.moveTo(CX, CY + h); c2.lineTo(CX + 180, CY + h); c2.stroke();
+  c2.beginPath(); c2.moveTo(CX + 180 + 335, CY + h); c2.lineTo(CX + w, CY + h); c2.stroke();
+  
+  // === AFTER: Sink area - KEEP as utility sink ===
+  c2.fillStyle = '#555';
+  c2.fillRect(CX + w - 145, CY + h - 200, 145, 200);
+  c2.fillStyle = '#4a90d9';
+  c2.globalAlpha = 0.25;
+  c2.fillRect(CX + w - 145, CY + h - 200 - 130, 145, 130);
+  c2.globalAlpha = 1;
+  c2.strokeStyle = '#4a90d9';
+  c2.lineWidth = 1;
+  c2.strokeRect(CX + w - 145, CY + h - 200 - 130, 145, 130);
+  c2.fillStyle = '#4a90d9';
+  c2.font = '12px sans-serif';
+  c2.textAlign = 'center';
+  c2.textBaseline = 'middle';
+  c2.fillText('💧 清洗池', CX + w - 72, CY + h - 200 - 65);
+  c2.fillStyle = '#aaa';
+  c2.font = '9px sans-serif';
+  c2.fillText('(保留/改造)', CX + w - 72, CY + h - 200 - 50);
+  
+  // === AFTER: BATHROOM (northeast corner) ===
+  c2.fillStyle = '#888';
+  c2.globalAlpha = 0.3;
+  c2.fillRect(CX + w - 145, CY, 145, 150);
+  c2.globalAlpha = 1;
+  c2.strokeStyle = '#888';
+  c2.lineWidth = 1.5;
+  c2.strokeRect(CX + w - 145, CY, 145, 150);
+  c2.fillStyle = '#aaa';
+  c2.font = '12px sans-serif';
+  c2.fillText('🚻 卫生间', CX + w - 72, CY + 75);
+  
+  // === AFTER: PET GROOMING ZONE (northwest-mid) ===
+  c2.fillStyle = '#f5a623';
+  c2.globalAlpha = 0.25;
+  c2.fillRect(CX + 20, CY + 20, 500, 350);
+  c2.globalAlpha = 1;
+  c2.strokeStyle = '#f5a623';
+  c2.lineWidth = 1.5;
+  c2.setLineDash([5, 3]);
+  c2.strokeRect(CX + 20, CY + 20, 500, 350);
+  c2.setLineDash([]);
+  
+  // Grooming table
+  c2.fillStyle = 'rgba(245, 166, 35, 0.3)';
+  c2.fillRect(CX + 80, CY + 50, 100, 70);
+  c2.strokeStyle = '#f5a623';
+  c2.lineWidth = 1;
+  c2.strokeRect(CX + 80, CY + 50, 100, 70);
+  c2.fillStyle = '#f5a623';
+  c2.font = '10px sans-serif';
+  c2.fillText('🛁 洗护池', CX + 130, CY + 87);
+  
+  // Drying table
+  c2.fillStyle = 'rgba(245, 166, 35, 0.3)';
+  c2.fillRect(CX + 250, CY + 50, 120, 70);
+  c2.strokeStyle = '#f5a623';
+  c2.lineWidth = 1;
+  c2.strokeRect(CX + 250, CY + 50, 120, 70);
+  c2.fillText('🌀 烘干箱', CX + 310, CY + 87);
+  
+  // Grooming station
+  c2.fillStyle = 'rgba(245, 166, 35, 0.3)';
+  c2.fillRect(CX + 420, CY + 50, 100, 70);
+  c2.strokeStyle = '#f5a623';
+  c2.lineWidth = 1;
+  c2.strokeRect(CX + 420, CY + 50, 100, 70);
+  c2.fillText('💇 美容台', CX + 470, CY + 87);
+  
+  // === AFTER: PET BOARDING (east wall, north section) ===
+  c2.fillStyle = '#b8e986';
+  c2.globalAlpha = 0.25;
+  c2.fillRect(CX + w - 145, CY + 170, 145, 250);
+  c2.globalAlpha = 1;
+  c2.strokeStyle = '#b8e986';
+  c2.lineWidth = 1.5;
+  c2.strokeRect(CX + w - 145, CY + 170, 145, 250);
+  c2.fillStyle = '#b8e986';
+  c2.font = '11px sans-serif';
+  c2.fillText('🏠 寄养区', CX + w - 72, CY + 220);
+  c2.fillText('(笼架+休息)', CX + w - 72, CY + 240);
+  c2.fillStyle = '#888';
+  c2.font = '9px sans-serif';
+  c2.fillText('靠窗采光', CX + w - 72, CY + 260);
+  
+  // === AFTER: STORAGE (northwest corner) ===
+  c2.fillStyle = '#d3a4ff';
+  c2.globalAlpha = 0.2;
+  c2.fillRect(CX, CY, 145, 150);
+  c2.globalAlpha = 1;
+  c2.strokeStyle = '#d3a4ff';
+  c2.lineWidth = 1;
+  c2.strokeRect(CX, CY, 145, 150);
+  c2.fillStyle = '#d3a4ff';
+  c2.font = '11px sans-serif';
+  c2.fillText('📦 仓储', CX + 72, CY + 60);
+  c2.fillText('(宠物用品)', CX + 72, CY + 78);
+  
+  // === AFTER: COUNTER/BAR (south front, behind entrance) ===
+  c2.fillStyle = '#4a90d9';
+  c2.globalAlpha = 0.3;
+  c2.fillRect(CX + 50, CY + h - 280, 480, 70);
+  c2.globalAlpha = 1;
+  c2.strokeStyle = '#4a90d9';
+  c2.lineWidth = 2;
+  c2.strokeRect(CX + 50, CY + h - 280, 480, 70);
+  c2.fillStyle = '#4a90d9';
+  c2.font = '13px sans-serif';
+  c2.fillText('🧾 收银前台 / 宠物洗护接待', CX + 290, CY + h - 245);
+  
+  // === AFTER: GAMING DISPLAY ZONE (east side, next to entrance) ===
+  // This is on the right side when entering, between the 145cm wall and the entrance
+  c2.fillStyle = '#7ed321';
+  c2.globalAlpha = 0.2;
+  c2.fillRect(CX + w - 300, CY + h - 200, 300, 200);
+  c2.globalAlpha = 1;
+  c2.strokeStyle = '#7ed321';
+  c2.lineWidth = 2;
+  c2.strokeRect(CX + w - 300, CY + h - 200, 300, 200);
+  
+  // PS5 display
+  c2.fillStyle = 'rgba(255, 107, 107, 0.3)';
+  c2.fillRect(CX + w - 280, CY + h - 180, 130, 80);
+  c2.strokeStyle = '#ff6b6b';
+  c2.lineWidth = 1;
+  c2.strokeRect(CX + w - 280, CY + h - 180, 130, 80);
+  c2.fillStyle = '#ff6b6b';
+  c2.font = '11px sans-serif';
+  c2.fillText('🎮 PS5 展示机位', CX + w - 215, CY + h - 140);
+  
+  // Switch display
+  c2.fillStyle = 'rgba(255, 107, 107, 0.3)';
+  c2.fillRect(CX + w - 130, CY + h - 180, 120, 80);
+  c2.strokeStyle = '#ff6b6b';
+  c2.lineWidth = 1;
+  c2.strokeRect(CX + w - 130, CY + h - 180, 120, 80);
+  c2.fillStyle = '#ff6b6b';
+  c2.font = '11px sans-serif';
+  c2.fillText('🕹️ Switch 体验', CX + w - 70, CY + h - 140);
+  
+  // Gaming chairs/rest area
+  c2.fillStyle = 'rgba(126, 211, 33, 0.2)';
+  c2.fillRect(CX + w - 280, CY + h - 85, 260, 60);
+  c2.strokeStyle = '#7ed321';
+  c2.lineWidth = 1;
+  c2.strokeRect(CX + w - 280, CY + h - 85, 260, 60);
+  c2.fillStyle = '#7ed321';
+  c2.font = '10px sans-serif';
+  c2.fillText('💺 等候休息区 (电竞椅 ×3)', CX + w - 150, CY + h - 55);
+  
+  // === AFTER: DIMENSIONS ===
+  drawDim(c2, CX, CY + h + 40, CX + w, CY + h + 40, '700cm (7m)', '#555');
+  drawDim(c2, CX + w + 15, CY, CX + w + 15, CY + h, '700cm (7m)', '#555');
+  drawDim(c2, CX + 180, CY + h + 70, CX + 180 + 335, CY + h + 70, '入口 335cm', '#7ed321');
+  
+  // Zone labels
+  c2.fillStyle = 'rgba(245, 166, 35, 0.5)';
+  c2.font = '13px sans-serif';
+  c2.textAlign = 'center';
+  c2.textBaseline = 'top';
+  c2.fillText('🏪 宠物洗护区', CX + w/2 - 50, CY + 5);
+  
+  c2.fillStyle = 'rgba(126, 211, 33, 0.5)';
+  c2.fillText('🎮 电竞展示 + 等候休息', CX + w - 150, CY + h - 215);
+  
+  c2.fillStyle = 'rgba(74, 144, 217, 0.5)';
+  c2.fillText('🧾 接待/收银', CX + 290, CY + h - 300);
+}
+
+window.addEventListener('DOMContentLoaded', draw);
+
+// Tab switching
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const tab = btn.dataset.tab;
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+    document.getElementById('tab-' + tab).classList.add('active');
+    // Re-draw canvas if needed (canvas is auto-sized, no resize needed)
+  });
+});
+</script>
+</body>
+</html>
