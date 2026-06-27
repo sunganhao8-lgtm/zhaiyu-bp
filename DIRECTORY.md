@@ -2,11 +2,11 @@
 
 > 来自 `data/structure.yaml` 的注解 + 真实文件系统
 > 自动生成于：执行 `python tools/render_directory.py --write`
-> 生成时间：2026-06-27 11:20
+> 生成时间：2026-06-27 11:23
 
 ```
 zhaiyu-bp/  ← 宅域宠物洗护店项目 — 知识库根目录
-├── archive/  ← 旧版本/工作过程文件归档 [human]
+├── archive/
 │   └── 2026-06-16/
 │       ├── inputs/
 │       │   ├── refs/
@@ -31,9 +31,9 @@ zhaiyu-bp/  ← 宅域宠物洗护店项目 — 知识库根目录
 │       ├── DJI_20260616202147_0003_D.MP4
 │       ├── 宅电logo截图.png
 │       └── 宅电logo设计.png
-├── assets/  ← 共享资源（Logo、品牌素材） [human]
+├── assets/
 │   └── zhaiyu-logo.png
-├── bps/  ← 业务交付物 — 给外人看的成品 [partner,investor,customer]
+├── bps/
 │   ├── landing-for-coop/
 │   │   ├── .github/
 │   │   │   └── workflows/
@@ -79,22 +79,22 @@ zhaiyu-bp/  ← 宅域宠物洗护店项目 — 知识库根目录
 │       ├── PARTNER_FAQ.md
 │       ├── PROJECT_HISTORY.md
 │       └── ... +11 more files
-├── data/  ← 唯一事实源 — 所有数字/决策的结构化存储
+├── data/
 │   ├── decisions.yaml
 │   ├── facts.yaml
 │   └── structure.yaml
 ├── docs/
 │   └── structure.md
-├── meetings/  ← 会议笔记 — 每次会议的"决议+冲突+待办"结构化记录 [ai,human,partner]
+├── meetings/
 │   ├── 2026-06-26-孙淦浩快速会议.md
 │   └── _template.md
-├── raw/  ← 原始素材 — 元宝纪要/Excel/录屏，按"原样"归档 [human]
+├── raw/
 │   └── meetings/
 │       └── 2026-06-26/
 │           ├── README.md
 │           ├── 孙淦浩的快速会议-AI纪要.txt
 │           └── 开店成本收益分析.xlsx
-├── tools/  ← 一致性工具 — 保证知识库不自相矛盾
+├── tools/
 │   ├── render_directory.py
 │   ├── render_index.py
 │   ├── render_structure.py

@@ -30,20 +30,20 @@ def load_purposes():
     purposes = {}
     audiences = {}
 
-def walk(node, parent=""):
-    for child in node.get("contains", []):
-        child_path = child["path"]
-        if parent:
-            full = parent.rstrip("/") + "/" + child_path
-        else:
-            full = "zhaiyu-bp/" + child_path
-        full = full.replace("\\", "/")
-        if "purpose" in child:
-            purposes[full] = child["purpose"]
-        if "audience" in child:
-            audiences[full] = child["audience"]
-        if child.get("type") == "dir":
-            walk(child, full)
+    def walk(node, parent=""):
+        for child in node.get("contains", []):
+            child_path = child["path"]
+            if parent:
+                full = parent.rstrip("/") + "/" + child_path
+            else:
+                full = "zhaiyu-bp/" + child_path
+            full = full.replace("\\", "/")
+            if "purpose" in child:
+                purposes[full] = child["purpose"]
+            if "audience" in child:
+                audiences[full] = child["audience"]
+            if child.get("type") == "dir":
+                walk(child, full)
 
     walk(data["root"])
     purposes["zhaiyu-bp/"] = data["root"].get("purpose", "")
