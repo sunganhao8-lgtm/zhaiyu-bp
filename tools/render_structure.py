@@ -35,7 +35,13 @@ def flatten(structure):
 
     def recurse(node, parent_path=""):
         for child in node.get("contains", []):
-            full_path = os.path.join(parent_path, child["path"]) if parent_path else child["path"]
+            child_path = child["path"]
+            # 现在所有子项已经是相对父目录的路径（不含 zhaiyu-bp/）
+            if parent_path:
+                full_path = parent_path.rstrip("/") + "/" + child_path
+            else:
+                # 根级子项，路径以 zhaiyu-bp/ 开头
+                full_path = "zhaiyu-bp/" + child_path
             full_path = full_path.replace("\\", "/")
             info = {k: v for k, v in child.items() if k != "contains"}
             info["path"] = full_path
@@ -74,18 +80,18 @@ def build_mermaid(items):
             nid = node_id(path)
         id_map[path] = nid
 
-        # 简化显示名
-        name = path.replace("zhaiyu-bp/", "")
-        if name and name.endswith("/"):
-            name = name.rstrip("/") + "/"
+        # 简化显示名（去掉 zhaiyu-bp/ 前缀）
+        name = path
+        if name.startswith("zhaiyu-bp/"):
+            name = name[len("zhaiyu-bp/"):]
         if not name:
             name = "zhaiyu-bp/"
 
-        # 节点标签
-        purpose = item.get("purpose", "").split("—")[0].strip()[:30]
-        label = f"<b>{name}</b><br/>{purpose}" if purpose else f"<b>{name}</b>"
-        # Mermaid 标签不能有特殊字符
-        label = label.replace('"', "'").replace("<", "&lt;").replace(">", "&gt;")
+        # 节点标签（用 <br/> 换行，HTML实体编码）
+        purpose = item.get("purpose", "").split("—")[0].strip()[:35]
+        purpose_clean = purpose.replace('"', "'")
+        label = f"<b>{name}</b><br/>{purpose_clean}" if purpose_clean else f"<b>{name}</b>"
+        # Mermaid 在 markdown 里能渲染 HTML 标签
         lines.append(f'    {nid}["{label}"]')
 
     lines.append("")
