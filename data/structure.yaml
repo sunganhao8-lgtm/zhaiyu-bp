@@ -1,0 +1,193 @@
+# 宅域知识库 — 目录结构定义（单一事实源）
+#
+# 改这个文件 = 改整个目录结构
+# 改完后跑：
+#   python tools/render_index.py --write    # 更新 INDEX.md
+#   python tools/render_structure.py --write # 更新 docs/structure.md
+#
+# 字段说明：
+#   path:        路径（相对 zhaiyu-bp/）
+#   type:        dir | file
+#   purpose:     一句话说明这个目录/文件做什么
+#   audience:    [who reads this]  - ai | human | partner | self
+#   read_when:   何时读这个文件（场景）
+#   write_when:  何时更新这个文件（场景）
+#   contains:    子项（子目录或子文件）
+
+root:
+  purpose: 宅域宠物洗护店项目 — 知识库根目录
+  audience: [ai, human, partner]
+  read_when: 第一次接触项目 / 不确定某个东西在哪
+  write_when: 改结构
+  contains:
+
+    - path: data/
+      type: dir
+      purpose: 唯一事实源 — 所有数字/决策的结构化存储
+      audience: [ai]
+      read_when: 需要确认某个数字、查找某条决策
+      write_when: 任何数字/决议变化（**必须第一个改这里**）
+      golden_rule: 改数据 → 跑 verify.py → 改文档 → 再跑 verify.py
+      contains:
+        - path: data/facts.yaml
+          type: file
+          purpose: 启动资金/成本/股份/服务定价等所有数字
+          audience: [ai]
+          read_when: AI 回答任何财务/数字问题前
+          write_when: 财务模型调整
+        - path: data/decisions.yaml
+          type: file
+          purpose: 17 条决策记录（含历史、已替换、生效）
+          audience: [ai]
+          read_when: 解释"为什么这样设计" / 追溯决策时间线
+          write_when: 任何新决议、修订、废弃
+
+    - path: meetings/
+      type: dir
+      purpose: 会议笔记 — 每次会议的"决议+冲突+待办"结构化记录
+      audience: [ai, human, partner]
+      read_when: 了解一次会议的决定 / 找历史讨论
+      write_when: 每次会议后立刻写一篇
+      template: meetings/_template.md
+      naming: YYYY-MM-DD-{会议主题}.md
+      contains:
+        - path: meetings/_template.md
+          type: file
+          purpose: 四段式会议笔记模板（强制冲突追踪）
+          audience: [human]
+        - path: meetings/2026-06-26-孙淦浩快速会议.md
+          type: file
+          purpose: 第一次正式会议（启动资金/股份/分润机制敲定）
+          audience: [ai, human, partner]
+
+    - path: bps/
+      type: dir
+      purpose: 业务交付物 — 给外人看的成品
+      audience: [partner, investor, customer]
+      read_when: 给投资人/合伙人/客户演示
+      write_when: 演示材料更新
+      caution: 这里面的数字必须和 data/facts.yaml 一致
+      contains:
+        - path: bps/store-front/
+          type: dir
+          purpose: 门店商业计划书（bp.html/bp.md/布局编辑器/选址地图）
+        - path: bps/landing-coop/
+          type: dir
+          purpose: 合作着陆页（小红书引流/招合伙人）
+        - path: bps/store-front/bp.html
+          type: file
+          purpose: 商业计划书网页版（18页幻灯片）
+          audience: [partner, investor]
+        - path: bps/store-front/bp.md
+          type: file
+          purpose: 商业计划书 Markdown 源文档（含财务明细）
+          audience: [partner]
+        - path: bps/store-front/site-map.html
+          type: file
+          purpose: 选址分析地图（高德API + 11个真实POI）
+        - path: bps/store-front/layout-editor.html
+          type: file
+          purpose: 49㎡ 门店布局编辑器（Konva.js + 碰撞检测）
+        - path: bps/landing-coop/landing.html
+          type: file
+          purpose: 合作着陆页主入口
+        - path: bps/landing-coop/index.html
+          type: file
+          purpose: 合作着陆页重定向页
+
+    - path: raw/
+      type: dir
+      purpose: 原始素材 — 元宝纪要/Excel/录屏，按"原样"归档
+      audience: [human]
+      read_when: 查证某个数字/引述/录屏内容
+      write_when: 每次新会议/新素材
+      caution: 大文件不入库（mp4/wemt*），只入引用 + 路径
+      contains:
+        - path: raw/meetings/2026-06-26/
+          type: dir
+          purpose: 2026-06-26 会议的原始素材
+        - path: raw/meetings/2026-06-26/元宝纪要.txt
+          type: file
+          purpose: 元宝AI纪要全量文字（73KB）
+        - path: raw/meetings/2026-06-26/成本收益分析.xlsx
+          type: file
+          purpose: 会议填写的财务模型
+        - path: raw/meetings/2026-06-26/README.md
+          type: file
+          purpose: 该素材包的说明 + 录屏位置指引
+
+    - path: tools/
+      type: dir
+      purpose: 一致性工具 — 保证知识库不自相矛盾
+      audience: [ai]
+      read_when: 改完任何文件后
+      write_when: 新规则/新校验
+      contains:
+        - path: tools/verify.py
+          type: file
+          purpose: 一致性校验（扫旧数字残留/不存在的DEC引用/未同步决议）
+        - path: tools/render_index.py
+          type: file
+          purpose: 自动生成 INDEX.md
+        - path: tools/render_structure.py
+          type: file
+          purpose: 自动生成 docs/structure.md（Mermaid图+表格）
+        - path: tools/render_directory.py
+          type: file
+          purpose: 自动生成 DIRECTORY.md（实景目录树+说明）
+
+    - path: assets/
+      type: dir
+      purpose: 共享资源（Logo、品牌素材）
+      audience: [human]
+      contains:
+        - path: assets/zhaiyu-logo.png
+          type: file
+          purpose: 宅域品牌 Logo
+
+    - path: archive/
+      type: dir
+      purpose: 旧版本/工作过程文件归档
+      audience: [human]
+      read_when: 想看"当时怎么做的"
+      write_when: 任何旧文件需要归档时
+      contains:
+        - path: archive/2026-06-16/
+          type: dir
+          purpose: 立项当天的工作文件（inputs/outputs/review/work）
+
+    # ── 文档（人类阅读入口） ──
+    - path: README.md
+      type: file
+      purpose: 项目入口（"这是什么/怎么用/为什么这样设计"）
+      audience: [human, partner]
+      read_when: 第一次打开项目
+      write_when: 入口/导航逻辑变化
+    - path: INDEX.md
+      type: file
+      purpose: 自动生成的知识地图（不要手改）
+      audience: [ai, human]
+      generation: python tools/render_index.py --write
+    - path: DECISIONS.md
+      type: file
+      purpose: 决策记录人类可读版（数据源在 data/decisions.yaml）
+      audience: [ai, human, partner]
+      read_when: 了解项目所有关键决策
+    - path: DIRECTORY.md
+      type: file
+      purpose: 目录结构总览（自动生成，给合伙人看的）
+      audience: [human, partner]
+      generation: python tools/render_directory.py --write
+    - path: docs/structure.md
+      type: file
+      purpose: 目录结构 Mermaid 可视化图（自动生成）
+      audience: [human, partner]
+      generation: python tools/render_structure.py --write
+
+    # ── Git 规则 ──
+    - path: .gitignore
+      type: file
+      purpose: 忽略规则（大文件/中间产物不入库）
+    - path: .git/
+      type: dir
+      purpose: Git 仓库元数据
