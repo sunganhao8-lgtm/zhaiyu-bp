@@ -30,7 +30,7 @@ root:
           write_when: 财务模型调整
         - path: decisions.yaml
           type: file
-          purpose: 26 条决策记录（含历史、已替换、生效）
+          purpose: 27 条决策记录（含历史、已替换、生效）
           audience: [ai]
           read_when: 解释为什么这样设计 / 追溯决策时间线
           write_when: 任何新决议、修订、废弃

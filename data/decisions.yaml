@@ -133,19 +133,19 @@ decisions:
     supersedes: []
     decision: >
       普通业务抽成 30%，高耗时业务抽成 50%。
-      分润在每日营收中直接扣除，剩余按股分红。
+      分润在每日收入中直接扣除，剩余按股分红。
       股权激励：核心运营人员获赠股份，享有抽成。
     affected_bps: ["bps/store-front/bp.html", "bps/store-front/bp.md"]
 
   - id: "DEC-017"
     date: 2026-06-26
     source_meeting: meetings/2026-06-26-创始人A快速会议.md
-    title: 目标日营收 750 元 / 12 个月回本
+    title: 目标日经营贡献 750 元 / 12 个月回本
     status: active
     supersedes: []
     decision: >
-      日目标营收 750 元，日固定成本 328 元。
-      预测日营收 699.5 元（差 50.5 元/天需补足）。
+      日经营贡献目标 750 元，日固定成本 328 元。
+      预测日经营贡献 699.5 元（差 50.5 元/天需补足）。
       目标 12 个月回本。
     affected_bps: ["bps/store-front/bp.html", "bps/store-front/bp.md"]
 
@@ -261,3 +261,17 @@ decisions:
       不建议日结分红，建议月度结账、季度分红，并保留至少 3 个月安全资金后再分红。
     affected_bps: ["bps/store-front/bp.html", "bps/store-front/bp.md"]
     affected_docs: ["docs/optimization-plan.md", "data/facts.yaml"]
+
+  - id: "DEC-027"
+    date: 2026-07-01
+    source_meeting: "用户补充：每一位客户的发言都是洞悉需求的原材料"
+    title: 客户发言档案作为宅域核心增长引擎
+    status: active
+    supersedes: []
+    decision: >
+      宅域的核心目标升级为"服务破冰 → 客户发言档案 → 需求方案化 → 产品化复购"。
+      宅咪和宅电只是首期两个高信任入口：前者解决宠物洗护与日常养护痛点，
+      后者表达理想居住环境。每次服务、咨询、吐槽和犹豫都要沉淀为客户发言档案，
+      用于发现高频家庭需求、筛选自媒体选题、设计上门方案、孵化自有产品和复购机制。
+    affected_bps: ["bp.html", "bps/store-front/bp.html", "bps/store-front/bp.md"]
+    affected_docs: ["README.md", "DECISIONS.md", "docs/optimization-plan.md", "data/facts.yaml"]
