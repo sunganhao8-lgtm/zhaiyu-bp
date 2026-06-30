@@ -2,10 +2,13 @@
 
 > 来自 `data/structure.yaml` 的注解 + 真实文件系统
 > 自动生成于：执行 `python tools/render_directory.py --write`
-> 生成时间：2026-06-27 16:26
+> 生成时间：2026-06-30 19:31
 
 ```
 zhaiyu-bp/  ← 宅域宠物洗护店项目 — 知识库根目录
+├── .github/
+│   └── workflows/
+│       └── pages.yml
 ├── archive/
 │   └── 2026-06-16/
 │       ├── inputs/
@@ -32,6 +35,14 @@ zhaiyu-bp/  ← 宅域宠物洗护店项目 — 知识库根目录
 │       ├── 宅电logo截图.png
 │       └── 宅电logo设计.png
 ├── assets/
+│   ├── zhaidian-logo-120.png
+│   ├── zhaidian-logo-240.png
+│   ├── zhaimi-logo-120.png
+│   ├── zhaimi-logo-240.png
+│   ├── zhaiyu-logo-120.png
+│   ├── zhaiyu-logo-240.png
+│   ├── zhaiyu-logo-512.png
+│   ├── zhaiyu-logo-64.png
 │   └── zhaiyu-logo.png
 ├── bps/
 │   ├── landing-for-coop/
@@ -82,12 +93,13 @@ zhaiyu-bp/  ← 宅域宠物洗护店项目 — 知识库根目录
 ├── data/
 │   ├── decisions.yaml
 │   ├── facts.yaml
+│   ├── poi.json
 │   └── structure.yaml
 ├── docs/
 │   ├── optimization-plan.md
 │   └── structure.md
 ├── meetings/
-│   ├── 2026-06-26-创始人A快速会议.md
+│   ├── 2026-06-26-孙淦浩快速会议.md
 │   └── _template.md
 ├── raw/
 │   └── meetings/
@@ -96,7 +108,7 @@ zhaiyu-bp/  ← 宅域宠物洗护店项目 — 知识库根目录
 │           │   └── ... (省略深层文件)
 │           ├── README.md
 │           ├── transcript_labeled.json
-│           ├── 创始人A的快速会议-AI纪要.txt
+│           ├── 孙淦浩的快速会议-AI纪要.txt
 │           ├── 开店成本收益分析.xlsx
 │           └── 飞书妙记_原始导出.md
 ├── tools/
@@ -109,10 +121,15 @@ zhaiyu-bp/  ← 宅域宠物洗护店项目 — 知识库根目录
 │   ├── transcribe_meeting.py
 │   └── verify.py
 ├── .gitignore
+├── .nojekyll
 ├── DECISIONS.md
 ├── DIRECTORY.md
 ├── INDEX.md
-└── README.md
+├── README.md
+├── bp.html
+├── index.html
+├── layout-editor.html
+└── site-map.html
 ```
 
 ## 🏷️ 受众标签
