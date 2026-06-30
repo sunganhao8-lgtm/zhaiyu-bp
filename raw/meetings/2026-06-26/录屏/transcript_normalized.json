@@ -1,0 +1,26 @@
+{
+  "meeting_date": "2026-06-26",
+  "source": "feishu-minutes",
+  "segment_count": 3,
+  "speakers": [],
+  "segments": [
+    {
+      "start": 83,
+      "end": 88,
+      "text": "大家好",
+      "speaker": null
+    },
+    {
+      "start": 130,
+      "end": 135,
+      "text": "看报表",
+      "speaker": null
+    },
+    {
+      "start": 225,
+      "end": 230,
+      "text": "数字有问题",
+      "speaker": null
+    }
+  ]
+}

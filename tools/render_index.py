@@ -203,6 +203,6 @@ if __name__ == "__main__":
         output_path = os.path.join(ROOT, "INDEX.md")
         with open(output_path, "w", encoding="utf-8") as f:
             f.write(index)
-        print(f"✅ 已写入 {output_path}")
+        print(f"OK: wrote {output_path}")
     else:
         print(index)

@@ -65,8 +65,8 @@ decisions:
     date: 2026-06-18
     title: 加电竞展示区（展示型非经营型）
     status: superseded
-    superseded_by: "DEC-015（电竞转为样板间概念，不单独投入）"
-    decision: 原定电竞展示区 0.66 万投入，现转为"样板间"不单独预算
+    superseded_by: "DEC-024（电竞样板间作为内容和高客单转化工具）"
+    decision: 原定电竞展示区 0.66 万投入，已升级为"电竞房样板间"业务入口
 
   - id: "DEC-011"
     date: 2026-06-18
@@ -75,22 +75,22 @@ decisions:
     superseded_by: "DEC-012（12 万，多版本已废弃）"
     decision: 过渡版本，已被 2026-06-26 会议废弃
 
-  # ── 2026-06-26 孙淦浩快速会议决策 ──
+  # ── 2026-06-26 创始人A快速会议决策 ──
   - id: "DEC-012"
     date: 2026-06-26
-    source_meeting: meetings/2026-06-26-孙淦浩快速会议.md
+    source_meeting: meetings/2026-06-26-创始人A快速会议.md
     title: 启动资金确认为12万
     status: active
     supersedes: ["DEC-003", "DEC-004", "DEC-011"]
     decision: >
-      总启动资金 12万，三人出资（孙淦浩 51000 + 陈老师 39000 + 张显坤 30000）。
+      总启动资金 12万，三人出资（创始人A 51000 + 创始人B 39000 + 创始人C 30000）。
       无转让费（原店接手只需付房租），装修预算 1万，押金 8000。
     affected_bps: ["bps/store-front/bp.html", "bps/store-front/bp.md"]
     affected_docs: ["README.md", "data/facts.yaml"]
 
   - id: "DEC-013"
     date: 2026-06-26
-    source_meeting: meetings/2026-06-26-孙淦浩快速会议.md
+    source_meeting: meetings/2026-06-26-创始人A快速会议.md
     title: 老板无底薪，纯分红
     status: active
     supersedes: []
@@ -102,31 +102,32 @@ decisions:
 
   - id: "DEC-014"
     date: 2026-06-26
-    source_meeting: meetings/2026-06-26-孙淦浩快速会议.md
+    source_meeting: meetings/2026-06-26-创始人A快速会议.md
     title: 股份结构与激励方案
     status: active
     supersedes: []
     decision: >
-      孙淦浩 42.5% / 陈老师 31% / 张显坤 24% / 王梦瑶 5% (人力股)。
-      三位原始股东各让渡一部分赠予王梦瑶。
+      创始人A 42.5% / 创始人B 31% / 创始人C 24% / 店长D 5% (人力股)。
+      三位原始股东各让渡一部分赠予店长D。
       股权永久绑定，后续交易需 >50% 决议通过。
     affected_bps: ["bps/store-front/bp.html", "bps/store-front/bp.md"]
 
   - id: "DEC-015"
     date: 2026-06-26
-    source_meeting: meetings/2026-06-26-孙淦浩快速会议.md
-    title: 业务聚焦宠物洗护+上门服务
+    source_meeting: meetings/2026-06-26-创始人A快速会议.md
+    title: 业务聚焦宠物现金流+上门服务
     status: active
     supersedes: ["DEC-010"]
     decision: >
-      核心业务：宠物洗护（日均3单）+ 寄养 + 美容。
-      拓展业务：上门喂养/送医/搭电竞房、减脂餐、AI培训。
-      脑暴项目（酒馆/剧本杀/明星周边/远程喂猫等）暂不投入。
+      核心现金流：宠物洗护（日均3单）+ 寄养 + 美容 + 用品零售。
+      上门服务作为增值业务验证，不能替代宠物主业。
+      电竞方向进入样板间和自媒体转化模型，由 DEC-024 单独定义。
+      减脂餐、咖啡、AI培训等进入观察池，未验证前不计入主模型。
     affected_bps: ["bps/store-front/bp.html", "bps/store-front/bp.md"]
 
   - id: "DEC-016"
     date: 2026-06-26
-    source_meeting: meetings/2026-06-26-孙淦浩快速会议.md
+    source_meeting: meetings/2026-06-26-创始人A快速会议.md
     title: 分润机制"谁干谁拿钱"
     status: active
     supersedes: []
@@ -138,7 +139,7 @@ decisions:
 
   - id: "DEC-017"
     date: 2026-06-26
-    source_meeting: meetings/2026-06-26-孙淦浩快速会议.md
+    source_meeting: meetings/2026-06-26-创始人A快速会议.md
     title: 目标日营收 750 元 / 12 个月回本
     status: active
     supersedes: []
@@ -147,3 +148,116 @@ decisions:
       预测日营收 699.5 元（差 50.5 元/天需补足）。
       目标 12 个月回本。
     affected_bps: ["bps/store-front/bp.html", "bps/store-front/bp.md"]
+
+  - id: "DEC-018"
+    date: 2026-06-26
+    source_meeting: meetings/2026-06-26-创始人A快速会议.md
+    title: 押金目标压至 6000-7000 元
+    status: active
+    supersedes: []
+    decision: >
+      原定押金 8000 元，创始人B（说话人 3）提议压到 6000-7000 元。
+      创始人A认可可行性。若房东不同意则谈判后再沟通。
+      同时争取 7-15 天免租期用于装修。
+    affected_bps: ["bps/store-front/bp.html"]
+
+  - id: "DEC-019"
+    date: 2026-06-26
+    source_meeting: meetings/2026-06-26-创始人A快速会议.md
+    title: 设备成本从 4.2 万砍至约 5200 元
+    status: active
+    supersedes: []
+    decision: >
+      创始人B主导谈判，将设备成本从原来的 4.2 万砍至约 5200 元。
+      策略：只买必需品（烘干机从 6000→1500 元/台），先开业后升级。
+    affected_bps: ["bps/store-front/bp.html"]
+
+  - id: "DEC-020"
+    date: 2026-06-26
+    source_meeting: meetings/2026-06-26-创始人A快速会议.md
+    title: 股份超标修正：创始人B少投 1000 元
+    status: active
+    supersedes: []
+    decision: >
+      计算股份时出现超标，创始人B主动提出自己少投 1000 元解决。
+      最终股份结构不变：创始人A 42.5% / 创始人B 31% / 创始人C 24% / 店长D 5%。
+    affected_bps: ["bps/store-front/bp.html"]
+
+  - id: "DEC-021"
+    date: 2026-06-26
+    source_meeting: meetings/2026-06-26-创始人A快速会议.md
+    title: 经营红线：严禁私活 + 高难度额外抽成
+    status: active
+    supersedes: []
+    decision: >
+      严禁在门店业务内接私活（一经发现严肃处理）。
+      业务外项目（AI/设计等）可自行开展，不占门店资源。
+      高难度工作每人可额外抽成。
+      决策机制：重大事项三人共同决定，创始人B最后把关。
+    affected_bps: ["bps/store-front/bp.html"]
+
+  - id: "DEC-022"
+    date: 2026-06-26
+    source_meeting: meetings/2026-06-26-创始人A快速会议.md
+    title: 市场营销策略：小红书为主 + 开业免费引流
+    status: active
+    supersedes: []
+    decision: >
+      小红书为主要推广阵地（同城使用多），开户费约 500 元。
+      前期不追求赚钱，可免费服务换取素材和口碑。
+      开业仪式侧：免费剪指甲、半价洗护、发红包免单等活动。
+      营销推广总预算 5000 元（含体验卡+地推物料+开户等）。
+    affected_bps: ["bps/store-front/bp.html"]
+
+  - id: "DEC-023"
+    date: 2026-06-26
+    source_meeting: meetings/2026-06-26-创始人A快速会议.md
+    title: 私域运营目标：1600 人 / 一月建群
+    status: active
+    supersedes: []
+    decision: >
+      私域目标：拿下小区及周边（8 栋楼约 1600 人）。
+      创始人A负责群运营，一个月内完成私域建群。
+      靠私域降低平台推广费用，否则需花更多钱在平台买流量。
+    affected_bps: ["bps/store-front/bp.html"]
+
+  - id: "DEC-024"
+    date: 2026-06-27
+    source_meeting: "用户补充：电竞房区域作为样板间、合伙人工作娱乐区和自媒体内容场景"
+    title: 电竞房样板间定位
+    status: active
+    supersedes: ["DEC-010"]
+    decision: >
+      门店装修时保留 5-8㎡ 干区作为电竞房样板间。
+      它不是独立收费电竞房，也不是游戏厅，而是合伙人工作娱乐、
+      内容拍摄、桌搭好物展示、客户到店体验和上门电竞房搭建转化入口。
+      收入不按日散客流水计算，改按内容曝光→咨询→到店看样板→上门方案成交→周边带货的漏斗计算。
+    affected_bps: ["bps/store-front/bp.html", "bps/store-front/bp.md"]
+    affected_docs: ["README.md", "docs/optimization-plan.md", "data/facts.yaml"]
+
+  - id: "DEC-025"
+    date: 2026-06-27
+    source_meeting: "对 2026-06-27 会议纪要和成本表的二次审阅"
+    title: 业务分层与合规红线
+    status: active
+    supersedes: []
+    decision: >
+      所有业务按"首期必做 / 样板展示 / 验证后做 / 观察池 / 暂不做或需资质"管理。
+      首期只把宠物洗护、美容、寄养、用品零售和电竞样板间纳入执行主线。
+      疫苗注射、宠物诊疗、酒馆、食品餐饮、学生自习收费、游戏厅式经营等，
+      未完成资质核查前不纳入主收入模型。
+    affected_bps: ["bps/store-front/bp.html", "bps/store-front/bp.md"]
+    affected_docs: ["README.md", "docs/optimization-plan.md", "data/facts.yaml"]
+
+  - id: "DEC-026"
+    date: 2026-06-27
+    source_meeting: "对股权、抽成和分红模型的二次审阅"
+    title: 抽成、岗位和分红分离
+    status: active
+    supersedes: []
+    decision: >
+      "谁干谁拿钱"只用于明确 owner 的具体服务项目。
+      股东分红、业务抽成、岗位补贴必须分开记账。
+      不建议日结分红，建议月度结账、季度分红，并保留至少 3 个月安全资金后再分红。
+    affected_bps: ["bps/store-front/bp.html", "bps/store-front/bp.md"]
+    affected_docs: ["docs/optimization-plan.md", "data/facts.yaml"]

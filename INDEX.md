@@ -1,6 +1,6 @@
 # 宅域 — 知识库索引
 
-> 自动生成于 2026-06-27 11:24
+> 自动生成于 2026-06-27 16:26
 
 > 运行 `python tools/render_index.py --write` 更新
 
@@ -10,14 +10,14 @@
 
 | 文件 | 主题 | 日期 | 大小 |
 |---|---|---|---|
-| [[meetings/2026-06-26-孙淦浩快速会议.md]] | 2026-06-26 孙淦浩快速会议 | 2026-06-27 | 3KB |
+| [[meetings/2026-06-26-创始人A快速会议.md]] | 2026-06-26 创始人A快速会议 | 2026-06-27 | 8KB |
 
 ## 📊 数据源
 
 | 文件 | 更新 | 大小 |
 |---|---|---|
-| [[data/decisions.yaml]] | 2026-06-27 | 5KB |
-| [[data/facts.yaml]] | 2026-06-27 | 3KB |
+| [[data/decisions.yaml]] | 2026-06-27 | 10KB |
+| [[data/facts.yaml]] | 2026-06-27 | 6KB |
 | [[data/structure.yaml]] | 2026-06-27 | 8KB |
 
 ## 📦 业务交付物
@@ -34,19 +34,19 @@
 | [[bps/landing-for-coop/landing.html]] | 2026-06-23 | 37KB |
 
 ### store-front
-> [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-brightgreen?logo=github)](https://
+> > **v2.1 · 2026-06-27 商业计划优化版**：项目从“宠物洗护 + 电竞空间”收口为 **宠物洗护现金流 + 电竞房样板间 + 自媒体矩阵**。
 | 文件 | 更新 | 大小 |
 |---|---|---|
-| [[bps/store-front/CHANGELOG.md]] | 2026-06-18 | 4KB |
+| [[bps/store-front/CHANGELOG.md]] | 2026-06-27 | 4KB |
 | [[bps/store-front/CONTRIBUTING.md]] | 2026-06-18 | 3KB |
-| [[bps/store-front/DECISIONS.md]] | 2026-06-18 | 11KB |
+| [[bps/store-front/DECISIONS.md]] | 2026-06-27 | 9KB |
 | [[bps/store-front/INDEX.md]] | 2026-06-16 | 14B |
-| [[bps/store-front/PARTNER_FAQ.md]] | 2026-06-18 | 6KB |
-| [[bps/store-front/PROJECT_HISTORY.md]] | 2026-06-18 | 7KB |
-| [[bps/store-front/README.md]] | 2026-06-18 | 5KB |
+| [[bps/store-front/PARTNER_FAQ.md]] | 2026-06-27 | 4KB |
+| [[bps/store-front/PROJECT_HISTORY.md]] | 2026-06-27 | 7KB |
+| [[bps/store-front/README.md]] | 2026-06-27 | 5KB |
 | [[bps/store-front/assets/]] |  | 20 files |
-| [[bps/store-front/bp.html]] | 2026-06-26 | 194KB |
-| [[bps/store-front/bp.md]] | 2026-06-18 | 49KB |
+| [[bps/store-front/bp.html]] | 2026-06-27 | 194KB |
+| [[bps/store-front/bp.md]] | 2026-06-27 | 52KB |
 | [[bps/store-front/data/]] |  | 1 files |
 | [[bps/store-front/landing-assets/]] |  | 3 files |
 | [[bps/store-front/layout-editor.html]] | 2026-06-26 | 105KB |
@@ -60,7 +60,7 @@
 ### meetings
 | 文件 | 更新 | 大小 |
 |---|---|---|
-| [2026-06-26/](raw/meetings/2026-06-26/) |  | 3 files |
+| [2026-06-26/](raw/meetings/2026-06-26/) |  | 279 files |
 
 ## 🗄️ 归档
 
@@ -68,11 +68,15 @@
 
 ## 🔧 工具
 
+- **[extract_meeting.py](tools/extract_meeting.py)** — -*- coding: utf-8 -*- (5KB)
+- **[import_feishu_minutes.py](tools/import_feishu_minutes.py)** — -*- coding: utf-8 -*- (5KB)
+- **[rebuild_meeting_notes.py](tools/rebuild_meeting_notes.py)** — -*- coding: utf-8 -*- (6KB)
 - **[render_directory.py](tools/render_directory.py)** —  (5KB)
 - **[render_index.py](tools/render_index.py)** —  (8KB)
 - **[render_structure.py](tools/render_structure.py)** —  (9KB)
-- **[verify.py](tools/verify.py)** —  (6KB)
+- **[transcribe_meeting.py](tools/transcribe_meeting.py)** — -*- coding: utf-8 -*- (7KB)
+- **[verify.py](tools/verify.py)** —  (7KB)
 
 ---
 
-> 📊 总计 180 个文件 | 最后更新 2026-06-27 11:24
+> 📊 总计 461 个文件 | 最后更新 2026-06-27 16:26

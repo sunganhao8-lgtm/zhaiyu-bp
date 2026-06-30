@@ -30,7 +30,7 @@ root:
           write_when: 财务模型调整
         - path: decisions.yaml
           type: file
-          purpose: 17 条决策记录（含历史、已替换、生效）
+          purpose: 26 条决策记录（含历史、已替换、生效）
           audience: [ai]
           read_when: 解释为什么这样设计 / 追溯决策时间线
           write_when: 任何新决议、修订、废弃
@@ -55,7 +55,7 @@ root:
           type: file
           purpose: 四段式会议笔记模板（强制冲突追踪）
           audience: [human]
-        - path: 2026-06-26-孙淦浩快速会议.md
+        - path: 2026-06-26-创始人A快速会议.md
           type: file
           purpose: 第一次正式会议（启动资金/股份/分润机制敲定）
           audience: [ai, human, partner]
@@ -89,7 +89,7 @@ root:
               type: file
               purpose: 49㎡ 门店布局编辑器（Konva.js + 碰撞检测）
               audience: [investor]
-        - path: landing-coop/
+        - path: landing-for-coop/
           type: dir
           purpose: 合作着陆页（小红书引流/招合伙人）
           contains:
@@ -195,8 +195,12 @@ root:
       generation: python tools/render_directory.py --write
     - path: docs/
       type: dir
-      purpose: 自动生成的文档
+      purpose: 项目说明与自动生成文档
       contains:
+        - path: optimization-plan.md
+          type: file
+          purpose: 2026-06-27 全方位优化方案（业务分层/电竞样板间/财务/股权/执行清单）
+          audience: [human, partner]
         - path: structure.md
           type: file
           purpose: 目录结构 Mermaid 可视化图（自动生成）

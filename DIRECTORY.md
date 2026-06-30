@@ -2,7 +2,7 @@
 
 > 来自 `data/structure.yaml` 的注解 + 真实文件系统
 > 自动生成于：执行 `python tools/render_directory.py --write`
-> 生成时间：2026-06-27 11:24
+> 生成时间：2026-06-27 16:26
 
 ```
 zhaiyu-bp/  ← 宅域宠物洗护店项目 — 知识库根目录
@@ -84,20 +84,29 @@ zhaiyu-bp/  ← 宅域宠物洗护店项目 — 知识库根目录
 │   ├── facts.yaml
 │   └── structure.yaml
 ├── docs/
+│   ├── optimization-plan.md
 │   └── structure.md
 ├── meetings/
-│   ├── 2026-06-26-孙淦浩快速会议.md
+│   ├── 2026-06-26-创始人A快速会议.md
 │   └── _template.md
 ├── raw/
 │   └── meetings/
 │       └── 2026-06-26/
+│           ├── 录屏/
+│           │   └── ... (省略深层文件)
 │           ├── README.md
-│           ├── 孙淦浩的快速会议-AI纪要.txt
-│           └── 开店成本收益分析.xlsx
+│           ├── transcript_labeled.json
+│           ├── 创始人A的快速会议-AI纪要.txt
+│           ├── 开店成本收益分析.xlsx
+│           └── 飞书妙记_原始导出.md
 ├── tools/
+│   ├── extract_meeting.py
+│   ├── import_feishu_minutes.py
+│   ├── rebuild_meeting_notes.py
 │   ├── render_directory.py
 │   ├── render_index.py
 │   ├── render_structure.py
+│   ├── transcribe_meeting.py
 │   └── verify.py
 ├── .gitignore
 ├── DECISIONS.md

@@ -1,0 +1,11 @@
+{
+  "meeting_date": "2026-06-26",
+  "source_video": "raw\\meetings\\2026-06-26\\录屏\\meeting.mp4",
+  "audio_file": "raw\\meetings\\2026-06-26\\录屏\\audio.wav",
+  "frames_dir": "raw\\meetings\\2026-06-26\\录屏\\frames",
+  "frame_count": 261,
+  "frame_interval_sec": 60,
+  "duration_sec": 15689.952,
+  "duration_human": "4h 21m 29s",
+  "extracted_at": "2026-06-27T11:59:02.929613"
+}

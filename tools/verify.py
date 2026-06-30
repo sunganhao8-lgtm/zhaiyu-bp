@@ -97,7 +97,7 @@ def check_consistency():
     facts = load_yaml(FACTS_PATH)
     decisions = load_yaml(DECISIONS_PATH)
     
-    print(f"📋 宅域一致性校验 — 开始")
+    print("Zhaiyu consistency check - start")
     print(f"   事实源: data/facts.yaml")
     print(f"   决策源: data/decisions.yaml ({len(decisions['decisions'])} 条)")
     print()
@@ -115,7 +115,7 @@ def check_consistency():
         known_ids = {d["id"] for d in decisions["decisions"]}
         for ref in dec_refs:
             if ref not in known_ids:
-                issues.append(f"⚠️  {relpath}: 引用不存在的 {ref}")
+                issues.append(f"WARN {relpath}: 引用不存在的 {ref}")
         
         # 检查2：旧数字残留（和 facts.yaml 对不上的）
         # 注意：包含"v1.x/历史/旧版/原/覆盖/修订"等关键词的上下文算历史叙述，不算错误
@@ -142,13 +142,13 @@ def check_consistency():
         if not allow_old and not relpath.startswith("raw/") and not relpath.startswith("archive/"):
             if "22万" in content and facts["startup"]["total"] != 220000:
                 actual = facts["startup"]["total"] // 10000
-                issues.append(f"❌ {relpath}: 引用旧数字'22万'，实际应为 {actual}万")
+                issues.append(f"ERROR {relpath}: 引用旧数字'22万'，实际应为 {actual}万")
             
             if "24-32" in content:
-                issues.append(f"❌ {relpath}: 引用旧回本周期'24-32月'，实际应为'12个月'")
+                issues.append(f"ERROR {relpath}: 引用旧回本周期'24-32月'，实际应为'12个月'")
             
             if "1.57" in content:
-                issues.append(f"❌ {relpath}: 引用旧月固定成本'1.57万'，实际应为'9850元'")
+                issues.append(f"ERROR {relpath}: 引用旧月固定成本'1.57万'，实际应为'9850元'")
         
         # 检查3：facts.yaml 的 affected_bps 是否已同步
         for dec in decisions["decisions"]:
@@ -158,20 +158,20 @@ def check_consistency():
                 if affected in relpath or os.path.basename(affected) == os.path.basename(relpath):
                     # 检查这个文件是否包含该决议的引用
                     if f"DEC-{dec['id'].split('-')[1]}" not in content:
-                        warnings.append(f"🔔 {relpath}: 被 {dec['id']} 标记为受影响，但未包含该决议引用")
+                        warnings.append(f"NOTE {relpath}: 被 {dec['id']} 标记为受影响，但未包含该决议引用")
 
     print()
     if not issues and not warnings:
-        print("✅ 通过！无一致性问题。")
+        print("OK: no consistency issues.")
         return 0
     
     if issues:
-        print(f"❌ {len(issues)} 个问题需要处理：")
+        print(f"ERROR: {len(issues)} 个问题需要处理：")
         for i in issues:
             print(f"   {i}")
     
     if warnings:
-        print(f"\n🔔 {len(warnings)} 个提醒：")
+        print(f"\nNOTE: {len(warnings)} 个提醒：")
         for w in warnings:
             print(f"   {w}")
     

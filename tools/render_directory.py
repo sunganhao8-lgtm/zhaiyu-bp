@@ -133,7 +133,7 @@ def main():
     if "--write" in sys.argv:
         with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
             f.write(content)
-        print(f"✅ 已写入 {OUTPUT_PATH}")
+        print(f"OK: wrote {OUTPUT_PATH}")
     else:
         print(content)
 

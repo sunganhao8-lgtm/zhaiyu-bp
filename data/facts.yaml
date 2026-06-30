@@ -6,36 +6,36 @@
 project:
   name: 宅域
   english_name: Zhaiyu
-  tagline: "宠主同乐 · 电竞生活空间"
+  tagline: "宠物现金流 · 电竞样板间 · 自媒体矩阵"
   founded: 2026-06-16
-  latest_revision: 2026-06-26  # 本次孙淦浩快速会议确认
+  latest_revision: 2026-06-27  # 基于会议纪要、成本表、电竞样板间定位二次修订
 
 # ── 启动资金 ──
 startup:
-  total: 120000  # 总启动资金 12万（3人出资，孙淦浩+陈老师+张显坤）
+  total: 120000  # 总启动资金 12万（3人出资，创始人A+创始人B+创始人C）
   version: "2026-06-26 会议最终确认"
   notes: >
-    Excel 中另有 13.5 万版（含王梦瑶出资 6750），
-    会议最终确认的版本为 12 万，王梦瑶以人力股 5% 方式进入。
+    Excel 中另有 13.5 万版（含店长D出资 6750），
+    会议最终确认的版本为 12 万，店长D以人力股 5% 方式进入。
 
 shareholders:
-  - name: 孙淦浩
+  - name: 创始人A
     role: 运营与谈判
     investment: 51000
     equity: 0.425
-    equity_gifted: -0.025  # 赠送王梦瑶
+    equity_gifted: -0.025  # 赠送店长D
     notes: 创始人，主抓运营与商务谈判
-  - name: 陈老师
+  - name: 创始人B
     role: 财务与质量
     investment: 39000
     equity: 0.31
     equity_gifted: -0.015
-  - name: 张显坤
+  - name: 创始人C
     role: 技术与项目管理
     investment: 30000
     equity: 0.24
     equity_gifted: -0.01
-  - name: 王梦瑶
+  - name: 店长D
     role: 人力股（店内运营）
     investment: 0
     equity: 0.05  # 从三位原始股东各让渡部分获得
@@ -43,7 +43,7 @@ shareholders:
 # ── 成本结构（月） ──
 costs:
   monthly_fixed: 9850     # 月固定成本合计
-  rent: 8000               # 房租（年租96000/12）
+  rent: 8000               # 房租压力测试口径；若最终年租8万，差额进入安全边际
   deposit: 8000            # 押金（一次性，不摊销）
   utilities: 500           # 水电气（商用预估）
   misc: 1350               # 杂项（物业/耗材/推广）
@@ -51,64 +51,125 @@ costs:
 
 # ── 营收模型 ──
 revenue:
-  daily_target: 750        # 日目标营收
-  daily_forecast: 699.5    # 当前预测日营收
+  daily_target: 750        # 日经营贡献目标（原表按"单价纯利润"口径）
+  daily_forecast: 699.5    # 当前预测日经营贡献
   daily_gap: 50.5          # 差距（需补足）
   breakeven_months: 12     # 目标回本周期
   annual_net_profit_forecast: 135476  # 年净利润预测（Excel计算值，需验证）
+  note: >
+    成本收益表右侧业务区使用"单价纯利润"字段，
+    因此 699.5/750 更接近日经营贡献目标，而不是严格营业收入。
+    对外表达时应区分流水、毛利、抽成后贡献和净利润。
+
+# ── 业务组合策略 ──
+strategy:
+  positioning: >
+    首期不是单纯宠物店，也不是收费电竞房。
+    宅域定位为"社区宠物服务店 + 电竞房样板间 + 自媒体矩阵"：
+    宠物洗护承担稳定现金流，电竞样板间承担内容传播和高客单转化，
+    其他脑暴业务进入观察池，验证后再纳入日收入模型。
+  phase_1_focus:
+    - 宠物洗护
+    - 美容造型
+    - 基础寄养
+    - 宠物用品零售
+    - 电竞房样板间展示
+    - 上门桌搭/电竞房搭建
+  phase_1_not_focus:
+    - 疫苗注射
+    - 宠物诊疗
+    - 酒馆
+    - 减脂餐
+    - 学生自习收费
+    - 远程喂猫直播
+  gaming_showroom:
+    role: "样板间 + 内容拍摄点 + 高客单转化入口"
+    not_role: "独立收费电竞房或游戏厅"
+    revenue_logic: >
+      不按每天固定散客流水计算，而按内容曝光、咨询、到店看样板、
+      上门方案成交、周边带货的漏斗转化计算。
+    first_products:
+      - "99-199 元：桌搭诊断/方案，可抵扣后续服务"
+      - "399-699 元：基础理线、灯光、支架、插排改造"
+      - "999-2999 元：大屏、投影、音响、桌搭整套搭建"
+      - "低库存周边：灯带、支架、理线槽、插排、氛围灯"
 
 # ── 服务/产品线 ──
 services:
   - name: 宠物洗护
     price: "80~130（按体型分级，VIP充800送两次）"
     daily_target: 3
-    type: core
+    tier: 首期必做
+    type: core_cashflow
   - name: 剪指甲
     price: 10
-    type: 引流
+    tier: 首期必做
+    type: lead_magnet
   - name: 寄养
     price: 50
-    type: core
+    tier: 首期必做
+    type: core_cashflow
   - name: 美容造型
     price: 100
-    type: core
-  - name: 驱虫/疫苗
+    tier: 首期必做
+    type: core_cashflow
+  - name: 宠物用品零售
+    price: "按 SKU，优先代采/低库存"
+    tier: 首期必做
+    type: add_on
+  - name: 电竞房样板间
+    price: "不单独售票，承担展示和转化"
+    tier: 样板展示
+    type: conversion_space
+  - name: 上门桌搭/电竞房搭建
+    price: "399~2999（按方案分级）"
+    tier: 样板展示
+    type: high_ticket_service
+  - name: 驱虫药销售/疫苗相关
     price: 50
-    type: 商品
+    tier: 暂不做或需资质
+    type: compliance_risk
+    notes: "不做疫苗注射；驱虫药销售需核查经营范围、药品/兽药合规要求。"
   - name: 上门喂养
     price: 30
-    type: 上门
-  - name: 上门搭电竞房
-    price: 200
-    type: 上门
+    tier: 验证后做
+    type: on_demand_service
   - name: 代理送医
     price: 200
-    type: 上门
+    tier: 验证后做
+    type: on_demand_service
+    notes: "只做接送协助，不做诊疗判断；医院合作抽成需谨慎。"
   - name: 减脂餐
     price: 5
     daily_volume: 20
-    type: 拓展
+    tier: 观察池
+    type: non_core
   - name: 咖啡/果茶
     price: "7（9.9引流款）"
-    type: 拓展
+    tier: 观察池
+    type: non_core
+    notes: "对外售卖前需确认食品经营许可。"
   - name: AI编程培训
     price: "30/节（45分钟小班课）"
-    type: 拓展
+    tier: 观察池
+    type: non_core
 
 # ── 分润规则 ──
 payout:
-  policy: "前期无工资，仅盈利后按股分红。老板无底薪。"
+  policy: "前期老板无底薪；业务抽成、岗位补贴、股东分红分开核算。"
   commission_v1: 0.30  # 普通业务抽成
   commission_v2: 0.50  # 高耗时/特殊业务抽成
   notes: >
-    "谁干谁拿钱"原则。分润在每日营收中直接扣除，
-    剩余利润按股份比例分配。
+    "谁干谁拿钱"原则只适用于明确 owner 的服务项目。
+    股东分红建议按月结账、季度分红，且先保留至少 3 个月安全资金。
     股权永久绑定，后续股权交易需>50%股东决议通过。
 
 # ── 门店参数 ──
 store:
   address: 临港泥城·万达广场东侧500m
   area: "49㎡（7m×7m）"
+  layout_principle: "湿区服务宠物，干区接待/零售/电竞样板间，宠物毛发和水汽不得进入样板展示设备区。"
+  gaming_showroom_area: "建议 5~8㎡，以一面展示墙 + 一个桌搭工位 + 大屏/投影为主，不做重资产大包间。"
   lease: "3年（原始合同剩余租期）"
   transfer_fee: 0  # 已免除转让费，仅付房租
   renovation_budget: 10000  # 装修预算（粉刷+招牌）
