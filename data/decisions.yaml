@@ -275,3 +275,20 @@ decisions:
       用于发现高频家庭需求、筛选自媒体选题、设计上门方案、孵化自有产品和复购机制。
     affected_bps: ["bp.html", "bps/store-front/bp.html", "bps/store-front/bp.md"]
     affected_docs: ["README.md", "DECISIONS.md", "docs/optimization-plan.md", "data/facts.yaml"]
+
+  - id: "DEC-028"
+    date: 2026-07-01
+    source_meeting: "用户补充：与外部反馈者关于落地路径、实体店和平台化的聊天记录"
+    title: 实体信任锚点与投资人异议话术
+    status: active
+    supersedes: []
+    decision: >
+      对外沟通统一回答：宅域不是先做空的平台或 App，而是先做实体信任锚点。
+      门店承担安全感、可追责、体验展示、内容拍摄和售后据点；
+      线上自媒体承担获客放大；
+      服务承担破冰和真实案例沉淀；
+      商品选品、套餐方案、上门改造、复购和转介绍承担长期利润。
+      面对投资人时，必须把"实体店为什么必要""视频如何获客""客户为什么敢上门交付"
+      "服务利润低怎么赚钱"这些问题转化为信任、案例、档案和商品附加率的验证指标。
+    affected_bps: ["bp.html", "bps/store-front/bp.html", "bps/store-front/bp.md"]
+    affected_docs: ["README.md", "DECISIONS.md", "docs/optimization-plan.md", "docs/investor-objection-playbook.md", "data/facts.yaml"]

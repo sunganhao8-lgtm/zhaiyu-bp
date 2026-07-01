@@ -2,7 +2,7 @@
 
 > 自动生成于 `data/structure.yaml`
 > 改结构后跑 `python tools/render_structure.py --write` 重新生成
-> 当前共 40 个节点
+> 当前共 41 个节点
 
 ---
 
@@ -20,99 +20,102 @@ graph TD
     classDef archStyle fill:#6B7280,stroke:#4B5563,color:#fff;
 
     ROOT["<b>zhaiyu-bp/</b><br/>宅域宠物洗护店项目"]
-    n54179["<b>data/</b><br/>唯一事实源"]
-    n63183["<b>data/facts.yaml</b><br/>启动资金/成本/股份/服务定价等所有数字"]
-    n25603["<b>data/decisions.yaml</b><br/>27 条决策记录（含历史、已替换、生效）"]
-    n67022["<b>data/structure.yaml</b><br/>目录结构定义（就是本文件）"]
-    n51387["<b>meetings/</b><br/>会议笔记"]
-    n28466["<b>meetings/_template.md</b><br/>四段式会议笔记模板（强制冲突追踪）"]
-    n12572["<b>meetings/2026-06-26-创始人A快速会议.md</b><br/>第一次正式会议（启动资金/股份/分润机制敲定）"]
-    n4515["<b>bps/</b><br/>业务交付物"]
-    n19036["<b>bps/store-front/</b><br/>门店商业计划书（bp.html/bp.md/布局编辑器/选址地图）"]
-    n53731["<b>bps/store-front/bp.html</b><br/>商业计划书网页版（18页幻灯片）"]
-    n51886["<b>bps/store-front/bp.md</b><br/>商业计划书 Markdown 源文档（含财务明细）"]
-    n65997["<b>bps/store-front/site-map.html</b><br/>选址分析地图（高德API + 11个真实POI）"]
-    n16159["<b>bps/store-front/layout-editor.html</b><br/>49㎡ 门店布局编辑器（Konva.js + 碰撞检测）"]
-    n16275["<b>bps/landing-for-coop/</b><br/>合作着陆页（小红书引流/招合伙人）"]
-    n75735["<b>bps/landing-for-coop/landing.html</b><br/>合作着陆页主入口"]
-    n65929["<b>bps/landing-for-coop/index.html</b><br/>合作着陆页重定向页"]
-    n43193["<b>raw/</b><br/>原始素材"]
-    n54430["<b>raw/meetings/</b><br/>各次会议的原始素材"]
-    n88713["<b>raw/meetings/2026-06-26/</b><br/>2026-06-26 会议的原始素材"]
-    n17823["<b>raw/meetings/2026-06-26/元宝纪要.txt</b><br/>元宝AI纪要全量文字（73KB）"]
-    n97526["<b>raw/meetings/2026-06-26/成本收益分析.xlsx</b><br/>会议填写的财务模型"]
-    n33304["<b>raw/meetings/2026-06-26/README.md</b><br/>该素材包的说明 + 录屏位置指引"]
-    n72781["<b>tools/</b><br/>一致性工具"]
-    n26972["<b>tools/verify.py</b><br/>一致性校验（扫旧数字残留/不存在的DEC引用/未同步决议）"]
-    n20686["<b>tools/render_index.py</b><br/>自动生成 INDEX.md"]
-    n81960["<b>tools/render_structure.py</b><br/>自动生成 docs/structure.md（Mermaid图+表格）"]
-    n87775["<b>tools/render_directory.py</b><br/>自动生成 DIRECTORY.md（实景目录树+说明）"]
-    n9099["<b>assets/</b><br/>共享资源（Logo、品牌素材）"]
-    n43976["<b>assets/zhaiyu-logo.png</b><br/>宅域品牌 Logo"]
-    n80731["<b>archive/</b><br/>旧版本/工作过程文件归档"]
-    n6007["<b>archive/2026-06-16/</b><br/>立项当天的工作文件（inputs/outputs/review/wor"]
-    n78859["<b>README.md</b><br/>项目入口（这是什么/怎么用/为什么这样设计）"]
-    n43177["<b>INDEX.md</b><br/>自动生成的知识地图（不要手改）"]
-    n26855["<b>DECISIONS.md</b><br/>决策记录人类可读版（数据源在 data/decisions.yaml）"]
-    n86172["<b>DIRECTORY.md</b><br/>目录结构总览（自动生成，给合伙人看的）"]
-    n44630["<b>docs/</b><br/>项目说明与自动生成文档"]
-    n55726["<b>docs/optimization-plan.md</b><br/>2026-06-27 全方位优化方案（业务分层/电竞样板间/财务/股权"]
-    n9405["<b>docs/structure.md</b><br/>目录结构 Mermaid 可视化图（自动生成）"]
-    n24081["<b>.gitignore</b><br/>忽略规则（大文件/中间产物不入库）"]
+    n86098["<b>data/</b><br/>唯一事实源"]
+    n52004["<b>data/facts.yaml</b><br/>启动资金/成本/股份/服务定价等所有数字"]
+    n62344["<b>data/decisions.yaml</b><br/>28 条决策记录（含历史、已替换、生效）"]
+    n99444["<b>data/structure.yaml</b><br/>目录结构定义（就是本文件）"]
+    n36818["<b>meetings/</b><br/>会议笔记"]
+    n83550["<b>meetings/_template.md</b><br/>四段式会议笔记模板（强制冲突追踪）"]
+    n21216["<b>meetings/2026-06-26-创始人A快速会议.md</b><br/>第一次正式会议（启动资金/股份/分润机制敲定）"]
+    n84251["<b>bps/</b><br/>业务交付物"]
+    n55827["<b>bps/store-front/</b><br/>门店商业计划书（bp.html/bp.md/布局编辑器/选址地图）"]
+    n75424["<b>bps/store-front/bp.html</b><br/>商业计划书网页版（18页幻灯片）"]
+    n23571["<b>bps/store-front/bp.md</b><br/>商业计划书 Markdown 源文档（含财务明细）"]
+    n75011["<b>bps/store-front/site-map.html</b><br/>选址分析地图（高德API + 11个真实POI）"]
+    n94839["<b>bps/store-front/layout-editor.html</b><br/>49㎡ 门店布局编辑器（Konva.js + 碰撞检测）"]
+    n59802["<b>bps/landing-for-coop/</b><br/>合作着陆页（小红书引流/招合伙人）"]
+    n88840["<b>bps/landing-for-coop/landing.html</b><br/>合作着陆页主入口"]
+    n33016["<b>bps/landing-for-coop/index.html</b><br/>合作着陆页重定向页"]
+    n25904["<b>raw/</b><br/>原始素材"]
+    n87036["<b>raw/meetings/</b><br/>各次会议的原始素材"]
+    n64361["<b>raw/meetings/2026-06-26/</b><br/>2026-06-26 会议的原始素材"]
+    n16252["<b>raw/meetings/2026-06-26/元宝纪要.txt</b><br/>元宝AI纪要全量文字（73KB）"]
+    n75206["<b>raw/meetings/2026-06-26/成本收益分析.xlsx</b><br/>会议填写的财务模型"]
+    n11824["<b>raw/meetings/2026-06-26/README.md</b><br/>该素材包的说明 + 录屏位置指引"]
+    n3940["<b>tools/</b><br/>一致性工具"]
+    n61494["<b>tools/verify.py</b><br/>一致性校验（扫旧数字残留/不存在的DEC引用/未同步决议）"]
+    n18945["<b>tools/render_index.py</b><br/>自动生成 INDEX.md"]
+    n86340["<b>tools/render_structure.py</b><br/>自动生成 docs/structure.md（Mermaid图+表格）"]
+    n38194["<b>tools/render_directory.py</b><br/>自动生成 DIRECTORY.md（实景目录树+说明）"]
+    n19030["<b>assets/</b><br/>共享资源（Logo、品牌素材）"]
+    n81178["<b>assets/zhaiyu-logo.png</b><br/>宅域品牌 Logo"]
+    n75366["<b>archive/</b><br/>旧版本/工作过程文件归档"]
+    n79195["<b>archive/2026-06-16/</b><br/>立项当天的工作文件（inputs/outputs/review/wor"]
+    n82422["<b>README.md</b><br/>项目入口（这是什么/怎么用/为什么这样设计）"]
+    n97512["<b>INDEX.md</b><br/>自动生成的知识地图（不要手改）"]
+    n92456["<b>DECISIONS.md</b><br/>决策记录人类可读版（数据源在 data/decisions.yaml）"]
+    n89889["<b>DIRECTORY.md</b><br/>目录结构总览（自动生成，给合伙人看的）"]
+    n93399["<b>docs/</b><br/>项目说明与自动生成文档"]
+    n36278["<b>docs/optimization-plan.md</b><br/>2026-07-01 全方位优化方案（客户档案/投资人话术/业务分层/"]
+    n30026["<b>docs/investor-objection-playbook.md</b><br/>投资人异议话术库（实体店/平台/获客/信任/盈利标准回答）"]
+    n13828["<b>docs/structure.md</b><br/>目录结构 Mermaid 可视化图（自动生成）"]
+    n68614["<b>.gitignore</b><br/>忽略规则（大文件/中间产物不入库）"]
 
-    ROOT --> n54179
-    ROOT --> n63183
-    ROOT --> n25603
-    ROOT --> n67022
-    ROOT --> n51387
-    ROOT --> n28466
-    ROOT --> n12572
-    ROOT --> n4515
-    ROOT --> n19036
-    ROOT --> n53731
-    ROOT --> n51886
-    ROOT --> n65997
-    ROOT --> n16159
-    ROOT --> n16275
-    ROOT --> n75735
-    ROOT --> n65929
-    ROOT --> n43193
-    ROOT --> n54430
-    ROOT --> n88713
-    ROOT --> n17823
-    ROOT --> n97526
-    ROOT --> n33304
-    ROOT --> n72781
-    ROOT --> n26972
-    ROOT --> n20686
-    ROOT --> n81960
-    ROOT --> n87775
-    ROOT --> n9099
-    ROOT --> n43976
-    ROOT --> n80731
-    ROOT --> n6007
-    ROOT --> n78859
-    ROOT --> n43177
-    ROOT --> n26855
-    ROOT --> n86172
-    ROOT --> n44630
-    ROOT --> n55726
-    ROOT --> n9405
-    ROOT --> n24081
+    ROOT --> n86098
+    ROOT --> n52004
+    ROOT --> n62344
+    ROOT --> n99444
+    ROOT --> n36818
+    ROOT --> n83550
+    ROOT --> n21216
+    ROOT --> n84251
+    ROOT --> n55827
+    ROOT --> n75424
+    ROOT --> n23571
+    ROOT --> n75011
+    ROOT --> n94839
+    ROOT --> n59802
+    ROOT --> n88840
+    ROOT --> n33016
+    ROOT --> n25904
+    ROOT --> n87036
+    ROOT --> n64361
+    ROOT --> n16252
+    ROOT --> n75206
+    ROOT --> n11824
+    ROOT --> n3940
+    ROOT --> n61494
+    ROOT --> n18945
+    ROOT --> n86340
+    ROOT --> n38194
+    ROOT --> n19030
+    ROOT --> n81178
+    ROOT --> n75366
+    ROOT --> n79195
+    ROOT --> n82422
+    ROOT --> n97512
+    ROOT --> n92456
+    ROOT --> n89889
+    ROOT --> n93399
+    ROOT --> n36278
+    ROOT --> n30026
+    ROOT --> n13828
+    ROOT --> n68614
     class ROOT rootStyle;
-    class n63183 dataStyle;
-    class n25603 dataStyle;
-    class n67022 dataStyle;
-    class n28466 docStyle;
-    class n12572 docStyle;
-    class n51886 docStyle;
-    class n33304 docStyle;
-    class n78859 docStyle;
-    class n43177 docStyle;
-    class n26855 docStyle;
-    class n86172 docStyle;
-    class n55726 docStyle;
-    class n9405 docStyle;
+    class n52004 dataStyle;
+    class n62344 dataStyle;
+    class n99444 dataStyle;
+    class n83550 docStyle;
+    class n21216 docStyle;
+    class n23571 docStyle;
+    class n11824 docStyle;
+    class n82422 docStyle;
+    class n97512 docStyle;
+    class n92456 docStyle;
+    class n89889 docStyle;
+    class n36278 docStyle;
+    class n30026 docStyle;
+    class n13828 docStyle;
 ```
 
 ---
@@ -123,7 +126,7 @@ graph TD
 |---|---|---|---|---|---|
 | `zhaiyu-bp/data/` | 📁 目录 | 唯一事实源 — 所有数字/决策的结构化存储 | ai | 需要确认某个数字、查找某条决策 | 任何数字/决议变化（必须第一个改这里） |
 | `zhaiyu-bp/data/facts.yaml` | 📄 文件 | 启动资金/成本/股份/服务定价等所有数字 | ai | AI 回答任何财务/数字问题前 | 财务模型调整 |
-| `zhaiyu-bp/data/decisions.yaml` | 📄 文件 | 27 条决策记录（含历史、已替换、生效） | ai | 解释为什么这样设计 / 追溯决策时间线 | 任何新决议、修订、废弃 |
+| `zhaiyu-bp/data/decisions.yaml` | 📄 文件 | 28 条决策记录（含历史、已替换、生效） | ai | 解释为什么这样设计 / 追溯决策时间线 | 任何新决议、修订、废弃 |
 | `zhaiyu-bp/data/structure.yaml` | 📄 文件 | 目录结构定义（就是本文件） | ai | 改目录结构前 | 任何目录调整 |
 | `zhaiyu-bp/meetings/` | 📁 目录 | 会议笔记 — 每次会议的决议+冲突+待办结构化记录 | ai,human,partner | 了解一次会议的决定 / 找历史讨论 | 每次会议后立刻写一篇 |
 | `zhaiyu-bp/meetings/_template.md` | 📄 文件 | 四段式会议笔记模板（强制冲突追踪） | human | — | — |
@@ -157,7 +160,8 @@ graph TD
 | `zhaiyu-bp/DECISIONS.md` | 📄 文件 | 决策记录人类可读版（数据源在 data/decisions.yaml） | ai,human,partner | 了解项目所有关键决策 | — |
 | `zhaiyu-bp/DIRECTORY.md` | 📄 文件 | 目录结构总览（自动生成，给合伙人看的） | human,partner | — | — |
 | `zhaiyu-bp/docs/` | 📁 目录 | 项目说明与自动生成文档 |  | — | — |
-| `zhaiyu-bp/docs/optimization-plan.md` | 📄 文件 | 2026-06-27 全方位优化方案（业务分层/电竞样板间/财务/股权/执行清单） | human,partner | — | — |
+| `zhaiyu-bp/docs/optimization-plan.md` | 📄 文件 | 2026-07-01 全方位优化方案（客户档案/投资人话术/业务分层/电竞样板间/财务/股权/执行清单） | human,partner | — | — |
+| `zhaiyu-bp/docs/investor-objection-playbook.md` | 📄 文件 | 投资人异议话术库（实体店/平台/获客/信任/盈利标准回答） | human,partner | — | — |
 | `zhaiyu-bp/docs/structure.md` | 📄 文件 | 目录结构 Mermaid 可视化图（自动生成） | human,partner | — | — |
 | `zhaiyu-bp/.gitignore` | 📄 文件 | 忽略规则（大文件/中间产物不入库） |  | — | — |
 

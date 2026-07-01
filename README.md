@@ -26,6 +26,7 @@
 | 看商业计划书（Markdown 源） | [[bps/store-front/bp.md]] |
 | 看合作着陆页 | [[bps/landing-for-coop/landing.html]] |
 | 看优化后的执行方案 | [[docs/optimization-plan.md]] |
+| 准备投资人问答话术 | [[docs/investor-objection-playbook.md]] |
 | 查事实/数字（唯一数据源） | [[data/facts.yaml]] |
 | 校验数字一致性 | `python tools/verify.py` |
 
@@ -38,6 +39,10 @@
 | 需求归类 | 每周复盘高频抱怨和重复需求 | 需求 TOP10、内容选题 |
 | 方案打样 | 用门店样板间、低库存 SKU、上门小单验证 | 可成交方案 |
 | 产品化复购 | 把反复出现的需求做成套餐、好物清单、SOP、会员权益 | 毛利、复购、转介绍 |
+
+## 投资人沟通口径
+
+如果被问“到底做实体店还是平台”，标准回答是：**宅域先做实体信任锚点，不先做空的平台。门店负责信任、体验、交付和售后；线上账号负责获客放大；客户发言档案、SOP、方案库和商品库跑通后，平台化才有真实基础。**详见 `docs/investor-objection-playbook.md`（DEC-028）。
 
 ## 项目结构
 

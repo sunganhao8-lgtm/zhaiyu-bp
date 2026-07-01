@@ -30,7 +30,7 @@ root:
           write_when: 财务模型调整
         - path: decisions.yaml
           type: file
-          purpose: 27 条决策记录（含历史、已替换、生效）
+          purpose: 28 条决策记录（含历史、已替换、生效）
           audience: [ai]
           read_when: 解释为什么这样设计 / 追溯决策时间线
           write_when: 任何新决议、修订、废弃
@@ -199,7 +199,11 @@ root:
       contains:
         - path: optimization-plan.md
           type: file
-          purpose: 2026-06-27 全方位优化方案（业务分层/电竞样板间/财务/股权/执行清单）
+          purpose: 2026-07-01 全方位优化方案（客户档案/投资人话术/业务分层/电竞样板间/财务/股权/执行清单）
+          audience: [human, partner]
+        - path: investor-objection-playbook.md
+          type: file
+          purpose: 投资人异议话术库（实体店/平台/获客/信任/盈利标准回答）
           audience: [human, partner]
         - path: structure.md
           type: file

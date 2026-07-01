@@ -1,6 +1,6 @@
 # 宅域 — 知识库索引
 
-> 自动生成于 2026-07-01 06:57
+> 自动生成于 2026-07-01 11:01
 
 > 运行 `python tools/render_index.py --write` 更新
 
@@ -16,8 +16,8 @@
 
 | 文件 | 更新 | 大小 |
 |---|---|---|
-| [[data/decisions.yaml]] | 2026-07-01 | 12KB |
-| [[data/facts.yaml]] | 2026-07-01 | 8KB |
+| [[data/decisions.yaml]] | 2026-07-01 | 13KB |
+| [[data/facts.yaml]] | 2026-07-01 | 10KB |
 | [[data/poi.json]] | 2026-06-18 | 7KB |
 | [[data/structure.yaml]] | 2026-07-01 | 8KB |
 
@@ -46,8 +46,8 @@
 | [[bps/store-front/PROJECT_HISTORY.md]] | 2026-06-27 | 7KB |
 | [[bps/store-front/README.md]] | 2026-06-27 | 5KB |
 | [[bps/store-front/assets/]] |  | 20 files |
-| [[bps/store-front/bp.html]] | 2026-06-30 | 191KB |
-| [[bps/store-front/bp.md]] | 2026-06-30 | 51KB |
+| [[bps/store-front/bp.html]] | 2026-07-01 | 199KB |
+| [[bps/store-front/bp.md]] | 2026-07-01 | 53KB |
 | [[bps/store-front/data/]] |  | 1 files |
 | [[bps/store-front/landing-assets/]] |  | 3 files |
 | [[bps/store-front/layout-editor.html]] | 2026-06-26 | 105KB |
@@ -80,4 +80,4 @@
 
 ---
 
-> 📊 总计 476 个文件 | 最后更新 2026-07-01 06:57
+> 📊 总计 477 个文件 | 最后更新 2026-07-01 11:01
