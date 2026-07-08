@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>宅域·门店布局编辑器</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#FAF6F0;font-family:'PingFang SC','Microsoft YaHei',sans-serif;padding:20px;color:#5C3D2E}
+h1{font-size:22px;margin-bottom:6px}
+.sub{font-size:13px;color:#7A5238;margin-bottom:16px}
+
+/* 编辑器容器 */
+.editor-wrap{
+  position:relative;
+  display:inline-block;
+  border:2px solid #5C3D2E;
+  border-radius:12px;
+  overflow:hidden;
+  background:#FFF;
+  box-shadow:0 4px 16px rgba(92,61,46,0.1);
+  max-width:100%;
+}
+.editor-wrap img{
+  display:block;
+  max-width:100%;
+  height:auto;
+  user-select:none;
+  -webkit-user-drag:none;
+}
+
+/* 区域叠加层 */
+.overlay-container{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+}
+.zone-card{
+  position:absolute;
+  border-radius:8px;
+  border:2px solid;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  font-size:13px;
+  font-weight:700;
+  text-align:center;
+  cursor:move;
+  pointer-events:auto;
+  padding:4px;
+  min-width:60px;
+  min-height:40px;
+  transition:box-shadow 0.15s;
+}
+.zone-card:hover{
+  box-shadow:0 0 0 3px rgba(0,0,0,0.15);
+  z-index:100 !important;
+}
+.zone-card .label{line-height:1.3}
+.zone-card .sub-label{font-size:10px;font-weight:500;opacity:0.8;margin-top:2px}
+.zone-card .drag-handle{font-size:10px;opacity:0.4;margin-top:2px;cursor:grab}
+.zone-card .btn-edit{
+  position:absolute;top:-12px;right:-12px;
+  width:22px;height:22px;border-radius:50%;
+  border:1px solid #ddd;background:#fff;
+  font-size:12px;cursor:pointer;display:flex;
+  align-items:center;justify-content:center;
+  opacity:0;transition:opacity 0.15s;
+  box-shadow:0 1px 4px rgba(0,0,0,0.1);
+}
+.zone-card:hover .btn-edit{opacity:1}
+.zone-card.dragging{z-index:200 !important;opacity:0.85}
+
+/* 设备图标 */
+.equip-item{
+  position:absolute;
+  background:#FFF;
+  border:1px solid rgba(0,0,0,0.15);
+  border-radius:6px;
+  padding:3px 6px;
+  font-size:11px;
+  cursor:pointer;
+  pointer-events:auto;
+  text-align:center;
+  line-height:1.2;
+  white-space:nowrap;
+  transition:box-shadow 0.15s;
+}
+.equip-item:hover{
+  box-shadow:0 2px 8px rgba(0,0,0,0.15);
+  z-index:150 !important;
+}
+
+/* 工具栏 */
+.toolbar{
+  margin-top:14px;
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  align-items:center;
+}
+.toolbar button, .toolbar select, .toolbar input{
+  padding:6px 14px;
+  border:1px solid #D0C0B0;
+  border-radius:8px;
+  background:#FFF;
+  font-size:13px;
+  font-family:inherit;
+  cursor:pointer;
+  color:#5C3D2E;
+}
+.toolbar button:hover{background:#FFF4E1;border-color:#F4B860}
+.toolbar button.primary{background:#E89A3C;color:#FFF;border-color:#E89A3C}
+.toolbar button.primary:hover{background:#C77F25}
+.toolbar label{font-size:13px}
+
+/* 编辑弹窗 */
+.modal-overlay{
+  display:none;position:fixed;inset:0;z-index:999;
+  background:rgba(92,61,46,0.4);
+  justify-content:center;align-items:center;
+}
+.modal-box{
+  background:#FFF;border-radius:16px;padding:24px;
+  min-width:320px;max-width:440px;
+  box-shadow:0 12px 40px rgba(0,0,0,0.2);
+}
+.modal-box h3{font-size:18px;margin-bottom:14px}
+.modal-box label{display:block;font-size:13px;margin:10px 0 4px;color:#7A5238}
+.modal-box input,.modal-box textarea,.modal-box select{
+  width:100%;padding:7px 10px;border:1px solid #D0C0B0;
+  border-radius:8px;font-family:inherit;font-size:13px;
+}
+.modal-box .btn-row{display:flex;gap:8px;margin-top:16px;justify-content:flex-end}
+.modal-box .btn-row button{padding:7px 18px;border-radius:8px;border:none;font-size:13px;cursor:pointer}
+.modal-box .btn-row .ok{background:#E89A3C;color:#FFF}
+.modal-box .btn-row .cancel{background:#F0EBE5;color:#7A5238}
+
+/* 调色板 */
+.color-palette{display:flex;gap:4px;margin-top:4px;flex-wrap:wrap}
+.color-swatch{
+  width:28px;height:28px;border-radius:6px;
+  border:2px solid transparent;cursor:pointer;
+}
+.color-swatch.active{border-color:#5C3D2E}
+
+/* 响应式 */
+@media(max-width:768px){
+  body{padding:10px}
+  .zone-card{font-size:11px}
+  .zone-card .sub-label{font-size:9px}
+  .equip-item{font-size:10px;padding:2px 4px}
+}
+</style>
+</head>
+<body>
+
+<h1>🏪 宅域·门店布局编辑器</h1>
+<p class="sub">拖拽区域/设备到正确位置 · 双击区域编辑属性 · 右上角 × 删除</p>
+
+<div class="editor-wrap" id="editorWrap">
+  <!-- 底图 -->
+  <img src="assets/floor-plan-base.jpg" alt="门店建筑平面底图" id="baseMap" crossorigin="anonymous">
+  <!-- 叠加层 -->
+  <div class="overlay-container" id="overlayContainer"></div>
+</div>
+
+<!-- 工具栏 -->
+<div class="toolbar">
+  <button onclick="addZone()">➕ 添加区域</button>
+  <button onclick="addEquip()">🛠️ 添加设备</button>
+  <select id="layerSelect" onchange="focusLayer(this.value)">
+    <option value="all">全部图层</option>
+  </select>
+  <button onclick="exportPNG()">📸 导出截图</button>
+  <button onclick="exportJSON()">💾 保存布局</button>
+  <button onclick="document.getElementById('importFile').click()">📂 载入布局</button>
+  <input type="file" id="importFile" accept=".json" style="display:none" onchange="importJSON(event)">
+  <button class="primary" onclick="saveToBP()">✅ 应用到 BP</button>
+  <label><input type="checkbox" id="snapToggle" checked> 吸附</label>
+</div>
+
+<!-- 编辑弹窗 -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-box">
+    <h3 id="modalTitle">编辑</h3>
+    <label>名称</label><input id="editName" placeholder="区域/设备名称">
+    <label>描述</label><input id="editDesc" placeholder="可选描述">
+    <label>颜色</label>
+    <div class="color-palette" id="colorPalette"></div>
+    <div class="btn-row">
+      <button class="cancel" onclick="closeModal()">取消</button>
+      <button class="ok" onclick="saveEdit()">保存</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ===== 状态 =====
+let zones = [];
+let equips = [];
+let nextId = 1;
+let editingId = null;
+let editingType = null;
+let dragState = null;
+let baseW = 0, baseH = 0;
+
+const COLORS = [
+  {name:'暖橙', bg:'rgba(232,154,60,0.14)', border:'#E89A3C'},
+  {name:'电光蓝', bg:'rgba(26,107,255,0.10)', border:'#1A6BFF'},
+  {name:'金黄', bg:'rgba(244,184,96,0.10)', border:'#F4B860'},
+  {name:'绿', bg:'rgba(90,175,100,0.12)', border:'#5AAF64'},
+  {name:'紫', bg:'rgba(139,90,142,0.12)', border:'#8B5A8E'},
+  {name:'棕', bg:'rgba(124,82,56,0.10)', border:'#7A5238'},
+  {name:'粉', bg:'rgba(244,181,168,0.20)', border:'#F4B5A8'},
+  {name:'灰', bg:'rgba(180,160,150,0.10)', border:'#B0A090'},
+];
+
+// 默认设备图标文字
+const EQUIP_ICONS = ['🛁洗护池','💺美容台','📦烘干箱','💨吹水机','📹摄像头','🧱笼位','🪑展示桌','💡灯带','🧰洞洞板','📋货架','🪟收银台','🛋️沙发','🎬幕布'];
+
+// ===== 初始化 =====
+function init(){
+  const img = document.getElementById('baseMap');
+  img.onload = function(){
+    baseW = img.naturalWidth;
+    baseH = img.naturalHeight;
+    // 默认加载上次保存的布局
+    const saved = localStorage.getItem('zhaiyu-layout-v2');
+    if(saved) loadData(JSON.parse(saved));
+    else initDefaultZones();
+  };
+  if(img.complete){
+    baseW = img.naturalWidth;
+    baseH = img.naturalHeight;
+    const saved = localStorage.getItem('zhaiyu-layout-v2');
+    if(saved) loadData(JSON.parse(saved));
+    else initDefaultZones();
+  }
+  buildColorPalette();
+}
+
+// 默认区域（位置需要用户自己拖拽调整）
+function initDefaultZones(){
+  const w = baseW, h = baseH;
+  zones = [
+    {id:'z1', x:w*0.56, y:h*0.63, w:w*0.33, h:h*0.23, label:'洗护区', desc:'湿区·洗护池×2', color:0, icon:'🛁'},
+    {id:'z2', x:w*0.01, y:h*0.63, w:w*0.33, h:h*0.35, label:'电竞样板间', desc:'桌搭·洞洞板·灯光', color:1, icon:'🎮'},
+    {id:'z3', x:w*0.50, y:h*0.38, w:w*0.48, h:h*0.24, label:'活动展示区', desc:'试坐·好物·体验', color:2, icon:'🏪'},
+    {id:'z4', x:w*0.80, y:h*0.63, w:w*0.18, h:h*0.23, label:'寄养区', desc:'笼位×4', color:3, icon:'🐾'},
+    {id:'z5', x:w*0.01, y:h*0.38, w:w*0.38, h:h*0.24, label:'走廊通道', desc:'', color:7, icon:'🚶'},
+  ];
+  equips = [
+    {id:'e1', x:w*0.60, y:h*0.72, label:'洗护池×2', type:'equip'},
+    {id:'e2', x:w*0.72, y:h*0.72, label:'美容台', type:'equip'},
+    {id:'e3', x:w*0.60, y:h*0.80, label:'烘干箱', type:'equip'},
+    {id:'e4', x:w*0.72, y:h*0.80, label:'吹水机', type:'equip'},
+    {id:'e5', x:w*0.06, y:h*0.72, label:'展示桌+主机', type:'equip'},
+    {id:'e6', x:w*0.22, y:h*0.72, label:'洞洞板', type:'equip'},
+    {id:'e7', x:w*0.06, y:h*0.88, label:'幕布/投影', type:'equip'},
+    {id:'e8', x:w*0.58, y:h*0.47, label:'试坐展示', type:'equip'},
+    {id:'e9', x:w*0.72, y:h*0.47, label:'好物展台', type:'equip'},
+    {id:'e10', x:w*0.84, y:h*0.72, label:'笼位×4', type:'equip'},
+    {id:'e11', x:w*0.62, y:h*0.55, label:'体验活动区', type:'equip'},
+    {id:'e12', x:w*0.74, y:h*0.88, label:'摄像头×2', type:'equip'},
+  ];
+  renderAll();
+  nextId = 100;
+}
+
+// 渲染所有
+function renderAll(){
+  const container = document.getElementById('overlayContainer');
+  container.innerHTML = '';
+  
+  // 渲染区域
+  zones.forEach(z => renderZone(container, z));
+  // 渲染设备
+  equips.forEach(e => renderEquip(container, e));
+  
+  updateSelect();
+}
+
+// 渲染单个区域
+function renderZone(container, z){
+  const c = COLORS[z.color] || COLORS[0];
+  const div = document.createElement('div');
+  div.className = 'zone-card';
+  div.id = z.id;
+  div.style.cssText = `
+    left:${z.x}px;top:${z.y}px;width:${z.w}px;height:${z.h}px;
+    background:${c.bg};border-color:${c.border};
+    color:${c.border};z-index:${z.id === 'z-focus' ? 200 : 10};
+  `;
+  div.innerHTML = `
+    <div class="label">${z.icon||'📦'} ${z.label}</div>
+    ${z.desc ? `<div class="sub-label">${z.desc}</div>` : ''}
+    <div class="drag-handle">⋯ 拖拽</div>
+    <div class="btn-edit" onclick="event.stopPropagation();openEdit('${z.id}','zone')" title="编辑">✎</div>
+  `;
+  
+  // 拖拽
+  div.onmousedown = function(e){
+    if(e.target.closest('.btn-edit')) return;
+    startDrag(e, z.id, 'zone');
+  };
+  div.ondblclick = function(){ openEdit(z.id, 'zone'); };
+  
+  container.appendChild(div);
+}
+
+// 渲染单个设备
+function renderEquip(container, e){
+  const div = document.createElement('div');
+  div.className = 'equip-item';
+  div.id = e.id;
+  div.style.cssText = `left:${e.x}px;top:${e.y}px;`;
+  div.textContent = e.label;
+  
+  div.onmousedown = function(e){ startDrag(e, e.id, 'equip'); };
+  div.ondblclick = function(){ openEdit(e.id, 'equip'); };
+  
+  container.appendChild(div);
+}
+
+// ===== 拖拽系统 =====
+function startDrag(e, id, type){
+  const snap = document.getElementById('snapToggle').checked;
+  const el = document.getElementById(id);
+  if(!el) return;
+  
+  const wrap = document.getElementById('editorWrap');
+  const wrapRect = wrap.getBoundingClientRect();
+  const img = document.getElementById('baseMap');
+  const imgRect = img.getBoundingClientRect();
+  
+  // 相对底图的比例
+  const scaleX = baseW / imgRect.width;
+  const scaleY = baseH / imgRect.height;
+  
+  const startX = e.clientX;
+  const startY = e.clientY;
+  const origX = parseFloat(el.style.left);
+  const origY = parseFloat(el.style.top);
+  const origW = type==='zone' ? parseFloat(el.style.width) : null;
+  const origH = type==='zone' ? parseFloat(el.style.height) : null;
+  
+  el.classList.add('dragging');
+  
+  function onMove(ev){
+    const dx = (ev.clientX - startX) * scaleX;
+    const dy = (ev.clientY - startY) * scaleY;
+    
+    let newX = origX + dx;
+    let newY = origY + dy;
+    
+    if(snap){
+      newX = Math.round(newX / 10) * 10;
+      newY = Math.round(newY / 10) * 10;
+    }
+    
+    // 边界约束
+    const maxX = type==='zone' ? baseW - (origW||80) : baseW - 60;
+    const maxY = type==='zone' ? baseH - (origH||40) : baseH - 20;
+    newX = Math.max(0, Math.min(maxX, newX));
+    newY = Math.max(0, Math.min(maxY, newY));
+    
+    el.style.left = newX + 'px';
+    el.style.top = newY + 'px';
+  }
+  
+  function onUp(){
+    el.classList.remove('dragging');
+    document.removeEventListener('mousemove', onMove);
+    document.removeEventListener('mouseup', onUp);
+    
+    // 更新数据
+    const fx = parseFloat(el.style.left);
+    const fy = parseFloat(el.style.top);
+    const obj = (type==='zone' ? zones : equips).find(o => o.id === id);
+    if(obj){
+      obj.x = fx;
+      obj.y = fy;
+      autosave();
+    }
+  }
+  
+  document.addEventListener('mousemove', onMove);
+  document.addEventListener('mouseup', onUp);
+}
+
+// ===== 添加区域 =====
+function addZone(){
+  const w = baseW * 0.25;
+  const h = baseH * 0.18;
+  const id = 'z' + (nextId++);
+  zones.push({
+    id, x:50, y:50, w, h,
+    label:'新区域', desc:'', color:0, icon:'📦'
+  });
+  renderAll();
+  autosave();
+}
+
+// ===== 添加设备 =====
+function addEquip(){
+  const id = 'e' + (nextId++);
+  // 随机选一个图标
+  const icon = EQUIP_ICONS[Math.floor(Math.random() * EQUIP_ICONS.length)];
+  equips.push({
+    id, x:50, y:50, label:icon
+  });
+  renderAll();
+  autosave();
+}
+
+// ===== 编辑弹窗 =====
+function openEdit(id, type){
+  editingId = id;
+  editingType = type;
+  const obj = (type==='zone' ? zones : equips).find(o => o.id === id);
+  if(!obj) return;
+  
+  document.getElementById('modalTitle').textContent = type==='zone' ? '编辑区域' : '编辑设备';
+  document.getElementById('editName').value = obj.label || '';
+  document.getElementById('editDesc').value = obj.desc || '';
+  document.getElementById('modalOverlay').style.display = 'flex';
+  
+  if(type==='zone'){
+    document.getElementById('colorPalette').style.display = 'flex';
+    document.querySelectorAll('.color-swatch').forEach((s,i)=>{
+      s.classList.toggle('active', i === obj.color);
+    });
+  } else {
+    document.getElementById('colorPalette').style.display = 'none';
+  }
+}
+
+function closeModal(){
+  document.getElementById('modalOverlay').style.display = 'none';
+  editingId = null;
+}
+
+function saveEdit(){
+  const name = document.getElementById('editName').value.trim();
+  const desc = document.getElementById('editDesc').value.trim();
+  const obj = (editingType==='zone' ? zones : equips).find(o => o.id === editingId);
+  if(!obj) return;
+  
+  obj.label = name;
+  obj.desc = desc;
+  
+  // 如果是区域，更新颜色
+  if(editingType==='zone'){
+    const active = document.querySelector('.color-swatch.active');
+    if(active) obj.color = parseInt(active.dataset.idx);
+  }
+  
+  closeModal();
+  renderAll();
+  autosave();
+}
+
+function buildColorPalette(){
+  const container = document.getElementById('colorPalette');
+  COLORS.forEach((c,i)=>{
+    const swatch = document.createElement('div');
+    swatch.className = 'color-swatch';
+    swatch.style.background = c.bg;
+    swatch.style.borderColor = c.border;
+    swatch.dataset.idx = i;
+    swatch.title = c.name;
+    swatch.onclick = function(){
+      document.querySelectorAll('.color-swatch').forEach(s=>s.classList.remove('active'));
+      this.classList.add('active');
+    };
+    container.appendChild(swatch);
+  });
+}
+
+// ===== 图层选择 =====
+function updateSelect(){
+  const sel = document.getElementById('layerSelect');
+  sel.innerHTML = '<option value="all">全部图层</option>';
+  zones.forEach(z => {
+    sel.innerHTML += `<option value="${z.id}">📦 ${z.label}</option>`;
+  });
+  equips.forEach(e => {
+    sel.innerHTML += `<option value="${e.id}">🔧 ${e.label}</option>`;
+  });
+}
+
+function focusLayer(id){
+  if(id === 'all'){
+    document.querySelectorAll('.zone-card,.equip-item').forEach(el => el.style.display = '');
+    return;
+  }
+  document.querySelectorAll('.zone-card,.equip-item').forEach(el => {
+    el.style.display = el.id === id ? '' : 'none';
+  });
+}
+
+// ===== 导出/保存 =====
+function getData(){
+  return { zones: zones.map(z => ({...z})), equips: equips.map(e => ({...e})), baseW, baseH };
+}
+
+function loadData(data){
+  zones = data.zones || [];
+  equips = data.equips || [];
+  if(data.baseW) baseW = data.baseW;
+  if(data.baseH) baseH = data.baseH;
+  renderAll();
+}
+
+function autosave(){
+  localStorage.setItem('zhaiyu-layout-v2', JSON.stringify(getData()));
+}
+
+function exportJSON(){
+  const data = JSON.stringify(getData(), null, 2);
+  const blob = new Blob([data], {type:'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'zhaiyu-layout.json';
+  a.click();
+}
+
+function importJSON(event){
+  const file = event.target.files[0];
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = function(e){
+    try {
+      loadData(JSON.parse(e.target.result));
+      autosave();
+    } catch(err){
+      alert('载入失败：' + err.message);
+    }
+  };
+  reader.readAsText(file);
+  event.target.value = '';
+}
+
+function exportPNG(){
+  const wrap = document.getElementById('editorWrap');
+  // 使用 HTML2Canvas 或简单截图
+  alert('请截图：按 Windows+Shift+S 或使用系统截图工具框选编辑器区域');
+}
+
+function saveToBP(){
+  // 导出布局到 localStorage，让 bp.html 可以读取
+  autosave();
+  alert('布局已保存！刷新 BP 页面即可在门店布局 tab 看到。\n提示：需要手动更新 assets/floor-plan-zones.svg');
+}
+
+// ===== 启动 =====
+window.onload = init;
+
+// 点击弹窗外关闭
+document.getElementById('modalOverlay').onclick = function(e){
+  if(e.target === this) closeModal();
+};
+
+// 键盘
+document.addEventListener('keydown', function(e){
+  if(e.key === 'Escape') closeModal();
+  if(e.key === 'Delete' || e.key === 'Backspace'){
+    if(document.activeElement && document.activeElement.tagName === 'INPUT') return;
+    // 选中的元素删除
+    if(editingId){
+      zones = zones.filter(z => z.id !== editingId);
+      equips = equips.filter(e => e.id !== editingId);
+      renderAll();
+      autosave();
+      editingId = null;
+    }
+  }
+});
+
+// 右键删除菜单
+document.addEventListener('contextmenu', function(e){
+  const el = e.target.closest('.zone-card,.equip-item');
+  if(!el) return;
+  e.preventDefault();
+  const id = el.id;
+  const name = el.querySelector('.label')?.textContent || el.textContent;
+  if(confirm(`删除「${name}」？`)){
+    zones = zones.filter(z => z.id !== id);
+    equips = equips.filter(e => e.id !== id);
+    renderAll();
+    autosave();
+  }
+});
+</script>
+</body>
+</html>
