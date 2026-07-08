@@ -1,0 +1,142 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 1050" width="100%" height="auto" style="max-width:900px;background:#FAF6F0;border-radius:16px;font-family:'PingFang SC','Microsoft YaHei',sans-serif">
+  
+  <!-- 标题 -->
+  <text x="550" y="30" text-anchor="middle" font-size="18" font-weight="900" fill="#5C3D2E">宅咪·临港 LIN 舍 · 59.67㎡ 功能分区</text>
+  <text x="550" y="50" text-anchor="middle" font-size="12" fill="#7A5238">浦东新区泥城镇五岭路120弄 · LIN 舍沿街底商</text>
+
+  <!-- ===== 房间墙体 ===== -->
+  <!-- 外轮廓：Bottom=10.2m, Left=10.2m, Right=10.2m, Top~10m irregular -->
+  <!-- 左下外凸部分 -->
+  <rect x="0" y="730" width="340" height="250" fill="none" stroke="#5C3D2E" stroke-width="3"/>
+  <!-- 主矩形 -->
+  <rect x="0" y="0" width="1020" height="980" fill="none" stroke="#5C3D2E" stroke-width="3"/>
+  
+  <!-- 顶墙不规则部分（3389+375+5888+348≈10200, 总宽11000） -->
+  <!-- 顶部左侧外扩 -->
+  <rect x="0" y="0" width="1020" height="-40" fill="#FAF6F0" stroke="none"/>
+  <line x1="340" y1="0" x2="340" y2="-40" stroke="#5C3D2E" stroke-width="3"/>
+  <line x1="1020" y1="0" x2="1020" y2="-40" stroke="#5C3D2E" stroke-width="3"/>
+
+  <!-- ===== 窗户 ===== -->
+  <!-- 顶墙窗户 -->
+  <rect x="100" y="-35" width="240" height="30" fill="#D4E7F5" stroke="#5C3D2E" stroke-width="2" rx="2"/>
+  <!-- 左侧外凸墙窗户 -->
+  <line x1="340" y1="730" x2="340" y2="830" stroke="#D4E7F5" stroke-width="8"/>
+  
+  <!-- ===== 门（底部中间，向内开） ===== -->
+  <line x1="380" y1="980" x2="520" y2="980" stroke="none" />
+  <rect x="380" y="960" width="140" height="20" fill="#FFF9F0" stroke="#5C3D2E" stroke-width="2"/>
+  <path d="M 520 960 Q 580 900 520 860" fill="none" stroke="#E8D5B0" stroke-width="2" stroke-dasharray="4,3"/>
+  <text x="450" y="975" text-anchor="middle" font-size="10" fill="#5C3D2E" font-weight="700">入口</text>
+
+  <!-- ===== 柱子/下水管 ===== -->
+  <rect x="650" y="730" width="60" height="60" fill="#E8E0D5" stroke="#5C3D2E" stroke-width="2"/>
+  <text x="680" y="765" text-anchor="middle" font-size="9" fill="#5C3D2E">柱</text>
+  <rect x="340" y="730" width="50" height="50" fill="#E8E0D5" stroke="#5C3D2E" stroke-width="2"/>
+  <text x="365" y="760" text-anchor="middle" font-size="9" fill="#5C3D2E">柱</text>
+
+  <!-- ===== 功能分区 ===== -->
+  
+  <!-- ① 洗护区（湿区）- 左上角，靠窗靠排水 -->
+  <rect x="30" y="60" width="300" height="300" fill="rgba(232,154,60,0.12)" stroke="#E89A3C" stroke-width="2" rx="6"/>
+  <rect x="30" y="60" width="300" height="28" fill="#E89A3C" rx="6"/>
+  <text x="180" y="79" text-anchor="middle" font-size="12" fill="#FFFFFF" font-weight="800">① 洗护区 · 湿区（~18㎡）</text>
+  <!-- 洗护区设备符号 -->
+  <rect x="70" y="120" width="80" height="50" fill="rgba(255,255,255,0.6)" stroke="#E89A3C" stroke-width="1" rx="4"/>
+  <text x="110" y="150" text-anchor="middle" font-size="10" fill="#E89A3C">洗护池×2</text>
+  <rect x="200" y="120" width="80" height="50" fill="rgba(255,255,255,0.6)" stroke="#E89A3C" stroke-width="1" rx="4"/>
+  <text x="240" y="150" text-anchor="middle" font-size="10" fill="#E89A3C">美容台</text>
+  <rect x="70" y="230" width="80" height="40" fill="rgba(255,255,255,0.6)" stroke="#E89A3C" stroke-width="1" rx="4"/>
+  <text x="110" y="253" text-anchor="middle" font-size="10" fill="#E89A3C">烘干箱</text>
+  <rect x="200" y="230" width="80" height="40" fill="rgba(255,255,255,0.6)" stroke="#E89A3C" stroke-width="1" rx="4"/>
+  <text x="240" y="253" text-anchor="middle" font-size="10" fill="#E89A3C">吹水机</text>
+  <circle cx="310" cy="100" r="8" fill="#E8573C" opacity="0.7"/>
+  <text x="310" y="103" text-anchor="middle" font-size="8" fill="#FFF">📹</text>
+  <circle cx="50" cy="340" r="8" fill="#E8573C" opacity="0.7"/>
+  <text x="50" y="343" text-anchor="middle" font-size="8" fill="#FFF">📹</text>
+
+  <!-- ② 寄养区 - 右上方，安静 -->
+  <rect x="680" y="60" width="300" height="220" fill="rgba(90,175,100,0.12)" stroke="#5AAF64" stroke-width="2" rx="6"/>
+  <rect x="680" y="60" width="300" height="28" fill="#5AAF64" rx="6"/>
+  <text x="830" y="79" text-anchor="middle" font-size="12" fill="#FFFFFF" font-weight="800">② 寄养区（~8㎡）</text>
+  <!-- 笼位 -->
+  <rect x="700" y="120" width="55" height="55" fill="rgba(255,255,255,0.5)" stroke="#5AAF64" stroke-width="1" rx="3"/>
+  <text x="727" y="150" text-anchor="middle" font-size="9" fill="#5AAF64">笼</text>
+  <rect x="760" y="120" width="55" height="55" fill="rgba(255,255,255,0.5)" stroke="#5AAF64" stroke-width="1" rx="3"/>
+  <text x="787" y="150" text-anchor="middle" font-size="9" fill="#5AAF64">笼</text>
+  <rect x="820" y="120" width="55" height="55" fill="rgba(255,255,255,0.5)" stroke="#5AAF64" stroke-width="1" rx="3"/>
+  <text x="847" y="150" text-anchor="middle" font-size="9" fill="#5AAF64">笼</text>
+  <rect x="700" y="180" width="55" height="55" fill="rgba(255,255,255,0.5)" stroke="#5AAF64" stroke-width="1" rx="3"/>
+  <text x="727" y="210" text-anchor="middle" font-size="9" fill="#5AAF64">笼</text>
+  <rect x="760" y="180" width="55" height="55" fill="rgba(255,255,255,0.5)" stroke="#5AAF64" stroke-width="1" rx="3"/>
+  <text x="787" y="210" text-anchor="middle" font-size="9" fill="#5AAF64">笼</text>
+  <rect x="820" y="180" width="55" height="55" fill="rgba(255,255,255,0.5)" stroke="#5AAF64" stroke-width="1" rx="3"/>
+  <text x="847" y="210" text-anchor="middle" font-size="9" fill="#5AAF64">笼</text>
+
+  <!-- ③ 零售+等候区 - 进门区域 -->
+  <rect x="30" y="400" width="620" height="520" fill="rgba(244,184,96,0.08)" stroke="#F4B860" stroke-width="2" rx="6"/>
+  <rect x="30" y="400" width="620" height="28" fill="#F4B860" rx="6"/>
+  <text x="340" y="419" text-anchor="middle" font-size="12" fill="#FFFFFF" font-weight="800">③ 零售 + 等候区（~16㎡）</text>
+  <!-- 收银台 -->
+  <rect x="380" y="880" width="120" height="50" fill="rgba(255,255,255,0.6)" stroke="#F4B860" stroke-width="1" rx="4"/>
+  <text x="440" y="910" text-anchor="middle" font-size="10" fill="#C77F25">收银台</text>
+  <!-- 货架 -->
+  <rect x="60" y="450" width="180" height="40" fill="rgba(255,255,255,0.6)" stroke="#F4B860" stroke-width="1" rx="3"/>
+  <text x="150" y="474" text-anchor="middle" font-size="10" fill="#C77F25">货架（宠物食品/用品）</text>
+  <!-- 等候区 -->
+  <rect x="60" y="530" width="180" height="50" fill="rgba(255,255,255,0.6)" stroke="#F4B860" stroke-width="1" rx="4"/>
+  <text x="150" y="560" text-anchor="middle" font-size="10" fill="#C77F25">等候沙发·监控屏</text>
+  <circle cx="460" cy="420" r="8" fill="#E8573C" opacity="0.7"/>
+  <text x="460" y="423" text-anchor="middle" font-size="8" fill="#FFF">📹</text>
+
+  <!-- ④ 电竞样板间（干区）- 入口右侧，展示型 -->
+  <rect x="680" y="320" width="300" height="360" fill="rgba(26,107,255,0.08)" stroke="#1A6BFF" stroke-width="2" rx="6"/>
+  <rect x="680" y="320" width="300" height="28" fill="#1A6BFF" rx="6"/>
+  <text x="830" y="339" text-anchor="middle" font-size="12" fill="#FFFFFF" font-weight="800">④ 电竞样板间（~7㎡）</text>
+  <!-- 展示桌 -->
+  <rect x="700" y="380" width="120" height="60" fill="rgba(255,255,255,0.5)" stroke="#1A6BFF" stroke-width="1" rx="4"/>
+  <text x="760" y="410" text-anchor="middle" font-size="10" fill="#1A6BFF">展示桌+主机</text>
+  <!-- 洞洞板墙 -->
+  <rect x="850" y="380" width="100" height="80" fill="rgba(255,255,255,0.3)" stroke="#1A6BFF" stroke-width="1" stroke-dasharray="4,3" rx="4"/>
+  <text x="900" y="420" text-anchor="middle" font-size="10" fill="#1A6BFF">洞洞板·好物墙</text>
+  <!-- 氛围灯示意 -->
+  <line x1="680" y1="500" x2="980" y2="500" stroke="#1A6BFF" stroke-width="3" stroke-dasharray="8,4" opacity="0.5"/>
+  <text x="830" y="540" text-anchor="middle" font-size="10" fill="#1A6BFF" opacity="0.7">氛围灯带（暖橙/蓝黑）</text>
+  <!-- 投影/幕布 -->
+  <rect x="700" y="570" width="140" height="20" fill="rgba(255,255,255,0.4)" stroke="#1A6BFF" stroke-width="1" rx="2"/>
+  <text x="770" y="584" text-anchor="middle" font-size="10" fill="#1A6BFF">幕布/投影</text>
+
+  <!-- ⑤ 储物区 -->
+  <rect x="680" y="720" width="300" height="230" fill="rgba(200,180,160,0.12)" stroke="#7A5238" stroke-width="2" rx="6" stroke-dasharray="6,3"/>
+  <text x="830" y="830" text-anchor="middle" font-size="12" fill="#7A5238" font-weight="700">⑤ 储物/清洁（~4㎡）</text>
+
+  <!-- ===== 尺寸标注 ===== -->
+  <g stroke="#7A5238" stroke-width="1" fill="#7A5238" font-size="10" font-weight="600">
+    <!-- 顶边 -->
+    <line x1="0" y1="-55" x2="1020" y2="-55" stroke="#7A5238"/>
+    <line x1="0" y1="-50" x2="0" y2="-60" stroke="#7A5238"/>
+    <line x1="1020" y1="-50" x2="1020" y2="-60" stroke="#7A5238"/>
+    <text x="510" y="-58" text-anchor="middle" font-size="11" fill="#5C3D2E" font-weight="700">~10.2m</text>
+    
+    <!-- 左边 -->
+    <line x1="-55" y1="0" x2="-55" y2="980" stroke="#7A5238"/>
+    <line x1="-50" y1="0" x2="-60" y2="0" stroke="#7A5238"/>
+    <line x1="-50" y1="980" x2="-60" y2="980" stroke="#7A5238"/>
+    <text x="-58" y="495" text-anchor="middle" font-size="11" fill="#5C3D2E" font-weight="700" transform="rotate(-90,-58,495)">~10.2m</text>
+
+    <!-- 底边 -->
+    <line x1="0" y1="1015" x2="1020" y2="1015" stroke="#7A5238"/>
+    <line x1="0" y1="1010" x2="0" y2="1020" stroke="#7A5238"/>
+    <line x1="1020" y1="1010" x2="1020" y2="1020" stroke="#7A5238"/>
+    <text x="510" y="1028" text-anchor="middle" font-size="11" fill="#5C3D2E" font-weight="700">~10.2m</text>
+  </g>
+
+  <!-- ===== 说明 ===== -->
+  <g transform="translate(30, 1045)">
+    <rect x="0" y="0" width="1000" height="50" fill="#FFF9F0" stroke="#E8E0D5" stroke-width="1" rx="8"/>
+    <text x="20" y="20" font-size="11" fill="#5C3D2E" font-weight="700">说明：</text>
+    <text x="80" y="20" font-size="11" fill="#7A5238">📹 摄像头点位（共4个） · 面积约59.67㎡ · 比例约1:100</text>
+    <text x="20" y="40" font-size="11" fill="#7A5238">⭐ 干湿分区：洗护区独立封闭 · 电竞样板间用软装分隔不做隔墙 · 寄养区与零售区物理隔断</text>
+  </g>
+
+</svg>
