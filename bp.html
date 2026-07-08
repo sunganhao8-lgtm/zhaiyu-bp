@@ -1496,23 +1496,63 @@ strong{color:var(--z-brown)}
 <!-- ================== 标签3: 门店布局（含可编辑编辑器，合并自原"编辑布局"标签） ================== -->
 <section class="tab-panel" id="tab-layout">
   <h1 class="z-title">门店布局 · 59.67㎡ 实测平面图 · 功能分区</h1>
-  <p class="z-lead">干湿分区 / 5 个功能区 / 4 个摄像头 / 左下外凸实测建筑平面</p>
+  <p class="z-lead">承重墙保留 / 底部三等分房间 / 中下爆品货架 / 右下洗护 / 可拖拽编辑版本</p>
 
   <div class="embed-stage">
     <div class="embed-meta">
       <div class="embed-meta-item"><strong>59.67</strong>㎡ 建筑实测面积</div>
       <div class="embed-meta-item"><strong>~10.2m × ~10m</strong> 总尺寸（不规则）</div>
-      <div class="embed-meta-item"><strong>2</strong> 个独立洗护单间</div>
-      <div class="embed-meta-item"><strong>6</strong> 个独立寄养笼位</div>
-      <div class="embed-meta-item"><strong>4</strong> 个监控点位</div>
-      <div class="embed-meta-item">干湿分区 · 左宠物洗护 + 右电竞 + 中零售</div>
+      <div class="embed-meta-item"><strong>2</strong> 堵底部承重墙保留</div>
+      <div class="embed-meta-item"><strong>1500mm</strong> 门洞留空（不画框）</div>
+      <div class="embed-meta-item"><strong>2</strong> 组爆品货架靠承重墙布置</div>
+      <div class="embed-meta-item">左下电竞 · 中下爆品货架 · 右下洗护 · 上方展示</div>
     </div>
-    <div class="embed-frame-wrap" style="height:90vh;min-height:750px;background:#FAF6F0;border-radius:12px;overflow:hidden;border:1px solid #EFE7DC">
-      <iframe src="assets/layout-editor-v2.html" style="width:100%;height:100%;border:none" title="门店布局编辑器V2" loading="lazy"></iframe>
+    <div class="embed-frame-wrap" style="background:#FAF6F0;border-radius:12px;overflow:hidden;border:1px solid #EFE7DC">
+      <iframe src="assets/layout-editor-v2.html" style="width:100%;height:1100px;display:block;border:none" title="门店布局编辑器V2" loading="lazy" scrolling="no" onload="resizeLayoutIframe(this)"></iframe>
     </div>
     <div style="margin-top:16px;padding:12px 16px;background:var(--z-cream-yellow);border-left:4px solid var(--z-orange-deep);border-radius:var(--radius-sm);font-size:14px;color:var(--z-brown-soft);line-height:1.7">
-      💡 <strong>拖拽编辑</strong>：红色框区域可以直接拖到正确位置 · 双击区域修改名称/颜色 · 右键删除 · 所有修改自动保存到浏览器<br>
-      💡 左上角为邻铺 · 洗护区（右下）≈ 电竞样板间（左下）各~10㎡ · 中间走廊+右上做活动展示
+      💡 <strong>拖拽编辑</strong>：区域、货架和设备标签可直接拖拽；右侧可修改名称、颜色和尺寸；新增组件可通过上方下拉框添加，选中后点删除或按 Delete 删除<br>
+      💡 <strong>结构约束</strong>：底部两堵承重墙已锁定，不能移动；中下房间上方约 1500mm 门洞保持留空，不画框、不摆货架、不遮挡进门视线
+    </div>
+  </div>
+
+  <div class="section-card" style="margin-top:24px">
+    <h2 class="z-h2" style="margin-top:0">设备详细信息 · 给闪闪出图/报价用</h2>
+    <p style="color:var(--z-brown-soft);line-height:1.8;margin:0 0 14px">
+      以下尺寸按当前平面方案先给参考口径，最终以现场复尺、设备供应商型号和施工图为准。当前版本已把原寄养笼位改为进门可见的爆品货架，门洞约 1500mm 位置只做通道留空。
+    </p>
+    <table class="z-table">
+      <thead>
+        <tr><th>区域</th><th>位置/面积</th><th>设备与参考尺寸</th><th>关键要求</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>洗护区</strong></td>
+          <td>右下独立房间，约 12.2㎡</td>
+          <td>宠物洗护池 ×1（约 1200×800×900mm）；美容台 ×1（约 1100×600mm，高度可调优先）；烘干箱 ×1（约 700×600×700mm）；吹水机 ×1；墙面工具/储物架 ×1 组</td>
+          <td>湿区施工重点：冷热水、地漏、防滑、防水、排风、隔味、强电插座、监控覆盖</td>
+        </tr>
+        <tr>
+          <td><strong>电竞样板间</strong></td>
+          <td>左下独立房间，约 12.2㎡</td>
+          <td>电竞桌/展示桌 ×1（约 1600–2000×700mm）；显示器/主机/外设展示位 ×1 组；电竞椅/展示椅 ×1–2；洞洞板/展示墙 ×1 组；灯带/轨道灯/射灯若干</td>
+          <td>重点做拍照效果、桌搭展示、社媒内容素材和上门搭建转化，不按网吧娱乐收费逻辑设计</td>
+        </tr>
+        <tr>
+          <td><strong>爆品货架区</strong></td>
+          <td>中下房间，约 12.2㎡；靠两堵承重墙布置</td>
+          <td>爆品货架 ×2 组（建议宽 900–1200mm、深 300–400mm、高 1600–1800mm）；小型主题陈列台/推车 ×1（约 600×400mm）；价格牌/灯箱/POP 展示若干</td>
+          <td>中间门洞约 1500mm 必须留空；货架面向入口，优先陈列新品、联名、零食、玩具、清洁护理等高转化商品</td>
+        </tr>
+        <tr>
+          <td><strong>活动/展示区</strong></td>
+          <td>上方+右上区域，约 23㎡</td>
+          <td>靠墙货架/展示墙（深 300–400mm）；展示岛台 ×1（约 1200×600mm）；收银/接待台 ×1（约 1200×600mm）；等待椅/小沙发 ×1 组；拍照打卡点 ×1</td>
+          <td>兼顾客户等待、活动陈列、收银转化和拍照传播；与洗护湿区保持动线和气味分隔</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </section>
 
 <!-- ================== 标签5: 选址分析 ================== -->
@@ -3065,6 +3105,32 @@ document.addEventListener('DOMContentLoaded',()=>{
   });
 });
 
+function resizeLayoutIframe(iframe){
+  if(!iframe) return;
+  function applyHeight(){
+    try{
+      const doc = iframe.contentDocument || iframe.contentWindow.document;
+      if(!doc) return;
+      const height = Math.max(
+        900,
+        doc.documentElement ? doc.documentElement.scrollHeight : 0,
+        doc.body ? doc.body.scrollHeight : 0
+      ) + 24;
+      iframe.style.height = height + 'px';
+    }catch(e){}
+  }
+  applyHeight();
+  setTimeout(applyHeight, 300);
+  setTimeout(applyHeight, 1200);
+  try{
+    const doc = iframe.contentDocument || iframe.contentWindow.document;
+    if(doc && iframe.contentWindow.ResizeObserver){
+      const observer = new iframe.contentWindow.ResizeObserver(applyHeight);
+      observer.observe(doc.body);
+    }
+  }catch(e){}
+}
+
 /* ============================================================
    全屏查看功能
    ============================================================ */
@@ -3106,12 +3172,16 @@ document.addEventListener('DOMContentLoaded',()=>{
 
     if(name === 'layout'){
       const iframe = document.createElement('iframe');
-      iframe.src = 'layout-editor.html';
-      iframe.title = '门店布局编辑器';
+      iframe.src = 'assets/layout-editor-v2.html';
+      iframe.title = '门店布局编辑器V2';
       iframe.setAttribute('allowfullscreen', 'true');
       iframe.setAttribute('allow', 'fullscreen');
+      iframe.setAttribute('scrolling', 'no');
+      iframe.style.height = '1100px';
+      iframe.onload = function(){
+        try{ iframe.contentWindow.scrollTo(0,0); resizeLayoutIframe(iframe); }catch(e){}
+      };
       bodyEl.appendChild(iframe);
-      iframe.onload = function(){ try{ iframe.contentWindow.scrollTo(0,0); }catch(e){} };
     }
     else if(name === 'map'){
       const iframe = document.createElement('iframe');

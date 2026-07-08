@@ -5,597 +5,454 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>宅域·门店布局编辑器</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:#FAF6F0;font-family:'PingFang SC','Microsoft YaHei',sans-serif;padding:20px;color:#5C3D2E}
-h1{font-size:22px;margin-bottom:6px}
-.sub{font-size:13px;color:#7A5238;margin-bottom:16px}
-
-/* 编辑器容器 */
-.editor-wrap{
-  position:relative;
-  display:inline-block;
-  border:2px solid #5C3D2E;
-  border-radius:12px;
-  overflow:hidden;
-  background:#FFF;
-  box-shadow:0 4px 16px rgba(92,61,46,0.1);
-  max-width:100%;
-}
-.editor-wrap img{
-  display:block;
-  max-width:100%;
-  height:auto;
-  user-select:none;
-  -webkit-user-drag:none;
-}
-
-/* 区域叠加层 */
-.overlay-container{
-  position:absolute;
-  inset:0;
-  pointer-events:none;
-}
-.zone-card{
-  position:absolute;
-  border-radius:8px;
-  border:2px solid;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  font-size:13px;
-  font-weight:700;
-  text-align:center;
-  cursor:move;
-  pointer-events:auto;
-  padding:4px;
-  min-width:60px;
-  min-height:40px;
-  transition:box-shadow 0.15s;
-}
-.zone-card:hover{
-  box-shadow:0 0 0 3px rgba(0,0,0,0.15);
-  z-index:100 !important;
-}
-.zone-card .label{line-height:1.3}
-.zone-card .sub-label{font-size:10px;font-weight:500;opacity:0.8;margin-top:2px}
-.zone-card .drag-handle{font-size:10px;opacity:0.4;margin-top:2px;cursor:grab}
-.zone-card .btn-edit{
-  position:absolute;top:-12px;right:-12px;
-  width:22px;height:22px;border-radius:50%;
-  border:1px solid #ddd;background:#fff;
-  font-size:12px;cursor:pointer;display:flex;
-  align-items:center;justify-content:center;
-  opacity:0;transition:opacity 0.15s;
-  box-shadow:0 1px 4px rgba(0,0,0,0.1);
-}
-.zone-card:hover .btn-edit{opacity:1}
-.zone-card.dragging{z-index:200 !important;opacity:0.85}
-
-/* 设备图标 */
-.equip-item{
-  position:absolute;
-  background:#FFF;
-  border:1px solid rgba(0,0,0,0.15);
-  border-radius:6px;
-  padding:3px 6px;
-  font-size:11px;
-  cursor:pointer;
-  pointer-events:auto;
-  text-align:center;
-  line-height:1.2;
-  white-space:nowrap;
-  transition:box-shadow 0.15s;
-}
-.equip-item:hover{
-  box-shadow:0 2px 8px rgba(0,0,0,0.15);
-  z-index:150 !important;
-}
-
-/* 工具栏 */
-.toolbar{
-  margin-top:14px;
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-  align-items:center;
-}
-.toolbar button, .toolbar select, .toolbar input{
-  padding:6px 14px;
-  border:1px solid #D0C0B0;
-  border-radius:8px;
-  background:#FFF;
-  font-size:13px;
-  font-family:inherit;
-  cursor:pointer;
-  color:#5C3D2E;
-}
-.toolbar button:hover{background:#FFF4E1;border-color:#F4B860}
-.toolbar button.primary{background:#E89A3C;color:#FFF;border-color:#E89A3C}
-.toolbar button.primary:hover{background:#C77F25}
-.toolbar label{font-size:13px}
-
-/* 编辑弹窗 */
-.modal-overlay{
-  display:none;position:fixed;inset:0;z-index:999;
-  background:rgba(92,61,46,0.4);
-  justify-content:center;align-items:center;
-}
-.modal-box{
-  background:#FFF;border-radius:16px;padding:24px;
-  min-width:320px;max-width:440px;
-  box-shadow:0 12px 40px rgba(0,0,0,0.2);
-}
-.modal-box h3{font-size:18px;margin-bottom:14px}
-.modal-box label{display:block;font-size:13px;margin:10px 0 4px;color:#7A5238}
-.modal-box input,.modal-box textarea,.modal-box select{
-  width:100%;padding:7px 10px;border:1px solid #D0C0B0;
-  border-radius:8px;font-family:inherit;font-size:13px;
-}
-.modal-box .btn-row{display:flex;gap:8px;margin-top:16px;justify-content:flex-end}
-.modal-box .btn-row button{padding:7px 18px;border-radius:8px;border:none;font-size:13px;cursor:pointer}
-.modal-box .btn-row .ok{background:#E89A3C;color:#FFF}
-.modal-box .btn-row .cancel{background:#F0EBE5;color:#7A5238}
-
-/* 调色板 */
-.color-palette{display:flex;gap:4px;margin-top:4px;flex-wrap:wrap}
-.color-swatch{
-  width:28px;height:28px;border-radius:6px;
-  border:2px solid transparent;cursor:pointer;
-}
-.color-swatch.active{border-color:#5C3D2E}
-
-/* 响应式 */
-@media(max-width:768px){
+*{box-sizing:border-box}
+html,body{margin:0;overflow:hidden;background:#FAF6F0;color:#5C3D2E;font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif}
+body{padding:18px}
+h1{margin:0 0 6px;font-size:24px;font-weight:900}
+.sub{margin:0 0 14px;font-size:13px;line-height:1.7;color:#7A5238}
+.workspace{display:grid;grid-template-columns:minmax(480px,1fr) 260px;gap:14px;align-items:start}
+.canvas-card{background:#FFF;border:2px solid #5C3D2E;border-radius:12px;padding:12px;box-shadow:0 4px 16px rgba(92,61,46,.10)}
+#planSvg{display:block;width:100%;height:auto;touch-action:none;border-radius:8px;background:#fff}
+.side{background:#FFF;border:1px solid #E6D8C8;border-radius:12px;padding:12px;box-shadow:0 4px 14px rgba(92,61,46,.08)}
+.side h2{margin:0 0 10px;font-size:16px}
+.hint{font-size:12px;color:#8A735F;line-height:1.6;margin-bottom:10px}
+.field{margin:8px 0}
+.field label{display:block;font-size:12px;color:#7A5238;margin-bottom:4px;font-weight:700}
+.field input,.field textarea,.field select{width:100%;border:1px solid #D0C0B0;border-radius:8px;padding:7px 9px;font:inherit;font-size:13px;color:#4A3528;background:#FFF}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.toolbar{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.toolbar select{border:1px solid #D0C0B0;border-radius:8px;background:#FFF;padding:7px 9px;font:inherit;font-size:13px;color:#5C3D2E}
+button{border:1px solid #D0C0B0;border-radius:8px;background:#FFF;padding:7px 10px;font:inherit;font-size:13px;color:#5C3D2E;cursor:pointer}
+button:hover{background:#FFF4E1;border-color:#E89A3C}
+button.primary{background:#E89A3C;border-color:#E89A3C;color:#FFF;font-weight:800}
+button.danger{background:#FFF1F1;border-color:#E5A0A0;color:#B83737}
+.status{font-size:12px;color:#8A735F;line-height:1.6;margin-top:10px}
+.selectable{cursor:move}
+.locked{cursor:not-allowed}
+.selected-outline{fill:none;stroke:#111;stroke-width:2;stroke-dasharray:6 4;pointer-events:none}
+.zone-label{font-weight:900;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}
+.tag-label{font-size:12px;fill:#333}
+@media(max-width:900px){
   body{padding:10px}
-  .zone-card{font-size:11px}
-  .zone-card .sub-label{font-size:9px}
-  .equip-item{font-size:10px;padding:2px 4px}
+  .workspace{grid-template-columns:1fr}
+  .side{position:static}
 }
 </style>
 </head>
 <body>
-
 <h1>🏪 宅域·门店布局编辑器</h1>
-<p class="sub">拖拽区域/设备到正确位置 · 双击区域编辑属性 · 右上角 × 删除</p>
+<p class="sub">SVG 同坐标系编辑器：底图、分区、设备、文字全部使用 800×800 原图坐标；缩放不会漂。底部两堵承重墙锁定不动，中下门洞保持留空但不再画框。</p>
 
-<div class="editor-wrap" id="editorWrap">
-  <!-- 底图 -->
-  <img src="floor-plan-base.jpg" alt="门店建筑平面底图" id="baseMap" crossorigin="anonymous">
-  <!-- 叠加层 -->
-  <div class="overlay-container" id="overlayContainer"></div>
-</div>
-
-<!-- 工具栏 -->
-<div class="toolbar">
-  <button onclick="addZone()">➕ 添加区域</button>
-  <button onclick="addEquip()">🛠️ 添加设备</button>
-  <select id="layerSelect" onchange="focusLayer(this.value)">
-    <option value="all">全部图层</option>
-  </select>
-  <button onclick="exportPNG()">📸 导出截图</button>
-  <button onclick="exportJSON()">💾 保存布局</button>
-  <button onclick="document.getElementById('importFile').click()">📂 载入布局</button>
-  <input type="file" id="importFile" accept=".json" style="display:none" onchange="importJSON(event)">
-  <button class="primary" onclick="saveToBP()">✅ 应用到 BP</button>
-  <label><input type="checkbox" id="snapToggle" checked> 吸附</label>
-</div>
-
-<!-- 编辑弹窗 -->
-<div class="modal-overlay" id="modalOverlay">
-  <div class="modal-box">
-    <h3 id="modalTitle">编辑</h3>
-    <label>名称</label><input id="editName" placeholder="区域/设备名称">
-    <label>描述</label><input id="editDesc" placeholder="可选描述">
-    <label>颜色</label>
-    <div class="color-palette" id="colorPalette"></div>
-    <div class="btn-row">
-      <button class="cancel" onclick="closeModal()">取消</button>
-      <button class="ok" onclick="saveEdit()">保存</button>
+<div class="workspace">
+  <div class="canvas-card">
+    <svg id="planSvg" viewBox="0 0 800 800" role="img" aria-label="门店布局编辑器">
+      <defs>
+        <filter id="labelShadow" x="-20%" y="-20%" width="140%" height="140%">
+          <feDropShadow dx="0" dy="1" stdDeviation="1" flood-color="#fff" flood-opacity=".9"/>
+        </filter>
+      </defs>
+      <image href="floor-plan-base.jpg" x="0" y="0" width="800" height="800" preserveAspectRatio="xMidYMid meet"></image>
+      <g id="zoneLayer"></g>
+      <g id="structureLayer"></g>
+      <g id="tagLayer"></g>
+      <g id="selectedLayer"></g>
+    </svg>
+    <div class="toolbar">
+      <select id="componentType" aria-label="新增组件类型">
+        <option value="tag">设备标签</option>
+        <option value="shelf">货架/设备块</option>
+        <option value="zone">功能区块</option>
+      </select>
+      <button onclick="addComponent()">➕ 新增组件</button>
+      <button onclick="resetLayout()" class="danger">🔄 恢复默认方案</button>
+      <button onclick="saveLayout()" class="primary">💾 保存到浏览器</button>
+      <button onclick="exportJSON()">📤 导出 JSON</button>
+      <button onclick="importFile.click()">📥 导入 JSON</button>
+      <input id="importFile" type="file" accept=".json" style="display:none">
     </div>
   </div>
+
+  <aside class="side">
+    <h2>选中项编辑</h2>
+    <div class="hint" id="selectionHint">点击图中的区域、货架或标签进行编辑。可用上方下拉框新增组件，选中后点删除或按 Delete 删除。</div>
+    <div class="field"><label>名称</label><input id="editLabel"></div>
+    <div class="field"><label>说明/面积</label><input id="editDesc"></div>
+    <div class="grid2">
+      <div class="field"><label>X</label><input id="editX" type="number" step="1"></div>
+      <div class="field"><label>Y</label><input id="editY" type="number" step="1"></div>
+      <div class="field"><label>宽</label><input id="editW" type="number" step="1"></div>
+      <div class="field"><label>高</label><input id="editH" type="number" step="1"></div>
+    </div>
+    <div class="field"><label>颜色</label><input id="editColor" type="color"></div>
+    <div class="toolbar">
+      <button onclick="applyEdit()" class="primary">应用修改</button>
+      <button onclick="deleteSelected()" class="danger">删除</button>
+    </div>
+    <div class="status">
+      承重墙和邻铺为锁定结构，不能删除或移动。中下房间上方约 1500mm 门洞不画框，但货架布置需避开中间通道。
+    </div>
+  </aside>
 </div>
 
 <script>
-// ===== 状态 =====
-let zones = [];
-let equips = [];
-let nextId = 1;
-let editingId = null;
-let editingType = null;
-let dragState = null;
-let baseW = 0, baseH = 0;
+const STORAGE_KEY = 'zhaiyu-layout-svg-v2-shelf';
+const NS = 'http://www.w3.org/2000/svg';
+const svg = document.getElementById('planSvg');
+const zoneLayer = document.getElementById('zoneLayer');
+const structureLayer = document.getElementById('structureLayer');
+const tagLayer = document.getElementById('tagLayer');
+const selectedLayer = document.getElementById('selectedLayer');
+const importFile = document.getElementById('importFile');
 
-const COLORS = [
-  {name:'暖橙', bg:'rgba(232,154,60,0.14)', border:'#E89A3C'},
-  {name:'电光蓝', bg:'rgba(26,107,255,0.10)', border:'#1A6BFF'},
-  {name:'金黄', bg:'rgba(244,184,96,0.10)', border:'#F4B860'},
-  {name:'绿', bg:'rgba(90,175,100,0.12)', border:'#5AAF64'},
-  {name:'紫', bg:'rgba(139,90,142,0.12)', border:'#8B5A8E'},
-  {name:'棕', bg:'rgba(124,82,56,0.10)', border:'#7A5238'},
-  {name:'粉', bg:'rgba(244,181,168,0.20)', border:'#F4B5A8'},
-  {name:'灰', bg:'rgba(180,160,150,0.10)', border:'#B0A090'},
-];
+let selected = null;
+let drag = null;
+let data = null;
 
-// 默认设备图标文字
-const EQUIP_ICONS = ['🛁洗护池','💺美容台','📦烘干箱','💨吹水机','📹摄像头','🧱笼位','🪑展示桌','💡灯带','🧰洞洞板','📋货架','🪟收银台','🛋️沙发','🎬幕布'];
+const defaultData = {
+  zones: [
+    {id:'neighbor', kind:'rect', x:22, y:92, w:272, h:290, label:'邻铺/非本店', desc:'不纳入规划', fill:'#A8A29E', stroke:'#7A7068', locked:true},
+    {id:'display', kind:'poly', points:[[327,204],[706,204],[706,383],[503,383],[503,458],[327,458]], label:'活动/展示区', desc:'上方+右上展示', fill:'#F6D99A', stroke:'#E89A3C'},
+    {id:'esport', kind:'rect', x:96, y:383, w:199, h:221, label:'电竞样板间', desc:'约12.2㎡', fill:'#C8D7F4', stroke:'#1A6BFF'},
+    {id:'shelf-zone', kind:'rect', x:296, y:383, w:207, h:221, label:'爆品货架区', desc:'进门第一眼 · 门洞留空', fill:'#CFE8CF', stroke:'#2B944E'},
+    {id:'wash', kind:'rect', x:503, y:383, w:203, h:221, label:'洗护区', desc:'约12.2㎡', fill:'#F3D8B8', stroke:'#E77D22'}
+  ],
+  structures: [
+    {id:'bearing-left', kind:'rect', x:288, y:497, w:24, h:107, label:'承重墙不动', fill:'#5C2B22', stroke:'#D64242', locked:true, vertical:true},
+    {id:'bearing-right', kind:'rect', x:494, y:497, w:24, h:107, label:'承重墙不动', fill:'#5C2B22', stroke:'#D64242', locked:true, vertical:true},
+    {id:'shelf-left', kind:'rect', x:316, y:464, w:54, h:112, label:'爆品货架', desc:'靠左承重墙', fill:'#FFF4B8', stroke:'#D48A00'},
+    {id:'shelf-right', kind:'rect', x:428, y:464, w:54, h:112, label:'主题货架', desc:'靠右承重墙', fill:'#FFF4B8', stroke:'#D48A00'}
+  ],
+  tags: [
+    {id:'t-esport-1', x:122, y:420, label:'电竞桌'},
+    {id:'t-esport-2', x:122, y:462, label:'显示器/主机'},
+    {id:'t-esport-3', x:122, y:504, label:'灯带'},
+    {id:'t-esport-4', x:122, y:546, label:'洞洞板/展示墙'},
+    {id:'t-wash-1', x:586, y:420, label:'洗护池'},
+    {id:'t-wash-2', x:586, y:462, label:'美容台'},
+    {id:'t-wash-3', x:586, y:504, label:'烘干箱'},
+    {id:'t-wash-4', x:586, y:546, label:'吹水机/排风'},
+    {id:'t-display-1', x:360, y:230, label:'货架/展示墙'},
+    {id:'t-display-2', x:500, y:230, label:'展示岛台'},
+    {id:'t-display-3', x:360, y:302, label:'活动/拍照点'},
+    {id:'t-display-4', x:560, y:302, label:'收银/等候'},
+    {id:'t-shelf-1', x:326, y:430, label:'新品/爆品'},
+    {id:'t-shelf-2', x:430, y:430, label:'联名/主题陈列'}
+  ]
+};
 
-// ===== 初始化 =====
-function init(){
-  const img = document.getElementById('baseMap');
-  img.onload = function(){
-    baseW = img.naturalWidth;
-    baseH = img.naturalHeight;
-    // 默认加载上次保存的布局
-    const saved = localStorage.getItem('zhaiyu-layout-v2');
-    if(saved) loadData(JSON.parse(saved));
-    else initDefaultZones();
-  };
-  if(img.complete){
-    baseW = img.naturalWidth;
-    baseH = img.naturalHeight;
-    const saved = localStorage.getItem('zhaiyu-layout-v2');
-    if(saved) loadData(JSON.parse(saved));
-    else initDefaultZones();
+function clone(obj){ return JSON.parse(JSON.stringify(obj)); }
+
+function load(){
+  try{
+    const saved = localStorage.getItem(STORAGE_KEY);
+    data = saved ? JSON.parse(saved) : clone(defaultData);
+  }catch(e){
+    data = clone(defaultData);
   }
-  buildColorPalette();
+  render();
 }
 
-// 默认区域（位置需要用户自己拖拽调整）
-function initDefaultZones(){
-  const w = baseW, h = baseH;
-  zones = [
-    {id:'z-neighbor', x:w*0.01, y:h*0.01, w:w*0.26, h:h*0.32, label:'邻铺（非本店）', desc:'', color:7, icon:'🚫'},
-    {id:'z2', x:w*0.02, y:h*0.68, w:w*0.22, h:h*0.27, label:'电竞样板间', desc:'桌搭·灯光', color:1, icon:'🎮'},
-    {id:'z1', x:w*0.50, y:h*0.65, w:w*0.38, h:h*0.28, label:'洗护区', desc:'湿区·排水', color:0, icon:'🛁'},
-    {id:'z3', x:w*0.38, y:h*0.10, w:w*0.50, h:h*0.40, label:'活动展示区', desc:'试坐·好物·体验', color:2, icon:'🏪'},
-    {id:'z4', x:w*0.72, y:h*0.68, w:w*0.18, h:h*0.20, label:'寄养区', desc:'笼位×4', color:3, icon:'🐾'},
-    {id:'z5', x:w*0.08, y:h*0.38, w:w*0.20, h:h*0.22, label:'走廊通道', desc:'', color:7, icon:'🚶'},
-  ];
-  equips = [
-    {id:'e1', x:w*0.53, y:h*0.72, label:'洗护池×2', type:'equip'},
-    {id:'e2', x:w*0.67, y:h*0.72, label:'美容台', type:'equip'},
-    {id:'e3', x:w*0.55, y:h*0.82, label:'烘干箱', type:'equip'},
-    {id:'e4', x:w*0.68, y:h*0.82, label:'吹水机', type:'equip'},
-    {id:'e5', x:w*0.76, y:h*0.78, label:'笼位×4', type:'equip'},
-    {id:'e6', x:w*0.60, y:h*0.88, label:'摄像头×2', type:'equip'},
-    {id:'e7', x:w*0.04, y:h*0.75, label:'展示桌+主机', type:'equip'},
-    {id:'e8', x:w*0.14, y:h*0.75, label:'洞洞板好物墙', type:'equip'},
-    {id:'e9', x:w*0.05, y:h*0.86, label:'幕布/投影', type:'equip'},
-    {id:'e10', x:w*0.15, y:h*0.86, label:'氛围灯带', type:'equip'},
-    {id:'e11', x:w*0.42, y:h*0.18, label:'试坐展示', type:'equip'},
-    {id:'e12', x:w*0.55, y:h*0.18, label:'好物展台', type:'equip'},
-    {id:'e13', x:w*0.44, y:h*0.32, label:'活动体验区', type:'equip'},
-    {id:'e14', x:w*0.65, y:h*0.32, label:'货架/展示', type:'equip'},
-  ];
-  renderAll();
-  nextId = 100;
+function saveLayout(){
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  flash('已保存到浏览器。');
 }
 
-// 渲染所有
-function renderAll(){
-  const container = document.getElementById('overlayContainer');
-  container.innerHTML = '';
-  
-  // 渲染区域
-  zones.forEach(z => renderZone(container, z));
-  // 渲染设备
-  equips.forEach(e => renderEquip(container, e));
-  
-  updateSelect();
+function resetLayout(){
+  if(!confirm('恢复默认静态方案？当前编辑会被覆盖。')) return;
+  data = clone(defaultData);
+  selected = null;
+  saveLayout();
+  render();
 }
 
-// 渲染单个区域
-function renderZone(container, z){
-  const c = COLORS[z.color] || COLORS[0];
-  const div = document.createElement('div');
-  div.className = 'zone-card';
-  div.id = z.id;
-  div.style.cssText = `
-    left:${z.x}px;top:${z.y}px;width:${z.w}px;height:${z.h}px;
-    background:${c.bg};border-color:${c.border};
-    color:${c.border};z-index:${z.id === 'z-focus' ? 200 : 10};
-  `;
-  div.innerHTML = `
-    <div class="label">${z.icon||'📦'} ${z.label}</div>
-    ${z.desc ? `<div class="sub-label">${z.desc}</div>` : ''}
-    <div class="drag-handle">⋯ 拖拽</div>
-    <div class="btn-edit" onclick="event.stopPropagation();openEdit('${z.id}','zone')" title="编辑">✎</div>
-  `;
-  
-  // 拖拽
-  div.onmousedown = function(e){
-    if(e.target.closest('.btn-edit')) return;
-    startDrag(e, z.id, 'zone');
-  };
-  div.ondblclick = function(){ openEdit(z.id, 'zone'); };
-  
-  container.appendChild(div);
+function makeEl(name, attrs = {}){
+  const el = document.createElementNS(NS, name);
+  Object.entries(attrs).forEach(([k,v]) => el.setAttribute(k, v));
+  return el;
 }
 
-// 渲染单个设备
-function renderEquip(container, e){
-  const div = document.createElement('div');
-  div.className = 'equip-item';
-  div.id = e.id;
-  div.style.cssText = `left:${e.x}px;top:${e.y}px;`;
-  div.textContent = e.label;
-  
-  div.onmousedown = function(e){ startDrag(e, e.id, 'equip'); };
-  div.ondblclick = function(){ openEdit(e.id, 'equip'); };
-  
-  container.appendChild(div);
+function render(){
+  zoneLayer.innerHTML = '';
+  structureLayer.innerHTML = '';
+  tagLayer.innerHTML = '';
+  selectedLayer.innerHTML = '';
+  data.zones.forEach(item => renderShape(zoneLayer, item, 'zone'));
+  data.structures.forEach(item => renderShape(structureLayer, item, 'structure'));
+  data.tags.forEach(item => renderTag(item));
+  renderSelection();
+  syncForm();
 }
 
-// ===== 拖拽系统 =====
-function startDrag(e, id, type){
-  const snap = document.getElementById('snapToggle').checked;
-  const el = document.getElementById(id);
-  if(!el) return;
-  
-  const wrap = document.getElementById('editorWrap');
-  const wrapRect = wrap.getBoundingClientRect();
-  const img = document.getElementById('baseMap');
-  const imgRect = img.getBoundingClientRect();
-  
-  // 相对底图的比例
-  const scaleX = baseW / imgRect.width;
-  const scaleY = baseH / imgRect.height;
-  
-  const startX = e.clientX;
-  const startY = e.clientY;
-  const origX = parseFloat(el.style.left);
-  const origY = parseFloat(el.style.top);
-  const origW = type==='zone' ? parseFloat(el.style.width) : null;
-  const origH = type==='zone' ? parseFloat(el.style.height) : null;
-  
-  el.classList.add('dragging');
-  
-  function onMove(ev){
-    const dx = (ev.clientX - startX) * scaleX;
-    const dy = (ev.clientY - startY) * scaleY;
-    
-    let newX = origX + dx;
-    let newY = origY + dy;
-    
-    if(snap){
-      newX = Math.round(newX / 10) * 10;
-      newY = Math.round(newY / 10) * 10;
-    }
-    
-    // 边界约束
-    const maxX = type==='zone' ? baseW - (origW||80) : baseW - 60;
-    const maxY = type==='zone' ? baseH - (origH||40) : baseH - 20;
-    newX = Math.max(0, Math.min(maxX, newX));
-    newY = Math.max(0, Math.min(maxY, newY));
-    
-    el.style.left = newX + 'px';
-    el.style.top = newY + 'px';
+function renderShape(layer, item, groupType){
+  const group = makeEl('g', {'data-id': item.id, 'data-type': groupType, class: item.locked ? 'locked' : 'selectable'});
+  let shape;
+  if(item.kind === 'poly'){
+    shape = makeEl('polygon', {points: item.points.map(p => p.join(',')).join(' ')});
+  }else{
+    shape = makeEl('rect', {x:item.x, y:item.y, width:item.w, height:item.h, rx:8});
   }
-  
-  function onUp(){
-    el.classList.remove('dragging');
-    document.removeEventListener('mousemove', onMove);
-    document.removeEventListener('mouseup', onUp);
-    
-    // 更新数据
-    const fx = parseFloat(el.style.left);
-    const fy = parseFloat(el.style.top);
-    const obj = (type==='zone' ? zones : equips).find(o => o.id === id);
-    if(obj){
-      obj.x = fx;
-      obj.y = fy;
-      autosave();
-    }
-  }
-  
-  document.addEventListener('mousemove', onMove);
-  document.addEventListener('mouseup', onUp);
-}
+  shape.setAttribute('fill', item.fill);
+  shape.setAttribute('fill-opacity', groupType === 'structure' && !item.locked ? '.72' : '.56');
+  shape.setAttribute('stroke', item.stroke);
+  shape.setAttribute('stroke-width', item.id.includes('bearing') ? '2' : '3');
+  if(item.dashed) shape.setAttribute('stroke-dasharray', '8 5');
+  group.appendChild(shape);
 
-// ===== 添加区域 =====
-function addZone(){
-  const w = baseW * 0.25;
-  const h = baseH * 0.18;
-  const id = 'z' + (nextId++);
-  zones.push({
-    id, x:50, y:50, w, h,
-    label:'新区域', desc:'', color:0, icon:'📦'
-  });
-  renderAll();
-  autosave();
-}
-
-// ===== 添加设备 =====
-function addEquip(){
-  const id = 'e' + (nextId++);
-  // 随机选一个图标
-  const icon = EQUIP_ICONS[Math.floor(Math.random() * EQUIP_ICONS.length)];
-  equips.push({
-    id, x:50, y:50, label:icon
-  });
-  renderAll();
-  autosave();
-}
-
-// ===== 编辑弹窗 =====
-function openEdit(id, type){
-  editingId = id;
-  editingType = type;
-  const obj = (type==='zone' ? zones : equips).find(o => o.id === id);
-  if(!obj) return;
-  
-  document.getElementById('modalTitle').textContent = type==='zone' ? '编辑区域' : '编辑设备';
-  document.getElementById('editName').value = obj.label || '';
-  document.getElementById('editDesc').value = obj.desc || '';
-  document.getElementById('modalOverlay').style.display = 'flex';
-  
-  if(type==='zone'){
-    document.getElementById('colorPalette').style.display = 'flex';
-    document.querySelectorAll('.color-swatch').forEach((s,i)=>{
-      s.classList.toggle('active', i === obj.color);
+  const center = getCenter(item);
+  if(item.vertical){
+    const text = makeEl('text', {x:center.x, y:item.y + 14, 'text-anchor':'middle', 'font-size':10, 'font-weight':900, fill:'#B83737', 'paint-order':'stroke', stroke:'#fff', 'stroke-width':2});
+    '承重墙不动'.split('').forEach((ch, i) => {
+      const t = makeEl('tspan', {x:center.x, dy:i ? 13 : 0});
+      t.textContent = ch;
+      text.appendChild(t);
     });
-  } else {
-    document.getElementById('colorPalette').style.display = 'none';
+    group.appendChild(text);
+  }else{
+    const labelSize = groupType === 'structure' ? 13 : 22;
+    const descSize = groupType === 'structure' ? 10 : 17;
+    const descDy = groupType === 'structure' ? 16 : 26;
+    const text = makeEl('text', {x:center.x, y:center.y - 6, 'text-anchor':'middle', 'font-size': labelSize, class:'zone-label', fill:item.stroke});
+    const t1 = makeEl('tspan', {x:center.x, dy:0});
+    t1.textContent = item.label;
+    text.appendChild(t1);
+    if(item.desc){
+      const t2 = makeEl('tspan', {x:center.x, dy:descDy, 'font-size': descSize});
+      t2.textContent = item.desc;
+      text.appendChild(t2);
+    }
+    group.appendChild(text);
   }
+  bindShapeEvents(group, item, groupType);
+  layer.appendChild(group);
 }
 
-function closeModal(){
-  document.getElementById('modalOverlay').style.display = 'none';
-  editingId = null;
+function renderTag(item){
+  const width = Math.max(44, item.label.length * 13 + 18);
+  const height = 24;
+  const group = makeEl('g', {'data-id': item.id, 'data-type':'tag', class: item.locked ? 'locked' : 'selectable'});
+  group.appendChild(makeEl('rect', {x:item.x, y:item.y, width, height, rx:6, fill:'#fff', 'fill-opacity':.92, stroke:'#8A8178', 'stroke-width':1}));
+  const text = makeEl('text', {x:item.x + width/2, y:item.y + 16, 'text-anchor':'middle', class:'tag-label'});
+  text.textContent = item.label;
+  group.appendChild(text);
+  bindShapeEvents(group, item, 'tag');
+  tagLayer.appendChild(group);
 }
 
-function saveEdit(){
-  const name = document.getElementById('editName').value.trim();
-  const desc = document.getElementById('editDesc').value.trim();
-  const obj = (editingType==='zone' ? zones : equips).find(o => o.id === editingId);
-  if(!obj) return;
-  
-  obj.label = name;
-  obj.desc = desc;
-  
-  // 如果是区域，更新颜色
-  if(editingType==='zone'){
-    const active = document.querySelector('.color-swatch.active');
-    if(active) obj.color = parseInt(active.dataset.idx);
+function bindShapeEvents(group, item, type){
+  group.addEventListener('pointerdown', evt => {
+    evt.preventDefault();
+    selectItem(type, item.id);
+    if(item.locked) return;
+    const p = pointer(evt);
+    drag = {type, id:item.id, start:p, original:clone(item)};
+    svg.setPointerCapture(evt.pointerId);
+  });
+  group.addEventListener('contextmenu', evt => {
+    evt.preventDefault();
+    selectItem(type, item.id);
+    if(item.locked){
+      alert('锁定结构不能删除。');
+      return;
+    }
+    if(confirm(`删除「${item.label || '未命名组件'}」？`)) deleteSelected();
+  });
+}
+
+svg.addEventListener('pointermove', evt => {
+  if(!drag) return;
+  const p = pointer(evt);
+  const dx = p.x - drag.start.x;
+  const dy = p.y - drag.start.y;
+  const item = findItem(drag.type, drag.id);
+  if(!item || item.locked) return;
+  if(item.kind === 'poly'){
+    item.points = drag.original.points.map(pt => [round(pt[0] + dx), round(pt[1] + dy)]);
+  }else{
+    item.x = clamp(round(drag.original.x + dx), 0, 800 - (item.w || 20));
+    item.y = clamp(round(drag.original.y + dy), 0, 800 - (item.h || 20));
   }
-  
-  closeModal();
-  renderAll();
-  autosave();
+  if(drag.type === 'tag'){
+    item.x = clamp(round(drag.original.x + dx), 0, 760);
+    item.y = clamp(round(drag.original.y + dy), 0, 776);
+  }
+  render();
+});
+
+svg.addEventListener('pointerup', () => {
+  if(drag){
+    drag = null;
+    saveSilent();
+  }
+});
+
+function pointer(evt){
+  const pt = svg.createSVGPoint();
+  pt.x = evt.clientX;
+  pt.y = evt.clientY;
+  const result = pt.matrixTransform(svg.getScreenCTM().inverse());
+  return {x: result.x, y: result.y};
 }
 
-function buildColorPalette(){
-  const container = document.getElementById('colorPalette');
-  COLORS.forEach((c,i)=>{
-    const swatch = document.createElement('div');
-    swatch.className = 'color-swatch';
-    swatch.style.background = c.bg;
-    swatch.style.borderColor = c.border;
-    swatch.dataset.idx = i;
-    swatch.title = c.name;
-    swatch.onclick = function(){
-      document.querySelectorAll('.color-swatch').forEach(s=>s.classList.remove('active'));
-      this.classList.add('active');
-    };
-    container.appendChild(swatch);
-  });
+function getCenter(item){
+  if(item.kind === 'poly'){
+    const xs = item.points.map(p => p[0]);
+    const ys = item.points.map(p => p[1]);
+    return {x:(Math.min(...xs)+Math.max(...xs))/2, y:(Math.min(...ys)+Math.max(...ys))/2};
+  }
+  return {x:item.x + item.w/2, y:item.y + item.h/2};
 }
 
-// ===== 图层选择 =====
-function updateSelect(){
-  const sel = document.getElementById('layerSelect');
-  sel.innerHTML = '<option value="all">全部图层</option>';
-  zones.forEach(z => {
-    sel.innerHTML += `<option value="${z.id}">📦 ${z.label}</option>`;
-  });
-  equips.forEach(e => {
-    sel.innerHTML += `<option value="${e.id}">🔧 ${e.label}</option>`;
-  });
+function selectItem(type, id){
+  selected = {type, id};
+  render();
 }
 
-function focusLayer(id){
-  if(id === 'all'){
-    document.querySelectorAll('.zone-card,.equip-item').forEach(el => el.style.display = '');
+function findItem(type, id){
+  if(type === 'zone') return data.zones.find(i => i.id === id);
+  if(type === 'structure') return data.structures.find(i => i.id === id);
+  return data.tags.find(i => i.id === id);
+}
+
+function renderSelection(){
+  if(!selected) return;
+  const item = findItem(selected.type, selected.id);
+  if(!item) return;
+  let outline;
+  if(item.kind === 'poly'){
+    outline = makeEl('polygon', {points:item.points.map(p => p.join(',')).join(' '), class:'selected-outline'});
+  }else{
+    outline = makeEl('rect', {x:item.x, y:item.y, width:item.w || Math.max(44, item.label.length * 13 + 18), height:item.h || 24, rx:7, class:'selected-outline'});
+  }
+  selectedLayer.appendChild(outline);
+}
+
+function syncForm(){
+  const hint = document.getElementById('selectionHint');
+  const item = selected ? findItem(selected.type, selected.id) : null;
+  const disabled = !item || item.locked;
+  hint.textContent = item ? (item.locked ? '当前为锁定结构，只能查看，不能修改。' : '可编辑：修改右侧字段或直接拖动画布中的对象。') : '点击图中的区域或标签进行编辑。';
+  document.getElementById('editLabel').value = item?.label || '';
+  document.getElementById('editDesc').value = item?.desc || '';
+  document.getElementById('editX').value = item?.x ?? '';
+  document.getElementById('editY').value = item?.y ?? '';
+  document.getElementById('editW').value = item?.w ?? '';
+  document.getElementById('editH').value = item?.h ?? '';
+  document.getElementById('editColor').value = item?.stroke || '#E89A3C';
+  ['editLabel','editDesc','editX','editY','editW','editH','editColor'].forEach(id => document.getElementById(id).disabled = disabled);
+}
+
+function applyEdit(){
+  if(!selected) return;
+  const item = findItem(selected.type, selected.id);
+  if(!item || item.locked) return;
+  item.label = document.getElementById('editLabel').value.trim() || item.label;
+  item.desc = document.getElementById('editDesc').value.trim();
+  if(item.kind !== 'poly'){
+    const x = Number(document.getElementById('editX').value);
+    const y = Number(document.getElementById('editY').value);
+    const w = Number(document.getElementById('editW').value);
+    const h = Number(document.getElementById('editH').value);
+    if(Number.isFinite(x)) item.x = clamp(x, 0, 790);
+    if(Number.isFinite(y)) item.y = clamp(y, 0, 790);
+    if(Number.isFinite(w) && selected.type !== 'tag') item.w = clamp(w, 12, 800 - item.x);
+    if(Number.isFinite(h) && selected.type !== 'tag') item.h = clamp(h, 12, 800 - item.y);
+  }
+  item.stroke = document.getElementById('editColor').value;
+  saveSilent();
+  render();
+}
+
+function addComponent(){
+  const type = document.getElementById('componentType').value;
+  const id = `${type}-${Date.now()}`;
+  if(type === 'zone'){
+    data.zones.push({id, kind:'rect', x:340, y:300, w:120, h:90, label:'新功能区', desc:'可编辑面积/说明', fill:'#E8DDFF', stroke:'#7B4DFF'});
+    selected = {type:'zone', id};
+  }else if(type === 'shelf'){
+    data.structures.push({id, kind:'rect', x:360, y:430, w:70, h:90, label:'新货架', desc:'可编辑尺寸', fill:'#FFF4B8', stroke:'#D48A00'});
+    selected = {type:'structure', id};
+  }else{
+    data.tags.push({id, x:360, y:360, label:'新设备'});
+    selected = {type:'tag', id};
+  }
+  saveSilent();
+  render();
+}
+
+function addTag(){
+  const id = 'tag-' + Date.now();
+  data.tags.push({id, x:360, y:360, label:'新设备'});
+  selected = {type:'tag', id};
+  saveSilent();
+  render();
+}
+
+function deleteSelected(){
+  if(!selected) return;
+  const item = findItem(selected.type, selected.id);
+  if(!item || item.locked){
+    alert('锁定结构不能删除。');
     return;
   }
-  document.querySelectorAll('.zone-card,.equip-item').forEach(el => {
-    el.style.display = el.id === id ? '' : 'none';
-  });
+  if(selected.type === 'zone') data.zones = data.zones.filter(i => i.id !== selected.id);
+  if(selected.type === 'structure') data.structures = data.structures.filter(i => i.id !== selected.id);
+  if(selected.type === 'tag') data.tags = data.tags.filter(i => i.id !== selected.id);
+  selected = null;
+  saveSilent();
+  render();
 }
 
-// ===== 导出/保存 =====
-function getData(){
-  return { zones: zones.map(z => ({...z})), equips: equips.map(e => ({...e})), baseW, baseH };
-}
-
-function loadData(data){
-  zones = data.zones || [];
-  equips = data.equips || [];
-  if(data.baseW) baseW = data.baseW;
-  if(data.baseH) baseH = data.baseH;
-  renderAll();
-}
-
-function autosave(){
-  localStorage.setItem('zhaiyu-layout-v2', JSON.stringify(getData()));
-}
+document.addEventListener('keydown', evt => {
+  if(evt.key !== 'Delete' && evt.key !== 'Backspace') return;
+  const active = document.activeElement;
+  if(active && ['INPUT','TEXTAREA','SELECT'].includes(active.tagName)) return;
+  if(!selected) return;
+  evt.preventDefault();
+  deleteSelected();
+});
 
 function exportJSON(){
-  const data = JSON.stringify(getData(), null, 2);
-  const blob = new Blob([data], {type:'application/json'});
+  const blob = new Blob([JSON.stringify(data, null, 2)], {type:'application/json'});
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
-  a.download = 'zhaiyu-layout.json';
+  a.download = 'zhaiyu-layout-svg.json';
   a.click();
+  URL.revokeObjectURL(a.href);
 }
 
-function importJSON(event){
-  const file = event.target.files[0];
+importFile.addEventListener('change', evt => {
+  const file = evt.target.files[0];
   if(!file) return;
   const reader = new FileReader();
-  reader.onload = function(e){
-    try {
-      loadData(JSON.parse(e.target.result));
-      autosave();
-    } catch(err){
-      alert('载入失败：' + err.message);
+  reader.onload = () => {
+    try{
+      data = JSON.parse(reader.result);
+      selected = null;
+      saveSilent();
+      render();
+    }catch(e){
+      alert('导入失败：' + e.message);
     }
   };
   reader.readAsText(file);
-  event.target.value = '';
-}
-
-function exportPNG(){
-  const wrap = document.getElementById('editorWrap');
-  // 使用 HTML2Canvas 或简单截图
-  alert('请截图：按 Windows+Shift+S 或使用系统截图工具框选编辑器区域');
-}
-
-function saveToBP(){
-  // 导出布局到 localStorage，让 bp.html 可以读取
-  autosave();
-  alert('布局已保存！刷新 BP 页面即可在门店布局 tab 看到。\n提示：需要手动更新 assets/floor-plan-zones.svg');
-}
-
-// ===== 启动 =====
-window.onload = init;
-
-// 点击弹窗外关闭
-document.getElementById('modalOverlay').onclick = function(e){
-  if(e.target === this) closeModal();
-};
-
-// 键盘
-document.addEventListener('keydown', function(e){
-  if(e.key === 'Escape') closeModal();
-  if(e.key === 'Delete' || e.key === 'Backspace'){
-    if(document.activeElement && document.activeElement.tagName === 'INPUT') return;
-    // 选中的元素删除
-    if(editingId){
-      zones = zones.filter(z => z.id !== editingId);
-      equips = equips.filter(e => e.id !== editingId);
-      renderAll();
-      autosave();
-      editingId = null;
-    }
-  }
+  evt.target.value = '';
 });
 
-// 右键删除菜单
-document.addEventListener('contextmenu', function(e){
-  const el = e.target.closest('.zone-card,.equip-item');
-  if(!el) return;
-  e.preventDefault();
-  const id = el.id;
-  const name = el.querySelector('.label')?.textContent || el.textContent;
-  if(confirm(`删除「${name}」？`)){
-    zones = zones.filter(z => z.id !== id);
-    equips = equips.filter(e => e.id !== id);
-    renderAll();
-    autosave();
-  }
-});
+function saveSilent(){
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+}
+
+function flash(text){
+  const hint = document.getElementById('selectionHint');
+  const old = hint.textContent;
+  hint.textContent = text;
+  setTimeout(() => { hint.textContent = old; }, 1200);
+}
+
+function clamp(v, min, max){ return Math.max(min, Math.min(max, v)); }
+function round(v){ return Math.round(v); }
+
+load();
 </script>
 </body>
 </html>
