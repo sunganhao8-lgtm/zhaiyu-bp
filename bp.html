@@ -156,9 +156,9 @@ body{
 
 /* 主体区 - 2D 扁平纯色白卡 */
 main{padding:28px 36px 80px;max-width:1440px;margin:0 auto}
-.tab-panel{display:none;animation:fadeIn 0.35s ease;position:relative}
-.tab-panel.active{display:block}
-.tab-panel{background:#FFFFFF;border:1px solid #EFE7DC;border-radius:20px;padding:32px;margin-top:16px;box-shadow:0 4px 16px rgba(92,61,46,0.05);}
+.bp-panel{display:none;animation:fadeIn 0.35s ease;position:relative}
+.bp-panel.active{display:block}
+.bp-panel{background:#FFFFFF;border:1px solid #EFE7DC;border-radius:20px;padding:32px;margin-top:16px;box-shadow:0 4px 16px rgba(92,61,46,0.05);}
 @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 
 /* 通用组件 - 深色玻璃主题 */
@@ -207,12 +207,12 @@ strong{color:var(--z-brown)}
 .feature-desc{font-size:13px;color:var(--z-brown-soft)}
 
 /* 表格 - 2D 扁平 */
-.z-table{width:100%;border-collapse:separate;border-spacing:0;margin:14px 0;font-size:14px;border-radius:12px;overflow:hidden;border:1px solid #EFE7DC}
-.z-table th{background:var(--z-orange-deep);color:#FFFFFF;padding:12px 14px;text-align:left;font-weight:700;border-bottom:2px solid var(--z-orange-darker);}
-.z-table td{background:#FFFFFF;padding:11px 14px;border-bottom:1px solid #F2EBE8;color:var(--z-brown);}
-.z-table tr:nth-child(even) td{background:#FAF6F0}
-.z-table tr:hover td{background:#FFF4E1}
-.z-table tr:last-child td{border-bottom:none}
+.zdata-table{width:100%;border-collapse:separate;border-spacing:0;margin:14px 0;font-size:14px;border-radius:12px;overflow:hidden;border:1px solid #EFE7DC}
+.zdata-table th{background:var(--z-orange-deep);color:#FFFFFF;padding:12px 14px;text-align:left;font-weight:700;border-bottom:2px solid var(--z-orange-darker);}
+.zdata-table td{background:#FFFFFF;padding:11px 14px;border-bottom:1px solid #F2EBE8;color:var(--z-brown);}
+.zdata-table tr:nth-child(even) td{background:#FAF6F0}
+.zdata-table tr:hover td{background:#FFF4E1}
+.zdata-table tr:last-child td{border-bottom:none}
 
 /* 关键数字 */
 .z-number{font-size:28px;font-weight:900;color:var(--z-orange-deep);display:inline-block;}
@@ -573,7 +573,7 @@ strong{color:var(--z-brown)}
 /* 打印 */
 @media print{
   .tab-bar,.brand-bar,.zhaimi-watermark,.slide-nav,.slide-thumbs{display:none}
-  .tab-panel{display:block !important;page-break-after:always}
+  .bp-panel{display:block !important;page-break-after:always}
 }
 
 /* 全屏查看 Modal - 2D 扁平 */
@@ -832,7 +832,7 @@ strong{color:var(--z-brown)}
 <main>
 
 <!-- ================== 标签1: 宅域·品牌叙事 ================== -->
-<section class="tab-panel active" id="tab-zhaiyu">
+<section class="bp-panel tab-panel active" id="tab-zhaiyu">
   <div class="bp-title-block" style="text-align: center; padding: 60px 20px 40px; background: linear-gradient(135deg, #fef9f3 0%, #fff5e8 100%); border-bottom: 2px solid #f4b860;">
     <h1 style="font-size: clamp(28px, 7vw, 56px); font-weight: 900; color: #5c3d2e; margin: 0 0 16px; letter-spacing: 2px; white-space: nowrap;">宅域・ZHAIYU 商业计划书</h1>
     <p style="font-size: 18px; color: #8b6f47; margin: 0 0 24px; font-weight: 500;">服务破冰 · 客户发言档案 · 家庭需求产品化</p>
@@ -1042,7 +1042,7 @@ strong{color:var(--z-brown)}
 </section>
 
 <!-- ================== 标签2: 投资人问答 ================== -->
-<section class="tab-panel" id="tab-investor">
+<section class="bp-panel tab-panel" id="tab-investor">
   <h1 class="z-title">💬 投资人问答 · 实体信任锚点</h1>
   <p class="z-lead">把“投资人最常问的 7 个关键问题”和“真实投资人对话提炼”合并成一套统一回答：<strong>先做实体信任锚点，再用内容放大，最后用客户档案和商品方案赚钱。</strong></p>
 
@@ -1092,7 +1092,7 @@ strong{color:var(--z-brown)}
 </section>
 
 <!-- ================== 标签2: 文档 ================== -->
-<section class="tab-panel" id="tab-doc">
+<section class="bp-panel tab-panel" id="tab-doc">
   <h1 class="z-title">宅咪·临港 LIN 舍 · 上门洗护商业计划书</h1>
   <p class="z-lead">社区精细化洗护 + 寄养 + 优质零售 · 三位一体的综合宠物生活馆 · 浦东新区泥城镇五岭路 × 咏梅路交叉口西 120 米</p>
 
@@ -1190,7 +1190,7 @@ strong{color:var(--z-brown)}
       <li><strong>业态关键词</strong>：精细化洗护 + 综合服务（洗护/寄养/零售一站式）</li>
     </ul>
     <h3 class="z-h3">2.2 业态定稿</h3>
-    <table class="z-table">
+    <table class="zdata-table">
       <thead><tr><th>业务模块</th><th>占比目标</th><th>毛利率</th><th>角色</th></tr></thead>
       <tbody>
         <tr><td>洗护美容</td><td>55%</td><td>65%</td><td>引流与现金流核心</td></tr>
@@ -1239,7 +1239,7 @@ strong{color:var(--z-brown)}
   <div class="section-card" id="ch4">
     <h2 class="z-h2">第四章 · 目标客群精准画像</h2>
     <h3 class="z-h3">4.1 核心客群基本特征</h3>
-    <table class="z-table">
+    <table class="zdata-table">
       <tbody>
         <tr><td><strong>年龄</strong></td><td>25-40 岁，以 28-35 岁为主力</td></tr>
         <tr><td><strong>职业</strong></td><td>双职工上班族、教师、医务、互联网白领</td></tr>
@@ -1262,7 +1262,7 @@ strong{color:var(--z-brown)}
   <div class="section-card" id="ch5">
     <h2 class="z-h2">第五章 · 竞品分析</h2>
     <h3 class="z-h3">5.1 主要竞品类型</h3>
-    <table class="z-table">
+    <table class="zdata-table">
       <thead><tr><th>类型</th><th>优势</th><th>劣势</th></tr></thead>
       <tbody>
         <tr><td>周边夫妻档（直接）</td><td>距离近、价格低</td><td>卫生差、共享毛巾、推销严重</td></tr>
@@ -1285,7 +1285,7 @@ strong{color:var(--z-brown)}
   <div class="section-card" id="ch6">
     <h2 class="z-h2">第六章 · 产品与服务体系</h2>
     <h3 class="z-h3">6.1 洗护美容（核心引流）<span class="tag-hypothesis">⏳ 客单价对标周边门店，待实际定价</span></h3>
-    <table class="z-table">
+    <table class="zdata-table">
       <thead><tr><th>服务项</th><th>内容</th><th>建议零售价</th></tr></thead>
       <tbody>
         <tr><td>小型犬基础洗澡</td><td>洗毛+护毛+吹干+耳道+指甲+肛门腺</td><td>88-128 元 <span class="tag-hypothesis">⏳ 待定价</span></td></tr>
@@ -1346,7 +1346,7 @@ strong{color:var(--z-brown)}
       <li>学校家委会专属福利 + 社区活动赞助</li>
     </ul>
     <h3 class="z-h3">8.3 线上内容运营</h3>
-    <table class="z-table">
+    <table class="zdata-table">
       <thead><tr><th>平台</th><th>定位</th><th>更新频率</th></tr></thead>
       <tbody>
         <tr><td>小红书</td><td>"上海临港最干净的社区宠物店"</td><td>每周 3-5 篇</td></tr>
@@ -1355,7 +1355,7 @@ strong{color:var(--z-brown)}
       </tbody>
     </table>
     <h3 class="z-h3">8.4 会员等级体系</h3>
-    <table class="z-table">
+    <table class="zdata-table">
       <thead><tr><th>等级</th><th>累计消费</th><th>权益</th></tr></thead>
       <tbody>
         <tr><td>银卡</td><td>0-999 元</td><td>基础积分、节日问候</td></tr>
@@ -1369,7 +1369,7 @@ strong{color:var(--z-brown)}
   <div class="section-card" id="ch9">
     <h2 class="z-h2">第九章 · 财务预算与盈利测算</h2>
     <h3 class="z-h3">9.1 启动资金明细（合计 <strong>19.73 万元</strong> · 含原店承接转让费）</h3>
-            <table class="z-table">
+            <table class="zdata-table">
               <thead><tr><th>#</th><th>项目</th><th>金额(万)</th><th>占比</th><th>备注</th></tr></thead>
               <tbody>
                 <tr style="background:rgba(244,184,96,.18)"><td>1</td><td><strong>原店承接转让费</strong></td><td><strong>4.00</strong></td><td><strong>20.0%</strong></td><td><strong>原"有烟有火小龙虾"商铺腾退，承接含部分装修与设备</strong></td></tr>
@@ -1392,14 +1392,14 @@ strong{color:var(--z-brown)}
         <div class="bar-row"><span class="bar-label">水电气</span><div class="bar-track"><div class="bar-fill" style="width:12%">800</div></div></div>
         <div class="bar-row"><span class="bar-label">基础人工</span><div class="bar-track"><div class="bar-fill" style="width:23%">1500</div></div></div>
         <div class="bar-row"><span class="bar-label">杂项</span><div class="bar-track"><div class="bar-fill" style="width:14%">880</div></div></div>
-        <p style="margin-top:8px;font-size:0.85em;color:var(--z-gray-600)"><em>说明：爬坡期月固定成本按约 6416 元压力测试口径（租金 3233 + 水电气 800 + 基础人工 1500 + 杂项 880 = 6413）；老板无底薪，核心团队纯分红；含 1 名全职核心员工基础人工。租金较原 8000 元/月降 4767 元，主要因合同 1.8 元/天/㎡ × 59.87㎡ 新口径落地。</em></p>
+        <p style="margin-top:8px;font-size:0.85em;color:var(--z-gray-600)"><em>说明：爬坡期月固定成本按约 6416 元压力测试口径（租金 3233 + 水电气 800 + 基础人工 1500 + 杂项 880，另含约 3 元尾差/四舍五入）；老板无底薪，核心团队纯分红；含 1 名全职核心员工基础人工。租金较旧高租金口径下降约 4767 元，主要因合同 1.8 元/天/㎡ × 59.87㎡ 新口径落地。</em></p>
     <h3 class="z-h3">9.5 利润测算（经营贡献口径）<span class="tag-hypothesis">⏳ 全部为基于保守假设的预测</span></h3>
-    <table class="z-table">
+    <table class="zdata-table">
       <thead><tr><th>阶段</th><th>月营收</th><th>综合毛利</th><th>月固定</th><th>月净利</th><th>说明</th></tr></thead>
       <tbody>
         <tr><td>稳态初期</td><td>23400</td><td>74%</td><td>12416</td><td style="color:var(--z-green);font-weight:900">+4974</td><td>租金大幅下降，现金流改善，由负转正</td></tr>
         <tr><td>6 个月</td><td>25000</td><td>72%</td><td>12416</td><td style="color:var(--z-green);font-weight:900">+5584</td><td>样板间开始转化，月营收缓增</td></tr>
-        <tr><td>12 个月</td><td>28000</td><td>75%</td><td>12416</td><td style="color:var(--z-green);font-weight:900">+8584</td><td>客群稳定，毛利结构改善</td></tr>
+        <tr><td>12 个月</td><td>2.8 万</td><td>75%</td><td>12416</td><td style="color:var(--z-green);font-weight:900">+8584</td><td>客群稳定，毛利结构改善</td></tr>
         <tr><td>24 个月</td><td>35000</td><td>69%</td><td>14166<span class="tag-hypothesis">⏳ 含薪资微增</span></td><td style="color:var(--z-green);font-weight:900">+10084</td><td>客户档案驱动产品化，毛利与营收双升</td></tr>
       </tbody>
     </table>
@@ -1431,13 +1431,13 @@ strong{color:var(--z-brown)}
     <h3 class="z-h3">第一年（2026.07-2027.06）：立足社区、跑通模型</h3>
     <ul class="z-list tick">
       <li>第 1 个月正式开业，3 月服务 400+ 单，到店 800+ 人次</li>
-      <li>6 月月营收接近 25000 元，12 月月营收接近 28000 元</li>
+      <li>6 月月营收接近 25000 元，12 月月营收接近 2.8 万元</li>
       <li>建立稳定会员体系（黑卡 10+、金卡 50+、银卡 200+）</li>
       <li>小红书粉 2000+，抖音粉 1000+，微信群 300+</li>
     </ul>
     <h3 class="z-h3">第二年（2027.07-2028.06）：深耕社区、利润稳定</h3>
     <ul class="z-list tick">
-      <li>月营收稳定 28000-35000 元，月净利 1000-6000 元</li>
+      <li>月营收稳定 2.8-3.5 万元，月净利 1000-6000 元</li>
       <li>客户复购率 40%+，启动第 1 家分店选址评估</li>
     </ul>
     <h3 class="z-h3">第三年（2028.07-2029.06）：模型输出、规模扩张</h3>
@@ -1474,7 +1474,7 @@ strong{color:var(--z-brown)}
 </section>
 
 <!-- ================== 标签2: 演示（HTML 幻灯片） ================== -->
-<section class="tab-panel" id="tab-slide">
+<section class="bp-panel tab-panel" id="tab-slide">
   <h1 class="z-title">演示 · 宅域·品牌叙事幻灯片</h1>
   <p class="z-lead">键盘 ← → 切换 · 顶部/底部导航 · 服务破冰 · 客户发言档案 · 家庭需求产品化路径</p>
 
@@ -1494,7 +1494,7 @@ strong{color:var(--z-brown)}
 </section>
 
 <!-- ================== 标签3: 门店布局（含可编辑编辑器，合并自原"编辑布局"标签） ================== -->
-<section class="tab-panel" id="tab-layout">
+<section class="bp-panel tab-panel" id="tab-layout">
   <h1 class="z-title">门店布局 · 59.67㎡ 实测平面图 · 功能分区</h1>
   <p class="z-lead">承重墙保留 / 底部三等分房间 / 中下爆品货架 / 右下洗护 / 可拖拽编辑版本</p>
 
@@ -1521,7 +1521,7 @@ strong{color:var(--z-brown)}
     <p style="color:var(--z-brown-soft);line-height:1.8;margin:0 0 14px">
       以下尺寸按当前平面方案先给参考口径，最终以现场复尺、设备供应商型号和施工图为准。当前版本已把原寄养笼位改为进门可见的爆品货架，门洞约 1500mm 位置只做通道留空。
     </p>
-    <table class="z-table">
+    <table class="zdata-table">
       <thead>
         <tr><th>区域</th><th>位置/面积</th><th>设备与参考尺寸</th><th>关键要求</th></tr>
       </thead>
@@ -1556,7 +1556,7 @@ strong{color:var(--z-brown)}
 </section>
 
 <!-- ================== 标签5: 选址分析 ================== -->
-<section class="tab-panel" id="tab-map">
+<section class="bp-panel tab-panel" id="tab-map">
   <h1 class="z-title">选址分析 · 浦东新区泥城镇</h1>
   <p class="z-lead">1km 覆盖 8 个小区 / 步行到万达 16 分钟 / 3km 辐射 6.8 万人</p>
 
@@ -1575,7 +1575,7 @@ strong{color:var(--z-brown)}
 </section>
 
 <!-- ================== 标签2: 宅电·上门搭建电竞房 BP ================== -->
-<section class="tab-panel" id="tab-zhaidian">
+<section class="bp-panel tab-panel" id="tab-zhaidian">
   <h1 class="z-title">宅电·上门搭建电竞房 · 商业计划书</h1>
   <p class="z-lead">租户友好型氛围升级服务 · 极低门槛 · 30 分钟 300 元搞定 · 临港新片区</p>
 
@@ -1644,7 +1644,7 @@ strong{color:var(--z-brown)}
     <ul class="z-list tick">
       <li><strong>启动资金合计 <span class="z-number">1.2</span> 万元</strong>：3D 打印机 1999 + 工具 500 + 样板库存 2500 + 内容营销 2000 + 品牌 1500 + 3 月车马费 1500 + 应急 2000。</li>
       <li><strong>单笔客单价 <span class="z-number">450</span> 元</strong>（氛围包主力）：月销 20-25 单，单笔毛利 280 元（毛利率 62%）。</li>
-      <li><strong>月净利保守 <span class="z-number">6000-8000</span> 元</strong>：固定成本 800/月，盈亏平衡仅需 3-4 单/月。</li>
+      <li><strong>月净利保守 <span class="z-number">6000-8千</span> 元</strong>：固定成本 800/月，盈亏平衡仅需 3-4 单/月。</li>
       <li><strong>回本周期 <span class="z-number">2</span> 个月</span></strong>：M1 即微利，6 个月内累计净利 3-4 万。</li>
       <li><strong>单店模型验证后</strong>，<strong>0 店面成本</strong>即可复制到临港其他小区，成本仅增加 3000 元样板点。</li>
     </ul>
@@ -1735,8 +1735,8 @@ strong{color:var(--z-brown)}
   <div class="section-card" id="zd-ch5">
     <h2 class="z-h2">第五章 · 竞品分析</h2>
     <h3 class="z-h3">5.1 直接竞品</h3>
-    <div class="z-table-wrap">
-      <table class="z-table">
+    <div class="zdata-table-wrap">
+      <table class="zdata-table">
         <thead><tr><th>竞品</th><th>价格</th><th>特点</th><th>我们的优势</th></tr></thead>
         <tbody>
           <tr><td>京东上门装机</td><td>288-688 元</td><td>标准化 PC 装机，无电竞主题设计</td><td>电竞主题 + 设计 + 周边</td></tr>
@@ -1767,8 +1767,8 @@ strong{color:var(--z-brown)}
   <div class="section-card" id="zd-ch6">
     <h2 class="z-h2">第六章 · 产品与服务</h2>
     <h3 class="z-h3">6.1 核心套餐</h3>
-    <div class="z-table-wrap">
-      <table class="z-table">
+    <div class="zdata-table-wrap">
+      <table class="zdata-table">
         <thead><tr><th>套餐</th><th>售价</th><th>内容</th><th>材料成本</th><th>单笔毛利</th><th>目标客户</th></tr></thead>
         <tbody>
           <tr><td><strong>氛围包（主推）</strong></td><td>299 元</td><td>灯带 × 2 + 理线器 + 桌面收纳 + 安装</td><td>90 元</td><td><strong>129 元</strong></td><td>大学生 / 刚工作</td></tr>
@@ -1788,8 +1788,8 @@ strong{color:var(--z-brown)}
     </ul>
 
     <h3 class="z-h3">6.3 周边定价策略</h3>
-    <div class="z-table-wrap">
-      <table class="z-table">
+    <div class="zdata-table-wrap">
+      <table class="zdata-table">
         <thead><tr><th>品类</th><th>京东/天猫价</th><th>我们售价</th><th>毛利率</th></tr></thead>
         <tbody>
           <tr><td>氛围灯带 5M</td><td>89-159 元</td><td>99-179 元</td><td>30-50%</td></tr>
@@ -1888,8 +1888,8 @@ strong{color:var(--z-brown)}
   <div class="section-card" id="zd-ch9">
     <h2 class="z-h2">第九章 · 财务测算</h2>
     <h3 class="z-h3">9.1 启动资金（投资人审预算）</h3>
-    <div class="z-table-wrap">
-      <table class="z-table">
+    <div class="zdata-table-wrap">
+      <table class="zdata-table">
         <thead><tr><th>项目</th><th>金额（元）</th><th>必要性</th></tr></thead>
         <tbody>
           <tr><td>3D 打印机（拓竹 A1 mini）</td><td>1999</td><td>核心引流款</td></tr>
@@ -1916,8 +1916,8 @@ strong{color:var(--z-brown)}
     <p style="margin-top:8px">注：实际毛利率看产品组合。灯带毛利 30-50%、3D 打印件毛利 60-80%、人工 0 边际成本。<strong>加权平均毛利率 60-65%</strong>。</p>
 
     <h3 class="z-h3">9.3 12 个月经营贡献预测</h3>
-    <div class="z-table-wrap">
-      <table class="z-table">
+    <div class="zdata-table-wrap">
+      <table class="zdata-table">
         <thead><tr><th>月份</th><th>单量</th><th>客单价</th><th>月收入</th><th>月净利</th><th>备注</th></tr></thead>
         <tbody>
           <tr><td>M1</td><td>5</td><td>350</td><td>1750</td><td>200</td><td>试运营，只接熟客</td></tr>
@@ -1926,7 +1926,7 @@ strong{color:var(--z-brown)}
           <tr><td>M4</td><td>15</td><td>420</td><td>6300</td><td>2700</td><td>首批口碑客户</td></tr>
           <tr><td>M5</td><td>18</td><td>450</td><td>8100</td><td>3700</td><td>引入第一位兼职</td></tr>
           <tr><td>M6</td><td>20</td><td>480</td><td>9600</td><td>4500</td><td><strong>稳定期</strong></td></tr>
-          <tr><td>M7-12</td><td>22-30</td><td>500</td><td>11000-15000</td><td>5500-8000</td><td>旺季 + 转介绍</td></tr>
+          <tr><td>M7-12</td><td>22-30</td><td>500</td><td>11000-15000</td><td>5500-8千</td><td>旺季 + 转介绍</td></tr>
         </tbody>
       </table>
     </div>
@@ -2000,8 +2000,8 @@ strong{color:var(--z-brown)}
     </ul>
 
     <h3 class="z-h3">11.4 12 个月总结（投资人视角）</h3>
-    <div class="z-table-wrap">
-      <table class="z-table">
+    <div class="zdata-table-wrap">
+      <table class="zdata-table">
         <thead><tr><th>指标</th><th>数值</th></tr></thead>
         <tbody>
           <tr><td>启动资金</td><td>1.2 万元</td></tr>
@@ -2022,7 +2022,7 @@ strong{color:var(--z-brown)}
 </section>
 
 <!-- ================== 标签3: 双品牌协同 ================== -->
-<section class="tab-panel" id="tab-synergy">
+<section class="bp-panel tab-panel" id="tab-synergy">
   <h1 class="z-title">宅咪 × 宅电 · 双品牌协同</h1>
   <p class="z-lead">一店两牌 · 客户发言档案共享 · 0 重复获客成本 · 投资人视角的需求资产</p>
 
@@ -2054,8 +2054,8 @@ strong{color:var(--z-brown)}
   <div class="section-card highlight">
     <h2 class="z-h2">第一章 · 协同模型：为什么 1+1>2？</h2>
     <h3 class="z-h3">1.1 客流模型对比</h3>
-    <div class="z-table-wrap">
-      <table class="z-table">
+    <div class="zdata-table-wrap">
+      <table class="zdata-table">
         <thead><tr><th>维度</th><th>单品牌（宅咪）</th><th>双品牌（宅咪+宅电）</th></tr></thead>
         <tbody>
           <tr><td>店面成本</td><td>1.2-1.5 万 / 月</td><td>1.2-1.5 万 / 月（共享）</td></tr>
@@ -2139,8 +2139,8 @@ strong{color:var(--z-brown)}
     </ul>
 
     <h3 class="z-h3">4.3 投资人看重的协同指标</h3>
-    <div class="z-table-wrap">
-      <table class="z-table">
+    <div class="zdata-table-wrap">
+      <table class="zdata-table">
         <thead><tr><th>指标</th><th>目标值</th><th>说明</th></tr></thead>
         <tbody>
           <tr><td>宅咪客户 → 宅电转化率</td><td>15-25%</td><td>6 个月内达成</td></tr>
@@ -2159,7 +2159,7 @@ strong{color:var(--z-brown)}
 </section>
 
 <!-- ================== 标签: 宅域·路线图 ================== -->
-<section class="tab-panel" id="tab-roadmap">
+<section class="bp-panel tab-panel" id="tab-roadmap">
   <h1 class="z-title">🗺️ 宅域·ZHAIYU · 36 月平台路线图</h1>
   <p class="z-lead">从双板块破冰到客户发言档案资产 · 36 个月需求产品化路径 · 扩张依据清晰</p>
 
@@ -2250,7 +2250,7 @@ strong{color:var(--z-brown)}
 </section>
 
 <!-- ================== 标签: 融资计划 ================== -->
-<section class="tab-panel" id="tab-funding">
+<section class="bp-panel tab-panel" id="tab-funding">
   <h1 class="z-title">💰 宅域·ZHAIYU · 融资计划</h1>
   <p class="z-lead">天使轮融资 50-80 万 · 优先投客户发言档案、内容测试、方案库和样板点 · 18 个月开启 A 轮</p>
 
@@ -2307,8 +2307,8 @@ strong{color:var(--z-brown)}
     </div>
 
     <h3 class="z-h3">当前股东结构</h3>
-    <div class="z-table-wrap">
-      <table class="z-table">
+    <div class="zdata-table-wrap">
+      <table class="zdata-table">
         <thead>
           <tr><th>股东</th><th>角色</th><th>出资额</th><th>资本股</th><th>人力股</th><th><strong>总占股</strong></th></tr>
         </thead>
@@ -2396,8 +2396,8 @@ strong{color:var(--z-brown)}
       </div>
     </div>
 
-    <div class="z-table-wrap" style="margin-top:18px">
-      <table class="z-table">
+    <div class="zdata-table-wrap" style="margin-top:18px">
+      <table class="zdata-table">
         <thead><tr><th>序号</th><th>用途</th><th>金额（万元）</th><th>占比</th><th>对应里程碑</th></tr></thead>
         <tbody>
           <tr><td>①</td><td>客户发言档案与方案库</td><td><strong>20</strong></td><td>28.6%</td><td>M3 300+ 条有效档案</td></tr>
@@ -2527,8 +2527,8 @@ strong{color:var(--z-brown)}
     </div>
 
     <h3 class="z-h3">回报对照表</h3>
-    <div class="z-table-wrap">
-      <table class="z-table">
+    <div class="zdata-table-wrap">
+      <table class="zdata-table">
         <thead><tr><th>退出节点</th><th>对应估值</th><th>股份摊薄</th><th>账面回报</th><th>年化收益（IRR）</th></tr></thead>
         <tbody>
           <tr><td>M12 战投 / 跟投退出</td><td>500-800 万</td><td>~6%</td><td><strong>2.5-4 倍</strong></td><td>~120%</td></tr>
@@ -2573,8 +2573,8 @@ strong{color:var(--z-brown)}
     </ul>
 
     <h3 class="z-h3">6.2 里程碑对赌条款</h3>
-    <div class="z-table-wrap">
-      <table class="z-table">
+    <div class="zdata-table-wrap">
+      <table class="zdata-table">
         <thead><tr><th>节点</th><th>关键指标</th><th>达成标准</th><th>未达成补救</th></tr></thead>
         <tbody>
           <tr><td>M3</td><td>客户发言档案成型</td><td>300+ 条有效发言档案 + 高频需求 TOP10</td><td>第二笔资金释放延后</td></tr>
@@ -2598,7 +2598,7 @@ strong{color:var(--z-brown)}
   </div>
 </section>
 <!-- ================== 标签5: 关于 ================== -->
-<section class="tab-panel" id="tab-about">
+<section class="bp-panel tab-panel" id="tab-about">
   <div class="about-hero">
     <img src="assets/zhaiyu-logo-120.png" alt="宅域 LOGO" onerror="this.outerHTML='<div style=&quot;width:120px;height:120px;border-radius:50%;background:var(--z-cream-yellow);margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-size:60px&quot;>🏠</div>'" />
     <h2 style="font-size:36px">宅域 · ZHAIYU</h2>
@@ -2705,7 +2705,7 @@ strong{color:var(--z-brown)}
 let currentSlide = 0;
 (function(){
   const tabs = document.querySelectorAll('.tab-btn');
-  const panels = document.querySelectorAll('.tab-panel');
+  const panels = document.querySelectorAll('.bp-panel');
   function switchTab(name){
     tabs.forEach(t=>t.classList.toggle('active', t.dataset.tab===name));
     panels.forEach(p=>p.classList.toggle('active', p.id==='tab-'+name));
@@ -3147,7 +3147,7 @@ function resizeLayoutIframe(iframe){
 
   function addTriggers(){
     const skipPanels = new Set(['tab-layout', 'tab-map']);
-    document.querySelectorAll('.tab-panel').forEach(panel => {
+    document.querySelectorAll('.bp-panel').forEach(panel => {
       if(skipPanels.has(panel.id)) return;
       if(panel.querySelector('.fs-trigger')) return;
       const btn = document.createElement('button');

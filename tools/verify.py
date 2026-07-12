@@ -1,182 +1,250 @@
 #!/usr/bin/env python3
 """
-宅域 一致性校验工具 (verify.py)
-================================
-扫描所有文档，与 data/facts.yaml 对比，找出不一致。
+Zhaiyu consistency check.
 
-用法：
-    python tools/verify.py                         # 完整扫描
-    python tools/verify.py --quick                  # 只扫数字冲突
-    python tools/verify.py --fix DEC-012            # 标记某条决议为"已同步"
-    
-返回码：0=无问题，1=有警告，2=有错误
+Return codes:
+  0 = OK
+  1 = warnings only
+  2 = errors
 """
 
 import os
 import re
 import sys
+from pathlib import Path
+
 import yaml
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-FACTS_PATH = os.path.join(ROOT, "data", "facts.yaml")
-DECISIONS_PATH = os.path.join(ROOT, "data", "decisions.yaml")
 
-# 哪些文件的数字需要扫描（跳过二进制、git、大文件）
-SKIP_DIRS = {".git", "__pycache__", "node_modules", "raw", "archive"}
-SKIP_EXTS = {".png", ".jpg", ".jpeg", ".gif", ".mp4", ".wemtv", ".wemta",
-             ".wemtc", ".wemtvidx", ".wemtaidx", ".xlsx", ".ico", ".svg",
-             ".pyc", ".exe", ".dll"}
-SKIP_FILES = {".gitignore", "LICENSE", "desktop.ini"}
+ROOT = Path(__file__).resolve().parents[1]
+FACTS_PATH = ROOT / "data" / "facts.yaml"
+DECISIONS_PATH = ROOT / "data" / "decisions.yaml"
+BP_PATH = ROOT / "bp.html"
 
-issues = []
-warnings = []
+SKIP_DIRS = {".git", "__pycache__", "node_modules", "raw", "archive", "assets"}
+SKIP_EXTS = {
+    ".png",
+    ".jpg",
+    ".jpeg",
+    ".gif",
+    ".mp4",
+    ".wemtv",
+    ".wemta",
+    ".wemtc",
+    ".wemtvidx",
+    ".wemtaidx",
+    ".xlsx",
+    ".ico",
+    ".svg",
+    ".pyc",
+    ".exe",
+    ".dll",
+}
+
+EXPECTED = {
+    "startup_total": 197300,
+    "monthly_fixed": 6416,
+    "rent": 3233,
+    "utilities": 800,
+    "staff_base": 1500,
+    "misc": 880,
+    "deposit": 8000,
+    "daily_fixed": 213.87,
+    "rent_annual_nominal": 38800,
+    "rent_annual_actual": 32300,
+    "area_sqm": 59.87,
+    "monthly_net_profit_phase0": 4974,
+    "monthly_net_profit_m6": 5584,
+    "monthly_net_profit_m12": 8584,
+    "monthly_net_profit_m24": 10084,
+    "investments": [69000, 64000, 64000, 0],
+    "equities": [0.325, 0.2875, 0.2875, 0.10],
+    "capital_pool": 0.70,
+    "human_capital_pool": 0.30,
+}
+
+BP_REQUIRED_SNIPPETS = [
+    "19.73 万元",
+    "59.87㎡",
+    "3233",
+    "约 6416",
+    "12-18 个月",
+    "+4974",
+    "+5584",
+    "+8584",
+    "+10084",
+    "32.5%",
+    "28.75%",
+]
 
 
 def load_yaml(path):
-    with open(path, "r", encoding="utf-8") as f:
+    with path.open("r", encoding="utf-8") as f:
         return yaml.safe_load(f)
 
 
-def collect_md_html_files(root):
-    """收集所有需要扫描的 .md 和 .html 文件"""
+def approx_equal(actual, expected, epsilon=0.001):
+    return abs(float(actual) - float(expected)) <= epsilon
+
+
+def collect_text_files(root):
     files = []
     for dirpath, dirnames, filenames in os.walk(root):
         dirnames[:] = [d for d in dirnames if d not in SKIP_DIRS]
-        for f in filenames:
-            ext = os.path.splitext(f)[1].lower()
-            if ext in SKIP_EXTS or f in SKIP_FILES:
+        for filename in filenames:
+            path = Path(dirpath) / filename
+            if path.suffix.lower() in SKIP_EXTS:
                 continue
-            if ext in (".md", ".html", ".htm"):
-                files.append(os.path.join(dirpath, f))
+            if path.suffix.lower() in {".md", ".html", ".htm"}:
+                files.append(path)
     return files
 
 
-def extract_numbers_from_text(text):
-    """提取文档中可能的数字（万以上的）"""
-    # 匹配 数字+万 模式
-    wan_patterns = re.findall(r'(\d+\.?\d*)\s*万', text)
-    # 匹配单个大数字（可能作为独立数字）
-    big_nums = re.findall(r'(?<![.\d])(\d{4,6})(?![.\d])', text)
-    return wan_patterns + big_nums
+def check_facts(facts, errors):
+    startup = facts["startup"]
+    costs = facts["costs"]
+    revenue = facts["revenue"]
+    store = facts["store"]
+    shareholders = facts["shareholders"]
+
+    scalar_checks = [
+        ("startup.total", startup["total"], EXPECTED["startup_total"]),
+        ("costs.monthly_fixed", costs["monthly_fixed"], EXPECTED["monthly_fixed"]),
+        ("costs.rent", costs["rent"], EXPECTED["rent"]),
+        ("costs.utilities", costs["utilities"], EXPECTED["utilities"]),
+        ("costs.staff_base", costs["staff_base"], EXPECTED["staff_base"]),
+        ("costs.misc", costs["misc"], EXPECTED["misc"]),
+        ("costs.deposit", costs["deposit"], EXPECTED["deposit"]),
+        ("costs.daily_fixed", costs["daily_fixed"], EXPECTED["daily_fixed"]),
+        ("costs.rent_annual_nominal", costs["rent_annual_nominal"], EXPECTED["rent_annual_nominal"]),
+        ("costs.rent_annual_actual", costs["rent_annual_actual"], EXPECTED["rent_annual_actual"]),
+        ("store.area_sqm", store["area_sqm"], EXPECTED["area_sqm"]),
+        ("revenue.monthly_net_profit_phase0", revenue["monthly_net_profit_phase0"], EXPECTED["monthly_net_profit_phase0"]),
+        ("revenue.monthly_net_profit_m6", revenue["monthly_net_profit_m6"], EXPECTED["monthly_net_profit_m6"]),
+        ("revenue.monthly_net_profit_m12", revenue["monthly_net_profit_m12"], EXPECTED["monthly_net_profit_m12"]),
+        ("revenue.monthly_net_profit_m24", revenue["monthly_net_profit_m24"], EXPECTED["monthly_net_profit_m24"]),
+    ]
+
+    for label, actual, expected in scalar_checks:
+        if not approx_equal(actual, expected):
+            errors.append(f"{label}: expected {expected}, got {actual}")
+
+    investments = [s.get("investment", 0) for s in shareholders]
+    equities = [s.get("equity", 0) for s in shareholders]
+    if investments != EXPECTED["investments"]:
+        errors.append(f"shareholders.investment: expected {EXPECTED['investments']}, got {investments}")
+    if not all(approx_equal(a, e) for a, e in zip(equities, EXPECTED["equities"])):
+        errors.append(f"shareholders.equity: expected {EXPECTED['equities']}, got {equities}")
+
+    investment_total = sum(investments)
+    startup_adjustment = startup.get("rounding_adjustment", 0)
+    if investment_total + startup_adjustment != EXPECTED["startup_total"]:
+        errors.append(
+            "startup.total must equal shareholder investment total plus explicit adjustment: "
+            f"{EXPECTED['startup_total']} != {investment_total} + {startup_adjustment}"
+        )
+    if startup.get("shareholder_investment_total") != investment_total:
+        errors.append(f"startup.shareholder_investment_total must be {investment_total}")
+
+    if not approx_equal(sum(equities), 1.0):
+        errors.append(f"shareholders.equity must sum to 100%, got {sum(equities):.4f}")
+    if not approx_equal(EXPECTED["capital_pool"] + EXPECTED["human_capital_pool"], 1.0):
+        errors.append("dual-track pool must be capital 70% + human capital 30% = 100%")
+
+    if facts.get("shareholders_legacy", {}).get("superseded_by") != "DEC-029":
+        errors.append("shareholders_legacy.superseded_by must be DEC-029")
+    if facts.get("storefront_area_legacy_49sqm", {}).get("superseded_by") is None:
+        errors.append("storefront_area_legacy_49sqm must be marked superseded")
 
 
-def check_number(text, facts, filename):
-    """检查文档中的数字是否与 facts.yaml 一致"""
-    facts_numbers = {}
-    facts_numbers["12"] = "startup.total (120000/12万)"
-    facts_numbers["120000"] = "startup.total"
-    facts_numbers["9850"] = "costs.monthly_fixed"
-    facts_numbers["328"] = "costs.daily_fixed"
-    facts_numbers["750"] = "revenue.daily_target"
-    facts_numbers["699.5"] = "revenue.daily_forecast"
-    facts_numbers["50.5"] = "revenue.daily_gap"
-    facts_numbers["8000"] = "costs.rent / costs.deposit"
-    facts_numbers["500"] = "costs.utilities"
-    facts_numbers["1350"] = "costs.misc"
-    facts_numbers["51000"] = "shareholders.孙淦浩.investment"
-    facts_numbers["39000"] = "shareholders.陈老师.investment"
-    facts_numbers["30000"] = "shareholders.张显坤.investment"
-    
-    # 扫描文件中的数字
-    for num_str, fact_key in facts_numbers.items():
-        # 数字出现在文件中的多种写法
-        patterns = [
-            num_str,                    # "120000"
-            num_str.replace("000", ""),  # "12" (小心误判)
-        ]
-        # 太短的数字（如"12"）跳过，避免误报
-        if len(num_str) <= 2:
+def check_decisions(decisions, errors):
+    by_id = {d["id"]: d for d in decisions["decisions"]}
+    if "DEC-029" not in by_id:
+        errors.append("data/decisions.yaml missing DEC-029")
+        return
+
+    if by_id["DEC-029"].get("status") != "active":
+        errors.append("DEC-029 must be active")
+    for old_id in ["DEC-012", "DEC-014", "DEC-024"]:
+        dec = by_id.get(old_id)
+        if not dec:
+            errors.append(f"missing historical {old_id}")
             continue
-            
-        # 查找冲突的旧数字
-        pass  # 这个方法需要改进
-    
+        if dec.get("status") != "superseded" or dec.get("superseded_by") != "DEC-029":
+            errors.append(f"{old_id} must be superseded by DEC-029")
 
-def check_consistency():
-    """主校验逻辑"""
+
+def check_bp_html(errors, warnings):
+    html = BP_PATH.read_text(encoding="utf-8")
+    for snippet in BP_REQUIRED_SNIPPETS:
+        if snippet not in html:
+            errors.append(f"bp.html missing current snippet: {snippet}")
+
+    forbidden_patterns = [
+        (r"49㎡|49\s*平方米", "49㎡ old area"),
+        (r"120000", "120000 old startup total"),
+        (r"9850", "9850 old monthly fixed cost"),
+    ]
+    for pattern, label in forbidden_patterns:
+        if re.search(pattern, html):
+            errors.append(f"bp.html contains {label}")
+
+    for match in re.finditer(r"8000", html):
+        context = html[max(0, match.start() - 60) : match.end() + 60]
+        if "押金" not in context and "6000-8000" not in context and "5500-8000" not in context:
+            errors.append("bp.html contains 8000 outside allowed deposit/profit-range context")
+            break
+
+    if "6413" in html:
+        warnings.append("bp.html explains 3233 + 800 + 1500 + 880 = 6413 while headline says 6416")
+
+
+def check_text_dec_refs(decisions, warnings):
+    known_ids = {d["id"] for d in decisions["decisions"]}
+    for path in collect_text_files(ROOT):
+        relpath = path.relative_to(ROOT).as_posix()
+        if relpath == "bp.html":
+            continue
+        content = path.read_text(encoding="utf-8", errors="ignore")
+        for ref in sorted(set(re.findall(r"DEC-\d+", content))):
+            if ref not in known_ids:
+                warnings.append(f"{relpath}: references unknown {ref}")
+
+
+def main():
+    errors = []
+    warnings = []
+
     facts = load_yaml(FACTS_PATH)
     decisions = load_yaml(DECISIONS_PATH)
-    
-    print("Zhaiyu consistency check - start")
-    print(f"   事实源: data/facts.yaml")
-    print(f"   决策源: data/decisions.yaml ({len(decisions['decisions'])} 条)")
-    print()
-    
-    files = collect_md_html_files(ROOT)
-    print(f"   扫描 {len(files)} 个文件...")
-    
-    for fpath in files:
-        relpath = os.path.relpath(fpath, ROOT).replace("\\", "/")
-        with open(fpath, "r", encoding="utf-8") as f:
-            content = f.read()
-        
-        # 检查1：DEC 引用完整性
-        dec_refs = re.findall(r'DEC-\d+', content)
-        known_ids = {d["id"] for d in decisions["decisions"]}
-        for ref in dec_refs:
-            if ref not in known_ids:
-                issues.append(f"WARN {relpath}: 引用不存在的 {ref}")
-        
-        # 检查2：旧数字残留（和 facts.yaml 对不上的）
-        # 注意：包含"v1.x/历史/旧版/原/覆盖/修订"等关键词的上下文算历史叙述，不算错误
-        # 会议笔记任何旧数字都算历史讨论
-        
-        is_historical_context = lambda text: any(
-            kw in text for kw in [
-                "v1.x", "v1.0", "v1.1", "1.0.0", "1.1.0", "v1.0.0", "v1.1.0",
-                "旧版", "历史", "原 ", "原店", "原 3.0", "覆盖",
-                "DEC-004", "DEC-011", "DEC-010", "DEC-003",
-                "v1.", "v2.0 ·", "→", "从 22", "从 1.57", "从 24",
-                "16 万口径", "16万口径", "v0.", "v0 ",
-            ]
-        )
-        # 会议笔记永远是历史叙述
-        is_meeting_note = relpath.startswith("meetings/")
-        # CHANGELOG/PROJECT_HISTORY 包含"修订"段时算历史叙述
-        is_changelog = "CHANGELOG" in relpath or "PROJECT_HISTORY" in relpath
-        # DECISIONS.md 顶层和 store-front/ 下的都算历史叙述
-        is_decisions = "DECISIONS" in relpath
-        
-        allow_old = is_meeting_note or is_changelog or is_decisions or is_historical_context(content)
-        
-        if not allow_old and not relpath.startswith("raw/") and not relpath.startswith("archive/"):
-            if "22万" in content and facts["startup"]["total"] != 220000:
-                actual = facts["startup"]["total"] // 10000
-                issues.append(f"ERROR {relpath}: 引用旧数字'22万'，实际应为 {actual}万")
-            
-            if "24-32" in content:
-                issues.append(f"ERROR {relpath}: 引用旧回本周期'24-32月'，实际应为'12个月'")
-            
-            if "1.57" in content:
-                issues.append(f"ERROR {relpath}: 引用旧月固定成本'1.57万'，实际应为'9850元'")
-        
-        # 检查3：facts.yaml 的 affected_bps 是否已同步
-        for dec in decisions["decisions"]:
-            if dec["status"] != "active":
-                continue
-            for affected in dec.get("affected_bps", []):
-                if affected in relpath or os.path.basename(affected) == os.path.basename(relpath):
-                    # 检查这个文件是否包含该决议的引用
-                    if f"DEC-{dec['id'].split('-')[1]}" not in content:
-                        warnings.append(f"NOTE {relpath}: 被 {dec['id']} 标记为受影响，但未包含该决议引用")
 
+    print("Zhaiyu consistency check - start")
+    print("   facts: data/facts.yaml")
+    print(f"   decisions: data/decisions.yaml ({len(decisions['decisions'])} entries)")
     print()
-    if not issues and not warnings:
-        print("OK: no consistency issues.")
-        return 0
-    
-    if issues:
-        print(f"ERROR: {len(issues)} 个问题需要处理：")
-        for i in issues:
-            print(f"   {i}")
-    
+
+    check_facts(facts, errors)
+    check_decisions(decisions, errors)
+    check_bp_html(errors, warnings)
+    check_text_dec_refs(decisions, warnings)
+
+    if errors:
+        print(f"ERROR: {len(errors)} issue(s)")
+        for error in errors:
+            print(f"   ERROR {error}")
     if warnings:
-        print(f"\nNOTE: {len(warnings)} 个提醒：")
-        for w in warnings:
-            print(f"   {w}")
-    
-    return 1 if issues else 0
+        print(f"WARNING: {len(warnings)} warning(s)")
+        for warning in warnings:
+            print(f"   WARN {warning}")
+
+    if errors:
+        return 2
+    if warnings:
+        return 1
+
+    print("OK: no consistency issues.")
+    return 0
 
 
 if __name__ == "__main__":
-    sys.exit(check_consistency())
+    sys.exit(main())

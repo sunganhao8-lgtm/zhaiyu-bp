@@ -80,8 +80,9 @@ decisions:
     date: 2026-06-26
     source_meeting: meetings/2026-06-26-创始人A快速会议.md
     title: 启动资金确认为12万
-    status: active
+    status: superseded
     supersedes: ["DEC-003", "DEC-004", "DEC-011"]
+    superseded_by: "DEC-029"
     decision: >
       总启动资金 12万，三人出资（创始人A 51000 + 创始人B 39000 + 创始人C 30000）。
       无转让费（原店接手只需付房租），装修预算 1万，押金 8000。
@@ -104,8 +105,9 @@ decisions:
     date: 2026-06-26
     source_meeting: meetings/2026-06-26-创始人A快速会议.md
     title: 股份结构与激励方案
-    status: active
+    status: superseded
     supersedes: []
+    superseded_by: "DEC-029"
     decision: >
       创始人A 42.5% / 创始人B 31% / 创始人C 24% / 店长D 5% (人力股)。
       三位原始股东各让渡一部分赠予店长D。
@@ -225,8 +227,9 @@ decisions:
     date: 2026-06-27
     source_meeting: "用户补充：电竞房区域作为样板间、合伙人工作娱乐区和自媒体内容场景"
     title: 电竞房样板间定位
-    status: active
+    status: superseded
     supersedes: ["DEC-010"]
+    superseded_by: "DEC-029"
     decision: >
       门店装修时保留 5-8㎡ 干区作为电竞房样板间。
       它不是独立收费电竞房，也不是游戏厅，而是合伙人工作娱乐、
@@ -292,3 +295,24 @@ decisions:
       "服务利润低怎么赚钱"这些问题转化为信任、案例、档案和商品附加率的验证指标。
     affected_bps: ["bp.html", "bps/store-front/bp.html", "bps/store-front/bp.md"]
     affected_docs: ["README.md", "DECISIONS.md", "docs/optimization-plan.md", "docs/investor-objection-playbook.md", "data/facts.yaml"]
+
+  - id: "DEC-029"
+    date: 2026-07-12
+    title: 全仓数字统一：启动资金 / 股权 / 房租 / 面积 / 月固定同步到 bp.html 当前口径
+    decided_by: 全仓 Review 自动同步
+    status: active
+    replaces: [DEC-012, DEC-014, DEC-024]
+    scope:
+      - 启动资金：12万 → 19.73万（含转让费、10个月房租）
+      - 股权：A42.5/B31/C24/D5 → 主32.5/B28.75/C28.75/员工10（双轨制，资本70% + 人力30%）
+      - 月固定：9850 → 6416
+      - 月租：8000 → 3233（合同 1.8 元/天/㎡ × 59.87㎡）
+      - 面积：49㎡ → 59.87㎡（实地复测）
+      - 回本：12 月 → 12-18 月（租金下降带动）
+      - 月净利稳态初期：-2130 → +4974
+    notes: |
+      DEC-012 / DEC-014 / DEC-024 仍保留作为决策历史，但 active 口径以本决议为准。
+      bp.html 早已按新口径更新（2026-07-06 房租更新 + 2026-07-05 投资人清洗），
+      此前数据漂移因无人同步 data/facts.yaml 导致。
+    affected_bps: ["bp.html"]
+    affected_docs: ["data/facts.yaml", "DECISIONS.md", "REVIEW_2026-07-12.md"]
