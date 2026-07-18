@@ -59,10 +59,10 @@ async function startExperience() {
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.toneMapping = THREE.NeutralToneMapping;
   renderer.toneMappingExposure = 1.08;
-  renderer.setClearColor(0x080503, 1);
+  renderer.setClearColor(0x010204, 1);
 
   const scene = new THREE.Scene();
-  scene.background = new THREE.Color(0x080503);
+  scene.background = new THREE.Color(0x010204);
   const camera = new THREE.PerspectiveCamera(37, 1, 0.1, 80);
   const pageGroup = new THREE.Group();
   pageGroup.position.set(0, -0.38, 0);
@@ -77,10 +77,7 @@ async function startExperience() {
   const pageGeometry = new THREE.PlaneGeometry(1, 1);
   const pageMaterial = new THREE.MeshStandardMaterial({
     map: pageTexture,
-    color: 0xffffff,
-    emissive: 0xffffff,
-    emissiveMap: pageTexture,
-    emissiveIntensity: 0.5,
+    color: 0xc5cad4,
     roughness: 0.96,
     metalness: 0,
     transparent: true,
@@ -92,13 +89,13 @@ async function startExperience() {
 
   const backing = new THREE.Mesh(
     new THREE.PlaneGeometry(1.018, 1.028),
-    new THREE.MeshStandardMaterial({ color: 0x080503, roughness: 0.92, metalness: 0.02 })
+    new THREE.MeshStandardMaterial({ color: 0x080a10, roughness: 0.9, metalness: 0.03 })
   );
   backing.position.z = -0.035;
   pageGroup.add(backing);
 
-  scene.add(new THREE.HemisphereLight(0x8a684f, 0x100a07, 0.5));
-  const fillLight = new THREE.DirectionalLight(0xffd2aa, 0.18);
+  scene.add(new THREE.HemisphereLight(0x71809b, 0x151118, 0.58));
+  const fillLight = new THREE.DirectionalLight(0x91a6c8, 0.24);
   fillLight.position.set(-4.8, 5.6, 7.4);
   scene.add(fillLight);
 
@@ -110,14 +107,14 @@ async function startExperience() {
 
   const ceilingCap = new THREE.Mesh(
     new THREE.CylinderGeometry(0.24, 0.3, 0.11, 24),
-    new THREE.MeshStandardMaterial({ color: 0x17100d, roughness: 0.62, metalness: 0.72 })
+    new THREE.MeshStandardMaterial({ color: 0x101218, roughness: 0.64, metalness: 0.7 })
   );
   ceilingCap.position.copy(anchor).add(new THREE.Vector3(0, 0.08, 0));
   scene.add(ceilingCap);
 
   const cable = new THREE.Mesh(
     new THREE.CylinderGeometry(0.014, 0.014, 1, 10),
-    new THREE.MeshStandardMaterial({ color: 0x241b17, roughness: 0.5, metalness: 0.55 })
+    new THREE.MeshStandardMaterial({ color: 0x121318, roughness: 0.5, metalness: 0.55 })
   );
   scene.add(cable);
 
@@ -128,12 +125,12 @@ async function startExperience() {
     new THREE.Vector2(0.43, -0.1), new THREE.Vector2(0.82, -0.25),
     new THREE.Vector2(1.08, -0.36), new THREE.Vector2(1.1, -0.41)
   ];
-  const shadeMaterial = new THREE.MeshStandardMaterial({ color: 0x17110e, roughness: 0.34, metalness: 0.72, side: THREE.DoubleSide });
+  const shadeMaterial = new THREE.MeshStandardMaterial({ color: 0x101116, roughness: 0.36, metalness: 0.74, side: THREE.DoubleSide });
   const shade = new THREE.Mesh(new THREE.LatheGeometry(shadeProfile, 48), shadeMaterial);
   shadeGroup.add(shade);
   const rim = new THREE.Mesh(
     new THREE.TorusGeometry(1.095, 0.027, 8, 48),
-    new THREE.MeshStandardMaterial({ color: 0x2a1c15, roughness: 0.28, metalness: 0.82 })
+    new THREE.MeshStandardMaterial({ color: 0x17191f, roughness: 0.28, metalness: 0.82 })
   );
   rim.rotation.x = Math.PI / 2;
   rim.position.y = -0.397;
@@ -151,7 +148,14 @@ async function startExperience() {
   underside.position.y = -0.385;
   shadeGroup.add(underside);
 
-  const bulbMaterial = new THREE.MeshStandardMaterial({ color: 0xfff1dd, emissive: INITIAL_LIGHT.color, emissiveIntensity: 3.2, roughness: 0.2 });
+  const connector = new THREE.Mesh(
+    new THREE.CylinderGeometry(0.095, 0.12, 0.2, 20),
+    new THREE.MeshStandardMaterial({ color: 0x9c6744, roughness: 0.44, metalness: 0.66 })
+  );
+  connector.position.y = 0.08;
+  shadeGroup.add(connector);
+
+  const bulbMaterial = new THREE.MeshStandardMaterial({ color: 0xffd7ad, emissive: INITIAL_LIGHT.color, emissiveIntensity: 3.2, roughness: 0.2 });
   const bulb = new THREE.Mesh(new THREE.SphereGeometry(0.16, 20, 12), bulbMaterial);
   bulb.scale.y = 1.2;
   bulb.position.y = -0.33;
@@ -250,11 +254,11 @@ async function startExperience() {
     spot.power = effectiveBrightness;
     spot.angle = THREE.MathUtils.degToRad(lighting.angle);
     bulbLight.color.copy(color);
-    bulbLight.power = lighting.enabled ? 36 : 0;
+    bulbLight.power = lighting.enabled ? Math.max(18, lighting.brightness * 0.026) : 0;
     bulbMaterial.emissive.copy(color);
     bulbMaterial.emissiveIntensity = lighting.enabled ? 3.2 : 0.03;
     glowMaterial.color.copy(color);
-    glowMaterial.opacity = lighting.enabled ? 0.86 : 0.08;
+    glowMaterial.opacity = lighting.enabled ? 0.52 + lighting.brightness / 4200 : 0;
     undersideMaterial.emissive.copy(color);
     undersideMaterial.emissiveIntensity = lighting.enabled ? 0.22 + lighting.brightness / 7250 : 0.03;
     pageSurface.style.setProperty('--lamp-color', lighting.color);
@@ -321,8 +325,8 @@ async function startExperience() {
       position.copy(anchor).add(constrained);
       previous.copy(position);
     }
-    const fitHeight = pageHeight + 2.35;
-    const fitWidth = pageWidth + 0.8;
+    const fitHeight = pageHeight + 3.1;
+    const fitWidth = pageWidth + 1.25;
     const halfFov = THREE.MathUtils.degToRad(camera.fov * 0.5);
     const distanceForHeight = fitHeight / (2 * Math.tan(halfFov));
     const distanceForWidth = fitWidth / (2 * Math.tan(halfFov) * camera.aspect);
@@ -403,11 +407,26 @@ async function startExperience() {
       return;
     }
     if (!pulling || event.pointerId !== pullPointerId) return;
+    velocity.copy(position).sub(previous).multiplyScalar(1 / fixedStep);
+    temp.copy(position).sub(anchor).normalize();
+    pointerVelocity.addScaledVector(temp, -pointerVelocity.dot(temp)).clampLength(0, 6);
+    const pointerTransfer = THREE.MathUtils.lerp(0.055, 0.12, pullStrength);
+    velocity.addScaledVector(pointerVelocity, pointerTransfer);
+
+    tempB.copy(anchor).addScaledVector(down, ropeLength).sub(position);
+    tempB.addScaledVector(temp, -tempB.dot(temp));
+    if (tempB.lengthSq() > 0.0001) {
+      tempB.normalize();
+      const returnImpulse = THREE.MathUtils.lerp(0.32, 1.6, pullStrength);
+      velocity.addScaledVector(tempB, returnImpulse);
+    }
+    velocity.clampLength(0, 4.25);
+    previous.copy(position).addScaledVector(velocity, -fixedStep);
+
     pulling = false;
     pullPointerId = -1;
+    pullStrength = 0;
     shell.classList.remove('is-pulling');
-    pointerVelocity.clampLength(0, 4.25);
-    previous.copy(position).addScaledVector(pointerVelocity, -fixedStep * 0.18);
   }
 
   function stepPhysics() {
