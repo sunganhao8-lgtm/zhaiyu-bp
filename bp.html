@@ -861,6 +861,9 @@ strong{color:var(--z-brown)}
 @media(max-width:900px){.zh-light-stage{grid-template-columns:1fr;gap:34px;padding:90px 34px 110px}.zh-light-controls{max-width:520px}.zh-light-hero{min-height:880px}.zh-light-copy h1{font-size:clamp(42px,9vw,72px)}}
 @media(max-width:640px){main{padding:8px}#tab-zhaiyu{padding:10px;margin-top:8px}.zh-light-hero{min-height:930px;margin:-10px -10px 0;border-radius:14px}.zh-light-top{height:66px;padding:0 18px}.zh-light-top>span{display:none}.zh-light-stage{padding:105px 20px 116px}.zh-light-copy h1{font-size:36px;line-height:1.02}.zh-light-subtitle{font-size:13px}.zh-light-footer{height:76px;grid-template-columns:1fr auto;padding:0 18px}.zh-light-footer>p:first-child{display:none}.zh-light-credit{max-width:150px;text-align:right;line-height:1.5}.zh-light-lamp{top:-24px;transform:translateX(-50%) scale(.8) rotate(var(--lamp-tilt));transform-origin:50% 0}.zh-light-beam{top:100px}}
 @media(prefers-reduced-motion:reduce){.zh-light-hero *{transition-duration:.01ms!important}}
+.zh-three-home-frame{display:block;width:calc(100% + 64px);height:720px;margin:-32px -32px 0;border:0;border-radius:16px 16px 0 0;background:#030303}
+@media(max-width:900px){.zh-three-home-frame{height:860px}}
+@media(max-width:640px){.zh-three-home-frame{width:calc(100% + 20px);height:930px;margin:-10px -10px 0;border-radius:14px 14px 0 0}}
 
 /* 开店合规咨询清单 */
 .permit-hero{background:linear-gradient(135deg,#FFF9F0 0%,#FFF4E1 100%);border:2px solid var(--z-orange-deep);border-radius:18px;padding:28px;margin-bottom:22px}
@@ -963,40 +966,7 @@ strong{color:var(--z-brown)}
 
 <!-- ================== 标签1: 宅域·品牌叙事 ================== -->
 <section class="bp-panel tab-panel active" id="tab-zhaiyu">
-  <div class="zh-light-hero" id="zhLightHero">
-    <div class="zh-light-top">
-      <div class="zh-light-brand"><img src="assets/zhaiyu-logo-120.png" alt="宅域"><strong>宅域 · ZHAIYU</strong><span>LIGHT STUDY 01</span></div>
-      <span>FAMILY NEEDS · OBSERVED &amp; REALIZED</span>
-    </div>
-    <div class="zh-light-lamp" id="zhLightLamp" role="button" tabindex="0" aria-label="拖动吊灯改变光照方向，双击重置">
-      <i class="zh-light-cap"></i><i class="zh-light-cable"></i><i class="zh-light-shade"></i><i class="zh-light-bulb"></i>
-    </div>
-    <div class="zh-light-beam" aria-hidden="true"></div>
-    <div class="zh-light-stage">
-      <div class="zh-light-copy">
-        <div class="zh-light-eyebrow">01 / 宅域商业计划书 · 让需求进入光里</div>
-        <h1>让每一个家庭需求<br>被看见，<span>被理解</span>，被实现。</h1>
-        <p class="zh-light-subtitle">宅域从宠物洗护与电竞空间两个高信任入口出发，记录客户真实发言，把反复出现的麻烦变成可验证、可成交、可复购的家庭解决方案。</p>
-        <div class="zh-light-concepts">
-          <span class="zh-light-concept">服务破冰</span><span class="zh-light-concept">客户发言档案</span><span class="zh-light-concept active">需求产品化</span><span class="zh-light-concept">本地信任</span>
-        </div>
-      </div>
-      <aside class="zh-light-controls" aria-label="首页灯光控制">
-        <div class="zh-light-control-head"><span>LIGHT CONTROL</span><button class="zh-light-power" id="zhLightPower" type="button"><i></i><span>ON</span></button></div>
-        <label class="zh-light-control-row"><span class="zh-light-control-label"><b>BEAM ANGLE</b><output id="zhLightAngleOutput">42°</output></span><input id="zhLightAngle" type="range" min="20" max="65" value="42"></label>
-        <label class="zh-light-control-row"><span class="zh-light-control-label"><b>BRIGHTNESS</b><output id="zhLightBrightnessOutput">82%</output></span><input id="zhLightBrightness" type="range" min="20" max="100" value="82"></label>
-        <div class="zh-light-control-row"><span class="zh-light-control-label"><b>LIGHT COLOR</b><output id="zhLightColorOutput">AMBER</output></span><div class="zh-light-colors">
-          <button class="zh-light-swatch active" type="button" data-light-color="#ff9b45" data-light-name="AMBER" style="--swatch:#ff9b45" aria-label="琥珀色"></button>
-          <button class="zh-light-swatch" type="button" data-light-color="#ffd89a" data-light-name="CREAM" style="--swatch:#ffd89a" aria-label="奶油色"></button>
-          <button class="zh-light-swatch" type="button" data-light-color="#f06d3d" data-light-name="HERMÈS" style="--swatch:#f06d3d" aria-label="爱马仕橙"></button>
-          <button class="zh-light-swatch" type="button" data-light-color="#55c9ff" data-light-name="CYAN" style="--swatch:#55c9ff" aria-label="电光蓝"></button>
-          <button class="zh-light-swatch" type="button" data-light-color="#ad78ff" data-light-name="VIOLET" style="--swatch:#ad78ff" aria-label="紫色"></button>
-        </div></div>
-        <button class="zh-light-reset" id="zhLightReset" type="button">RESET LIGHT · 重置灯光</button>
-      </aside>
-    </div>
-    <div class="zh-light-footer"><p>ZHAIYU · HOME AS THE MAIN STAGE</p><div class="zh-light-drag"><i class="zh-light-drag-icon"></i><span>按住灯或光区拖动 · 松开回弹</span></div><p class="zh-light-credit">交互灵感：<a href="https://github.com/jinruozai/HTML-Light-Demo" target="_blank" rel="noopener">HTML Light Demo · MIT</a></p></div>
-  </div>
+  <iframe class="zh-three-home-frame" src="index.html?embed=1" title="宅域互动灯光首页" loading="eager" allow="fullscreen"></iframe>
 
   <!-- 执行摘要 · 投资人首屏必读 -->
   <div class="section-card highlight" style="background:linear-gradient(135deg,#FFFBF5 0%,#FFF4E1 100%);border:2px solid var(--z-orange-deep);margin:24px auto 32px;max-width:1080px;padding:28px 32px">

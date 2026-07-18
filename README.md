@@ -71,12 +71,23 @@ zhaiyu-bp/
 ## 快速开始
 
 ```bash
+# 安装 Three.js / HTML-in-Canvas 依赖
+npm install
+
+# 构建独立互动首页 assets/light-home.js
+npm run build
+
+# 本地预览（首页为 index.html，完整 BP 为 bp.html）
+python -m http.server 8765
+
 # 检查一致性（修改 BP 后必跑）
 python tools/verify.py
 
 # 更新 INDEX
 python tools/render_index.py --write
 ```
+
+互动首页使用 `three@0.185.1` 与 `three-html-render@0.1.2`：真实 HTML 被上传为 Three.js 纹理，吊灯、聚光灯、拖拽摆动和灯光控制均由 WebGL 场景驱动；BP 首页通过同源 iframe 复用同一个 `index.html`，避免两套实现产生偏差。
 
 ---
 
