@@ -75,7 +75,10 @@ async function startExperience() {
   const pageGeometry = new THREE.PlaneGeometry(1, 1);
   const pageMaterial = new THREE.MeshStandardMaterial({
     map: pageTexture,
-    color: 0xc9b8aa,
+    color: 0xffffff,
+    emissive: 0xffffff,
+    emissiveMap: pageTexture,
+    emissiveIntensity: 0.34,
     roughness: 0.96,
     metalness: 0,
     transparent: true,
@@ -353,9 +356,12 @@ async function startExperience() {
       beamDragged = false;
       return;
     }
-    if (event.button !== 0 || beamPointerId !== -1 || !updatePointerTarget(event)) return;
+    if (event.button !== 0 || beamPointerId !== -1) return;
+    if (event.target instanceof Element && event.target.closest('[data-interactive],a,button,input,label')) return;
+    if (!updatePointerTarget(event)) return;
     pulling = true;
     pullPointerId = event.pointerId;
+    event.preventDefault();
     lastPointerTime = performance.now();
     lastPointerTarget.copy(aimTarget);
     pointerVelocity.set(0, 0, 0);
