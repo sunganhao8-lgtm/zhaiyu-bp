@@ -53,6 +53,8 @@ EXPECTED = {
     "rent_annual_nominal": 38800,
     "rent_annual_actual": 32300,
     "area_sqm": 59.87,
+    "transfer_fee": 40000,
+    "renovation_budget": 40000,
     "monthly_net_profit_phase0": 4974,
     "monthly_net_profit_m6": 5584,
     "monthly_net_profit_m12": 8584,
@@ -75,6 +77,8 @@ BP_REQUIRED_SNIPPETS = [
     "+10084",
     "32.5%",
     "28.75%",
+    "装修签约控制价",
+    "4.20",
 ]
 
 
@@ -119,6 +123,8 @@ def check_facts(facts, errors):
         ("costs.rent_annual_nominal", costs["rent_annual_nominal"], EXPECTED["rent_annual_nominal"]),
         ("costs.rent_annual_actual", costs["rent_annual_actual"], EXPECTED["rent_annual_actual"]),
         ("store.area_sqm", store["area_sqm"], EXPECTED["area_sqm"]),
+        ("store.transfer_fee", store["transfer_fee"], EXPECTED["transfer_fee"]),
+        ("store.renovation_budget", store["renovation_budget"], EXPECTED["renovation_budget"]),
         ("revenue.monthly_net_profit_phase0", revenue["monthly_net_profit_phase0"], EXPECTED["monthly_net_profit_phase0"]),
         ("revenue.monthly_net_profit_m6", revenue["monthly_net_profit_m6"], EXPECTED["monthly_net_profit_m6"]),
         ("revenue.monthly_net_profit_m12", revenue["monthly_net_profit_m12"], EXPECTED["monthly_net_profit_m12"]),

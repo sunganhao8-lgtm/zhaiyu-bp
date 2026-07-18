@@ -8,7 +8,7 @@ project:
   english_name: Zhaiyu
   tagline: "服务破冰 · 客户发言档案 · 家庭需求产品化"
   founded: 2026-06-16
-  latest_revision: 2026-07-01  # 基于客户发言档案、信任锚点和投资人话术修订
+  latest_revision: 2026-07-18  # 同步装修三方询价、4 万控制价与首页入口架构
   core_goal: >
     宅域的核心目标不是同时做很多业务，而是用可信服务破冰，
     把每一位客户的发言、抱怨、偏好、预算和生活场景沉淀为"客户发言档案"，
@@ -17,12 +17,14 @@ project:
 # ── 启动资金 ──
 startup:
   total: 197300  # 19.73 万元（含转让费、10 个月房租、装修、设备等）
-  version: "2026-07-12 全仓同步"
+  version: "2026-07-18 装修预算重分配"
   shareholder_investment_total: 197000
   rounding_adjustment: 300  # 三位出资按整千展示，尾差计入启动资金校准项
   notes: >
     旧版 12 万 / 13.5 万启动资金口径已被 DEC-029 取代。
     当前 active 口径以 bp.html 投资人清洗版为准。
+    2026-07-18 将装修控制价由 1.5 万调整为 4 万，同时把营销与流动资金由 6.7 万调整为 4.2 万，
+    总启动资金与股权出资口径仍保持 19.73 万不变。
 
 # 旧版 42.5/31/24/5 四人股权已被 DEC-029 的双轨制取代：
 # 主理人32.5 + 联合创始人B28.75 + 联合创始人C28.75 + 全职核心员工10。
@@ -260,8 +262,10 @@ store:
   layout_principle: "湿区服务宠物，干区接待/零售/电竞样板间，宠物毛发和水汽不得进入样板展示设备区。"
   gaming_showroom_area: "建议 5~8㎡，以一面展示墙 + 一个桌搭工位 + 大屏/投影为主，不做重资产大包间。"
   lease: "3年（原始合同剩余租期）"
-  transfer_fee: 0  # 已免除转让费，仅付房租
-  renovation_budget: 10000  # 装修预算（粉刷+招牌）
+  transfer_fee: 40000  # DEC-029 当前口径：原店承接转让费
+  renovation_budget: 40000  # DEC-030：装修签约控制价
+  renovation_quote_range: "45132.50~54000（百域未税 / 客来福 / 明月口头报价）"
+  renovation_scope: "顶面喷涂、公共区墙面、洗护区墙地砖与防水排水、全店地砖、强弱电与水路重排、保护保洁和垃圾清运"
 
 storefront_area_legacy_49sqm:
   superseded_by: "store.area_sqm = 59.87 (2026-07-12 决议)"

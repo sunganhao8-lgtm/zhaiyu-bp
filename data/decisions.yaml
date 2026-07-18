@@ -316,3 +316,22 @@ decisions:
       此前数据漂移因无人同步 data/facts.yaml 导致。
     affected_bps: ["bp.html"]
     affected_docs: ["data/facts.yaml", "DECISIONS.md", "REVIEW_2026-07-12.md"]
+
+  - id: "DEC-030"
+    date: 2026-07-18
+    title: 装修预算按 4 万控制价重分配
+    decided_by: 股东装修询价复盘
+    status: active
+    supersedes: []
+    source_materials:
+      - 客来福-报价单.xlsx
+      - 百域建筑-报价单.xlsx
+      - 明月装饰报价沟通-录音.m4a
+    decision: >
+      启动资金总额继续保持 19.73 万，不改股权出资口径；
+      装修预算由 1.50 万调整为 4.00 万签约控制价，营销与流动资金由 6.70 万调整为 4.20 万。
+      三方询价约为 4.51 万、5.05 万和 5.20-5.40 万，签约前必须取得工程量、主材品牌型号、单价、损耗、税费和增项规则明细。
+      不得通过削减强弱电安全、洗护区防水排水或必要消防项目压价；优先压减装饰板材并把非开业必需项目放入二期。
+      合同总价超过 4.00 万须经股东书面确认。
+    affected_bps: ["bp.html"]
+    affected_docs: ["data/facts.yaml", "DECISIONS.md"]

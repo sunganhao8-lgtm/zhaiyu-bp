@@ -41,6 +41,8 @@ function installThreeHtmlTextureCompatibility() {
 }
 
 async function startExperience() {
+  const syncSurfaceMode = () => pageSurface.classList.toggle('is-mobile-surface', window.innerWidth <= 720);
+  syncSurfaceMode();
   canvas.setAttribute('layoutsubtree', '');
   installHtmlInCanvasPolyfill();
   installThreeHtmlTextureCompatibility();
@@ -48,7 +50,7 @@ async function startExperience() {
 
   let renderer;
   try {
-    renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false, powerPreference: 'high-performance' });
+    renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'high-performance' });
   } catch (error) {
     fail('当前浏览器无法创建 WebGL 场景，已保留静态首页。', error);
     return;
@@ -57,10 +59,10 @@ async function startExperience() {
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.toneMapping = THREE.NeutralToneMapping;
   renderer.toneMappingExposure = 1.08;
-  renderer.setClearColor(0x030303, 1);
+  renderer.setClearColor(0x080503, 1);
 
   const scene = new THREE.Scene();
-  scene.background = new THREE.Color(0x030303);
+  scene.background = new THREE.Color(0x080503);
   const camera = new THREE.PerspectiveCamera(37, 1, 0.1, 80);
   const pageGroup = new THREE.Group();
   pageGroup.position.set(0, -0.38, 0);
@@ -78,7 +80,7 @@ async function startExperience() {
     color: 0xffffff,
     emissive: 0xffffff,
     emissiveMap: pageTexture,
-    emissiveIntensity: 0.34,
+    emissiveIntensity: 0.5,
     roughness: 0.96,
     metalness: 0,
     transparent: true,
@@ -294,6 +296,7 @@ async function startExperience() {
   }));
 
   function resize() {
+    syncSurfaceMode();
     const width = Math.max(1, canvas.clientWidth);
     const height = Math.max(1, canvas.clientHeight);
     const dpr = Math.min(window.devicePixelRatio || 1, width < 760 ? 1.25 : 1.5);
@@ -318,8 +321,8 @@ async function startExperience() {
       position.copy(anchor).add(constrained);
       previous.copy(position);
     }
-    const fitHeight = pageHeight + 3.1;
-    const fitWidth = pageWidth + 1.25;
+    const fitHeight = pageHeight + 2.35;
+    const fitWidth = pageWidth + 0.8;
     const halfFov = THREE.MathUtils.degToRad(camera.fov * 0.5);
     const distanceForHeight = fitHeight / (2 * Math.tan(halfFov));
     const distanceForWidth = fitWidth / (2 * Math.tan(halfFov) * camera.aspect);
@@ -403,7 +406,8 @@ async function startExperience() {
     pulling = false;
     pullPointerId = -1;
     shell.classList.remove('is-pulling');
-    previous.copy(position).addScaledVector(pointerVelocity, -fixedStep * 0.36);
+    pointerVelocity.clampLength(0, 4.25);
+    previous.copy(position).addScaledVector(pointerVelocity, -fixedStep * 0.18);
   }
 
   function stepPhysics() {
