@@ -574,6 +574,9 @@ strong{color:var(--z-brown)}
 @media print{
   .tab-bar,.brand-bar,.zhaimi-watermark,.slide-nav,.slide-thumbs{display:none}
   .bp-panel{display:block !important;page-break-after:always}
+  body.print-permits .bp-panel{display:none !important}
+  body.print-permits #tab-permits{display:block !important;page-break-after:auto}
+  body.print-permits .permit-actions,body.print-permits .permit-filters,body.print-permits .fs-trigger{display:none !important}
 }
 
 /* 全屏查看 Modal - 2D 扁平 */
@@ -788,6 +791,62 @@ strong{color:var(--z-brown)}
 .z-qa-q{font-size:16px;font-weight:800;color:var(--z-brown);letter-spacing:0.04em;line-height:1.4}
 .z-qa-a{font-size:14px;color:var(--z-brown-soft);line-height:1.8}
 .z-qa-a strong{color:var(--z-orange-darker);font-weight:800}
+
+/* 开店合规咨询清单 */
+.permit-hero{background:linear-gradient(135deg,#FFF9F0 0%,#FFF4E1 100%);border:2px solid var(--z-orange-deep);border-radius:18px;padding:28px;margin-bottom:22px}
+.permit-hero-top{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.permit-updated{display:inline-flex;align-items:center;gap:6px;background:#FFFFFF;border:1px solid var(--z-orange);border-radius:999px;padding:6px 12px;font-size:12px;font-weight:800;color:var(--z-orange-darker)}
+.permit-warning{margin-top:16px;padding:12px 15px;background:#FFFFFF;border-left:5px solid var(--z-orange-deep);border-radius:10px;font-size:13px;color:var(--z-brown-soft)}
+.permit-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:18px 0}
+.permit-actions{display:flex;gap:8px;flex-wrap:wrap}
+.permit-btn{appearance:none;border:1px solid var(--z-orange-deep);background:#FFFFFF;color:var(--z-orange-darker);border-radius:10px;padding:9px 14px;font-family:inherit;font-size:13px;font-weight:800;cursor:pointer;transition:all .18s ease;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:6px}
+.permit-btn:hover{background:#FFF4E1;transform:translateY(-1px)}
+.permit-btn.primary{background:var(--z-orange-deep);color:#FFFFFF}
+.permit-btn.danger{border-color:#C85B4B;color:#A43E31}
+.permit-progress{display:grid;grid-template-columns:minmax(220px,1fr) auto;align-items:center;gap:14px;background:#FFFFFF;border:1px solid #EFE7DC;border-radius:14px;padding:14px 16px;min-width:min(100%,420px)}
+.permit-progress-track{height:10px;background:#F1E9DF;border-radius:999px;overflow:hidden;margin-top:6px}
+.permit-progress-fill{height:100%;width:0;background:linear-gradient(90deg,var(--z-orange),var(--z-orange-deep));transition:width .25s ease}
+.permit-progress-value{font-size:24px;font-weight:900;color:var(--z-orange-deep)}
+.permit-flow{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:18px 0 24px}
+.permit-flow-step{position:relative;background:#FAF6F0;border:1px solid #EFE7DC;border-radius:12px;padding:14px 14px 14px 42px;font-size:13px;color:var(--z-brown-soft)}
+.permit-flow-step b{display:block;color:var(--z-brown);margin-bottom:3px}
+.permit-flow-num{position:absolute;left:12px;top:13px;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:var(--z-orange-deep);color:#FFFFFF;font-weight:900;font-size:12px}
+.permit-filters{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 16px}
+.permit-filter{border:1px solid #E8E0D5;background:#FFFFFF;color:var(--z-brown-soft);border-radius:999px;padding:7px 12px;font-family:inherit;font-size:12px;font-weight:800;cursor:pointer}
+.permit-filter.active{background:var(--z-brown);border-color:var(--z-brown);color:#FFFFFF}
+.permit-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.permit-card{border:1px solid #EFE7DC;border-radius:16px;background:#FFFFFF;padding:18px;box-shadow:0 2px 9px rgba(92,61,46,.04)}
+.permit-card[data-status="done"]{border-color:#7DB46C;background:#F8FFF5}
+.permit-card[data-status="required"]{border-color:#E89A3C;background:#FFF9F0}
+.permit-card[data-status="na"]{opacity:.72}
+.permit-card-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:10px}
+.permit-card-title{display:flex;align-items:flex-start;gap:10px}
+.permit-card-icon{width:38px;height:38px;border-radius:11px;background:#FFF4E1;display:grid;place-items:center;font-size:20px;flex:0 0 auto}
+.permit-card h3{font-size:16px;line-height:1.4;color:var(--z-brown);margin:0}
+.permit-level{font-size:11px;font-weight:800;color:var(--z-orange-darker);margin-top:3px}
+.permit-status{border:1px solid #E1D6C9;border-radius:9px;background:#FFFFFF;color:var(--z-brown);padding:7px 9px;font-family:inherit;font-size:12px;font-weight:800;max-width:108px}
+.permit-summary{font-size:13px;color:var(--z-brown-soft);line-height:1.75;margin:9px 0}
+.permit-question{background:#FAF6F0;border-radius:10px;padding:11px 12px;font-size:12px;line-height:1.7;color:var(--z-brown)}
+.permit-question b{display:block;color:var(--z-orange-darker);margin-bottom:3px}
+.permit-contact{display:grid;gap:5px;margin:11px 0;font-size:12px;color:var(--z-brown-soft)}
+.permit-contact a{color:var(--z-orange-darker);font-weight:800;text-decoration:none}
+.permit-card-actions{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0}
+.permit-card-actions .permit-btn{padding:7px 10px;font-size:12px}
+.permit-fields{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:12px}
+.permit-fields label{font-size:11px;font-weight:800;color:var(--z-brown-soft)}
+.permit-fields input,.permit-fields textarea{width:100%;margin-top:4px;border:1px solid #E1D6C9;border-radius:9px;padding:8px 9px;font:inherit;font-size:12px;color:var(--z-brown);background:#FFFFFF}
+.permit-fields textarea{min-height:72px;resize:vertical}
+.permit-fields .permit-notes{grid-column:1/-1}
+.permit-general{margin-top:24px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.permit-contact-card{background:#FAF6F0;border:1px solid #EFE7DC;border-radius:14px;padding:16px}
+.permit-contact-card h3{font-size:15px;margin:0 0 7px;color:var(--z-brown)}
+.permit-contact-card p{font-size:12px;color:var(--z-brown-soft);margin:3px 0}
+.permit-contact-card a{color:var(--z-orange-darker);font-weight:800;text-decoration:none}
+.permit-toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);background:var(--z-brown);color:#FFFFFF;border-radius:999px;padding:10px 18px;font-size:13px;font-weight:800;opacity:0;pointer-events:none;transition:all .2s ease;z-index:10000}
+.permit-toast.show{opacity:1;transform:translate(-50%,0)}
+
+@media(max-width:900px){.permit-grid,.permit-general{grid-template-columns:1fr}.permit-flow{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.permit-hero{padding:20px 16px}.permit-flow{grid-template-columns:1fr}.permit-progress{grid-template-columns:1fr auto;width:100%}.permit-card{padding:15px}.permit-fields{grid-template-columns:1fr}.permit-fields .permit-notes{grid-column:auto}.permit-card-head{flex-direction:column}.permit-status{max-width:none;width:100%}.permit-actions{width:100%}.permit-actions .permit-btn{flex:1}.permit-toolbar{align-items:stretch}}
 </style>
 </head>
 <body>
@@ -823,6 +882,7 @@ strong{color:var(--z-brown)}
   <button class="tab-btn" data-tab="synergy"><span class="tab-icon">🤝</span>双品牌协同</button>
   <button class="tab-btn" data-tab="slide"><span class="tab-icon">🎬</span>演示</button>
   <button class="tab-btn" data-tab="layout"><span class="tab-icon">🏪</span>门店布局</button>
+  <button class="tab-btn" data-tab="permits"><span class="tab-icon">✅</span>开店办证</button>
   <button class="tab-btn" data-tab="map"><span class="tab-icon">📍</span>选址分析</button>
   <button class="tab-btn" data-tab="roadmap"><span class="tab-icon">🗺️</span>宅域·路线图</button>
   <button class="tab-btn" data-tab="funding"><span class="tab-icon">💰</span>融资计划</button>
@@ -2597,6 +2657,59 @@ strong{color:var(--z-brown)}
     <strong>结语</strong>：宅域·ZHAIYU 不是在拼凑业务，而是在搭建一套 <strong style="color:var(--z-orange-deep)">"服务破冰 → 客户发言档案 → 需求方案化 → 产品化复购"</strong> 的家庭需求增长系统。资金优先投向能验证客户真实需求的档案、内容、样板点和低库存测试，而不是盲目扩店。
   </div>
 </section>
+<!-- ================== 开店办证与合规咨询 ================== -->
+<section class="bp-panel tab-panel" id="tab-permits">
+  <div class="permit-hero">
+    <div class="permit-hero-top">
+      <div>
+        <h1 class="z-title">开店办证与装修合规清单</h1>
+        <p class="z-lead" style="margin:6px 0 0">给股东、装修公司和经办人共用：逐项咨询、记录口径、保留官方答复。</p>
+      </div>
+      <span class="permit-updated">资料核对日期：2026-07-18</span>
+    </div>
+    <div class="permit-warning"><strong>使用原则：</strong>本页不是“所有证照都要办”的结论。先向属地主管部门说明实际经营内容并确认是否适用，再装修、再申请。最终以主管部门针对本门店地址和经营模式的书面答复为准。</div>
+  </div>
+
+  <div class="permit-toolbar">
+    <div class="permit-progress">
+      <div><strong>咨询完成进度</strong><div class="permit-progress-track"><div class="permit-progress-fill" id="permitProgressFill"></div></div></div>
+      <div class="permit-progress-value" id="permitProgressValue">0/8</div>
+    </div>
+    <div class="permit-actions">
+      <button class="permit-btn primary" type="button" id="permitCopySummary">复制微信汇总</button>
+      <button class="permit-btn" type="button" id="permitPrint">打印 / 存 PDF</button>
+      <button class="permit-btn danger" type="button" id="permitReset">清空本机记录</button>
+    </div>
+  </div>
+
+  <h2 class="z-h2" style="margin-top:20px">建议推进顺序</h2>
+  <div class="permit-flow">
+    <div class="permit-flow-step"><span class="permit-flow-num">1</span><b>先确认场地</b>房屋用途、产权材料、物业是否允许宠物洗护与寄养。</div>
+    <div class="permit-flow-step"><span class="permit-flow-num">2</span><b>施工前咨询</b>同步问排水、消防、小型工程备案，答案写进装修合同。</div>
+    <div class="permit-flow-step"><span class="permit-flow-num">3</span><b>办理主体登记</b>确定公司或个体户，并核准不含诊疗的经营范围。</div>
+    <div class="permit-flow-step"><span class="permit-flow-num">4</span><b>开业前复核</b>按书面意见验收设施、留照片和票据，再确认招牌等事项。</div>
+  </div>
+
+  <div class="permit-filters" id="permitFilters" aria-label="按状态筛选">
+    <button class="permit-filter active" type="button" data-filter="all">全部</button>
+    <button class="permit-filter" type="button" data-filter="todo">未咨询</button>
+    <button class="permit-filter" type="button" data-filter="consulted">已咨询</button>
+    <button class="permit-filter" type="button" data-filter="required">需办理</button>
+    <button class="permit-filter" type="button" data-filter="done">已完成</button>
+    <button class="permit-filter" type="button" data-filter="na">不适用</button>
+  </div>
+  <div class="permit-grid" id="permitGrid"></div>
+
+  <h2 class="z-h2">综合咨询入口</h2>
+  <div class="permit-general">
+    <div class="permit-contact-card"><h3>上海市“一网通办”</h3><p>查事项、看材料、在线咨询。</p><p><a href="https://zwdt.sh.gov.cn/govPortals/index" target="_blank" rel="noopener">打开上海一网通办</a>　·　<a href="https://zwdt.sh.gov.cn/govPortals/region/SH00PD" target="_blank" rel="noopener">打开浦东新区频道</a></p></div>
+    <div class="permit-contact-card"><h3>12345 市民服务热线</h3><p>部门边界不清或多个部门互相转办时，要求形成工单并短信反馈。</p><p><a href="tel:12345">拨打 12345</a>　·　<a href="https://www.sh12345.gov.cn/" target="_blank" rel="noopener">打开官网</a></p></div>
+    <div class="permit-contact-card"><h3>临港新片区行政服务中心</h3><p>环湖北二路100号，35—38号窗口；工作日 9:00—11:30、13:30—16:30。</p><p><a href="tel:02168281000">021-68281000</a></p></div>
+    <div class="permit-contact-card"><h3>惠南分中心</h3><p>城南路1366号；周一至周日 9:00—17:00。出发前电话确认具体受理窗口。</p></div>
+  </div>
+  <div class="permit-toast" id="permitToast" role="status"></div>
+</section>
+
 <!-- ================== 标签5: 关于 ================== -->
 <section class="bp-panel tab-panel" id="tab-about">
   <div class="about-hero">
@@ -2727,17 +2840,17 @@ let currentSlide = 0;
   switchTab(saved);
   window.addEventListener('hashchange', ()=>{
     const h = location.hash.replace('#','');
-    if(['zhaiyu','investor','doc','slide','layout','map','zhaidian','synergy','roadmap','funding','about'].includes(h)) switchTab(h);
+    if(['zhaiyu','investor','doc','slide','layout','permits','map','zhaidian','synergy','roadmap','funding','about'].includes(h)) switchTab(h);
   });
   if(location.hash){
     const h = location.hash.replace('#','');
-    if(['zhaiyu','investor','doc','slide','layout','map','zhaidian','synergy','roadmap','funding','about'].includes(h)) switchTab(h);
+    if(['zhaiyu','investor','doc','slide','layout','permits','map','zhaidian','synergy','roadmap','funding','about'].includes(h)) switchTab(h);
   }
   // URL 参数支持：?tab=slide&slide=5（PDF 打印用）
   try {
     const params = new URLSearchParams(location.search);
     const tabParam = params.get('tab');
-    if(tabParam && ['zhaiyu','investor','doc','slide','layout','map','zhaidian','synergy','roadmap','funding','about'].includes(tabParam)) {
+    if(tabParam && ['zhaiyu','investor','doc','slide','layout','permits','map','zhaidian','synergy','roadmap','funding','about'].includes(tabParam)) {
       switchTab(tabParam);
     }
     const slideParam = parseInt(params.get('slide'));
@@ -2755,6 +2868,184 @@ let currentSlide = 0;
       setTimeout(()=>{ try{ buildSlide(); }catch(e){console.error('buildSlide fallback:', e);} }, 0);
     }
   } catch(e){}
+})();
+
+/* ============================================================
+   开店办证咨询清单
+   ============================================================ */
+(function(){
+  const storageKey = 'zhaiyu-permit-checklist-v1';
+  const statusLabels = {todo:'未咨询',consulted:'已咨询',required:'需办理',done:'已完成',na:'不适用'};
+  const permitItems = [
+    {
+      id:'site',icon:'🏠',title:'场地用途与物业许可',level:'第一步 · 签装修合同前确认',
+      summary:'先核对房产证用途、租赁合同、产权人材料，以及物业是否允许宠物洗护、短时寄养、排水改造和店招施工。',
+      question:'我们拟在约60㎡商铺经营宠物洗护、上门接送、用品零售，并可能提供短时或过夜寄养，不做诊疗。该地址用途是否允许？物业和产权人需要出具哪些材料？',
+      contact:'房东/物业先确认；主管部门边界不清时拨打 12345 建工单。',phone:'12345',
+      links:[['在线咨询','https://zwdt.sh.gov.cn/smzy/shell_pc/tourist/guide/qa']]
+    },
+    {
+      id:'registration',icon:'🪪',title:'营业执照与经营范围',level:'明确必办 · 公司或个体户二选一',
+      summary:'经营范围应准确覆盖宠物服务、宠物用品零售等实际业务，并明确不含动物诊疗；同时确认住所材料和登记主体形式。',
+      question:'本店提供宠物洗护、上门接送、用品零售和可能的寄养，不做诊疗、疫苗和兽药销售。建议登记哪些经营范围？公司与个体户分别需要哪些住所材料？',
+      contact:'南汇新城市场监管所：环湖西三路869号2楼221室；工作日 9:00—11:30、13:30—16:30。',phone:'021-20973280',
+      links:[['公司登记','https://zwdt.sh.gov.cn/govPortals/bsfw/item/abc2bd4b-00f5-4cca-966b-892bfef37041'],['个体户登记','https://zwdt.sh.gov.cn/govPortals/bsfw/item/bada60ae-1196-4628-aa90-d6d7e2175255']]
+    },
+    {
+      id:'epidemic',icon:'🐾',title:'动物防疫条件适用性',level:'重点确认 · 不要默认必办或不办',
+      summary:'普通宠物洗护并不当然等于必须申领动物防疫条件合格证；如提供短时或过夜寄养，应把笼位、时长、数量和服务流程说清后取得书面口径。',
+      question:'我们不繁殖、不销售活体、不做诊疗，只做洗护和上门接送；如设置少量笼位用于等候接送或过夜寄养，是否需要动物防疫条件合格证或其他备案？通风、隔离、消毒和无害化处理有什么硬性要求？',
+      contact:'浦东新区农业农村委：青艺路236号；动物相关咨询可先拨 021-58594873。',phone:'021-58594873',
+      links:[['浦东农业官方指南','https://www.pudong.gov.cn/zwgk/zwgk_zfxxgkzn_zfbm_nyncw/index.html']]
+    },
+    {
+      id:'diagnosis',icon:'🩺',title:'动物诊疗经营边界',level:'边界确认 · 防止经营范围越线',
+      summary:'若不开展诊断、治疗、疫苗注射、开具处方或兽药销售，通常不按动物诊疗机构经营；仍应确认基础护理项目如何宣传和收费。',
+      question:'我们只做洗澡、吹毛、梳理、剪指甲、清洁耳道等非诊疗服务。哪些项目、宣传用语或操作会被认定为动物诊疗？是否需要在门店公示“不提供诊疗服务”？',
+      contact:'上海市农业农村委动物诊疗咨询：021-52161315；邮箱 dwzlgl@163.com。',phone:'021-52161315',
+      links:[['动物诊疗许可事项','https://zwdt.sh.gov.cn/govPortals/bsfw/item/b0249574-db2c-4f34-a0e1-803a95b8e23a']]
+    },
+    {
+      id:'drainage',icon:'💧',title:'污水排放与排水许可',level:'施工前必须确认 · 直接影响地漏和管线',
+      summary:'现行浦东指南列明的必办行业未明确写宠物洗护，不能据此直接判断。要确认门店是否单独办证，或由物业总排水许可覆盖。',
+      question:'宠物洗护废水接入市政污水管网，是否需要单独办理城镇污水排入排水管网许可证？若由物业统一许可覆盖，需要什么证明？毛发过滤器、沉淀装置、存水弯、检查口和雨污分流分别有什么要求？',
+      contact:'浦东排水窗口：合欢路2号2楼51—80号窗口。',phone:'021-58492337',
+      links:[['浦东排水许可','https://zwdt.sh.gov.cn/govPortals/bsfw/item/daccbe18-0e10-45a6-942f-6bf950541b2c']]
+    },
+    {
+      id:'fire',icon:'🧯',title:'消防设计与开业检查',level:'施工前确认适用性 · 留存答复',
+      summary:'约60㎡宠物洗护、零售、寄养门店是否属于开业前消防安全检查范围，不能只凭面积判断；装修材料、疏散、用电和灭火设施仍需合规。',
+      question:'本店约60㎡，经营宠物洗护、用品零售和少量寄养，不属于餐饮或娱乐场所。是否需要公众聚集场所投入使用、营业前消防安全检查？碳晶板燃烧等级、喷涂顶面、疏散宽度、应急照明、灭火器和电气回路分别有什么要求？',
+      contact:'浦东消防咨询：021-22045074；可到合欢路2号或惠南城南路1366号咨询。',phone:'021-22045074',
+      links:[['消防检查事项','https://zwdt.sh.gov.cn/govPortals/bsfw/item/8ef4c4df-249c-4988-ba3b-cacf27d4c798'],['上海消防政策','https://sh.119.gov.cn/column/policy-file']]
+    },
+    {
+      id:'construction',icon:'🛠️',title:'小型建设工程备案',level:'施工前确认 · 让装修公司负责资料',
+      summary:'项目约60㎡、预算约4万元，预计落在投资额100万元以下、建筑面积300㎡以下范围，但仍需按现行规则确认是否信息登记及由谁申报。',
+      question:'本项目约60㎡、投资约4万元，涉及墙地面、水电、洗护区防水和排水，不拆承重结构。是否需要小型建设工程信息登记？建设单位、施工单位分别提交什么材料？施工单位需具备什么资质和保险？',
+      contact:'临港新片区行政服务中心：环湖北二路100号，021-68281000。',phone:'021-68281000',
+      links:[['小型工程平台','https://gcls.sh.gov.cn/urpfront/#/ui/xxlogin/tab1'],['浦东2026办事指南','https://www.pudong.gov.cn/zwgk/azt_zcfg/2026/15/349725.html']]
+    },
+    {
+      id:'sign_esports',icon:'🏷️',title:'店招与电竞样板间边界',level:'开业前确认 · 避免后续补手续',
+      summary:'普通店招通常按属地要求办理；电竞房若仅展示和拍摄，与向公众收费提供上网服务的网吧业务不同，需把实际模式讲清。',
+      question:'门头招牌的尺寸、亮化、安装和备案由哪个窗口负责？店内电竞样板间只做设备展示、内容拍摄和上门搭建成交，不向公众按小时收费上网，是否需要额外许可？若以后收费体验，需先办理什么？',
+      contact:'先向属地街镇和市场监管所确认；无法判断时拨打 12345 转城管、文旅或公安网安。',phone:'12345',
+      links:[['浦东一网通办','https://zwdt.sh.gov.cn/govPortals/region/SH00PD']]
+    }
+  ];
+
+  const grid = document.getElementById('permitGrid');
+  if(!grid) return;
+  let state = {};
+  let activeFilter = 'all';
+
+  function escapeHtml(value){
+    return String(value || '').replace(/[&<>\"']/g, function(char){return {'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;',"'":'&#039;'}[char];});
+  }
+  function loadState(){
+    try{ state = JSON.parse(localStorage.getItem(storageKey) || '{}') || {}; }catch(e){ state = {}; }
+  }
+  function saveState(){
+    try{ localStorage.setItem(storageKey, JSON.stringify(state)); }catch(e){}
+  }
+  function getRecord(id){
+    if(!state[id]) state[id] = {status:'todo',date:'',contact:'',notes:''};
+    return state[id];
+  }
+  function showToast(message){
+    const toast = document.getElementById('permitToast');
+    if(!toast) return;
+    toast.textContent = message;
+    toast.classList.add('show');
+    clearTimeout(showToast.timer);
+    showToast.timer = setTimeout(function(){toast.classList.remove('show');},1800);
+  }
+  function copyText(text, success){
+    if(navigator.clipboard && window.isSecureContext){
+      navigator.clipboard.writeText(text).then(function(){showToast(success);}).catch(function(){fallbackCopy(text,success);});
+    }else fallbackCopy(text,success);
+  }
+  function fallbackCopy(text, success){
+    const area = document.createElement('textarea');
+    area.value = text; area.style.position = 'fixed'; area.style.opacity = '0';
+    document.body.appendChild(area); area.select();
+    try{document.execCommand('copy');showToast(success);}catch(e){showToast('复制失败，请手动选择');}
+    area.remove();
+  }
+  function render(){
+    grid.innerHTML = permitItems.map(function(item){
+      const record = getRecord(item.id);
+      if(activeFilter !== 'all' && record.status !== activeFilter) return '';
+      const links = item.links.map(function(link){return '<a class="permit-btn" href="'+link[1]+'" target="_blank" rel="noopener">'+link[0]+' ↗</a>';}).join('');
+      return '<article class="permit-card" data-id="'+item.id+'" data-status="'+record.status+'">'+
+        '<div class="permit-card-head"><div class="permit-card-title"><span class="permit-card-icon">'+item.icon+'</span><div><h3>'+item.title+'</h3><div class="permit-level">'+item.level+'</div></div></div>'+
+        '<select class="permit-status" data-field="status" aria-label="'+item.title+'状态">'+Object.keys(statusLabels).map(function(key){return '<option value="'+key+'"'+(record.status===key?' selected':'')+'>'+statusLabels[key]+'</option>';}).join('')+'</select></div>'+
+        '<p class="permit-summary">'+item.summary+'</p><div class="permit-question"><b>到柜台这样问</b>'+item.question+'</div>'+
+        '<div class="permit-contact"><span>联系：'+item.contact+'</span><span>电话：<a href="tel:'+item.phone.replace(/[^0-9]/g,'')+'">'+item.phone+'</a></span></div>'+
+        '<div class="permit-card-actions">'+links+'<button class="permit-btn" type="button" data-copy-question="'+item.id+'">复制咨询话术</button></div>'+
+        '<div class="permit-fields"><label>咨询日期<input type="date" data-field="date" value="'+escapeHtml(record.date)+'"></label><label>接待人 / 工号<input type="text" data-field="contact" value="'+escapeHtml(record.contact)+'" placeholder="便于后续追问"></label><label class="permit-notes">答复与待办<textarea data-field="notes" placeholder="记录是否适用、所需材料、整改要求、工单号等">'+escapeHtml(record.notes)+'</textarea></label></div></article>';
+    }).join('');
+    updateProgress();
+  }
+  function updateProgress(){
+    const complete = permitItems.filter(function(item){return getRecord(item.id).status !== 'todo';}).length;
+    const value = document.getElementById('permitProgressValue');
+    const fill = document.getElementById('permitProgressFill');
+    if(value) value.textContent = complete + '/' + permitItems.length;
+    if(fill) fill.style.width = (complete / permitItems.length * 100) + '%';
+  }
+  function buildSummary(){
+    const lines = ['宅域开店办证咨询进度','更新日期：'+new Date().toLocaleDateString('zh-CN'),''];
+    permitItems.forEach(function(item,index){
+      const record = getRecord(item.id);
+      lines.push((index+1)+'. '+item.title+'｜'+statusLabels[record.status]);
+      if(record.date) lines.push('咨询日期：'+record.date);
+      if(record.contact) lines.push('接待人：'+record.contact);
+      if(record.notes) lines.push('答复/待办：'+record.notes.replace(/\n+/g,'；'));
+      lines.push('');
+    });
+    lines.push('说明：资料核对截至2026-07-18，最终以主管部门针对本门店地址和经营模式的书面答复为准。');
+    return lines.join('\n');
+  }
+
+  grid.addEventListener('change', function(event){
+    const card = event.target.closest('.permit-card');
+    const field = event.target.dataset.field;
+    if(!card || !field) return;
+    getRecord(card.dataset.id)[field] = event.target.value;
+    saveState();
+    if(field === 'status') render(); else updateProgress();
+  });
+  grid.addEventListener('input', function(event){
+    const card = event.target.closest('.permit-card');
+    const field = event.target.dataset.field;
+    if(!card || !field || field === 'status') return;
+    getRecord(card.dataset.id)[field] = event.target.value;
+    saveState();
+  });
+  grid.addEventListener('click', function(event){
+    const id = event.target.dataset.copyQuestion;
+    if(!id) return;
+    const item = permitItems.find(function(entry){return entry.id === id;});
+    if(item) copyText(item.question, '咨询话术已复制');
+  });
+  document.getElementById('permitFilters').addEventListener('click', function(event){
+    const button = event.target.closest('[data-filter]');
+    if(!button) return;
+    activeFilter = button.dataset.filter;
+    document.querySelectorAll('.permit-filter').forEach(function(entry){entry.classList.toggle('active',entry===button);});
+    render();
+  });
+  document.getElementById('permitCopySummary').addEventListener('click', function(){copyText(buildSummary(),'微信汇总已复制');});
+  document.getElementById('permitPrint').addEventListener('click', function(){document.body.classList.add('print-permits');window.print();});
+  window.addEventListener('afterprint', function(){document.body.classList.remove('print-permits');});
+  document.getElementById('permitReset').addEventListener('click', function(){
+    if(!confirm('确定清空这台设备上的全部咨询记录吗？此操作无法撤销。')) return;
+    state = {}; saveState(); render(); showToast('记录已清空');
+  });
+  loadState();
+  render();
 })();
 
 /* ============================================================
@@ -3143,10 +3434,10 @@ function resizeLayoutIframe(iframe){
   const closeBtn = document.getElementById('fsCloseBtn');
   const maxBtn = document.getElementById('fsMaxBtn');
 
-  const tabNames = {investor:'投资人问答',doc:'文档',slide:'演示',layout:'门店布局',map:'选址分析',about:'关于'};
+  const tabNames = {investor:'投资人问答',doc:'文档',slide:'演示',layout:'门店布局',permits:'开店办证',map:'选址分析',about:'关于'};
 
   function addTriggers(){
-    const skipPanels = new Set(['tab-layout', 'tab-map']);
+    const skipPanels = new Set(['tab-layout', 'tab-permits', 'tab-map']);
     document.querySelectorAll('.bp-panel').forEach(panel => {
       if(skipPanels.has(panel.id)) return;
       if(panel.querySelector('.fs-trigger')) return;
