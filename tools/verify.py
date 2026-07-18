@@ -19,7 +19,7 @@ import yaml
 ROOT = Path(__file__).resolve().parents[1]
 FACTS_PATH = ROOT / "data" / "facts.yaml"
 DECISIONS_PATH = ROOT / "data" / "decisions.yaml"
-BP_PATH = ROOT / "bp.html"
+BP_PATH = ROOT / "index.html"
 
 SKIP_DIRS = {".git", "__pycache__", "node_modules", "raw", "archive", "assets"}
 SKIP_EXTS = {
@@ -178,7 +178,7 @@ def check_bp_html(errors, warnings):
     html = BP_PATH.read_text(encoding="utf-8")
     for snippet in BP_REQUIRED_SNIPPETS:
         if snippet not in html:
-            errors.append(f"bp.html missing current snippet: {snippet}")
+            errors.append(f"index.html missing current snippet: {snippet}")
 
     forbidden_patterns = [
         (r"49㎡|49\s*平方米", "49㎡ old area"),
@@ -187,23 +187,23 @@ def check_bp_html(errors, warnings):
     ]
     for pattern, label in forbidden_patterns:
         if re.search(pattern, html):
-            errors.append(f"bp.html contains {label}")
+            errors.append(f"index.html contains {label}")
 
     for match in re.finditer(r"8000", html):
         context = html[max(0, match.start() - 60) : match.end() + 60]
         if "押金" not in context and "6000-8000" not in context and "5500-8000" not in context:
-            errors.append("bp.html contains 8000 outside allowed deposit/profit-range context")
+            errors.append("index.html contains 8000 outside allowed deposit/profit-range context")
             break
 
     if "6413" in html:
-        warnings.append("bp.html explains 3233 + 800 + 1500 + 880 = 6413 while headline says 6416")
+        warnings.append("index.html explains 3233 + 800 + 1500 + 880 = 6413 while headline says 6416")
 
 
 def check_text_dec_refs(decisions, warnings):
     known_ids = {d["id"] for d in decisions["decisions"]}
     for path in collect_text_files(ROOT):
         relpath = path.relative_to(ROOT).as_posix()
-        if relpath == "bp.html":
+        if relpath == "index.html":
             continue
         content = path.read_text(encoding="utf-8", errors="ignore")
         for ref in sorted(set(re.findall(r"DEC-\d+", content))):
