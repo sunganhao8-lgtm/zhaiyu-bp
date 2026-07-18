@@ -861,10 +861,6 @@ strong{color:var(--z-brown)}
 @media(max-width:900px){.zh-light-stage{grid-template-columns:1fr;gap:34px;padding:90px 34px 110px}.zh-light-controls{max-width:520px}.zh-light-hero{min-height:880px}.zh-light-copy h1{font-size:clamp(42px,9vw,72px)}}
 @media(max-width:640px){main{padding:8px}#tab-zhaiyu{padding:10px;margin-top:8px}.zh-light-hero{min-height:930px;margin:-10px -10px 0;border-radius:14px}.zh-light-top{height:66px;padding:0 18px}.zh-light-top>span{display:none}.zh-light-stage{padding:105px 20px 116px}.zh-light-copy h1{font-size:36px;line-height:1.02}.zh-light-subtitle{font-size:13px}.zh-light-footer{height:76px;grid-template-columns:1fr auto;padding:0 18px}.zh-light-footer>p:first-child{display:none}.zh-light-credit{max-width:150px;text-align:right;line-height:1.5}.zh-light-lamp{top:-24px;transform:translateX(-50%) scale(.8) rotate(var(--lamp-tilt));transform-origin:50% 0}.zh-light-beam{top:100px}}
 @media(prefers-reduced-motion:reduce){.zh-light-hero *{transition-duration:.01ms!important}}
-.zh-three-home-frame{display:block;width:calc(100% + 64px);height:720px;margin:-32px -32px 0;border:0;border-radius:16px 16px 0 0;background:#030303}
-@media(max-width:900px){.zh-three-home-frame{height:860px}}
-@media(max-width:640px){.zh-three-home-frame{width:calc(100% + 20px);height:930px;margin:-10px -10px 0;border-radius:14px 14px 0 0}}
-
 /* 开店合规咨询清单 */
 .permit-hero{background:linear-gradient(135deg,#FFF9F0 0%,#FFF4E1 100%);border:2px solid var(--z-orange-deep);border-radius:18px;padding:28px;margin-bottom:22px}
 .permit-hero-top{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;flex-wrap:wrap}
@@ -966,7 +962,18 @@ strong{color:var(--z-brown)}
 
 <!-- ================== 标签1: 宅域·品牌叙事 ================== -->
 <section class="bp-panel tab-panel active" id="tab-zhaiyu">
-  <iframe class="zh-three-home-frame" src="light-home.html" title="宅域互动灯光首页" loading="eager" allow="fullscreen"></iframe>
+  <div class="bp-title-block" style="text-align: center; padding: 60px 20px 40px; background: linear-gradient(135deg, #fef9f3 0%, #fff5e8 100%); border-bottom: 2px solid #f4b860;">
+    <h1 style="font-size: clamp(28px, 7vw, 56px); font-weight: 900; color: #5c3d2e; margin: 0 0 16px; letter-spacing: 2px; white-space: nowrap;">宅域・ZHAIYU 商业计划书</h1>
+    <p style="font-size: 18px; color: #8b6f47; margin: 0 0 24px; font-weight: 500;">服务破冰 · 客户发言档案 · 家庭需求产品化</p>
+    <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 24px;">
+      <span class="tag-core">🏠 宅 = 客户群体</span>
+      <span class="tag-core">🌐 域 = 服务边界</span>
+      <span class="tag-core">🤝 服务破冰</span>
+      <span class="tag-core">🗂️ 客户发言档案</span>
+      <span class="tag-core">💡 需求方案化</span>
+      <span class="tag-core">📦 产品化复购</span>
+    </div>
+  </div>
 
   <!-- 执行摘要 · 投资人首屏必读 -->
   <div class="section-card highlight" style="background:linear-gradient(135deg,#FFFBF5 0%,#FFF4E1 100%);border:2px solid var(--z-orange-deep);margin:24px auto 32px;max-width:1080px;padding:28px 32px">
