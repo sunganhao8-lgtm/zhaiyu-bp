@@ -792,6 +792,75 @@ strong{color:var(--z-brown)}
 .z-qa-a{font-size:14px;color:var(--z-brown-soft);line-height:1.8}
 .z-qa-a strong{color:var(--z-orange-darker);font-weight:800}
 
+/* 宅域首页 · HTML Light 交互首屏（灵感来自 jinruozai/HTML-Light-Demo，MIT） */
+.zh-light-hero{
+  --lamp-color:#ff9b45;
+  --lamp-shift:0px;
+  --lamp-tilt:0deg;
+  --cable-extra:0px;
+  --beam-width:560px;
+  --light-opacity:.82;
+  position:relative;
+  min-height:690px;
+  overflow:hidden;
+  border:1px solid #20232b;
+  border-radius:18px;
+  color:#F7F3EA;
+  background:
+    linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px),
+    radial-gradient(circle at 50% 22%,#17181c 0,#08090c 42%,#030405 100%);
+  background-size:52px 52px,52px 52px,auto;
+  isolation:isolate;
+  touch-action:pan-y;
+}
+.zh-light-hero::before{content:"";position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse 42% 58% at calc(50% + var(--lamp-shift)) 46%,color-mix(in srgb,var(--lamp-color) 20%,transparent) 0,transparent 72%);opacity:var(--light-opacity);transition:opacity .25s ease;pointer-events:none}
+.zh-light-hero.is-off{--light-opacity:0}
+.zh-light-hero.is-off .zh-light-bulb{background:#5d6068;box-shadow:none}
+.zh-light-hero.is-off .zh-light-beam{opacity:0}
+.zh-light-top{position:relative;z-index:4;height:78px;display:flex;align-items:center;justify-content:space-between;padding:0 34px;border-bottom:1px solid rgba(255,255,255,.09);font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:10px;letter-spacing:.16em;color:rgba(255,255,255,.42)}
+.zh-light-brand{display:flex;align-items:center;gap:11px;color:rgba(255,255,255,.84);font-weight:800}
+.zh-light-brand img{width:34px;height:34px;border-radius:9px;object-fit:contain;background:#FFF4E1}
+.zh-light-brand strong{color:#FFF;font-size:12px;letter-spacing:.12em}
+.zh-light-stage{position:relative;z-index:2;min-height:530px;display:grid;grid-template-columns:minmax(0,1.45fr) minmax(270px,.55fr);align-items:center;gap:48px;padding:76px 56px 96px}
+.zh-light-copy{position:relative;z-index:3;max-width:780px}
+.zh-light-eyebrow{margin-bottom:20px;color:color-mix(in srgb,var(--lamp-color) 82%,#fff);font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:11px;font-weight:800;letter-spacing:.18em}
+.zh-light-copy h1{margin:0;max-width:820px;color:#F7F4EE;font-size:clamp(40px,5.7vw,78px);font-weight:900;letter-spacing:-.055em;line-height:.98}
+.zh-light-copy h1 span{color:var(--lamp-color);transition:color .2s ease}
+.zh-light-subtitle{max-width:650px;margin:25px 0 0;color:rgba(246,244,238,.58);font-size:15px;line-height:1.85}
+.zh-light-concepts{display:flex;gap:9px;flex-wrap:wrap;margin-top:30px}
+.zh-light-concept{border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:8px 14px;color:rgba(255,255,255,.52);background:rgba(255,255,255,.025);font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:9px;letter-spacing:.11em}
+.zh-light-concept.active{border-color:color-mix(in srgb,var(--lamp-color) 52%,transparent);color:#FFF;background:color-mix(in srgb,var(--lamp-color) 12%,transparent);box-shadow:inset 0 0 18px color-mix(in srgb,var(--lamp-color) 8%,transparent)}
+.zh-light-controls{position:relative;z-index:4;padding:22px;border:1px solid rgba(255,255,255,.12);border-radius:17px;background:rgba(12,13,17,.87);box-shadow:0 24px 70px rgba(0,0,0,.28);backdrop-filter:blur(8px)}
+.zh-light-control-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px;color:#FFF;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:10px;font-weight:800;letter-spacing:.13em}
+.zh-light-power{height:30px;display:flex;align-items:center;gap:7px;padding:0 10px;border:1px solid color-mix(in srgb,var(--lamp-color) 45%,transparent);border-radius:999px;color:#FFF;background:rgba(255,255,255,.04);font:inherit;cursor:pointer}
+.zh-light-power i{width:7px;height:7px;border-radius:50%;background:var(--lamp-color);box-shadow:0 0 12px var(--lamp-color)}
+.zh-light-hero.is-off .zh-light-power{border-color:rgba(255,255,255,.12);color:rgba(255,255,255,.4)}
+.zh-light-hero.is-off .zh-light-power i{background:#656974;box-shadow:none}
+.zh-light-control-row{margin-top:19px}
+.zh-light-control-label{display:flex;justify-content:space-between;margin-bottom:9px;color:rgba(255,255,255,.55);font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:9px;letter-spacing:.1em}
+.zh-light-control-row input[type="range"]{width:100%;height:4px;margin:0;accent-color:var(--lamp-color);cursor:ew-resize}
+.zh-light-colors{display:flex;align-items:center;gap:10px;margin-top:12px}
+.zh-light-swatch{position:relative;width:25px;height:25px;border:1px solid rgba(255,255,255,.15);border-radius:50%;background:var(--swatch);cursor:pointer}
+.zh-light-swatch.active::after{content:"";position:absolute;inset:-5px;border:1px solid rgba(255,255,255,.78);border-radius:50%}
+.zh-light-reset{width:100%;height:38px;margin-top:23px;border:1px solid rgba(255,255,255,.1);border-radius:9px;color:rgba(255,255,255,.55);background:rgba(255,255,255,.025);font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:9px;letter-spacing:.12em;cursor:pointer}
+.zh-light-reset:hover{border-color:color-mix(in srgb,var(--lamp-color) 42%,transparent);color:#FFF}
+.zh-light-lamp{position:absolute;z-index:6;top:-16px;left:calc(50% + var(--lamp-shift));width:150px;height:174px;transform:translateX(-50%) rotate(var(--lamp-tilt));transform-origin:50% 0;cursor:grab;touch-action:none;filter:drop-shadow(0 10px 20px rgba(0,0,0,.55));will-change:transform,left}
+.zh-light-lamp.is-dragging{cursor:grabbing}
+.zh-light-cable{position:absolute;left:74px;top:0;width:2px;height:calc(91px + var(--cable-extra));background:linear-gradient(#1d1f26,#555861);transform-origin:top}
+.zh-light-cap{position:absolute;top:0;left:61px;width:28px;height:9px;border-radius:0 0 8px 8px;background:#22242b;border:1px solid #444750}
+.zh-light-shade{position:absolute;left:26px;top:calc(84px + var(--cable-extra));width:98px;height:43px;border-radius:50% 50% 18% 18%/70% 70% 25% 25%;background:linear-gradient(180deg,#2b2d33,#111216 76%);border:1px solid #3b3e46;box-shadow:inset 0 -7px 14px rgba(255,255,255,.04)}
+.zh-light-bulb{position:absolute;left:63px;top:calc(117px + var(--cable-extra));width:24px;height:16px;border-radius:50%;background:#fff3dc;box-shadow:0 0 13px #fff,0 0 34px var(--lamp-color),0 0 70px var(--lamp-color);transition:all .2s ease}
+.zh-light-beam{position:absolute;z-index:1;top:119px;left:calc(50% + var(--lamp-shift));bottom:54px;width:var(--beam-width);transform:translateX(-50%) rotate(var(--lamp-tilt));transform-origin:50% 0;clip-path:polygon(47.5% 0,52.5% 0,100% 100%,0 100%);background:linear-gradient(180deg,color-mix(in srgb,var(--lamp-color) 42%,transparent),color-mix(in srgb,var(--lamp-color) 14%,transparent) 65%,transparent);opacity:var(--light-opacity);filter:blur(7px);transition:width .2s ease,opacity .2s ease;pointer-events:none;will-change:transform,left}
+.zh-light-footer{position:absolute;left:0;right:0;bottom:0;z-index:5;height:64px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:20px;padding:0 34px;border-top:1px solid rgba(255,255,255,.09);color:rgba(255,255,255,.3);font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:8px;letter-spacing:.12em}
+.zh-light-footer p{margin:0;color:inherit}.zh-light-footer p:last-child{text-align:right}.zh-light-drag{display:flex;align-items:center;gap:10px;color:rgba(255,255,255,.66)}
+.zh-light-drag-icon{width:30px;height:20px;border:1px solid rgba(255,255,255,.25);border-radius:50%;transform:rotate(-13deg);position:relative}.zh-light-drag-icon::after{content:"";position:absolute;right:3px;top:1px;width:5px;height:5px;border-radius:50%;background:var(--lamp-color);box-shadow:0 0 8px var(--lamp-color)}
+.zh-light-credit a{color:rgba(255,255,255,.45);text-decoration:none}.zh-light-credit a:hover{color:#FFF}
+
+@media(max-width:900px){.zh-light-stage{grid-template-columns:1fr;gap:34px;padding:90px 34px 110px}.zh-light-controls{max-width:520px}.zh-light-hero{min-height:880px}.zh-light-copy h1{font-size:clamp(42px,9vw,72px)}}
+@media(max-width:640px){main{padding:8px}#tab-zhaiyu{padding:10px;margin-top:8px}.zh-light-hero{min-height:930px;border-radius:14px}.zh-light-top{height:66px;padding:0 18px}.zh-light-top>span{display:none}.zh-light-stage{padding:105px 20px 116px}.zh-light-copy h1{font-size:36px;line-height:1.02}.zh-light-subtitle{font-size:13px}.zh-light-footer{height:76px;grid-template-columns:1fr auto;padding:0 18px}.zh-light-footer>p:first-child{display:none}.zh-light-credit{max-width:150px;text-align:right;line-height:1.5}.zh-light-lamp{top:-24px;transform:translateX(-50%) scale(.8) rotate(var(--lamp-tilt));transform-origin:50% 0}.zh-light-beam{top:100px}}
+@media(prefers-reduced-motion:reduce){.zh-light-hero *{transition-duration:.01ms!important}}
+
 /* 开店合规咨询清单 */
 .permit-hero{background:linear-gradient(135deg,#FFF9F0 0%,#FFF4E1 100%);border:2px solid var(--z-orange-deep);border-radius:18px;padding:28px;margin-bottom:22px}
 .permit-hero-top{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;flex-wrap:wrap}
@@ -893,17 +962,39 @@ strong{color:var(--z-brown)}
 
 <!-- ================== 标签1: 宅域·品牌叙事 ================== -->
 <section class="bp-panel tab-panel active" id="tab-zhaiyu">
-  <div class="bp-title-block" style="text-align: center; padding: 60px 20px 40px; background: linear-gradient(135deg, #fef9f3 0%, #fff5e8 100%); border-bottom: 2px solid #f4b860;">
-    <h1 style="font-size: clamp(28px, 7vw, 56px); font-weight: 900; color: #5c3d2e; margin: 0 0 16px; letter-spacing: 2px; white-space: nowrap;">宅域・ZHAIYU 商业计划书</h1>
-    <p style="font-size: 18px; color: #8b6f47; margin: 0 0 24px; font-weight: 500;">服务破冰 · 客户发言档案 · 家庭需求产品化</p>
-    <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 24px;">
-      <span class="tag-core">🏠 宅 = 客户群体</span>
-      <span class="tag-core">🌐 域 = 服务边界</span>
-      <span class="tag-core">🤝 服务破冰</span>
-      <span class="tag-core">🗂️ 客户发言档案</span>
-      <span class="tag-core">💡 需求方案化</span>
-      <span class="tag-core">📦 产品化复购</span>
+  <div class="zh-light-hero" id="zhLightHero">
+    <div class="zh-light-top">
+      <div class="zh-light-brand"><img src="assets/zhaiyu-logo-120.png" alt="宅域"><strong>宅域 · ZHAIYU</strong><span>LIGHT STUDY 01</span></div>
+      <span>FAMILY NEEDS · OBSERVED &amp; REALIZED</span>
     </div>
+    <div class="zh-light-lamp" id="zhLightLamp" role="button" tabindex="0" aria-label="拖动吊灯改变光照方向，双击重置">
+      <i class="zh-light-cap"></i><i class="zh-light-cable"></i><i class="zh-light-shade"></i><i class="zh-light-bulb"></i>
+    </div>
+    <div class="zh-light-beam" aria-hidden="true"></div>
+    <div class="zh-light-stage">
+      <div class="zh-light-copy">
+        <div class="zh-light-eyebrow">01 / 宅域商业计划书 · 让需求进入光里</div>
+        <h1>让每一个家庭需求<br>被看见，<span>被理解</span>，被实现。</h1>
+        <p class="zh-light-subtitle">宅域从宠物洗护与电竞空间两个高信任入口出发，记录客户真实发言，把反复出现的麻烦变成可验证、可成交、可复购的家庭解决方案。</p>
+        <div class="zh-light-concepts">
+          <span class="zh-light-concept">服务破冰</span><span class="zh-light-concept">客户发言档案</span><span class="zh-light-concept active">需求产品化</span><span class="zh-light-concept">本地信任</span>
+        </div>
+      </div>
+      <aside class="zh-light-controls" aria-label="首页灯光控制">
+        <div class="zh-light-control-head"><span>LIGHT CONTROL</span><button class="zh-light-power" id="zhLightPower" type="button"><i></i><span>ON</span></button></div>
+        <label class="zh-light-control-row"><span class="zh-light-control-label"><b>BEAM ANGLE</b><output id="zhLightAngleOutput">42°</output></span><input id="zhLightAngle" type="range" min="20" max="65" value="42"></label>
+        <label class="zh-light-control-row"><span class="zh-light-control-label"><b>BRIGHTNESS</b><output id="zhLightBrightnessOutput">82%</output></span><input id="zhLightBrightness" type="range" min="20" max="100" value="82"></label>
+        <div class="zh-light-control-row"><span class="zh-light-control-label"><b>LIGHT COLOR</b><output id="zhLightColorOutput">AMBER</output></span><div class="zh-light-colors">
+          <button class="zh-light-swatch active" type="button" data-light-color="#ff9b45" data-light-name="AMBER" style="--swatch:#ff9b45" aria-label="琥珀色"></button>
+          <button class="zh-light-swatch" type="button" data-light-color="#ffd89a" data-light-name="CREAM" style="--swatch:#ffd89a" aria-label="奶油色"></button>
+          <button class="zh-light-swatch" type="button" data-light-color="#f06d3d" data-light-name="HERMÈS" style="--swatch:#f06d3d" aria-label="爱马仕橙"></button>
+          <button class="zh-light-swatch" type="button" data-light-color="#55c9ff" data-light-name="CYAN" style="--swatch:#55c9ff" aria-label="电光蓝"></button>
+          <button class="zh-light-swatch" type="button" data-light-color="#ad78ff" data-light-name="VIOLET" style="--swatch:#ad78ff" aria-label="紫色"></button>
+        </div></div>
+        <button class="zh-light-reset" id="zhLightReset" type="button">RESET LIGHT · 重置灯光</button>
+      </aside>
+    </div>
+    <div class="zh-light-footer"><p>ZHAIYU · HOME AS THE MAIN STAGE</p><div class="zh-light-drag"><i class="zh-light-drag-icon"></i><span>拖动吊灯 · 改变光线</span></div><p class="zh-light-credit">交互灵感：<a href="https://github.com/jinruozai/HTML-Light-Demo" target="_blank" rel="noopener">HTML Light Demo · MIT</a></p></div>
   </div>
 
   <!-- 执行摘要 · 投资人首屏必读 -->
@@ -2868,6 +2959,118 @@ let currentSlide = 0;
       setTimeout(()=>{ try{ buildSlide(); }catch(e){console.error('buildSlide fallback:', e);} }, 0);
     }
   } catch(e){}
+})();
+
+/* ============================================================
+   首页可交互吊灯 · 轻量原生物理
+   ============================================================ */
+(function(){
+  const hero = document.getElementById('zhLightHero');
+  const lamp = document.getElementById('zhLightLamp');
+  if(!hero || !lamp) return;
+  const power = document.getElementById('zhLightPower');
+  const angle = document.getElementById('zhLightAngle');
+  const brightness = document.getElementById('zhLightBrightness');
+  const angleOutput = document.getElementById('zhLightAngleOutput');
+  const brightnessOutput = document.getElementById('zhLightBrightnessOutput');
+  const colorOutput = document.getElementById('zhLightColorOutput');
+  const reset = document.getElementById('zhLightReset');
+  const swatches = Array.from(hero.querySelectorAll('.zh-light-swatch'));
+  let lightOn = true;
+  let drag = null;
+  let lampX = 0;
+  let lampTilt = 0;
+  let cableExtra = 0;
+  let velocity = 0;
+  let animationFrame = 0;
+
+  function clamp(value,min,max){return Math.max(min,Math.min(max,value));}
+  function applyLamp(){
+    hero.style.setProperty('--lamp-shift',lampX.toFixed(2)+'px');
+    hero.style.setProperty('--lamp-tilt',lampTilt.toFixed(2)+'deg');
+    hero.style.setProperty('--cable-extra',cableExtra.toFixed(2)+'px');
+  }
+  function stopAnimation(){if(animationFrame){cancelAnimationFrame(animationFrame);animationFrame=0;}}
+  function springHome(){
+    stopAnimation();
+    function step(){
+      velocity += -lampX * 0.018;
+      velocity *= 0.935;
+      lampX += velocity;
+      lampTilt += ((lampX / 14) - lampTilt) * 0.2;
+      cableExtra *= 0.88;
+      applyLamp();
+      if(Math.abs(lampX) > 0.12 || Math.abs(velocity) > 0.12 || Math.abs(lampTilt) > 0.12 || cableExtra > 0.12){
+        animationFrame = requestAnimationFrame(step);
+      }else{
+        lampX=0;lampTilt=0;cableExtra=0;velocity=0;animationFrame=0;applyLamp();
+      }
+    }
+    animationFrame = requestAnimationFrame(step);
+  }
+  function resetLight(){
+    stopAnimation();
+    lampX=0;lampTilt=0;cableExtra=0;velocity=0;
+    angle.value='42';brightness.value='82';
+    angle.dispatchEvent(new Event('input'));
+    brightness.dispatchEvent(new Event('input'));
+    swatches[0] && swatches[0].click();
+    lightOn=true;hero.classList.remove('is-off');power.querySelector('span').textContent='ON';
+    applyLamp();
+  }
+  lamp.addEventListener('pointerdown',function(event){
+    if(event.button !== 0) return;
+    stopAnimation();
+    const rect = hero.getBoundingClientRect();
+    drag={pointerId:event.pointerId,startX:event.clientX,startY:event.clientY,baseX:lampX,lastX:event.clientX,lastTime:performance.now(),limit:rect.width*.31};
+    lamp.setPointerCapture(event.pointerId);
+    lamp.classList.add('is-dragging');
+    event.preventDefault();
+  });
+  lamp.addEventListener('pointermove',function(event){
+    if(!drag || drag.pointerId !== event.pointerId) return;
+    const now = performance.now();
+    const elapsed = Math.max(8,now-drag.lastTime);
+    const nextX = clamp(drag.baseX + event.clientX-drag.startX,-drag.limit,drag.limit);
+    velocity = (event.clientX-drag.lastX) / elapsed * 12;
+    lampX = nextX;
+    lampTilt = clamp((event.clientX-drag.startX)/13,-28,28);
+    cableExtra = clamp((event.clientY-drag.startY)*.32,0,42);
+    drag.lastX=event.clientX;drag.lastTime=now;
+    applyLamp();
+  });
+  function releaseLamp(event){
+    if(!drag || drag.pointerId !== event.pointerId) return;
+    drag=null;lamp.classList.remove('is-dragging');springHome();
+  }
+  lamp.addEventListener('pointerup',releaseLamp);
+  lamp.addEventListener('pointercancel',releaseLamp);
+  lamp.addEventListener('dblclick',resetLight);
+  lamp.addEventListener('keydown',function(event){
+    if(event.key==='ArrowLeft' || event.key==='ArrowRight'){
+      stopAnimation();lampX=clamp(lampX+(event.key==='ArrowLeft'?-24:24),-220,220);lampTilt=lampX/14;applyLamp();event.preventDefault();
+    }else if(event.key==='Home'){resetLight();event.preventDefault();}
+    else if(event.key==='Enter' || event.key===' '){power.click();event.preventDefault();}
+  });
+  power.addEventListener('click',function(){
+    lightOn=!lightOn;hero.classList.toggle('is-off',!lightOn);power.querySelector('span').textContent=lightOn?'ON':'OFF';
+  });
+  angle.addEventListener('input',function(){
+    const value=Number(angle.value);angleOutput.textContent=value+'°';hero.style.setProperty('--beam-width',(260+value*7.2)+'px');
+  });
+  brightness.addEventListener('input',function(){
+    const value=Number(brightness.value);brightnessOutput.textContent=value+'%';hero.style.setProperty('--light-opacity',(value/100).toFixed(2));
+  });
+  swatches.forEach(function(button){
+    button.addEventListener('click',function(){
+      swatches.forEach(function(entry){entry.classList.toggle('active',entry===button);});
+      hero.style.setProperty('--lamp-color',button.dataset.lightColor);colorOutput.textContent=button.dataset.lightName;
+    });
+  });
+  reset.addEventListener('click',resetLight);
+  angle.dispatchEvent(new Event('input'));
+  brightness.dispatchEvent(new Event('input'));
+  applyLamp();
 })();
 
 /* ============================================================
