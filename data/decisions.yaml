@@ -321,7 +321,8 @@ decisions:
     date: 2026-07-18
     title: 装修预算按 4 万控制价重分配
     decided_by: 股东装修询价复盘
-    status: active
+    status: superseded
+    superseded_by: "DEC-031"
     supersedes: []
     source_materials:
       - 客来福-报价单.xlsx
@@ -335,3 +336,17 @@ decisions:
       合同总价超过 4.00 万须经股东书面确认。
     affected_bps: ["bp.html"]
     affected_docs: ["data/facts.yaml", "DECISIONS.md"]
+
+  - id: "DEC-031"
+    date: 2026-07-19
+    title: 启动资金校准为 22.23 万并恢复现金安全垫
+    decided_by: 用户复核启动资金口径
+    status: active
+    supersedes: [DEC-030]
+    decision: >
+      装修签约控制价维持 4.00 万，但不得通过压缩开业营销和流动资金来维持旧总额。
+      营销与流动资金恢复为 6.70 万，启动资金由 19.73 万调整为 22.23 万。
+      为保持既定资本股比例，三位股东出资目标按千元展示为约 7.8 万、7.2 万、7.2 万，
+      另有 0.03 万尾差在最终实缴时校准；资本股仍占 70%，人力股仍占 30%。
+    affected_bps: ["bp.html"]
+    affected_docs: ["data/facts.yaml", "DECISIONS.md", "tools/verify.py"]

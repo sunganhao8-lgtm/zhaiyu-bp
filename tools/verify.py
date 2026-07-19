@@ -42,7 +42,7 @@ SKIP_EXTS = {
 }
 
 EXPECTED = {
-    "startup_total": 197300,
+    "startup_total": 222300,
     "monthly_fixed": 6416,
     "rent": 3233,
     "utilities": 800,
@@ -59,14 +59,14 @@ EXPECTED = {
     "monthly_net_profit_m6": 5584,
     "monthly_net_profit_m12": 8584,
     "monthly_net_profit_m24": 10084,
-    "investments": [69000, 64000, 64000, 0],
+    "investments": [78000, 72000, 72000, 0],
     "equities": [0.325, 0.2875, 0.2875, 0.10],
     "capital_pool": 0.70,
     "human_capital_pool": 0.30,
 }
 
 BP_REQUIRED_SNIPPETS = [
-    "19.73 万元",
+    "22.23 万元",
     "59.87㎡",
     "3233",
     "约 6416",
@@ -78,7 +78,7 @@ BP_REQUIRED_SNIPPETS = [
     "32.5%",
     "28.75%",
     "装修签约控制价",
-    "4.20",
+    "6.70",
 ]
 
 
