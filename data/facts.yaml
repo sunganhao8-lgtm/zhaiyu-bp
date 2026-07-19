@@ -8,7 +8,7 @@ project:
   english_name: Zhaiyu
   tagline: "服务破冰 · 客户发言档案 · 家庭需求产品化"
   founded: 2026-06-16
-  latest_revision: 2026-07-19  # 恢复营销与流动资金安全垫并校准启动资金总额
+  latest_revision: 2026-07-19  # 确认无原店转让费并校准启动资金总额
   core_goal: >
     宅域的核心目标不是同时做很多业务，而是用可信服务破冰，
     把每一位客户的发言、抱怨、偏好、预算和生活场景沉淀为"客户发言档案"，
@@ -16,31 +16,32 @@ project:
 
 # ── 启动资金 ──
 startup:
-  total: 222300  # 22.23 万元（含转让费、10 个月房租、装修、设备、营销与流动资金等）
-  version: "2026-07-19 装修增额与现金安全垫校准"
-  shareholder_investment_total: 222000
+  total: 182300  # 18.23 万元（无转让费；含 10 个月房租、押金、装修、设备、营销与流动资金等）
+  version: "2026-07-19 无转让费口径校准"
+  shareholder_investment_total: 182000
   rounding_adjustment: 300  # 三位出资按整千展示，尾差计入启动资金校准项
   notes: >
     旧版 12 万 / 13.5 万启动资金口径已被 DEC-029 取代。
     当前 active 口径以 bp.html 投资人清洗版为准。
     2026-07-18 曾将装修控制价由 1.5 万调整为 4 万，并把营销与流动资金由 6.7 万压缩为 4.2 万。
     2026-07-19 纠正该未经确认的内部挪用：恢复营销与流动资金 6.7 万，启动资金同步调整为 22.23 万。
+    同日进一步确认原店转让费为 0，扣除错误计入的 4 万后，当前启动资金为 18.23 万。
 
 # 旧版 42.5/31/24/5 四人股权已被 DEC-029 的双轨制取代：
 # 主理人32.5 + 联合创始人B28.75 + 联合创始人C28.75 + 全职核心员工10。
 shareholders:
   - name: 联合创始人（主理人）
     role: 项目发起 + 全盘操盘
-    investment: 78000
+    investment: 64000
     equity: 0.325
     equity_gifted: 0
   - name: 联合创始人 B
     role: 运营 / 选品 / 日常管理
-    investment: 72000
+    investment: 59000
     equity: 0.2875
   - name: 联合创始人 C
     role: 市场 / 内容 / 线上获客
-    investment: 72000
+    investment: 59000
     equity: 0.2875
   - name: 全职核心员工
     role: 门店运营 / 洗护执行（全职）
@@ -262,7 +263,7 @@ store:
   layout_principle: "湿区服务宠物，干区接待/零售/电竞样板间，宠物毛发和水汽不得进入样板展示设备区。"
   gaming_showroom_area: "建议 5~8㎡，以一面展示墙 + 一个桌搭工位 + 大屏/投影为主，不做重资产大包间。"
   lease: "3年（原始合同剩余租期）"
-  transfer_fee: 40000  # DEC-029 当前口径：原店承接转让费
+  transfer_fee: 0  # DEC-032：已确认无原店转让费，仅承担租金与押金
   renovation_budget: 40000  # DEC-030：装修签约控制价
   renovation_quote_range: "45132.50~54000（百域未税 / 客来福 / 明月口头报价）"
   renovation_scope: "顶面喷涂、公共区墙面、洗护区墙地砖与防水排水、全店地砖、强弱电与水路重排、保护保洁和垃圾清运"

@@ -42,7 +42,7 @@ SKIP_EXTS = {
 }
 
 EXPECTED = {
-    "startup_total": 222300,
+    "startup_total": 182300,
     "monthly_fixed": 6416,
     "rent": 3233,
     "utilities": 800,
@@ -53,20 +53,20 @@ EXPECTED = {
     "rent_annual_nominal": 38800,
     "rent_annual_actual": 32300,
     "area_sqm": 59.87,
-    "transfer_fee": 40000,
+    "transfer_fee": 0,
     "renovation_budget": 40000,
     "monthly_net_profit_phase0": 4974,
     "monthly_net_profit_m6": 5584,
     "monthly_net_profit_m12": 8584,
     "monthly_net_profit_m24": 10084,
-    "investments": [78000, 72000, 72000, 0],
+    "investments": [64000, 59000, 59000, 0],
     "equities": [0.325, 0.2875, 0.2875, 0.10],
     "capital_pool": 0.70,
     "human_capital_pool": 0.30,
 }
 
 BP_REQUIRED_SNIPPETS = [
-    "22.23 万元",
+    "18.23 万元",
     "59.87㎡",
     "3233",
     "约 6416",
@@ -79,6 +79,7 @@ BP_REQUIRED_SNIPPETS = [
     "28.75%",
     "装修签约控制价",
     "6.70",
+    "无原店转让费",
 ]
 
 
@@ -171,6 +172,11 @@ def check_decisions(decisions, errors):
 
     if by_id["DEC-029"].get("status") != "active":
         errors.append("DEC-029 must be active")
+    if "DEC-032" not in by_id or by_id["DEC-032"].get("status") != "active":
+        errors.append("DEC-032 must exist and be active")
+    dec_031 = by_id.get("DEC-031")
+    if not dec_031 or dec_031.get("status") != "superseded" or dec_031.get("superseded_by") != "DEC-032":
+        errors.append("DEC-031 must be superseded by DEC-032")
     for old_id in ["DEC-012", "DEC-014", "DEC-024"]:
         dec = by_id.get(old_id)
         if not dec:

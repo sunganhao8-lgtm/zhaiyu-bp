@@ -341,12 +341,28 @@ decisions:
     date: 2026-07-19
     title: 启动资金校准为 22.23 万并恢复现金安全垫
     decided_by: 用户复核启动资金口径
-    status: active
+    status: superseded
+    superseded_by: "DEC-032"
     supersedes: [DEC-030]
     decision: >
       装修签约控制价维持 4.00 万，但不得通过压缩开业营销和流动资金来维持旧总额。
       营销与流动资金恢复为 6.70 万，启动资金由 19.73 万调整为 22.23 万。
       为保持既定资本股比例，三位股东出资目标按千元展示为约 7.8 万、7.2 万、7.2 万，
+      另有 0.03 万尾差在最终实缴时校准；资本股仍占 70%，人力股仍占 30%。
+    affected_bps: ["bp.html"]
+    affected_docs: ["data/facts.yaml", "DECISIONS.md", "tools/verify.py"]
+
+  - id: "DEC-032"
+    date: 2026-07-19
+    title: 确认无原店转让费并校准启动资金为 18.23 万
+    decided_by: 用户确认原店承接条件
+    status: active
+    supersedes: [DEC-031]
+    decision: >
+      原店承接不收取转让费，仅承担租赁合同约定的首年租金与押金。
+      从 22.23 万启动预算中扣除错误计入的 4.00 万转让费，启动资金调整为 18.23 万；
+      装修控制价 4.00 万、营销与流动资金 6.70 万保持不变。
+      为保持既定资本股比例，三位股东出资目标按千元展示为约 6.4 万、5.9 万、5.9 万，
       另有 0.03 万尾差在最终实缴时校准；资本股仍占 70%，人力股仍占 30%。
     affected_bps: ["bp.html"]
     affected_docs: ["data/facts.yaml", "DECISIONS.md", "tools/verify.py"]
