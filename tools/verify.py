@@ -201,7 +201,7 @@ def check_bp_html(errors, warnings):
         if re.search(pattern, html):
             errors.append(f"bp.html contains {label}")
 
-    for match in re.finditer(r"8000", html):
+    for match in re.finditer(r"(?<!\d)8000(?!\d)", html):
         context = html[max(0, match.start() - 60) : match.end() + 60]
         if "押金" not in context and "6000-8000" not in context and "5500-8000" not in context:
             errors.append("bp.html contains 8000 outside allowed deposit/profit-range context")
