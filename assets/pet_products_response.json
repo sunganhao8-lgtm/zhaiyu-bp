@@ -1,0 +1,16 @@
+{
+  "id": "069cdef80f929c6e6bafab11200ac0ee",
+  "data": {
+    "image_urls": [
+      "https://hailuo-image-algeng-data.oss-cn-wulanchabu.aliyuncs.com/image_inference_output%2Ftalkie%2Fprod%2Fimg%2F2026-07-08%2F471d3c31-b338-4f0c-80c1-64515bf4f48d_aigc.jpeg?Expires=1783561607&OSSAccessKeyId=LTAI5tB2SwrRwAtD23etQUbC&Signature=YYOAbN3ZBQzVpcc%2BlDHddt2BKnw%3D"
+    ]
+  },
+  "metadata": {
+    "failed_count": "0",
+    "success_count": "1"
+  },
+  "base_resp": {
+    "status_code": 0,
+    "status_msg": "success"
+  }
+}
