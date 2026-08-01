@@ -352,22 +352,23 @@ BP 在线版：https://sunganhao8-lgtm.github.io/zhaiyu-bp/bp.html （单页 + 1
 
 ---
 
-## 调起示例
+## 调起方式（实操）
 
 ```bash
-# 1. 先配 preset（首次需要）
-hermes moa configure
-# 把 3 个 reference slot 都改成 minimax-cn:MiniMax-M3
-# aggregator 也改成 minimax-cn:MiniMax-M3
-# 保存
+# 当前 preset 已配置好（2026-08-01 已 patch）：
+# * default
+#   Reference models: 2 个 minimax-cn:MiniMax-M3
+#   Aggregator: minimax-cn:MiniMax-M3
+# （2 个 reference 对应 prompt 里的 #1 投资人 + #3 创始人反方；
+#   产品 #2 因 MoA CLI 限制装不下，单跑时单独调 hermes -z "..." --model MiniMax-M3）
 
-# 2. 跑 MoA
+# 直接跑 MoA
 hermes -z "@MOA_REVIEW_FULL_PROMPT.txt" --provider moa --model default
 ```
 
----
+⚠️ hermes moa CLI 限制 reference 模型数量为 2 个（看 `moa_cmd.py` `_pick_slot` 循环「Add another / Done」）。如果只能配 2 个 reference + 1 个 aggregator，**就只跑 #1 投资人 + #3 创始人反方 这两个最关键的视角**，省掉 #2 产品视角。
 
-## 设计权衡说明
+下次跑 #2 可以单独 `hermes -z "..." --provider minimax-cn --model MiniMax-M3` 单独跑，或者把 #2 的 prompt 合并进 #3（让创始人反方顺手也看产品视角）。
 
 ### 为什么 3 个角色够用，不再加？
 
