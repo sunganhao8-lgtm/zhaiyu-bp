@@ -366,3 +366,18 @@ decisions:
       另有 0.03 万尾差在最终实缴时校准；资本股仍占 70%，人力股仍占 30%。
     affected_bps: ["bp.html"]
     affected_docs: ["data/facts.yaml", "DECISIONS.md", "tools/verify.py"]
+
+  - id: "DEC-033"
+    date: 2026-07-19
+    title: 宠物 SKU 价格策略 · 积分返券机制
+    decided_by: 用户设计 + Hermes 整理风险边界
+    status: active
+    decision: >
+      门店宠物类 SKU 售价 = 线上同款到手价（PDD/京东最低有保障价）+10%，赠送消费额 10% 的积分。
+      积分仅限下次线下消费抵用，90 天有效（自然季度），单笔最高抵 30%，不可提现/转赠/纯积分支付。
+      电竞房样板间、桌搭/电竞房搭建（399-2999 元）、储值卡、节日礼包不参与积分。
+      记账：每笔订单拆为「实收现金 + 递延积分负债（10%）」；核销率目标 60-70%；
+      复购 KPI：积分用户 30 天内二次到店率 ≥ 35%（基准非积分用户约 18%）。
+      上线节奏：开业后试运行 1 个季度，根据核销率和复购转化决定是否全量推广或下架。
+    affected_bps: ["bp.html"]
+    affected_docs: ["data/facts.yaml", "DECISIONS.md"]

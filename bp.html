@@ -1458,14 +1458,76 @@ strong{color:var(--z-brown)}
     <p>干湿分区经营：<strong>洗护区（湿区）</strong>独立设置；<strong>寄养区</strong>与零售/等候区物理隔断；动线合理（宠主进门→接待→等候→洗护视线通透）；监控无死角（视频信号同步至等候区屏幕）。</p>
     <p style="margin-top:8px;color:var(--z-brown-soft);font-size:13px">→ 详见 <strong>「门店布局」</strong> 标签页的 SVG 平面图</p>
     <h3 class="z-h3">7.6 洗护消杀 SOP</h3>
-    <ul class="z-list tick">
-      <li>每只宠物洗护后必做：洗护池消毒 / 美容台擦拭 / 推剪刀头浸泡 5 分钟 / 工具酒精擦拭 / 毛巾一宠一换</li>
-      <li>每日营业结束：紫外线消毒 30 分钟 / 笼具擦拭 / 排风口清洁 / 垃圾日产日清</li>
-      <li>每周大消：笼具暴晒 / 洗护池深度清洁 / 监控回放自检 / 库存盘点</li>
-    </ul>
-  </div>
+        <ul class="z-list tick">
+          <li>每只宠物洗护后必做：洗护池消毒 / 美容台擦拭 / 推剪刀头浸泡 5 分钟 / 工具酒精擦拭 / 毛巾一宠一换</li>
+          <li>每日营业结束：紫外线消毒 30 分钟 / 笼具擦拭 / 排风口清洁 / 垃圾日产日清</li>
+          <li>每周大消：笼具暴晒 / 洗护池深度清洁 / 监控回放自检 / 库存盘点</li>
+        </ul>
 
-  <!-- 第八章 -->
+        <h3 class="z-h3">7.7 价格策略 · 积分返券机制（DEC-033）<span class="tag-hypothesis">⏳ 模式已确定，待上线试运行验证</span></h3>
+        <div class="z-quote">门店售价 = 线上同款到手价（PDD/京东最低有保障价）+10%，赠送消费额 10% 积分；积分仅限下次线下消费抵用。<br><strong>客户感知</strong>：「没多花钱，还赚了 10 分」；<strong>真实效果</strong>：把"裸涨价 10%"拆成"先收 + 后返"，用积分换第二次到店。</div>
+
+        <h4 class="z-h4">① 适用范围（边界）</h4>
+        <ul class="z-list tick">
+          <li><strong>✅ 参与积分</strong>：宠物洗护、寄养、美容造型、宠物用品零售、宠物食品补给</li>
+          <li><strong>❌ 不参与积分</strong>：电竞房样板间展示、桌搭/电竞房搭建高客单方案（399-2999 元）、充值储值卡、节日礼包</li>
+          <li><strong>理由</strong>：高客单价产品打穿毛利；储值卡已自带锁客机制；用积分强行绑定反而稀释品牌定位</li>
+        </ul>
+
+        <h4 class="z-h4">② 积分规则硬约束（写入服务协议 + 价签 + 小票）</h4>
+        <div class="zdata-table-wrap">
+        <table class="zdata-table">
+          <thead><tr><th>维度</th><th>规则</th><th>理由</th></tr></thead>
+          <tbody>
+            <tr><td><strong>获取比例</strong></td><td>消费 1 元 = 1 积分（小票当日入账）</td><td>与"10% 返券"模型一致</td></tr>
+            <tr><td><strong>使用门槛</strong></td><td>100 积分起抵；单笔订单最高抵 30%</td><td>防套现 + 防毛利打穿</td></tr>
+            <tr><td><strong>有效期</strong></td><td><strong>90 天</strong>（自然季度，过期清零）</td><td>避免积分通胀和死亡积分</td></tr>
+            <tr><td><strong>使用范围</strong></td><td>仅限线下门店消费；不参与品类（电竞/桌搭/储值/礼包）不可用</td><td>控制资金流出向</td></tr>
+            <tr><td><strong>支付方式</strong></td><td>积分 + 现金/微信/支付宝混付；<strong>不可纯积分支付</strong>；不可提现、转赠、转让</td><td>避免成为变相储值池</td></tr>
+            <tr><td><strong>退款规则</strong></td><td>订单退款时，已使用的积分原数返还（90 天剩余有效期内）；已获取的积分按消费比例扣回</td><td>防积分套利退款</td></tr>
+            <tr><td><strong>争议与解释权</strong></td><td>门店保留对恶意刷单、虚假交易等行为的积分冻结与取消权</td><td>风控</td></tr>
+          </tbody>
+        </table>
+        </div>
+
+        <h4 class="z-h4">③ 基准价对标机制（防止被 PDD/京东甩开）</h4>
+        <ul class="z-list tick">
+          <li><strong>对标源</strong>：京东自营到手价（更稳定）为主参考，PDD 最低有保障价为辅参考</li>
+          <li><strong>Review 节奏</strong>：每季度第一个周一，由店长 + 主理人共同 review 同款价格漂移</li>
+          <li><strong>调整阈值</strong>：线上同款到手价漂移 >10% 时，触发门店售价调整讨论</li>
+          <li><strong>调价上限</strong>：单次调价幅度不超过 ±15%；调价前 7 天在小程序和店内告示</li>
+        </ul>
+
+        <h4 class="z-h4">④ 财务记账与 KPI</h4>
+        <ul class="z-list tick">
+          <li><strong>收入拆分</strong>：每笔订单 = 实收现金 + 递延积分负债（10% 进"积分池"科目）</li>
+          <li><strong>核销率 KPI</strong>：目标 <strong>60-70%</strong>
+            <ul style="margin-top:4px">
+              <li>&lt; 50%：积分浪费严重，规则需调整（缩短有效期 / 提示推送频次）</li>
+              <li>50-70%：健康区间</li>
+              <li>&gt; 80%：可能被套利，需检查单笔抵用占比是否违规</li>
+            </ul>
+          </li>
+          <li><strong>复购转化 KPI</strong>：积分用户 30 天内二次到店率目标 ≥ 35%（基准：非积分用户约 18%）</li>
+          <li><strong>客户档案叠加</strong>：积分消费记录 = 第二次到店的强行为数据；与客户发言档案系统联动，自动更新"消费频次 / 偏好品类 / 客单价区间"标签</li>
+        </ul>
+
+        <h4 class="z-h4">⑤ 风险预案（按 R1-R5 排序）</h4>
+        <ul class="z-list tick">
+          <li><strong>R1 积分通胀</strong>：90 天有效期 + 季度清零；月度统计池余额，超过月营收 8% 触发规则收紧讨论</li>
+          <li><strong>R2 套现/退款</strong>：单笔最高抵 30%；退款原数返还 + 按比例扣回；接入微信支付商户号风控</li>
+          <li><strong>R3 价格倒挂</strong>：基准价每季度对标；不参与积分的品类（电竞/桌搭/储值）保持独立定价</li>
+          <li><strong>R4 客户误解"积分=预付卡"</strong>：明示"积分不可提现、不可纯积分支付"；价签、收银台、结账语音三处提醒</li>
+          <li><strong>R5 核销率失衡</strong>：低于 50% 推送到期前 7 天短信提醒；高于 80% 收紧单笔上限至 20%</li>
+        </ul>
+
+        <div style="margin-top:14px;padding:12px 16px;background:rgba(244,184,96,.12);border-left:4px solid var(--z-orange-deep);border-radius:6px;font-size:14px;line-height:1.75;color:var(--z-brown)">
+          <strong>📌 一句话总结</strong>：积分返券不是商业模式创新，是<strong>复购诱饵 + 客户档案数据采集器</strong>。<br>
+          能不能跑通，取决于宠物 SKU 的 30 天复购能不能撑起 60%+ 积分核销率。跑不通的话退回到"明码标价 + 不办预付卡"的简单模型，积分功能下架。
+        </div>
+      </div>
+
+      <!-- 第八章 -->
   <div class="section-card" id="ch8">
     <h2 class="z-h2">第八章 · 全渠道营销获客方案</h2>
     <div class="z-quote">一句话主张：「<span style="color:var(--z-orange-deep);font-weight:900">宅咪·临港 LIN 舍</span>· 楼下那家干净的宠物店」</div>

@@ -270,3 +270,65 @@ store:
 
 storefront_area_legacy_49sqm:
   superseded_by: "store.area_sqm = 59.87 (2026-07-12 决议)"
+
+# ── 价格策略（DEC-033） ──
+pricing_strategy:
+  model: "积分返券机制"
+  source: "DEC-033"
+  scope_eligible:
+    - 宠物洗护
+    - 寄养
+    - 美容造型
+    - 宠物用品零售
+    - 宠物食品补给
+  scope_excluded:
+    - 电竞房样板间展示
+    - 桌搭/电竞房搭建（399-2999 元）
+    - 充值储值卡
+    - 节日礼包
+  formula: "门店售价 = 线上同款到手价（PDD/京东最低有保障价） × 1.10，赠送消费额 10% 积分"
+  earning_rate: "1 元消费 = 1 积分"
+  usage_min_points: 100
+  usage_max_ratio: 0.30    # 单笔订单最高抵 30%
+  validity_days: 90
+  usage_scope: "线下门店消费；不参与品类（电竞/桌搭/储值/礼包）不可用"
+  payment_methods_allowed: ["现金", "微信", "支付宝", "积分+以上混付"]
+  payment_methods_denied: ["纯积分支付", "积分提现", "积分转赠", "积分转让"]
+  benchmark_source_primary: "京东自营到手价"
+  benchmark_source_secondary: "PDD 最低有保障价"
+  benchmark_review_cadence: "每季度第一个周一"
+  benchmark_drift_threshold: 0.10    # 线上同款漂移 >10% 触发调价讨论
+  price_adjust_max_ratio: 0.15       # 单次调价不超过 ±15%
+  price_adjust_notice_days: 7        # 调价前 7 天小程序和店内告示
+  accounting:
+    split: "每笔订单 = 实收现金 + 递延积分负债（10%）"
+    deferred_liability_account: "积分池"
+    target_redemption_rate: "0.60~0.70"
+    redemption_rate_alert:
+      too_low: "< 0.50 → 积分浪费严重，缩短有效期 / 推送频次"
+      healthy: "0.50~0.70"
+      too_high: "> 0.80 → 可能被套利，检查单笔抵用占比"
+    pool_balance_alert_ratio: 0.08   # 积分池余额 / 月营收 > 8% 触发规则收紧
+  kpi:
+    repurchase_30d_target_with_points: 0.35    # 积分用户 30 天内二次到店率目标
+    repurchase_30d_baseline_no_points: 0.18    # 非积分用户基准
+  refund_policy:
+    order_refund: "已使用的积分原数返还（剩余有效期内）；已获取的积分按消费比例扣回"
+    dispute: "门店保留对恶意刷单、虚假交易等行为的积分冻结与取消权"
+  rollout: "开业后试运行 1 个季度，根据核销率和复购转化决定全量推广或下架"
+  risk_register:
+    - id: "R1"
+      risk: "积分通胀"
+      mitigation: "90 天有效期 + 季度清零；月度统计池余额"
+    - id: "R2"
+      risk: "套现/退款"
+      mitigation: "单笔最高抵 30%；退款原数返还 + 按比例扣回；接入微信支付商户号风控"
+    - id: "R3"
+      risk: "价格倒挂"
+      mitigation: "基准价每季度对标；不参与积分的品类保持独立定价"
+    - id: "R4"
+      risk: "客户误解积分=预付卡"
+      mitigation: "明示不可提现/纯积分支付；价签、收银台、结账语音三处提醒"
+    - id: "R5"
+      risk: "核销率失衡"
+      mitigation: "< 50% 推送到期前 7 天短信提醒；> 80% 收紧单笔上限至 20%"
