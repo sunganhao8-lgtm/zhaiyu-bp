@@ -1,7 +1,7 @@
-# 宅域全方位优化方案
+﻿# 宅域全方位优化方案
 
 > 版本：2026-07-01
-> 依据：`data/facts.yaml`、`data/decisions.yaml`、`docs/investor-objection-playbook.md`、`raw/meetings/2026-06-26/开店成本收益分析.xlsx`、`meetings/2026-06-26-创始人A快速会议.md`
+> 依据：`data/facts.yaml`、`data/decisions.yaml`、`docs/investor-objection-playbook.md`、`raw/meetings/2026-06-26/开店成本收益分析.xlsx`、`meetings/2026-06-26-孙淦浩快速会议.md`
 
 ---
 

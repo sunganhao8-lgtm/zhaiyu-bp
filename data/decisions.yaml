@@ -1,4 +1,4 @@
-# ============================================
+﻿# ============================================
 # 宅域 — 架构决策记录（ADR）
 # 所有决策的完整历史
 # ============================================
@@ -75,10 +75,10 @@ decisions:
     superseded_by: "DEC-012（12 万，多版本已废弃）"
     decision: 过渡版本，已被 2026-06-26 会议废弃
 
-  # ── 2026-06-26 创始人A快速会议决策 ──
+  # ── 2026-06-26 孙淦浩快速会议决策 ──
   - id: "DEC-012"
     date: 2026-06-26
-    source_meeting: meetings/2026-06-26-创始人A快速会议.md
+    source_meeting: meetings/2026-06-26-孙淦浩快速会议.md
     title: 启动资金确认为12万
     status: superseded
     supersedes: ["DEC-003", "DEC-004", "DEC-011"]
@@ -91,7 +91,7 @@ decisions:
 
   - id: "DEC-013"
     date: 2026-06-26
-    source_meeting: meetings/2026-06-26-创始人A快速会议.md
+    source_meeting: meetings/2026-06-26-孙淦浩快速会议.md
     title: 老板无底薪，纯分红
     status: active
     supersedes: []
@@ -103,7 +103,7 @@ decisions:
 
   - id: "DEC-014"
     date: 2026-06-26
-    source_meeting: meetings/2026-06-26-创始人A快速会议.md
+    source_meeting: meetings/2026-06-26-孙淦浩快速会议.md
     title: 股份结构与激励方案
     status: superseded
     supersedes: []
@@ -116,7 +116,7 @@ decisions:
 
   - id: "DEC-015"
     date: 2026-06-26
-    source_meeting: meetings/2026-06-26-创始人A快速会议.md
+    source_meeting: meetings/2026-06-26-孙淦浩快速会议.md
     title: 业务聚焦宠物现金流+上门服务
     status: active
     supersedes: ["DEC-010"]
@@ -129,7 +129,7 @@ decisions:
 
   - id: "DEC-016"
     date: 2026-06-26
-    source_meeting: meetings/2026-06-26-创始人A快速会议.md
+    source_meeting: meetings/2026-06-26-孙淦浩快速会议.md
     title: 分润机制"谁干谁拿钱"
     status: active
     supersedes: []
@@ -141,7 +141,7 @@ decisions:
 
   - id: "DEC-017"
     date: 2026-06-26
-    source_meeting: meetings/2026-06-26-创始人A快速会议.md
+    source_meeting: meetings/2026-06-26-孙淦浩快速会议.md
     title: 目标日经营贡献 750 元 / 12 个月回本
     status: active
     supersedes: []
@@ -153,7 +153,7 @@ decisions:
 
   - id: "DEC-018"
     date: 2026-06-26
-    source_meeting: meetings/2026-06-26-创始人A快速会议.md
+    source_meeting: meetings/2026-06-26-孙淦浩快速会议.md
     title: 押金目标压至 6000-7000 元
     status: active
     supersedes: []
@@ -165,7 +165,7 @@ decisions:
 
   - id: "DEC-019"
     date: 2026-06-26
-    source_meeting: meetings/2026-06-26-创始人A快速会议.md
+    source_meeting: meetings/2026-06-26-孙淦浩快速会议.md
     title: 设备成本从 4.2 万砍至约 5200 元
     status: active
     supersedes: []
@@ -176,7 +176,7 @@ decisions:
 
   - id: "DEC-020"
     date: 2026-06-26
-    source_meeting: meetings/2026-06-26-创始人A快速会议.md
+    source_meeting: meetings/2026-06-26-孙淦浩快速会议.md
     title: 股份超标修正：创始人B少投 1000 元
     status: active
     supersedes: []
@@ -187,7 +187,7 @@ decisions:
 
   - id: "DEC-021"
     date: 2026-06-26
-    source_meeting: meetings/2026-06-26-创始人A快速会议.md
+    source_meeting: meetings/2026-06-26-孙淦浩快速会议.md
     title: 经营红线：严禁私活 + 高难度额外抽成
     status: active
     supersedes: []
@@ -200,7 +200,7 @@ decisions:
 
   - id: "DEC-022"
     date: 2026-06-26
-    source_meeting: meetings/2026-06-26-创始人A快速会议.md
+    source_meeting: meetings/2026-06-26-孙淦浩快速会议.md
     title: 市场营销策略：小红书为主 + 开业免费引流
     status: active
     supersedes: []
@@ -213,7 +213,7 @@ decisions:
 
   - id: "DEC-023"
     date: 2026-06-26
-    source_meeting: meetings/2026-06-26-创始人A快速会议.md
+    source_meeting: meetings/2026-06-26-孙淦浩快速会议.md
     title: 私域运营目标：1600 人 / 一月建群
     status: active
     supersedes: []
@@ -399,3 +399,34 @@ decisions:
       6. ch10 R4 房东续约条款具体化：签 3-5 年 / 首年不涨 / 年涨幅 ≤ CPI / 提前 3 月书面通知 / 违约金 2 月租金。
     affected_bps: ["bp.html"]
     affected_docs: ["data/facts.yaml", "DECISIONS.md", "tools/verify.py"]
+
+  - id: DEC-035
+    title: 设备选型平替落地 — 7 件核心设备 1688 平替降本 64%
+    decided_by: 用户授权自动执行
+    status: active
+    decision: >
+      【v2 · 2026-08-05 实测落地版,本节 body 已被 v2 update_log 覆盖,以 v2 数字为权威】
+      7 件核心设备平替组合(1688 详情见 装修/效果图/洗护设备/设备对比表-模板-v2.xlsx Sheet 3.4),
+      23 候选链接全部 1688 详情页实测验证可点击(100% 通过):
+      低压洗护台 LGT110 ¥3680 → 山东济宁 304 不锈钢 5 款阶梯 ¥2850(-22%);
+      扫风烘干箱 SD80 ¥2399 → 嬉皮狗智能语音 ¥603(-75%);
+      扫风烘干箱 PDB350 ¥8000 → 佛山顺德顺旺通达 75L 吊臂式 ¥749(-91%);
+      不锈钢升降浴缸 PB20 ¥4620 → 山东济宁 304 不锈钢电动升降 ¥2466(-47%);
+      电动美容方桌 BT20M ¥2100 → 佛山酷格 304 不锈钢电动桌 ¥509(-76%);
+      气动美容圆桌 BT10 ¥720 → 宠物美容台气压圆形 ¥337(-53%);
+      肩托挂脖吹水机 ND10 ¥459 → 江苏常州超伦挂脖 ¥297(-35%);
+      合计 ¥21978 → ¥7811 节省 ¥14167 (64%)。
+      节省 ¥14167 重新分配:流动资金 +¥16172(增至 53172,3 月+ 安全垫)/营销 +¥5017(首月投放)/设备实付 ¥13811(设备 ¥7811 + 囤货 ¥3000 + 证照 ¥3000)。
+      启动资金总额 18.23 万保持不变,仅分配结构调整。
+    affected_bps: ["bp.html"]
+    affected_docs: ["data/facts.yaml", "DECISIONS.md", "装修/效果图/洗护设备/README.md"]
+    update_log:
+      - date: 2026-08-05
+        version: v2
+        note: >
+          23 候选链接全部 1688 详情页实测验证可点击(100% 通过)。选品精修:
+          段#5 BT20M 改用佛山酷格 304 不锈钢电动桌 ¥509(原丽泽估 ¥1680);
+          段#6 BT10 改用宠物美容台气压圆形 ¥337(已售 898 件);
+          最终 7 件平替 ¥7,811 vs 霍曼 ¥21,978,节省 ¥14,167 (64%)。
+          同步更新:facts.yaml (equipment 13811 / working_capital 53172) + bp.html 9.1 表 4a 行。
+          body 已于 2026-08-05 同步重写为 v2 数字。

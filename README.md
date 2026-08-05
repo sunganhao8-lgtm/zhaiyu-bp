@@ -1,7 +1,7 @@
 # 宅域 (Zhaiyu) — 服务破冰 + 客户发言档案 · 家庭需求品牌
 
 > **服务破冰 · 客户发言档案 · 家庭需求产品化**
-> 12 万启动 · 月固定 9850 元 · 日经营贡献目标 750 元 · 12 个月回本目标
+> 18.23 万启动（无原店转让费 · DEC-032）· 月固定 6416 元（DEC-029）· 日经营贡献目标 750 元 · 现金回本 10 月 / 累计净利回本 18-24 月 / 账面完全回本 36 月（DEC-034）
 
 ---
 
@@ -21,9 +21,9 @@
 |---|---|
 | 快速了解项目全貌 | [[INDEX.md]] |
 | 看所有关键决策 | [[DECISIONS.md]]（或 [[data/decisions.yaml]] 结构化版） |
-| 读最新会议笔记 | [[meetings/2026-06-26-创始人A快速会议.md]] |
-| 看商业计划书（网页版） | [[bps/store-front/bp.html]] |
-| 看商业计划书（Markdown 源） | [[bps/store-front/bp.md]] |
+| 读最新会议笔记 | [[meetings/2026-06-26-孙淦浩快速会议.md]] |
+| 看商业计划书（网页版 · 线上入口） | [[bp.html]] |
+| 看商业计划书（Markdown 源 · 镜像） | [[bps/store-front/bp.md]] |
 | 看合作着陆页 | [[bps/landing-for-coop/landing.html]] |
 | 看优化后的执行方案 | [[docs/optimization-plan.md]] |
 | 准备投资人问答话术 | [[docs/investor-objection-playbook.md]] |
@@ -91,4 +91,4 @@ python tools/render_index.py --write
 
 ---
 
-> 关于这个项目的完整故事：[[PROJECT_HISTORY.md]]（在 bps/store-front/ 下）
+> 关于这个项目的完整故事：见 `bps/store-front/PROJECT_HISTORY.md`（仓库内镜像，2026-08-05 团队 review 后该子目录大部分数据已与根 bp.html 同步，但作为完整叙事仍可读）

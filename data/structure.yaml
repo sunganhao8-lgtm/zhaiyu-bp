@@ -1,4 +1,4 @@
-# 宅域知识库 — 目录结构定义（单一事实源）
+﻿# 宅域知识库 — 目录结构定义（单一事实源）
 #
 # 改这个文件 = 改整个目录结构
 # 改完后跑：
@@ -55,7 +55,7 @@ root:
           type: file
           purpose: 四段式会议笔记模板（强制冲突追踪）
           audience: [human]
-        - path: 2026-06-26-创始人A快速会议.md
+        - path: 2026-06-26-孙淦浩快速会议.md
           type: file
           purpose: 第一次正式会议（启动资金/股份/分润机制敲定）
           audience: [ai, human, partner]

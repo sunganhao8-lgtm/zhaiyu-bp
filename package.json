@@ -5,8 +5,9 @@
   "license": "UNLICENSED",
   "type": "module",
   "scripts": {
-    "build": "esbuild src/light-home.js --bundle --format=esm --target=es2022 --minify --legal-comments=inline --outfile=assets/light-home.js",
-    "check": "node --check src/light-home.js"
+    "build": "esbuild src/light-home.js --bundle --format=esm --target=es2022 --minify --tree-shaking=true --sourcemap --outdir=assets --entry-names=light-home",
+    "check": "node --check src/light-home.js",
+    "build:legacy": "esbuild src/light-home.js --bundle --format=esm --target=es2022 --minify --legal-comments=inline --outfile=assets/light-home.js"
   },
   "dependencies": {
     "three": "0.185.1",

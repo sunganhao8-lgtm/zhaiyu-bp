@@ -1,6 +1,6 @@
 # 宅域 — 知识库索引
 
-> 自动生成于 2026-07-01 11:12
+> 自动生成于 2026-08-05 20:35
 
 > 运行 `python tools/render_index.py --write` 更新
 
@@ -10,16 +10,16 @@
 
 | 文件 | 主题 | 日期 | 大小 |
 |---|---|---|---|
-| [[meetings/2026-06-26-孙淦浩快速会议.md]] | 2026-06-26 创始人A快速会议 | 2026-06-30 | 8KB |
+| [[meetings/2026-06-26-孙淦浩快速会议.md]] | 2026-06-26-孙淦浩快速会议 | 2026-08-05 | 11KB |
 
 ## 📊 数据源
 
 | 文件 | 更新 | 大小 |
 |---|---|---|
-| [[data/decisions.yaml]] | 2026-07-01 | 13KB |
-| [[data/facts.yaml]] | 2026-07-01 | 10KB |
+| [[data/decisions.yaml]] | 2026-08-05 | 21KB |
+| [[data/facts.yaml]] | 2026-08-05 | 17KB |
 | [[data/poi.json]] | 2026-06-18 | 7KB |
-| [[data/structure.yaml]] | 2026-07-01 | 8KB |
+| [[data/structure.yaml]] | 2026-08-05 | 8KB |
 
 ## 📦 业务交付物
 
@@ -32,7 +32,7 @@
 | [[bps/landing-for-coop/hermes-feishu-notifier-path.md]] | 2026-06-24 | 9KB |
 | [[bps/landing-for-coop/hermes-optimization-5.md]] | 2026-06-24 | 44KB |
 | [[bps/landing-for-coop/index.html]] | 2026-06-24 | 397B |
-| [[bps/landing-for-coop/landing.html]] | 2026-06-23 | 37KB |
+| [[bps/landing-for-coop/landing.html]] | 2026-08-05 | 37KB |
 
 ### store-front
 > > **v2.1 · 2026-06-27 商业计划优化版**：项目从“宠物洗护 + 电竞空间”收口为 **宠物洗护现金流 + 电竞房样板间 + 自媒体矩阵**。
@@ -46,7 +46,7 @@
 | [[bps/store-front/PROJECT_HISTORY.md]] | 2026-06-27 | 7KB |
 | [[bps/store-front/README.md]] | 2026-06-27 | 5KB |
 | [[bps/store-front/assets/]] |  | 20 files |
-| [[bps/store-front/bp.html]] | 2026-07-01 | 199KB |
+| [[bps/store-front/bp.html]] | 2026-07-10 | 203KB |
 | [[bps/store-front/bp.md]] | 2026-07-01 | 53KB |
 | [[bps/store-front/data/]] |  | 1 files |
 | [[bps/store-front/landing-assets/]] |  | 3 files |
@@ -66,6 +66,7 @@
 ## 🗄️ 归档
 
 - **2026-06-16** — 50 个工作文件
+- **historical-tasks** — 5 个工作文件
 
 ## 🔧 工具
 
@@ -76,8 +77,8 @@
 - **[render_index.py](tools/render_index.py)** —  (8KB)
 - **[render_structure.py](tools/render_structure.py)** —  (9KB)
 - **[transcribe_meeting.py](tools/transcribe_meeting.py)** — -*- coding: utf-8 -*- (7KB)
-- **[verify.py](tools/verify.py)** —  (7KB)
+- **[verify.py](tools/verify.py)** —  (9KB)
 
 ---
 
-> 📊 总计 477 个文件 | 最后更新 2026-07-01 11:12
+> 📊 总计 629 个文件 | 最后更新 2026-08-05 20:35

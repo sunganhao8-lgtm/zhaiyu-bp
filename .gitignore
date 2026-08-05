@@ -40,8 +40,19 @@ archive/**/*.mp4
 *.temp
 node_modules/
 
+# ── Source maps (3 MB+, 仅 dev 使用) ──
+*.map
+*.js.map
+
 # ── 数据缓存（地图瓦片等，按需手动下载） ──
 **/vendor/osm-tiles/
 
 # 孤儿目录：线上入口是仓库根 bp.html，不部署 bps/store-front/bp.html
 bps/store-front/
+
+# 装修/效果图/搜索结果/抓取素材 — 本地工作目录，not for 仓库
+装修/
+
+# 临时目录：审计中间产物（review / audit / test）
+tmp/
+.tmp/
