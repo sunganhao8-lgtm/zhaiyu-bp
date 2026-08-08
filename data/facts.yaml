@@ -8,7 +8,7 @@ project:
   english_name: Zhaiyu
   tagline: "服务破冰 · 客户发言档案 · 家庭需求产品化"
   founded: 2026-06-16
-  latest_revision: 2026-07-19  # 确认无原店转让费并校准启动资金总额
+  latest_revision: 2026-08-08  # DEC-036 主体架构落地：个体户先行 + 个转企时机
   core_goal: >
     宅域的核心目标不是同时做很多业务，而是用可信服务破冰，
     把每一位客户的发言、抱怨、偏好、预算和生活场景沉淀为"客户发言档案"，
@@ -40,6 +40,51 @@ startup:
     v4 平替 7 件 ¥12,243 不变，新节省 ¥6,776 (35.6% off 新霍曼) — 比 v4 节省 ¥9,735 (44.3% off 原价) 少省 ¥2,959（因霍曼新价也降了）。
     资金分配不变：设备实付 ¥18,243（沿用 v4）；流动资金 ¥48,740；营销 ¥35,017；启动资金总额 18.23 万不变 — 因为 v4 平替价未变只霍曼基准价变了。
     v2 状态：2026-08-05 DEC-035 v2 7 件 ¥7,811 已被 v3 覆盖（段#2 A/B 备份 + 价格校准 + 数据校准）。
+    2026-08-08 DEC-036 主体架构落地：启动资金 18.23 万口径不变，仅主体形式由"待定"明确为"个体工商户先行 + 个转企"，详见 entity 段。
+
+# ── 主体架构（DEC-036） ──
+entity:
+  phase: "首店阶段（个体工商户）"
+  type: 个体工商户
+  registration_window: "3-5 个工作日（上海一窗通）"
+  registered_address: "上海市浦东新区泥城镇五岭路与咏梅路交叉口西 120 米"
+  business_scope_excludes:
+    - 动物诊疗
+    - 兽药销售
+    - 疫苗注射
+    - 餐饮（食品销售按属地市场监管部门书面咨询为准）
+  tax_mode: 核定征收
+  tax_threshold_monthly: 100000   # 月销 10 万以下免增值税
+  bookkeeping_required: false
+  monthly_bookkeeping_cost_saved: "200-1500 元"
+  decision_id: "DEC-036"
+  upgrade_path:
+    name: 个转企
+    channel: "上海市场监管局『个转企』绿色通道"
+    duration_weeks: "2-4 周全套（食品证 / 卫生证 / 员工社保走变更，不是注销重办）"
+    cost_saving_vs_new_company: "省 50% 时间"
+    legal_form_after: 有限责任公司
+    trigger_conditions_any_of:
+      - 财务：首店月营收稳 ≥ 10 万元（非单周峰值）
+      - 复购：30 天二次到店率 ≥ 35%（DEC-033 积分用户基准）
+      - 经营：会员数 ≥ 260 + 积分池核销率落入 50-70% 健康带
+      - 战略：第二店址敲定 + 计划 6 个月内开 2 店
+      - 股权：拟开放 ESOP / 启动天使轮 / 与外部供应链签带公司主体条款
+  insurance_required_at_opening:
+    - name: 食品安全责任险
+      reason: 食安赔一次可能 100 万、直接穿仓 18.23 万
+    - name: 公众责任险
+      reason: 客人摔跤、烫伤、宠物伤人处置
+    - name: 雇主责任险
+      reason: 1 名全职员工洗护区受伤
+  impact_on_capital:
+    startup_total_change: 0  # 18.23 万不变
+    monthly_fixed_change: 0   # 6416 不变
+    equity_structure_change: 0  # 双轨制不变
+  reason_short: >-
+    启动期月省 200-1500 元代账费 + 投资人个转企故事节奏更顺；
+    个转企走市场监管局绿色通道比新办公司省 50% 时间，
+    且"首店 + 3 月数据 + 现融资开 2-3 店"才是 BP 该有的故事。
 
 # 旧版 42.5/31/24/5 四人股权已被 DEC-029 的双轨制取代：
 # 主理人32.5 + 联合创始人B28.75 + 联合创始人C28.75 + 全职核心员工10。
