@@ -133,6 +133,7 @@
   .badge.yellow { background: var(--yellow); color: #333; }
   .badge.red { background: var(--red); }
   .badge.gray { background: #757575; }
+  .badge.closest { background: #7b1fa2; color: #fff; box-shadow: 0 0 0 2px rgba(123,31,162,.18); }
 
   .price {
     font-weight: 700;
@@ -269,6 +270,9 @@
     <div class="note" style="background:rgba(244,184,96,.18);">
       <strong>💰 资金分配不变 v5 = v4</strong> — 设备实付 ¥18,243;流动资金 ¥48,740;营销 ¥35,017;启动资金总额 18.23 万不变 — 因为 v4 平替价未变只霍曼基准价变了。
     </div>
+    <div class="note">
+      <strong>📊 v5 修订(8-8)—「价格接近」对比法</strong> — 汇总表加 <strong>原报价 ¥21,978</strong> + <strong>展品价 ¥19,019</strong> 双列;7 段候选按价格升序,紫色 📍 标「最接近展品价」方案(即使未选);v5 选品不变(维持段#3 致命修复 304 不锈钢对标)。节省 <strong>¥6,776 / 35.6%</strong> 以展品价 ¥19,019 作基线计算。冲突案例:段#5 丽泽 ¥1,680 价差仅 ¥120(最接近)但不是 304 不锈钢,v5 仍选佛山酷格 ¥519(304 不锈钢对标 + 评分 88 绿最高)。
+    </div>
   </div>
 
   <!-- 设备对比汇总 -->
@@ -279,10 +283,12 @@
         <tr>
           <th>设备段</th>
           <th>霍曼型号</th>
-          <th>霍曼价</th>
+          <th>原报价<br>(v3 旧基线)</th>
+          <th>展品价<br>(8-7 通知新价)</th>
           <th>选定平替</th>
           <th>平替价</th>
-          <th>折扣</th>
+          <th>展品价-平替价</th>
+          <th>折扣<br>(展品价基线)</th>
           <th>1688 链接</th>
         </tr>
       </thead>
@@ -291,21 +297,25 @@
           <td>#1 洗护台</td>
           <td>LGT110</td>
           <td class="num">¥3,680</td>
+          <td class="num"><strong>¥3,300</strong></td>
           <td>山东济宁 304 不锈钢 5 款阶梯步梯款</td>
           <td class="num">¥2,850</td>
-          <td class="num">-22%</td>
+          <td class="num price-save">¥450</td>
+          <td class="num">-13.6%</td>
           <td><a class="link-btn" href="https://detail.1688.com/offer/1047672857799.html" target="_blank">去 1688 →</a></td>
         </tr>
         <tr>
           <td><strong>#2 烘干箱小</strong></td>
           <td>SD80</td>
           <td class="num">¥2,399</td>
+          <td class="num"><strong>¥2,099</strong></td>
           <td>
             <strong>主用</strong>:嬉皮狗智能语音 51×45×38cm<br>
             <strong>备份</strong>:嘉兴慧曼 HM-CW03 5 款同价
           </td>
           <td class="num"><strong>¥891</strong><br><span class="price-save">(603+288)</span></td>
-          <td class="num">-63%</td>
+          <td class="num price-save">¥1,208</td>
+          <td class="num">-57.5%</td>
           <td>
             <a class="link-btn" href="https://detail.1688.com/offer/1010299839236.html" target="_blank">嬉皮狗 →</a><br>
             <a class="link-btn" href="https://detail.1688.com/offer/837422903249.html" target="_blank">嘉兴慧曼 →</a>
@@ -315,53 +325,65 @@
           <td><strong>#3 烘干箱大 ⭐ v4 致命修复</strong></td>
           <td>PDB350</td>
           <td class="num">¥8,000</td>
+          <td class="num"><strong>¥6,500</strong></td>
           <td><strong>东莞蔚德晟 430L 超巨大可折叠</strong> — 100×72×96.5cm / 55kg / 2800W / 110斤 双区独立控制+臭氧+负离子(完美对标:容量 1.23x + 功率 1.27x + 内尺寸 1.98x)</td>
           <td class="num"><strong>¥4,880</strong></td>
-          <td class="num">-39%</td>
+          <td class="num price-save">¥1,620</td>
+          <td class="num">-24.9%</td>
           <td><a class="link-btn" href="https://detail.1688.com/offer/965079465804.html" target="_blank"><strong>去 1688 →</strong></a></td>
         </tr>
         <tr>
           <td>#4 浴缸</td>
           <td>PB20</td>
           <td class="num">¥4,620</td>
+          <td class="num"><strong>¥4,000</strong></td>
           <td>山东济宁 304 不锈钢 电动升降洗澡池(30 天 1 万+ 单爆款)</td>
           <td class="num">¥2,466</td>
-          <td class="num">-47%</td>
+          <td class="num price-save">¥1,534</td>
+          <td class="num">-38.4%</td>
           <td><a class="link-btn" href="https://detail.1688.com/offer/1031087956544.html" target="_blank">去 1688 →</a></td>
         </tr>
         <tr>
           <td>#5 方桌</td>
           <td>BT20M</td>
           <td class="num">¥2,100</td>
+          <td class="num"><strong>¥1,800</strong></td>
           <td>佛山酷格 304 不锈钢 124×64 电动升降(17 款 SKU)</td>
           <td class="num">¥519</td>
-          <td class="num">-75%</td>
+          <td class="num price-save">¥1,281</td>
+          <td class="num">-71.2%</td>
           <td><a class="link-btn" href="https://detail.1688.com/offer/1000692968156.html" target="_blank">去 1688 →</a></td>
         </tr>
         <tr>
           <td>#6 圆桌</td>
           <td>BT10</td>
           <td class="num">¥720</td>
+          <td class="num"><strong>¥720</strong></td>
           <td>宠物美容台气压圆形 60cm 12 色 SKU(已售 898)</td>
           <td class="num">¥338</td>
-          <td class="num">-53%</td>
+          <td class="num price-save">¥382</td>
+          <td class="num">-53.1%</td>
           <td><a class="link-btn" href="https://detail.1688.com/offer/976216930064.html" target="_blank">去 1688 →</a></td>
         </tr>
         <tr>
           <td>#7 吹水机</td>
           <td>ND10</td>
           <td class="num">¥459</td>
+          <td class="num"><strong>¥600</strong></td>
           <td>江苏常州超伦挂脖吹风机 310g 跨境高速静音(2 台起批)</td>
           <td class="num">¥299</td>
-          <td class="num">-35%</td>
+          <td class="num price-save">¥301</td>
+          <td class="num">-50.2%</td>
           <td><a class="link-btn" href="https://detail.1688.com/offer/1015772639577.html" target="_blank">去 1688 →</a></td>
         </tr>
         <tr class="total">
           <td><strong>合计</strong></td>
           <td>—</td>
-          <td class="num"><strong>¥19,019</strong><br><span class="price-save">(霍曼新样机 8-7 通知)</span></td>
+          <td class="num"><strong>¥21,978</strong><br><span class="price-save">(v3 旧基线)</span></td>
+          <td class="num"><strong>¥19,019</strong><br><span class="price-save">(展品价 8-7)</span></td>
           <td>7 件平替组合(段#2 A/B 备份 + 段#3 完美对标 430L 蔚德晟)</td>
           <td class="num"><strong>¥12,243</strong></td>
+          <td class="num price-save"><strong>¥6,776</strong></td>
           <td class="num"><strong>-35.6%</strong></td>
           <td>—</td>
         </tr>
@@ -371,13 +393,13 @@
 
   <!-- 各段对比详情 -->
   <div class="section">
-    <h2>🔍 各设备段 3-4 个候选对比详情</h2>
+    <h2>🔍 各设备段 3-4 个候选对比详情(按价格升序 · 紫色 📍 = 价格最接近展品价)</h2>
 
     <!-- 段#1 -->
     <div class="device">
       <div class="device-header">
         <div class="device-title">🔧 设备1 · 低压洗护台 <span class="huoman">LGT110 · 110cm 双池亚克力</span></div>
-        <div class="device-baseline">霍曼 <strong>¥3,680</strong> → 平替 <strong>¥2,850</strong>(-22%)</div>
+        <div class="device-baseline">原报价 <strong>¥3,680</strong> / 展品价 <strong>¥3,300</strong> → 平替 <strong>¥2,850</strong>(展品价基线 -13.6%)</div>
       </div>
       <table class="candidates">
         <thead>
@@ -392,32 +414,32 @@
           </tr>
         </thead>
         <tbody>
-          <tr class="selected-yellow">
-            <td>A</td>
-            <td>金华某厂 宠物洗澡池低压池</td>
-            <td>尺寸需问客服 / 304 不锈钢 / 电动升降可选</td>
-            <td><span class="price">¥3,750</span></td>
-            <td>69 黄</td>
-            <td><span class="badge yellow">备选</span></td>
-            <td><a class="link-btn" href="https://detail.1688.com/offer/1061454715556.html" target="_blank">查看</a></td>
-          </tr>
           <tr class="selected-green">
-            <td>B</td>
+            <td><strong>B</strong></td>
             <td>山东济宁 304 不锈钢电动升降洗澡池</td>
             <td>3 款阶梯(电动 ¥3800 / 楼梯 ¥3300 / 移门 ¥3200)</td>
-            <td><span class="price">¥3,200</span></td>
+            <td><span class="price">¥3,200</span><br><span class="price-save">价差 ¥100</span></td>
             <td>82 绿</td>
-            <td><span class="badge green">备选</span></td>
+            <td><span class="badge green">备选</span> <span class="badge closest">📍 最接近展品价</span></td>
             <td><a class="link-btn" href="https://detail.1688.com/offer/1038764986670.html" target="_blank">查看</a></td>
           </tr>
           <tr class="selected-green">
             <td><strong>C</strong></td>
             <td><strong>山东济宁 304 不锈钢 5 款阶梯洗澡池</strong></td>
             <td><strong>1.27m 步梯款 ¥2,850</strong>(5 款阶梯覆盖 / 1.3m 无门/移门/步梯/电动升降)</td>
-            <td><span class="price">¥2,850</span></td>
+            <td><span class="price">¥2,850</span><br><span class="price-save">价差 ¥450</span></td>
             <td><strong>92 绿</strong></td>
-            <td><span class="badge green"><strong>✅ 已选</strong></span></td>
+            <td><span class="badge green"><strong>✅ 已选</strong></span> <span class="price-save">(评分最高)</span></td>
             <td><a class="link-btn" href="https://detail.1688.com/offer/1047672857799.html" target="_blank"><strong>查看</strong></a></td>
+          </tr>
+          <tr class="selected-yellow">
+            <td>A</td>
+            <td>金华某厂 宠物洗澡池低压池</td>
+            <td>尺寸需问客服 / 304 不锈钢 / 电动升降可选</td>
+            <td><span class="price">¥3,750</span><br><span class="price-save">价差 ¥450</span></td>
+            <td>69 黄</td>
+            <td><span class="badge yellow">备选</span></td>
+            <td><a class="link-btn" href="https://detail.1688.com/offer/1061454715556.html" target="_blank">查看</a></td>
           </tr>
         </tbody>
       </table>
@@ -427,9 +449,9 @@
     <div class="device">
       <div class="device-header">
         <div class="device-title">🔧 设备2 · 扫风烘干箱(小) <span class="huoman">SD80 · ≤12.5kg · 1200W PTC</span></div>
-        <div class="device-baseline">霍曼 <strong>¥2,399</strong> → 平替 <strong>¥891</strong>(A/B 备份,-63%)</div>
+        <div class="device-baseline">原报价 <strong>¥2,399</strong> / 展品价 <strong>¥2,099</strong> → 平替 <strong>¥891</strong>(A/B 备份,展品价基线 -57.5%)</div>
       </div>
-      <div class="note"><strong>v3 段#2 改 A/B 备份</strong> — 主用 + 备份两台,降低单点停业风险。</div>
+      <div class="note"><strong>v3 段#2 改 A/B 备份</strong> — 主用 + 备份两台,降低单点停业风险。A+B 组合 ¥891 差 ¥1,208 是「最接近展品价」方案(单件 C ¥699 差 ¥1,400 / A ¥603 差 ¥1,496 / B ¥288 差 ¥1,811)。</div>
       <table class="candidates">
         <thead>
           <tr>
@@ -444,30 +466,30 @@
         </thead>
         <tbody>
           <tr class="selected-green">
-            <td><strong>A</strong></td>
-            <td><strong>嬉皮狗智能语音烘干箱(主用)</strong></td>
-            <td>51×45×38cm / 智能语音 / 直流电机 / 3C GB4706.1-2005 / slsj 实力商家</td>
-            <td><span class="price">¥603</span></td>
-            <td>82 绿</td>
-            <td><span class="badge green"><strong>✅ 已选(主用)</strong></span></td>
-            <td><a class="link-btn" href="https://detail.1688.com/offer/1010299839236.html" target="_blank"><strong>查看</strong></a></td>
-          </tr>
-          <tr class="selected-green">
             <td><strong>B</strong></td>
             <td><strong>嘉兴慧曼 HM-CW03(A/B 备份)</strong></td>
             <td>5 款同价 ¥288 / 380×550×400mm / 3C + 3 项专利 + 官方验真 + 跨境</td>
-            <td><span class="price">¥288</span></td>
+            <td><span class="price">¥288</span><br><span class="price-save">价差 ¥1,811</span></td>
             <td>82 绿</td>
             <td><span class="badge green"><strong>✅ 已选(A/B 备份)</strong></span></td>
             <td><a class="link-btn" href="https://detail.1688.com/offer/837422903249.html" target="_blank"><strong>查看</strong></a></td>
+          </tr>
+          <tr class="selected-green">
+            <td><strong>A</strong></td>
+            <td><strong>嬉皮狗智能语音烘干箱(主用)</strong></td>
+            <td>51×45×38cm / 智能语音 / 直流电机 / 3C GB4706.1-2005 / slsj 实力商家</td>
+            <td><span class="price">¥603</span><br><span class="price-save">价差 ¥1,496</span></td>
+            <td>82 绿</td>
+            <td><span class="badge green"><strong>✅ 已选(主用)</strong></span></td>
+            <td><a class="link-btn" href="https://detail.1688.com/offer/1010299839236.html" target="_blank"><strong>查看</strong></a></td>
           </tr>
           <tr class="selected-yellow">
             <td>C</td>
             <td>中山厂家 大容量消毒杀菌恒温(三档风)</td>
             <td>45×51×45cm / 智能按键 / 三档风量+恒温+消毒杀菌</td>
-            <td><span class="price">¥699</span></td>
+            <td><span class="price">¥699</span><br><span class="price-save">价差 ¥1,400</span></td>
             <td>72 黄</td>
-            <td><span class="badge yellow">备选</span></td>
+            <td><span class="badge yellow">备选</span> <span class="badge closest">📍 单件最接近</span></td>
             <td><a class="link-btn" href="https://detail.1688.com/offer/745554940412.html" target="_blank">查看</a></td>
           </tr>
         </tbody>
@@ -478,7 +500,7 @@
     <div class="device">
       <div class="device-header">
         <div class="device-title">🔧 设备3 · 扫风烘干箱(大) <span class="huoman">PDB350 · ≤60kg · 3800W</span></div>
-        <div class="device-baseline" style="background:rgba(76,175,80,.15); padding:8px; border-radius:6px;">霍曼 <strong>¥8,000</strong> → 平替 <strong>¥4,880</strong>(<strong>-39% 完美对标 430L vs 350L 容量 1.23x + 功率 1.27x</strong>)</div>
+        <div class="device-baseline" style="background:rgba(76,175,80,.15); padding:8px; border-radius:6px;">原报价 <strong>¥8,000</strong> / 展品价 <strong>¥6,500</strong> → 平替 <strong>¥4,880</strong>(<strong>展品价基线 -24.9% 完美对标 430L vs 350L 容量 1.23x + 功率 1.27x</strong>)</div>
       </div>
       <table class="candidates">
         <thead>
@@ -493,32 +515,32 @@
           </tr>
         </thead>
         <tbody>
-          <tr class="selected-green" style="background:rgba(76,175,80,.15); border-left: 4px solid #2e7d32;">
-            <td><strong>A</strong></td>
-            <td><strong>⭐ 东莞蔚德晟 430L 超巨大可折叠</strong></td>
-            <td><strong>100×72×96.5cm / 55kg / 2800W / 110斤 / 双区独立控制+臭氧+负离子(完美对标霍曼 350L:容量 1.23x + 功率 1.27x + 内尺寸 1.98x)</strong></td>
-            <td><span class="price"><strong>¥4,880</strong></span></td>
-            <td><strong>95 绿</strong></td>
-            <td><span class="badge green"><strong>✅ 已选(v4 致命修复)</strong></span></td>
-            <td><a class="link-btn" href="https://detail.1688.com/offer/965079465804.html" target="_blank"><strong>查看</strong></a></td>
+          <tr class="selected-yellow">
+            <td>C</td>
+            <td>东莞蔚德晟 120L 宠有家(60斤以内)</td>
+            <td>65×60×73cm / 37kg / 60斤(30kg)以内 / 标题虚标实测约 285L(容量小 + 适用偏轻)</td>
+            <td><span class="price">¥1,899</span><br><span class="price-save">价差 ¥4,601</span></td>
+            <td>70 黄</td>
+            <td><span class="badge yellow">备选(偏小)</span></td>
+            <td><a class="link-btn" href="https://detail.1688.com/offer/965079465804.html" target="_blank">查看</a></td>
           </tr>
           <tr class="selected-yellow">
             <td>B</td>
             <td>东莞蔚德晟 200L 超大容量</td>
             <td>66.5×72×78.5cm / 32kg / 1400W / 30-50斤 / 臭氧杀菌+自动集毛+负离子+猫狗窝(容量偏小只适合 ≤25kg)</td>
-            <td><span class="price">¥2,580</span></td>
+            <td><span class="price">¥2,580</span><br><span class="price-save">价差 ¥3,920</span></td>
             <td>76 黄</td>
             <td><span class="badge yellow">备选(偏小)</span></td>
             <td><a class="link-btn" href="https://detail.1688.com/offer/965079465804.html" target="_blank">查看</a></td>
           </tr>
-          <tr class="selected-yellow">
-            <td>C</td>
-            <td>东莞蔚德晟 120L 宠有家(60斤以内)</td>
-            <td>65×60×73cm / 37kg / 60斤(30kg)以内 / 标题虚标实测约 285L(容量小 + 适用偏轻)</td>
-            <td><span class="price">¥1,899</span></td>
-            <td>70 黄</td>
-            <td><span class="badge yellow">备选(偏小)</span></td>
-            <td><a class="link-btn" href="https://detail.1688.com/offer/965079465804.html" target="_blank">查看</a></td>
+          <tr class="selected-green" style="background:rgba(76,175,80,.15); border-left: 4px solid #2e7d32;">
+            <td><strong>A</strong></td>
+            <td><strong>⭐ 东莞蔚德晟 430L 超巨大可折叠</strong></td>
+            <td><strong>100×72×96.5cm / 55kg / 2800W / 110斤 / 双区独立控制+臭氧+负离子(完美对标霍曼 350L:容量 1.23x + 功率 1.27x + 内尺寸 1.98x)</strong></td>
+            <td><span class="price"><strong>¥4,880</strong></span><br><span class="price-save">价差 ¥1,620</span></td>
+            <td><strong>95 绿</strong></td>
+            <td><span class="badge green"><strong>✅ 已选(v4 致命修复)</strong></span> <span class="badge closest">📍 最接近展品价</span></td>
+            <td><a class="link-btn" href="https://detail.1688.com/offer/965079465804.html" target="_blank"><strong>查看</strong></a></td>
           </tr>
         </tbody>
       </table>
@@ -528,9 +550,9 @@
     <div class="device">
       <div class="device-header">
         <div class="device-title">🔧 设备4 · 不锈钢电动浴缸 <span class="huoman">PB20 · 127×67×(106-176) 升降</span></div>
-        <div class="device-baseline">霍曼 <strong>¥4,620</strong> → 平替 <strong>¥2,466</strong>(-47%)</div>
+        <div class="device-baseline">原报价 <strong>¥4,620</strong> / 展品价 <strong>¥4,000</strong> → 平替 <strong>¥2,466</strong>(展品价基线 -38.4%)</div>
       </div>
-      <div class="note warn"><strong>不优化项</strong> — B 山东滨州 ¥1,650 价格未确认(1688 详情页 price 字段统一显示 100.00 模板价,需人工核),维持 A。</div>
+      <div class="note warn"><strong>不优化项</strong> — B 山东滨州 ¥1,650 价格未确认(1688 详情页 price 字段统一显示 100.00 模板价,需人工核),维持 A。A ¥2,466 评分 90 绿最高 + 价格差 ¥1,534 是「最接近展品价」方案。</div>
       <table class="candidates">
         <thead>
           <tr>
@@ -544,41 +566,41 @@
           </tr>
         </thead>
         <tbody>
-          <tr class="selected-green">
-            <td><strong>A</strong></td>
-            <td><strong>山东济宁 不锈钢电动升降洗澡池</strong></td>
-            <td>120×70×(100-150)cm / 304 不锈钢 / 4 SKU / 30 天 1 万+ 单爆款 / 回头率 34.20% / 1688 优选</td>
-            <td><span class="price">¥2,466</span></td>
-            <td>90 绿</td>
-            <td><span class="badge green"><strong>✅ 已选</strong></span></td>
-            <td><a class="link-btn" href="https://detail.1688.com/offer/1031087956544.html" target="_blank"><strong>查看</strong></a></td>
-          </tr>
-          <tr class="selected-yellow">
-            <td>B</td>
-            <td>山东滨州 不锈钢开门+三面围挡浴缸</td>
-            <td>120×70×90+深50 / 135×70×90+深50 / 12+ SKU / slsj 实力商家 / 跨境</td>
-            <td><span class="price">¥1,650</span><br><span class="price-save">⚠价格未确认</span></td>
-            <td>84 黄</td>
-            <td><span class="badge yellow">备选(待验)</span></td>
-            <td><a class="link-btn" href="https://detail.1688.com/offer/910355788821.html" target="_blank">查看</a></td>
-          </tr>
           <tr class="selected-yellow">
             <td>C</td>
             <td>佛山 34 寸不锈钢加厚浴缸</td>
             <td>870×488×1020mm(尺寸偏小,只适合中犬)</td>
-            <td><span class="price">¥1,440</span></td>
+            <td><span class="price">¥1,440</span><br><span class="price-save">价差 ¥2,560</span></td>
             <td>77 黄</td>
             <td><span class="badge yellow">备选</span></td>
             <td><a class="link-btn" href="https://detail.1688.com/offer/741167169574.html" target="_blank">查看</a></td>
           </tr>
           <tr class="selected-yellow">
+            <td>B</td>
+            <td>山东滨州 不锈钢开门+三面围挡浴缸</td>
+            <td>120×70×90+深50 / 135×70×90+深50 / 12+ SKU / slsj 实力商家 / 跨境</td>
+            <td><span class="price">¥1,650</span><br><span class="price-save">价差 ¥2,350 ⚠价格未确认</span></td>
+            <td>84 黄</td>
+            <td><span class="badge yellow">备选(待验)</span></td>
+            <td><a class="link-btn" href="https://detail.1688.com/offer/910355788821.html" target="_blank">查看</a></td>
+          </tr>
+          <tr class="selected-yellow">
             <td>D</td>
             <td>江苏常州 SPA 智能按摩浴缸</td>
             <td>白色 / 五金池/气泡/冲浪/双功能 / 已售 480 爆款</td>
-            <td><span class="price">¥1,790</span></td>
+            <td><span class="price">¥1,790</span><br><span class="price-save">价差 ¥2,210</span></td>
             <td>88 绿</td>
             <td><span class="badge yellow">备选</span></td>
             <td><a class="link-btn" href="https://detail.1688.com/offer/1039900373293.html" target="_blank">查看</a></td>
+          </tr>
+          <tr class="selected-green">
+            <td><strong>A</strong></td>
+            <td><strong>山东济宁 不锈钢电动升降洗澡池</strong></td>
+            <td>120×70×(100-150)cm / 304 不锈钢 / 4 SKU / 30 天 1 万+ 单爆款 / 回头率 34.20% / 1688 优选</td>
+            <td><span class="price">¥2,466</span><br><span class="price-save">价差 ¥1,534</span></td>
+            <td><strong>90 绿</strong></td>
+            <td><span class="badge green"><strong>✅ 已选</strong></span> <span class="badge closest">📍 最接近展品价</span></td>
+            <td><a class="link-btn" href="https://detail.1688.com/offer/1031087956544.html" target="_blank"><strong>查看</strong></a></td>
           </tr>
         </tbody>
       </table>
@@ -588,8 +610,9 @@
     <div class="device">
       <div class="device-header">
         <div class="device-title">🔧 设备5 · 电动美容方桌 <span class="huoman">BT20M · 96×65×(52-100) 电动升降</span></div>
-        <div class="device-baseline">霍曼 <strong>¥2,100</strong> → 平替 <strong>¥519</strong>(-75%)</div>
+        <div class="device-baseline">原报价 <strong>¥2,100</strong> / 展品价 <strong>¥1,800</strong> → 平替 <strong>¥519</strong>(展品价基线 -71.2%)</div>
       </div>
+      <div class="note warn"><strong>价格 vs 规格冲突</strong> — A 丽泽 ¥1,680 评分 86 绿 + 120×60 接近霍曼 96×65(差 24cm vs D 124×64 差 28cm) + 价格差仅 ¥120(最接近展品价),但 A 不是 304 不锈钢;v5 已选 D 佛山酷格 ¥519 304 不锈钢对标 + 评分 88 绿最高(差 ¥1,281)。启动前向 A 客服核价 + 问 304 款是否可选。</div>
       <table class="candidates">
         <thead>
           <tr>
@@ -604,28 +627,10 @@
         </thead>
         <tbody>
           <tr class="selected-yellow">
-            <td>A</td>
-            <td>丽泽宠物美容桌(电动液压气动升降)</td>
-            <td>无框电动 120×60×(20-95)cm / 30+ SKU 阶梯 / 8 年老店</td>
-            <td><span class="price">~¥1,680</span><br><span class="price-save">(价估)</span></td>
-            <td>86 绿</td>
-            <td><span class="badge yellow">备选(价估)</span></td>
-            <td><a class="link-btn" href="https://detail.1688.com/offer/717155848775.html" target="_blank">查看</a></td>
-          </tr>
-          <tr class="selected-yellow">
-            <td>B</td>
-            <td>山东济宁跨境工厂美容桌</td>
-            <td>方形电动美容桌 粉色/黑色 / 跨境 / 库存 9999 / 包邮</td>
-            <td><span class="price">¥1,450</span></td>
-            <td>80 绿</td>
-            <td><span class="badge yellow">备选</span></td>
-            <td><a class="link-btn" href="https://detail.1688.com/offer/1051337825170.html" target="_blank">查看</a></td>
-          </tr>
-          <tr class="selected-yellow">
             <td>C</td>
             <td>普佳曲阜宠物手术台美容桌</td>
             <td>电动方形美容桌 / 医用级稳定</td>
-            <td><span class="price">¥425</span></td>
+            <td><span class="price">¥425</span><br><span class="price-save">价差 ¥1,375</span></td>
             <td>76 黄</td>
             <td><span class="badge yellow">备选</span></td>
             <td><a class="link-btn" href="https://detail.1688.com/offer/1009226476426.html" target="_blank">查看</a></td>
@@ -634,10 +639,28 @@
             <td><strong>D</strong></td>
             <td><strong>佛山酷格 304 不锈钢美容桌</strong></td>
             <td>124×64×(34-97)cm 电动升降 / 17 款 SKU / 实力工厂 cht / 跨境资质</td>
-            <td><span class="price">¥519</span></td>
+            <td><span class="price">¥519</span><br><span class="price-save">价差 ¥1,281</span></td>
             <td><strong>88 绿</strong></td>
-            <td><span class="badge green"><strong>✅ 已选</strong></span></td>
+            <td><span class="badge green"><strong>✅ 已选</strong></span> <span class="price-save">(304 不锈钢对标)</span></td>
             <td><a class="link-btn" href="https://detail.1688.com/offer/1000692968156.html" target="_blank"><strong>查看</strong></a></td>
+          </tr>
+          <tr class="selected-yellow">
+            <td>B</td>
+            <td>山东济宁跨境工厂美容桌</td>
+            <td>方形电动美容桌 粉色/黑色 / 跨境 / 库存 9999 / 包邮</td>
+            <td><span class="price">¥1,450</span><br><span class="price-save">价差 ¥350</span></td>
+            <td>80 绿</td>
+            <td><span class="badge yellow">备选</span></td>
+            <td><a class="link-btn" href="https://detail.1688.com/offer/1051337825170.html" target="_blank">查看</a></td>
+          </tr>
+          <tr class="selected-yellow">
+            <td>A</td>
+            <td>丽泽宠物美容桌(电动液压气动升降)</td>
+            <td>无框电动 120×60×(20-95)cm / 30+ SKU 阶梯 / 8 年老店</td>
+            <td><span class="price">~¥1,680</span><br><span class="price-save">价差 ¥120 ⚠价估</span></td>
+            <td>86 绿</td>
+            <td><span class="badge yellow">备选(价估)</span> <span class="badge closest">📍 最接近展品价</span></td>
+            <td><a class="link-btn" href="https://detail.1688.com/offer/717155848775.html" target="_blank">查看</a></td>
           </tr>
         </tbody>
       </table>
@@ -647,7 +670,7 @@
     <div class="device">
       <div class="device-header">
         <div class="device-title">🔧 设备6 · 气动美容圆桌 <span class="huoman">BT10 · 直径60×(72-102) PVC</span></div>
-        <div class="device-baseline">霍曼 <strong>¥720</strong> → 平替 <strong>¥338</strong>(-53%)</div>
+        <div class="device-baseline">原报价 <strong>¥720</strong> / 展品价 <strong>¥720</strong> → 平替 <strong>¥338</strong>(展品价基线 -53.1%)</div>
       </div>
       <table class="candidates">
         <thead>
@@ -662,31 +685,31 @@
           </tr>
         </thead>
         <tbody>
-          <tr class="selected-yellow">
-            <td>A</td>
-            <td>中山喵叮当 气压升降宠物美容圆桌</td>
-            <td>60cm 黑色/蓝色/粉色桌面 / 12 SKU / 1 件起批 / 运费 ¥38</td>
-            <td><span class="price">¥338</span></td>
-            <td>86 绿</td>
-            <td><span class="badge yellow">备选</span></td>
-            <td><a class="link-btn" href="https://detail.1688.com/offer/1061989104107.html" target="_blank">查看</a></td>
-          </tr>
           <tr class="selected-green">
             <td><strong>B</strong></td>
             <td><strong>宠物美容台气压圆形(已售 898)</strong></td>
             <td>60cm 12 色 SKU / 66×66×26cm / 含挂架吊绳</td>
-            <td><span class="price">¥338</span></td>
+            <td><span class="price">¥338</span><br><span class="price-save">价差 ¥382</span></td>
             <td><strong>88 绿</strong></td>
-            <td><span class="badge green"><strong>✅ 已选</strong></span></td>
+            <td><span class="badge green"><strong>✅ 已选</strong></span> <span class="price-save">(销量 898 爆款)</span></td>
             <td><a class="link-btn" href="https://detail.1688.com/offer/976216930064.html" target="_blank"><strong>查看</strong></a></td>
+          </tr>
+          <tr class="selected-yellow">
+            <td>A</td>
+            <td>中山喵叮当 气压升降宠物美容圆桌</td>
+            <td>60cm 黑色/蓝色/粉色桌面 / 12 SKU / 1 件起批 / 运费 ¥38</td>
+            <td><span class="price">¥338</span><br><span class="price-save">价差 ¥382</span></td>
+            <td>86 绿</td>
+            <td><span class="badge yellow">备选</span></td>
+            <td><a class="link-btn" href="https://detail.1688.com/offer/1061989104107.html" target="_blank">查看</a></td>
           </tr>
           <tr class="selected-yellow">
             <td>C</td>
             <td>宠物美容桌气压旋转桌 M-606</td>
             <td>圆形白腿黑面 / 60cm / 美容学校宠物店用 / 跨境 / 2 件起批</td>
-            <td><span class="price">¥398</span></td>
+            <td><span class="price">¥398</span><br><span class="price-save">价差 ¥322</span></td>
             <td>78 黄</td>
-            <td><span class="badge yellow">备选</span></td>
+            <td><span class="badge yellow">备选</span> <span class="badge closest">📍 最接近展品价</span></td>
             <td><a class="link-btn" href="https://detail.1688.com/offer/599614933249.html" target="_blank">查看</a></td>
           </tr>
         </tbody>
@@ -697,7 +720,7 @@
     <div class="device">
       <div class="device-header">
         <div class="device-title">🔧 设备7 · 肩托式挂脖吹水机 <span class="huoman">ND10 · 9档风速 · 负离子</span></div>
-        <div class="device-baseline">霍曼 <strong>¥459</strong> → 平替 <strong>¥299</strong>(-35%)</div>
+        <div class="device-baseline">原报价 <strong>¥459</strong>(赠品) / 展品价 <strong>¥600</strong>(升为正式件 +¥141) → 平替 <strong>¥299</strong>(展品价基线 -50.2%)</div>
       </div>
       <div class="note warn"><strong>不优化项</strong> — C 浙江金华 ¥135 实测是"非吊臂式"=手持式,不是真挂脖,维持 B。</div>
       <table class="candidates">
@@ -714,10 +737,19 @@
         </thead>
         <tbody>
           <tr class="selected-yellow">
+            <td>C</td>
+            <td>浙江金华 宠物吹水机(大型犬)</td>
+            <td>2000W+ 大功率 / 3C 2025150709057655 / ⚠ SKU 标注"非吊臂式"=手持</td>
+            <td><span class="price">¥135</span><br><span class="price-save">价差 ¥465</span></td>
+            <td>67 黄</td>
+            <td><span class="badge yellow">备选(大狗 backup)</span></td>
+            <td><a class="link-btn" href="https://detail.1688.com/offer/1064471549983.html" target="_blank">查看</a></td>
+          </tr>
+          <tr class="selected-yellow">
             <td>A</td>
             <td>金华某厂家 C02 系列手持吹水机</td>
             <td>35.5×22×29.5cm / 触摸负离子 / ⚠ 手持非挂脖款</td>
-            <td><span class="price">¥180</span></td>
+            <td><span class="price">¥180</span><br><span class="price-save">价差 ¥420</span></td>
             <td>66 黄</td>
             <td><span class="badge yellow">备选(非挂脖)</span></td>
             <td><a class="link-btn" href="https://detail.1688.com/offer/1060117615378.html" target="_blank">查看</a></td>
@@ -726,19 +758,10 @@
             <td><strong>B</strong></td>
             <td><strong>江苏常州超伦挂脖吹风机(2 台起批)</strong></td>
             <td>3.28×8.48×8.54cm / 310g / 跨境大厂 / 1200-1599W / 1000+ 销量 / 包邮</td>
-            <td><span class="price">¥299</span></td>
+            <td><span class="price">¥299</span><br><span class="price-save">价差 ¥301</span></td>
             <td>84 绿</td>
-            <td><span class="badge green"><strong>✅ 已选</strong></span></td>
+            <td><span class="badge green"><strong>✅ 已选</strong></span> <span class="badge closest">📍 最接近展品价</span></td>
             <td><a class="link-btn" href="https://detail.1688.com/offer/1015772639577.html" target="_blank"><strong>查看</strong></a></td>
-          </tr>
-          <tr class="selected-yellow">
-            <td>C</td>
-            <td>浙江金华 宠物吹水机(大型犬)</td>
-            <td>2000W+ 大功率 / 3C 2025150709057655 / ⚠ SKU 标注"非吊臂式"=手持</td>
-            <td><span class="price">¥135</span></td>
-            <td>67 黄</td>
-            <td><span class="badge yellow">备选(大狗 backup)</span></td>
-            <td><a class="link-btn" href="https://detail.1688.com/offer/1064471549983.html" target="_blank">查看</a></td>
           </tr>
         </tbody>
       </table>
@@ -809,7 +832,8 @@
 
   <div class="footer">
     <p>📊 数据来源:1688 详情页实测抓取(2026-08-06)· 12 个 offer · 23 候选评分 · v5 霍曼新样机价 8-7 微信通知后重算(原 21,978 → 新 19,019,节省 6,776 / 35.6% off)</p>
-    <p>🎯 决策记录:DEC-035 v5 · git commit 3d7b8c3 + 修复 0fc8345 · tools/verify.py 通过(35 entries no warning)</p>
+    <p>📌 v5 修订(8-8):<strong>原报价 + 展品价双列</strong> + 候选按价格升序 + 紫色 📍 标「最接近展品价」;v5 选品不变(维持段#3 致命修复 304 不锈钢对标逻辑),节省 ¥6,776 (35.6%) 用展品价 ¥19,019 作基线。</p>
+    <p>🎯 决策记录:DEC-035 v5 · git commit 3d7b8c3 + 修复 0fc8345 + 修订 f7be486 → v5-closest · tools/verify.py 通过(35 entries no warning)</p>
     <p>📁 完整数据:<code>装修/效果图/洗护设备/设备对比表-模板-v5.xlsx</code> + <code>README.md</code> + <code>搜索结果/</code></p>
   </div>
 
