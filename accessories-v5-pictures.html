@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>7 件核心设备 霍曼 vs 1688 平替 图对比 v5 — 宅域洗护区</title>
+<style>
+  :root {
+    --primary: #1f4e78;
+    --green: #2e7d32;
+    --yellow: #f9a825;
+    --red: #c62828;
+    --bg: #fafafa;
+    --card: #ffffff;
+    --border: #e0e0e0;
+    --text: #212121;
+    --text-light: #616161;
+    --huoman: #ff6f00;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
+  .container { max-width: 1280px; margin: 0 auto; padding: 24px 20px; }
+  .hero {
+    background: linear-gradient(135deg, #1f4e78 0%, #2e7d32 100%);
+    color: #fff;
+    border-radius: 16px;
+    padding: 40px 32px;
+    margin-bottom: 24px;
+  }
+  .hero h1 { margin: 0 0 8px; font-size: 28px; font-weight: 700; }
+  .hero .subtitle { margin: 0 0 24px; opacity: 0.9; font-size: 15px; }
+  .hero .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 16px; }
+  .hero .stat { background: rgba(255,255,255,.12); border-radius: 12px; padding: 16px; text-align: center; }
+  .hero .stat .label { font-size: 12px; opacity: .8; }
+  .hero .stat .value { font-size: 22px; font-weight: 700; margin-top: 4px; }
+  .hero .stat.highlight { background: rgba(255,255,255,.25); }
+
+  .intro {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 24px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.06);
+  }
+  .intro h2 { margin: 0 0 8px; color: var(--primary); font-size: 18px; }
+  .intro p { margin: 4px 0; color: var(--text-light); font-size: 14px; }
+
+  .device {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 24px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.06);
+  }
+  .device h3 {
+    margin: 0 0 4px;
+    color: var(--primary);
+    font-size: 18px;
+  }
+  .device .baseline {
+    color: var(--text-light);
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+  .device .baseline strong { color: var(--text); }
+  .compare {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 16px;
+    align-items: stretch;
+  }
+  .compare-col {
+    border-radius: 10px;
+    padding: 16px;
+    background: #f8f9fa;
+    display: flex;
+    flex-direction: column;
+  }
+  .compare-col.huoman {
+    background: rgba(255,111,0,.06);
+    border: 1px solid rgba(255,111,0,.18);
+  }
+  .compare-col.alt {
+    background: rgba(46,125,50,.06);
+    border: 1px solid rgba(46,125,50,.18);
+  }
+  .compare-col h4 {
+    margin: 0 0 8px;
+    font-size: 14px;
+    text-align: center;
+    padding: 6px 10px;
+    border-radius: 6px;
+    color: #fff;
+  }
+  .compare-col.huoman h4 { background: var(--huoman); }
+  .compare-col.alt h4 { background: var(--green); }
+  .compare-col .img-wrap {
+    background: #fff;
+    border-radius: 8px;
+    padding: 8px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+  }
+  .compare-col img {
+    max-width: 100%;
+    max-height: 280px;
+    object-fit: contain;
+    display: block;
+  }
+  .compare-col ul {
+    margin: 0;
+    padding-left: 18px;
+    font-size: 13px;
+    color: var(--text);
+  }
+  .compare-col ul li { margin: 3px 0; }
+  .compare-col .price {
+    margin-top: 12px;
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+    padding: 8px;
+    background: #fff;
+    border-radius: 6px;
+  }
+  .compare-col.huoman .price { color: var(--huoman); }
+  .compare-col.alt .price { color: var(--green); }
+  .compare-col .savings {
+    text-align: center;
+    margin-top: 6px;
+    font-size: 12px;
+    color: var(--green);
+    font-weight: 600;
+  }
+  .vs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--primary);
+    padding: 0 4px;
+  }
+  .ab-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .ab-pair .compare-col { padding: 12px; }
+  .ab-pair .compare-col .img-wrap { min-height: 160px; }
+  .ab-pair .compare-col img { max-height: 200px; }
+
+  .summary {
+    background: linear-gradient(135deg, #fff8e1, #fff3e0);
+    border: 2px solid #f9a825;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 24px;
+  }
+  .summary h2 { margin: 0 0 12px; color: var(--primary); }
+  .summary .row { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px dashed #e0e0e0; }
+  .summary .row.total { font-weight: 800; font-size: 18px; border-bottom: none; padding-top: 12px; }
+  .summary .row .label { color: var(--text-light); }
+  .summary .row .value { font-weight: 700; }
+  .summary .row .value.green { color: var(--green); }
+
+  .footer {
+    text-align: center;
+    color: var(--text-light);
+    font-size: 12px;
+    margin-top: 32px;
+    padding: 20px 0;
+    border-top: 1px solid var(--border);
+  }
+
+  @media (max-width: 768px) {
+    .compare { grid-template-columns: 1fr; }
+    .vs { padding: 8px 0; }
+    .ab-pair { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HERO -->
+  <div class="hero">
+    <h1>🛁 7 件核心设备 霍曼 vs 1688 平替 · 图对比 v5</h1>
+    <p class="subtitle">宅域洗护区 · 霍曼新样机价 ¥19,019 → 1688 平替 ¥12,243 · 省 35.6% / ¥6,776</p>
+    <div class="stats">
+      <div class="stat">
+        <div class="label">霍曼新样机</div>
+        <div class="value">¥19,019</div>
+      </div>
+      <div class="stat">
+        <div class="label">1688 平替</div>
+        <div class="value">¥12,243</div>
+      </div>
+      <div class="stat highlight">
+        <div class="label">节省</div>
+        <div class="value">¥6,776</div>
+      </div>
+      <div class="stat">
+        <div class="label">折扣</div>
+        <div class="value">35.6%</div>
+      </div>
+      <div class="stat">
+        <div class="label">对标段数</div>
+        <div class="value">7 / 7</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 引言 -->
+  <div class="intro">
+    <h2>📌 关于本对比页</h2>
+    <p>本图对比页用于 <strong>合伙人评审 + 启动前 1 周核对</strong>。左侧「霍曼」图来自霍曼官方产品手册 PDF (B端线 2024 版);右侧「平替」图按 v5 选品规格用 image_synthesize 生成,实际下单以 1688 详情页主图为准(链接见各段)。</p>
+    <p><strong>v5 选品核心原则</strong>:严格规格对标(段#3 致命修复:75L→430L 容量 1.23x 完美对标霍曼 350L) + 304 不锈钢材料对标(段#4/段#5) + 价格优势(节省 35.6%)。段#2 走 A/B 备份方案降低单点停业风险。</p>
+  </div>
+
+  <!-- 总览 -->
+  <div class="summary">
+    <h2>💰 节省汇总(展品价 8-7 通知新价作基线)</h2>
+    <div class="row"><span class="label">霍曼原报价(7 件)</span><span class="value">¥21,978</span></div>
+    <div class="row"><span class="label">霍曼新样机价(8-7 通知,6 件 + 圆桌另买)</span><span class="value">¥19,019</span></div>
+    <div class="row"><span class="label">1688 平替价(7 件)</span><span class="value green">¥12,243</span></div>
+    <div class="row total"><span class="label">总节省(展品价基线)</span><span class="value green">¥6,776 / 35.6% off</span></div>
+  </div>
+
+  <!-- 段#1 洗护台 -->
+  <div class="device">
+    <h3>🔧 设备1 · 低压洗护台</h3>
+    <div class="baseline">霍曼 <strong>LGT110</strong>(110cm 双池亚克力,3,680) → 1688 平替(山东济宁 1.27m 步梯款 5 款阶梯,¥2,850,-22%)</div>
+    <div class="compare">
+      <div class="compare-col huoman">
+        <h4>霍曼 LGT110</h4>
+        <div class="img-wrap"><img src="产品图/霍曼/霍曼_LGT110_洗护台_p19.png" alt="霍曼 LGT110 洗护台"></div>
+        <ul>
+          <li>110cm × 66.5cm × 106cm</li>
+          <li>双池亚克力</li>
+          <li>分区洗护系统(浴池 + 平台)</li>
+          <li>进口亚克力 3 倍成本</li>
+          <li>预留标准接口摆放烘干箱</li>
+        </ul>
+        <div class="price">¥3,680 <span style="font-size:12px;color:#666;font-weight:400">/ 原报价</span></div>
+        <div class="savings">展品价 ¥3,300 (-10% off)</div>
+      </div>
+      <div class="vs">VS</div>
+      <div class="compare-col alt">
+        <h4>山东济宁 5 款阶梯 ¥2,850</h4>
+        <div class="img-wrap"><img src="产品图/平替/段1_山东济宁洗澡池_合成.png" alt="山东济宁 1.27m 步梯款"></div>
+        <ul>
+          <li>1.27m 步梯款</li>
+          <li>304 不锈钢 + 5 款阶梯覆盖</li>
+          <li>评分 92 绿(23 候选里最高)</li>
+          <li>1.3m 无门 / 移门 / 步梯 / 电动升降 全覆盖</li>
+        </ul>
+        <div class="price">¥2,850</div>
+        <div class="savings">展品价基线 -13.6% / 价差 ¥450</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 段#2 烘干箱小 (A/B 备份) -->
+  <div class="device">
+    <h3>🔧 设备2 · 扫风烘干箱(小) · A/B 备份方案</h3>
+    <div class="baseline">霍曼 <strong>SD80</strong>(≤12.5kg,1,200W PTC,¥2,399) → A/B 备份(嬉皮狗 ¥603 主用 + 嘉兴慧曼 ¥288 备份 = ¥891,-63%)</div>
+    <div class="compare">
+      <div class="compare-col huoman">
+        <h4>霍曼 SD80</h4>
+        <div class="img-wrap"><img src="产品图/霍曼/霍曼_SD80_烘干箱小_p9.png" alt="霍曼 SD80 烘干箱"></div>
+        <ul>
+          <li>53.2 × 57.3 × 71.4 cm(外)</li>
+          <li>45.7 × 43 × 40.8 cm(内)</li>
+          <li>1,200W PTC 加热</li>
+          <li>1350 转/分专研高速电机</li>
+          <li>适用 ≤12.5kg 宠物</li>
+          <li>2.5 亿负离子空气浴</li>
+        </ul>
+        <div class="price">¥2,399 <span style="font-size:12px;color:#666;font-weight:400">/ 原报价</span></div>
+        <div class="savings">展品价 ¥2,099 (-12.5% off)</div>
+      </div>
+      <div class="vs">VS</div>
+      <div class="compare-col alt">
+        <h4>A/B 备份 ¥891(603 + 288)</h4>
+        <div class="ab-pair">
+          <div class="compare-col alt" style="border:1px dashed var(--green)">
+            <h4 style="background:#558b2f">主用:嬉皮狗 ¥603</h4>
+            <div class="img-wrap"><img src="产品图/平替/段2_嬉皮狗烘干箱_合成.png" alt="嬉皮狗 智能语音"></div>
+            <ul>
+              <li>51×45×38cm</li>
+              <li>智能语音控制</li>
+              <li>直流电机</li>
+              <li>3C GB4706.1-2005</li>
+            </ul>
+          </div>
+          <div class="compare-col alt" style="border:1px dashed var(--green)">
+            <h4 style="background:#558b2f">备份:嘉兴慧曼 ¥288</h4>
+            <div class="img-wrap" style="background:#fafafa;display:flex;align-items:center;justify-content:center;font-size:13px;color:#666">图待补 / 链接见 accessories-v5.html</div>
+            <ul>
+              <li>380×550×400mm</li>
+              <li>5 款同价</li>
+              <li>3C + 3 项专利</li>
+              <li>官方验真 + 跨境</li>
+            </ul>
+          </div>
+        </div>
+        <div class="price">¥891(603 + 288)</div>
+        <div class="savings">展品价基线 -57.5% / 价差 ¥1,208</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 段#3 烘干箱大 (致命修复) -->
+  <div class="device" style="border:2px solid var(--green);background:linear-gradient(135deg,#fff 80%,rgba(46,125,50,.04))">
+    <h3>🔧 设备3 · 扫风烘干箱(大) · ⭐ v4 致命修复(75L→430L 完美对标)</h3>
+    <div class="baseline">霍曼 <strong>PDB350</strong>(≤60kg,3,800W,¥6,500 展品) → 1688 平替(东莞蔚德晟 430L ¥4,880,完美对标容量 1.23x + 功率 1.27x + 内尺寸 1.98x,-24.9%)</div>
+    <div class="compare">
+      <div class="compare-col huoman">
+        <h4>霍曼 PDB350</h4>
+        <div class="img-wrap"><img src="产品图/霍曼/霍曼_PDB350_烘干箱大_p12.png" alt="霍曼 PDB350 烘干箱"></div>
+        <ul>
+          <li>105 × 73 × 98 cm(外)</li>
+          <li>95 × 52 × 71 cm(内)</li>
+          <li>3,800W 2200W(PDB 标 2200W 实际 3800W 峰值)</li>
+          <li>ebm 进口电机</li>
+          <li>适用 ≤60kg 大型犬</li>
+          <li>臭氧 + 负离子</li>
+        </ul>
+        <div class="price">¥6,500 <span style="font-size:12px;color:#666;font-weight:400">/ 展品价</span></div>
+        <div class="savings">原报价 ¥8,000 (-18.75% off)</div>
+      </div>
+      <div class="vs">VS</div>
+      <div class="compare-col alt">
+        <h4>⭐ 东莞蔚德晟 430L ¥4,880</h4>
+        <div class="img-wrap"><img src="产品图/平替/段3_蔚德晟430L_合成.png" alt="东莞蔚德晟 430L"></div>
+        <ul>
+          <li>100×72×96.5cm / 55kg</li>
+          <li>2,800W / 110 斤承载</li>
+          <li><strong>双区独立控制</strong> + 臭氧 + 负离子</li>
+          <li>容量 430L(vs 350L = 1.23x)</li>
+          <li>内尺寸 1.98x(单层 1.4x + 双层堆叠)</li>
+        </ul>
+        <div class="price">¥4,880</div>
+        <div class="savings">⭐ 完美对标 1.23x / 价差 ¥1,620</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 段#4 浴缸 -->
+  <div class="device">
+    <h3>🔧 设备4 · 不锈钢电动浴缸</h3>
+    <div class="baseline">霍曼 <strong>PB20</strong>(127×67×(106-176)cm 升降,¥4,000 展品) → 1688 平替(山东济宁 304 不锈钢 120×70×(100-150)cm ¥2,466,-38.4%)</div>
+    <div class="compare">
+      <div class="compare-col huoman">
+        <h4>霍曼 PB20</h4>
+        <div class="img-wrap"><img src="产品图/霍曼/霍曼_PB20_浴缸_p17.png" alt="霍曼 PB20 浴缸"></div>
+        <ul>
+          <li>127 × 67 ×(106-176)cm</li>
+          <li>304 不锈钢</li>
+          <li>电动升降结构</li>
+          <li>可折叠围板防滑</li>
+          <li>不锈钢双层下水器拦截毛发</li>
+        </ul>
+        <div class="price">¥4,000 <span style="font-size:12px;color:#666;font-weight:400">/ 展品价</span></div>
+        <div class="savings">原报价 ¥4,620 (-13.4% off)</div>
+      </div>
+      <div class="vs">VS</div>
+      <div class="compare-col alt">
+        <h4>山东济宁 304 不锈钢 ¥2,466</h4>
+        <div class="img-wrap"><img src="产品图/平替/段4_山东济宁浴缸_合成.png" alt="山东济宁 浴缸"></div>
+        <ul>
+          <li>120×70×(100-150)cm</li>
+          <li>304 不锈钢 + 电动升降</li>
+          <li>4 SKU 阶梯</li>
+          <li>30 天 1 万+ 单爆款</li>
+          <li>回头率 34.20% / 1688 优选</li>
+          <li>评分 90 绿(23 候选里最高)</li>
+        </ul>
+        <div class="price">¥2,466</div>
+        <div class="savings">展品价基线 -38.4% / 价差 ¥1,534</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 段#5 方桌 -->
+  <div class="device">
+    <h3>🔧 设备5 · 电动美容方桌</h3>
+    <div class="baseline">霍曼 <strong>BT20M</strong>(96×65×(52-100)cm 电动升降,¥1,800 展品) → 1688 平替(佛山酷格 304 不锈钢 124×64 ¥519,-71.2%)</div>
+    <div class="compare">
+      <div class="compare-col huoman">
+        <h4>霍曼 BT20M</h4>
+        <div class="img-wrap"><img src="产品图/霍曼/霍曼_BT20M_美容方桌_p14.png" alt="霍曼 BT20M 美容方桌"></div>
+        <ul>
+          <li>96 × 65 ×(52-100)cm</li>
+          <li>单剪叉式电动升降</li>
+          <li>优质 PVC 橡胶桌面</li>
+          <li>八叉底座 + 4 个橡胶垫防滑</li>
+          <li>高强度钢架</li>
+        </ul>
+        <div class="price">¥1,800 <span style="font-size:12px;color:#666;font-weight:400">/ 展品价</span></div>
+        <div class="savings">原报价 ¥2,100 (-14.3% off)</div>
+      </div>
+      <div class="vs">VS</div>
+      <div class="compare-col alt">
+        <h4>佛山酷格 304 不锈钢 ¥519</h4>
+        <div class="img-wrap"><img src="产品图/平替/段5_佛山酷格美容桌_合成.png" alt="佛山酷格 美容桌"></div>
+        <ul>
+          <li>124×64×(34-97)cm(偏长 28cm)</li>
+          <li>304 不锈钢 + 电动升降</li>
+          <li>17 款 SKU / 跨境资质</li>
+          <li>评分 88 绿</li>
+          <li>⚠ 启动前向客服核价 96×65 vs 124×64</li>
+        </ul>
+        <div class="price">¥519</div>
+        <div class="savings">展品价基线 -71.2% / 价差 ¥1,281</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 段#6 圆桌 -->
+  <div class="device">
+    <h3>🔧 设备6 · 气动美容圆桌</h3>
+    <div class="baseline">霍曼 <strong>BT10</strong>(直径 60×(72-102)cm PVC,¥720 展品/新样机同价) → 1688 平替(宠物美容台气压圆形 60cm ¥338,-53.1%)</div>
+    <div class="compare">
+      <div class="compare-col huoman">
+        <h4>霍曼 BT10</h4>
+        <div class="img-wrap"><img src="产品图/霍曼/霍曼_BT10_美容圆桌_p13.png" alt="霍曼 BT10 美容圆桌"></div>
+        <ul>
+          <li>60cm ×(72-102)cm</li>
+          <li>气动 360° 旋转升降</li>
+          <li>优质 PVC 橡胶桌面</li>
+          <li>防滑纹理设计</li>
+          <li>智能升降系统</li>
+        </ul>
+        <div class="price">¥720 <span style="font-size:12px;color:#666;font-weight:400">/ 展品价</span></div>
+        <div class="savings">原报价 ¥720(= 展品价)</div>
+      </div>
+      <div class="vs">VS</div>
+      <div class="compare-col alt">
+        <h4>宠物美容台气压圆形 ¥338</h4>
+        <div class="img-wrap"><img src="产品图/平替/段6_圆形美容台_合成.png" alt="圆形美容台"></div>
+        <ul>
+          <li>60cm 12 色 SKU</li>
+          <li>气压升降 72-102cm</li>
+          <li>含挂架吊绳</li>
+          <li>已售 898 爆款</li>
+          <li>评分 88 绿(销量 + 评分双优)</li>
+        </ul>
+        <div class="price">¥338</div>
+        <div class="savings">展品价基线 -53.1% / 价差 ¥382</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 段#7 吹水机 -->
+  <div class="device">
+    <h3>🔧 设备7 · 肩托式挂脖吹水机</h3>
+    <div class="baseline">霍曼 <strong>ND10</strong>(9 档风速 + 负离子,¥600 展品/从赠品升正式件 +¥141) → 1688 平替(江苏超伦挂脖 310g ¥299,-50.2%)</div>
+    <div class="compare">
+      <div class="compare-col huoman">
+        <h4>霍曼 ND10</h4>
+        <div class="img-wrap"><img src="产品图/霍曼/霍曼_ND10_吹水机_p8.png" alt="霍曼 ND10 吹水机"></div>
+        <ul>
+          <li>240 × 48 × 73mm(主机)</li>
+          <li>440 × 90 × 100mm(支架)</li>
+          <li>9 档风速 + 负离子</li>
+          <li>人体工学肩托分压</li>
+          <li>双重精密金属滤网</li>
+          <li>最大风速 83m/s</li>
+        </ul>
+        <div class="price">¥600 <span style="font-size:12px;color:#666;font-weight:400">/ 展品价</span></div>
+        <div class="savings">原报价 ¥459(赠品)→ 升为正式件 +¥141</div>
+      </div>
+      <div class="vs">VS</div>
+      <div class="compare-col alt">
+        <h4>江苏超伦挂脖吹风机 ¥299</h4>
+        <div class="img-wrap"><img src="产品图/平替/段7_江苏超伦吹水机_合成.png" alt="江苏超伦 挂脖吹风机"></div>
+        <ul>
+          <li>3.28×8.48×8.54cm / 310g</li>
+          <li>挂脖可穿戴设计</li>
+          <li>1,200-1,599W 高速电机</li>
+          <li>2 台起批 / 跨境大厂</li>
+          <li>1,000+ 销量</li>
+          <li>评分 84 绿</li>
+        </ul>
+        <div class="price">¥299</div>
+        <div class="savings">展品价基线 -50.2% / 价差 ¥301</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>📊 霍曼图源:B端线霍曼产品手册 PDF(2024) · 29 页 · p8/p9/p12/p13/p14/p17/p19 提取 · 7 张</p>
+    <p>📊 平替图源:按 v5 选品规格 image_synthesize 1K 1:1 生成 · 7 张 · 实际下单以 1688 详情页主图为准</p>
+    <p>🎯 决策记录:DEC-035 v5 · git commit 3d7b8c3 + 修复 + 修订 · tools/verify.py 通过(35 entries no warning)</p>
+    <p>📁 完整数据:<code>设备对比表-模板-v5.xlsx</code> + <code>README.md</code> + <code>搜索结果/</code> + <code>accessories-v5.html</code></p>
+    <p>🏠 部署 URL:<a href="https://sunganhao8-lgtm.github.io/zhaiyu-bp/accessories-v5-pictures.html" target="_blank">https://sunganhao8-lgtm.github.io/zhaiyu-bp/accessories-v5-pictures.html</a></p>
+  </div>
+
+</div>
+</body>
+</html>
