@@ -1,0 +1,22 @@
+fix(DEC-035 v5): 补 commit v5 改动 5 个文件 + GitHub Pages 部署 accessories-v5.html
+
+【v5 commit 3d7b8c3 遗漏的 5 个文件】
+之前 v5 commit 3d7b8c3 的 commit message 谎称改了 DECISIONS.md / bp.html / data/decisions.yaml / data/facts.yaml / 装修/效果图/洗护设备/平替对比-展示.html 5 个文件,实际 git 只 commit 了 xlsx + archived 文件。本 commit 补齐这 5 个文件的 v5 改动 + 顺便加一个英文文件名副本便于 GitHub Pages 部署。
+
+【实际 v5 改动 v3 → v5 累计】
+- 装修/效果图/洗护设备/平替对比-展示.html: 786 行 v3 → 32KB v5(段#3 致命修复 + 段#2 A/B 备份 + 霍曼新样机价重算)
+- DECISIONS.md R39 + R310+ v5 update_log
+- data/decisions.yaml DEC-035 v5 body + update_log v2/v3/v4/v5
+- data/facts.yaml R29 v5 备注
+- bp.html 9.1 表 4a 行 v5(原 ¥21,978 → 新 ¥19,019,节省 6,776 / 35.6% off)
+
+【GitHub Pages 部署】
+- 之前 push 到 master 分支,但实际 GitHub Pages 部署的是 main 分支(master 上的 3600 行 bp.html mirror 没部署)
+- 改加 accessories-v5.html 到 main 根目录(英文文件名,避免中文 URL 编码问题)
+- URL: https://sunganhao8-lgtm.github.io/zhaiyu-bp/accessories-v5.html
+- 用户可直接用 URL 查看 v5 完整 HTML 展示页(7 件平替对比 + 1688 链接 + v5 资金再分配 + 段#3 完美对标 430L 蔚德晟)
+
+【实际节省】
+- 7 件核心设备 ¥12,243(v4 平替) vs 霍曼新样机 7 件 ¥19,019,省 ¥6,776(35.6% off 新霍曼)
+- 段#3 完美对标 350L 霍曼:东莞蔚德晟 430L ¥4,880 vs 霍曼 PDB350 ¥6,500,容量 1.23x + 功率 1.27x + 内尺寸 1.98x
+- 资金分配不变:设备实付 ¥18,243 / 流动资金 ¥48,740 / 营销 ¥35,017 / 启动资金 18.23 万
