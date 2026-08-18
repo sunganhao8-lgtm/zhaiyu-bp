@@ -39,6 +39,8 @@
   --z-brown:#5C3D2E;
   --z-brown-soft:#7A5238;
   --z-pink:#F4B5A8;
+  --z-orange-warm:#F4B860;
+  --z-gray-600:#7A6F63;
   /* 阴影 */
   --shadow-soft:0 4px 14px rgba(232,154,60,0.18);
   --shadow-3d:4px 4px 0 rgba(232,154,60,0.35);
@@ -802,75 +804,6 @@ strong{color:var(--z-brown)}
 .z-qa-a{font-size:14px;color:var(--z-brown-soft);line-height:1.8}
 .z-qa-a strong{color:var(--z-orange-darker);font-weight:800}
 
-/* 宅域首页 · HTML Light 交互首屏（灵感来自 jinruozai/HTML-Light-Demo，MIT） */
-.zh-light-hero{
-  --lamp-color:#ff9b45;
-  --lamp-shift:0px;
-  --lamp-tilt:0deg;
-  --cable-extra:0px;
-  --beam-width:560px;
-  --light-opacity:.82;
-  position:relative;
-  min-height:690px;
-  overflow:hidden;
-  margin:-32px -32px 0;
-  border:1px solid #4a3022;
-  border-radius:18px;
-  color:#F7F3EA;
-  background:
-    linear-gradient(rgba(255,184,96,.028) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(255,184,96,.028) 1px,transparent 1px),
-    radial-gradient(circle at 50% 22%,#342116 0,#17100c 42%,#080605 100%);
-  background-size:52px 52px,52px 52px,auto;
-  isolation:isolate;
-  touch-action:pan-y;
-}
-.zh-light-hero::before{content:"";position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse 42% 58% at calc(50% + var(--lamp-shift)) 46%,color-mix(in srgb,var(--lamp-color) 20%,transparent) 0,transparent 72%);opacity:var(--light-opacity);transition:opacity .25s ease;pointer-events:none}
-.zh-light-hero.is-off{--light-opacity:0}
-.zh-light-hero.is-off .zh-light-bulb{background:#5d6068;box-shadow:none}
-.zh-light-hero.is-off .zh-light-beam{opacity:0}
-.zh-light-top{position:relative;z-index:4;height:78px;display:flex;align-items:center;justify-content:space-between;padding:0 34px;border-bottom:1px solid rgba(255,255,255,.09);font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:10px;letter-spacing:.16em;color:rgba(255,255,255,.42)}
-.zh-light-brand{display:flex;align-items:center;gap:11px;color:rgba(255,255,255,.84);font-weight:800}
-.zh-light-brand img{width:34px;height:34px;border-radius:9px;object-fit:contain;background:#FFF4E1}
-.zh-light-brand strong{color:#FFF;font-size:12px;letter-spacing:.12em}
-.zh-light-stage{position:relative;z-index:2;min-height:530px;display:grid;grid-template-columns:minmax(0,1.45fr) minmax(270px,.55fr);align-items:center;gap:48px;padding:76px 56px 96px}
-.zh-light-copy{position:relative;z-index:3;max-width:780px}
-.zh-light-eyebrow{margin-bottom:20px;color:color-mix(in srgb,var(--lamp-color) 82%,#fff);font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:11px;font-weight:800;letter-spacing:.18em}
-.zh-light-copy h1{margin:0;max-width:820px;color:#F7F4EE;font-size:clamp(40px,5.7vw,78px);font-weight:900;letter-spacing:-.055em;line-height:.98}
-.zh-light-copy h1 span{color:var(--lamp-color);transition:color .2s ease}
-.zh-light-subtitle{max-width:650px;margin:25px 0 0;color:rgba(246,244,238,.58);font-size:15px;line-height:1.85}
-.zh-light-concepts{display:flex;gap:9px;flex-wrap:wrap;margin-top:30px}
-.zh-light-concept{border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:8px 14px;color:rgba(255,255,255,.52);background:rgba(255,255,255,.025);font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:9px;letter-spacing:.11em}
-.zh-light-concept.active{border-color:color-mix(in srgb,var(--lamp-color) 52%,transparent);color:#FFF;background:color-mix(in srgb,var(--lamp-color) 12%,transparent);box-shadow:inset 0 0 18px color-mix(in srgb,var(--lamp-color) 8%,transparent)}
-.zh-light-controls{position:relative;z-index:7;padding:22px;border:1px solid rgba(255,184,96,.18);border-radius:17px;background:rgba(30,19,14,.9);box-shadow:0 24px 70px rgba(0,0,0,.28);backdrop-filter:blur(8px)}
-.zh-light-control-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px;color:#FFF;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:10px;font-weight:800;letter-spacing:.13em}
-.zh-light-power{height:30px;display:flex;align-items:center;gap:7px;padding:0 10px;border:1px solid color-mix(in srgb,var(--lamp-color) 45%,transparent);border-radius:999px;color:#FFF;background:rgba(255,255,255,.04);font:inherit;cursor:pointer}
-.zh-light-power i{width:7px;height:7px;border-radius:50%;background:var(--lamp-color);box-shadow:0 0 12px var(--lamp-color)}
-.zh-light-hero.is-off .zh-light-power{border-color:rgba(255,255,255,.12);color:rgba(255,255,255,.4)}
-.zh-light-hero.is-off .zh-light-power i{background:#656974;box-shadow:none}
-.zh-light-control-row{margin-top:19px}
-.zh-light-control-label{display:flex;justify-content:space-between;margin-bottom:9px;color:rgba(255,255,255,.55);font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:9px;letter-spacing:.1em}
-.zh-light-control-row input[type="range"]{width:100%;height:4px;margin:0;accent-color:var(--lamp-color);cursor:ew-resize}
-.zh-light-colors{display:flex;align-items:center;gap:10px;margin-top:12px}
-.zh-light-swatch{position:relative;width:25px;height:25px;border:1px solid rgba(255,255,255,.15);border-radius:50%;background:var(--swatch);cursor:pointer}
-.zh-light-swatch.active::after{content:"";position:absolute;inset:-5px;border:1px solid rgba(255,255,255,.78);border-radius:50%}
-.zh-light-reset{width:100%;height:38px;margin-top:23px;border:1px solid rgba(255,255,255,.1);border-radius:9px;color:rgba(255,255,255,.55);background:rgba(255,255,255,.025);font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:9px;letter-spacing:.12em;cursor:pointer}
-.zh-light-reset:hover{border-color:color-mix(in srgb,var(--lamp-color) 42%,transparent);color:#FFF}
-.zh-light-lamp{position:absolute;z-index:6;top:-16px;left:calc(50% + var(--lamp-shift));width:150px;height:174px;transform:translateX(-50%) rotate(var(--lamp-tilt));transform-origin:50% 0;cursor:grab;touch-action:none;filter:drop-shadow(0 10px 20px rgba(0,0,0,.55));will-change:transform,left}
-.zh-light-lamp.is-dragging{cursor:grabbing}
-.zh-light-cable{position:absolute;left:74px;top:0;width:2px;height:calc(91px + var(--cable-extra));background:linear-gradient(#1d1f26,#555861);transform-origin:top}
-.zh-light-cap{position:absolute;top:0;left:61px;width:28px;height:9px;border-radius:0 0 8px 8px;background:#22242b;border:1px solid #444750}
-.zh-light-shade{position:absolute;left:26px;top:calc(84px + var(--cable-extra));width:98px;height:43px;border-radius:50% 50% 18% 18%/70% 70% 25% 25%;background:linear-gradient(180deg,#2b2d33,#111216 76%);border:1px solid #3b3e46;box-shadow:inset 0 -7px 14px rgba(255,255,255,.04)}
-.zh-light-bulb{position:absolute;left:63px;top:calc(117px + var(--cable-extra));width:24px;height:16px;border-radius:50%;background:#fff3dc;box-shadow:0 0 13px #fff,0 0 34px var(--lamp-color),0 0 70px var(--lamp-color);transition:all .2s ease}
-.zh-light-beam{position:absolute;z-index:1;top:119px;left:calc(50% + var(--lamp-shift));bottom:54px;width:var(--beam-width);transform:translateX(-50%) rotate(var(--lamp-tilt));transform-origin:50% 0;clip-path:polygon(47.5% 0,52.5% 0,100% 100%,0 100%);background:linear-gradient(180deg,color-mix(in srgb,var(--lamp-color) 42%,transparent),color-mix(in srgb,var(--lamp-color) 14%,transparent) 65%,transparent);opacity:var(--light-opacity);filter:blur(7px);transition:width .2s ease,opacity .2s ease;pointer-events:none;will-change:transform,left}
-.zh-light-footer{position:absolute;left:0;right:0;bottom:0;z-index:5;height:64px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:20px;padding:0 34px;border-top:1px solid rgba(255,255,255,.09);color:rgba(255,255,255,.3);font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:8px;letter-spacing:.12em}
-.zh-light-footer p{margin:0;color:inherit}.zh-light-footer p:last-child{text-align:right}.zh-light-drag{display:flex;align-items:center;gap:10px;color:rgba(255,255,255,.66)}
-.zh-light-drag-icon{width:30px;height:20px;border:1px solid rgba(255,255,255,.25);border-radius:50%;transform:rotate(-13deg);position:relative}.zh-light-drag-icon::after{content:"";position:absolute;right:3px;top:1px;width:5px;height:5px;border-radius:50%;background:var(--lamp-color);box-shadow:0 0 8px var(--lamp-color)}
-.zh-light-credit a{color:rgba(255,255,255,.45);text-decoration:none}.zh-light-credit a:hover{color:#FFF}
-
-@media(max-width:900px){.zh-light-stage{grid-template-columns:1fr;gap:34px;padding:90px 34px 110px}.zh-light-controls{max-width:520px}.zh-light-hero{min-height:880px}.zh-light-copy h1{font-size:clamp(42px,9vw,72px)}}
-@media(max-width:640px){main{padding:8px}#tab-zhaiyu{padding:10px;margin-top:8px}.zh-light-hero{min-height:930px;margin:-10px -10px 0;border-radius:14px}.zh-light-top{height:66px;padding:0 18px}.zh-light-top>span{display:none}.zh-light-stage{padding:105px 20px 116px}.zh-light-copy h1{font-size:36px;line-height:1.02}.zh-light-subtitle{font-size:13px}.zh-light-footer{height:76px;grid-template-columns:1fr auto;padding:0 18px}.zh-light-footer>p:first-child{display:none}.zh-light-credit{max-width:150px;text-align:right;line-height:1.5}.zh-light-lamp{top:-24px;transform:translateX(-50%) scale(.8) rotate(var(--lamp-tilt));transform-origin:50% 0}.zh-light-beam{top:100px}}
-@media(prefers-reduced-motion:reduce){.zh-light-hero *{transition-duration:.01ms!important}}
 /* 开店合规咨询清单 */
 .permit-hero{background:linear-gradient(135deg,#FFF9F0 0%,#FFF4E1 100%);border:2px solid var(--z-orange-deep);border-radius:18px;padding:28px;margin-bottom:22px}
 .permit-hero-top{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;flex-wrap:wrap}
@@ -1230,7 +1163,7 @@ strong{color:var(--z-brown)}
   </div>
 </section>
 
-<!-- ================== 标签2: 文档 ================== -->
+<!-- ================== 标签: 文档(宅咪 BP) ================== -->
 <section class="bp-panel tab-panel" role="tabpanel" id="tab-doc" aria-labelledby="tab-btn-doc" tabindex="0">
   <h1 class="z-title">宅咪·临港 LIN 舍 · 上门洗护商业计划书</h1>
   <p class="z-lead">社区精细化洗护 + 寄养 + 优质零售 · 三位一体的综合宠物生活馆 · 浦东新区泥城镇五岭路 × 咏梅路交叉口西 120 米</p>
@@ -1313,8 +1246,6 @@ strong{color:var(--z-brown)}
 
     <h3 class="z-h3">1.4 团队结构</h3>
     <p>股权与人力股安排详见「融资计划」标签页：<strong>18.23 万启动预算双轨制股权结构</strong>，资本股 70% + 人力股 30%。3 年 vesting，满 1 年解锁 1/3。业务抽成、岗位补贴、股东分红分开记账；普通业务抽成 30%，高耗时业务抽成 50%。</p>
-
-    <div class="z-quote"></div>
   </div>
 
   <!-- 第二章 -->
@@ -1765,7 +1696,7 @@ strong{color:var(--z-brown)}
   </div>
 </section>
 
-<!-- ================== 标签2: 演示（HTML 幻灯片） ================== -->
+<!-- ================== 标签: 演示（HTML 幻灯片） ================== -->
 <section class="bp-panel tab-panel" role="tabpanel" id="tab-slide" aria-labelledby="tab-btn-slide" tabindex="0">
   <h1 class="z-title">演示 · 宅域·品牌叙事幻灯片</h1>
   <p class="z-lead">键盘 ← → 切换 · 顶部/底部导航 · 服务破冰 · 客户发言档案 · 家庭需求产品化路径</p>
@@ -1785,7 +1716,7 @@ strong{color:var(--z-brown)}
   </div>
 </section>
 
-<!-- ================== 标签3: 门店布局（含可编辑编辑器，合并自原"编辑布局"标签） ================== -->
+<!-- ================== 标签: 门店布局（含可编辑编辑器，合并自原"编辑布局"标签） ================== -->
 <section class="bp-panel tab-panel" role="tabpanel" id="tab-layout" aria-labelledby="tab-btn-layout" tabindex="0">
   <h1 class="z-title">门店布局 · 平面图标注 59.67㎡ · 功能分区</h1>
   <p class="z-lead">承重墙保留 / 底部三等分房间 / 中下爆品货架 / 右下洗护 / 可拖拽编辑版本</p>
@@ -1847,7 +1778,7 @@ strong{color:var(--z-brown)}
   </div>
 </section>
 
-<!-- ================== 标签5: 选址分析 ================== -->
+<!-- ================== 标签: 选址分析 ================== -->
 <section class="bp-panel tab-panel" role="tabpanel" id="tab-map" aria-labelledby="tab-btn-map" tabindex="0">
   <h1 class="z-title">选址分析 · 浦东新区泥城镇</h1>
   <p class="z-lead">1km 覆盖 8 个小区 / 步行到万达 16 分钟 / 3km 辐射 6.8 万人</p>
@@ -1866,7 +1797,7 @@ strong{color:var(--z-brown)}
   </div>
 </section>
 
-<!-- ================== 标签2: 宅电·上门搭建电竞房 BP ================== -->
+<!-- ================== 标签: 宅电·上门搭建电竞房 BP ================== -->
 <section class="bp-panel tab-panel" role="tabpanel" id="tab-zhaidian" aria-labelledby="tab-btn-zhaidian" tabindex="0">
   <h1 class="z-title">宅电·上门搭建电竞房 · 商业计划书</h1>
   <p class="z-lead">租户友好型氛围升级服务 · 极低门槛 · 30 分钟 300 元搞定 · 临港新片区</p>
@@ -1937,7 +1868,7 @@ strong{color:var(--z-brown)}
       <li><strong>启动资金合计 <span class="z-number">1.2</span> 万元</strong>：3D 打印机 1999 + 工具 500 + 样板库存 2500 + 内容营销 2000 + 品牌 1500 + 3 月车马费 1500 + 应急 2000。</li>
       <li><strong>单笔客单价 <span class="z-number">450</span> 元</strong>（氛围包主力）：月销 20-25 单，单笔毛利 280 元（毛利率 62%）。</li>
       <li><strong>月净利保守 <span class="z-number">6000-8千</span> 元</strong>：固定成本 800/月，盈亏平衡仅需 3-4 单/月。</li>
-      <li><strong>回本周期 <span class="z-number">2</span> 个月</span></strong>：M1 即微利，6 个月内累计净利 3-4 万。</li>
+      <li><strong>回本周期 <span class="z-number">2</span> 个月</strong>：M1 即微利，6 个月内累计净利 3-4 万。</li>
       <li><strong>单店模型验证后</strong>，<strong>0 店面成本</strong>即可复制到临港其他小区，成本仅增加 3000 元样板点。</li>
     </ul>
   </div>
@@ -2313,7 +2244,7 @@ strong{color:var(--z-brown)}
   </div>
 </section>
 
-<!-- ================== 标签3: 双品牌协同 ================== -->
+<!-- ================== 标签: 双品牌协同 ================== -->
 <section class="bp-panel tab-panel" role="tabpanel" id="tab-synergy" aria-labelledby="tab-btn-synergy" tabindex="0">
   <h1 class="z-title">宅咪 × 宅电 · 双品牌协同</h1>
   <p class="z-lead">一店两牌 · 客户发言档案共享 · 0 重复获客成本 · 投资人视角的需求资产</p>
@@ -2942,7 +2873,7 @@ strong{color:var(--z-brown)}
   <div class="permit-toast" id="permitToast" role="status"></div>
 </section>
 
-<!-- ================== 标签5: 关于 ================== -->
+<!-- ================== 标签: 关于 ================== -->
 <section class="bp-panel tab-panel" role="tabpanel" id="tab-about" aria-labelledby="tab-btn-about" tabindex="0">
   <div class="about-hero">
     <img src="assets/zhaiyu-logo-120.png" alt="宅域 LOGO" onerror="this.outerHTML='<div style=&quot;width:120px;height:120px;border-radius:50%;background:var(--z-cream-yellow);margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-size:60px&quot;>🏠</div>'" />
@@ -3097,126 +3028,6 @@ let currentSlide = 0;
       setTimeout(()=>{ try{ buildSlide(); }catch(e){console.error('buildSlide fallback:', e);} }, 0);
     }
   } catch(e){}
-})();
-
-/* ============================================================
-   首页可交互吊灯 · 轻量原生物理
-   ============================================================ */
-(function(){
-  const hero = document.getElementById('zhLightHero');
-  const lamp = document.getElementById('zhLightLamp');
-  if(!hero || !lamp) return;
-  const power = document.getElementById('zhLightPower');
-  const angle = document.getElementById('zhLightAngle');
-  const brightness = document.getElementById('zhLightBrightness');
-  const angleOutput = document.getElementById('zhLightAngleOutput');
-  const brightnessOutput = document.getElementById('zhLightBrightnessOutput');
-  const colorOutput = document.getElementById('zhLightColorOutput');
-  const reset = document.getElementById('zhLightReset');
-  const swatches = Array.from(hero.querySelectorAll('.zh-light-swatch'));
-  let lightOn = true;
-  let drag = null;
-  let lampX = 0;
-  let lampTilt = 0;
-  let cableExtra = 0;
-  let velocity = 0;
-  let animationFrame = 0;
-
-  function clamp(value,min,max){return Math.max(min,Math.min(max,value));}
-  function applyLamp(){
-    hero.style.setProperty('--lamp-shift',lampX.toFixed(2)+'px');
-    hero.style.setProperty('--lamp-tilt',lampTilt.toFixed(2)+'deg');
-    hero.style.setProperty('--cable-extra',cableExtra.toFixed(2)+'px');
-  }
-  function stopAnimation(){if(animationFrame){cancelAnimationFrame(animationFrame);animationFrame=0;}}
-  function springHome(){
-    stopAnimation();
-    function step(){
-      velocity += -lampX * 0.018;
-      velocity *= 0.935;
-      lampX += velocity;
-      lampTilt += ((lampX / 14) - lampTilt) * 0.2;
-      cableExtra *= 0.88;
-      applyLamp();
-      if(Math.abs(lampX) > 0.12 || Math.abs(velocity) > 0.12 || Math.abs(lampTilt) > 0.12 || cableExtra > 0.12){
-        animationFrame = requestAnimationFrame(step);
-      }else{
-        lampX=0;lampTilt=0;cableExtra=0;velocity=0;animationFrame=0;applyLamp();
-      }
-    }
-    animationFrame = requestAnimationFrame(step);
-  }
-  function resetLight(){
-    stopAnimation();
-    lampX=0;lampTilt=0;cableExtra=0;velocity=0;
-    angle.value='42';brightness.value='82';
-    angle.dispatchEvent(new Event('input'));
-    brightness.dispatchEvent(new Event('input'));
-    swatches[0] && swatches[0].click();
-    lightOn=true;hero.classList.remove('is-off');power.querySelector('span').textContent='ON';
-    applyLamp();
-  }
-  function beginDrag(event){
-    if(event.button !== 0) return;
-    if(event.target.closest('.zh-light-controls,a,button,input')) return;
-    stopAnimation();
-    const rect = hero.getBoundingClientRect();
-    drag={pointerId:event.pointerId,startX:event.clientX,startY:event.clientY,baseX:lampX,lastX:event.clientX,lastTime:performance.now(),limit:rect.width*.31};
-    try{hero.setPointerCapture(event.pointerId);}catch(e){}
-    lamp.classList.add('is-dragging');
-    if(event.target.closest('.zh-light-lamp')) event.preventDefault();
-  }
-  function moveDrag(event){
-    if(!drag || drag.pointerId !== event.pointerId) return;
-    if(event.buttons === 0){releaseLamp(event);return;}
-    const now = performance.now();
-    const elapsed = Math.max(8,now-drag.lastTime);
-    const nextX = clamp(drag.baseX + event.clientX-drag.startX,-drag.limit,drag.limit);
-    velocity = (event.clientX-drag.lastX) / elapsed * 12;
-    lampX = nextX;
-    lampTilt = clamp((event.clientX-drag.startX)/13,-28,28);
-    cableExtra = clamp((event.clientY-drag.startY)*.32,0,42);
-    drag.lastX=event.clientX;drag.lastTime=now;
-    applyLamp();
-  }
-  function releaseLamp(event){
-    if(!drag || drag.pointerId !== event.pointerId) return;
-    drag=null;
-    try{hero.releasePointerCapture(event.pointerId);}catch(e){}
-    lamp.classList.remove('is-dragging');springHome();
-  }
-  hero.addEventListener('pointerdown',beginDrag);
-  hero.addEventListener('pointermove',moveDrag);
-  window.addEventListener('pointerup',releaseLamp);
-  window.addEventListener('pointercancel',releaseLamp);
-  hero.addEventListener('lostpointercapture',function(event){if(drag && drag.pointerId===event.pointerId) releaseLamp(event);});
-  window.addEventListener('blur',function(){if(drag){const pointerId=drag.pointerId;releaseLamp({pointerId:pointerId});}});
-  lamp.addEventListener('dblclick',resetLight);
-  lamp.addEventListener('keydown',function(event){
-    if(event.key==='ArrowLeft' || event.key==='ArrowRight'){
-      stopAnimation();lampX=clamp(lampX+(event.key==='ArrowLeft'?-24:24),-220,220);lampTilt=lampX/14;applyLamp();event.preventDefault();
-    }else if(event.key==='Home'){resetLight();event.preventDefault();}
-    else if(event.key==='Enter' || event.key===' '){power.click();event.preventDefault();}
-  });
-  power.addEventListener('click',function(){
-    lightOn=!lightOn;hero.classList.toggle('is-off',!lightOn);power.querySelector('span').textContent=lightOn?'ON':'OFF';
-  });
-  angle.addEventListener('input',function(){
-    const value=Number(angle.value);angleOutput.textContent=value+'°';hero.style.setProperty('--beam-width',(260+value*7.2)+'px');
-  });
-  brightness.addEventListener('input',function(){
-    const value=Number(brightness.value);brightnessOutput.textContent=value+'%';hero.style.setProperty('--light-opacity',(value/100).toFixed(2));
-  });
-  swatches.forEach(function(button){
-    button.addEventListener('click',function(){
-      swatches.forEach(function(entry){entry.classList.toggle('active',entry===button);});
-      hero.style.setProperty('--lamp-color',button.dataset.lightColor);colorOutput.textContent=button.dataset.lightName;
-    });
-  });
-  reset.addEventListener('click',resetLight);
-  angle.dispatchEvent(new Event('input'));
-  brightness.dispatchEvent(new Event('input'));
-  applyLamp();
 })();
 
 /* ============================================================
@@ -3783,7 +3594,7 @@ function resizeLayoutIframe(iframe){
   const closeBtn = document.getElementById('fsCloseBtn');
   const maxBtn = document.getElementById('fsMaxBtn');
 
-  const tabNames = {investor:'投资人问答',doc:'文档',slide:'演示',layout:'门店布局',permits:'开店办证',map:'选址分析',about:'关于'};
+  const tabNames = {zhaiyu:'宅域·品牌叙事',investor:'投资人问答',doc:'文档',zhaidian:'宅电 BP',synergy:'双品牌协同',slide:'演示',layout:'门店布局',permits:'开店办证',map:'选址分析',roadmap:'宅域·路线图',funding:'融资计划',about:'关于'};
 
   function addTriggers(){
     const skipPanels = new Set(['tab-layout', 'tab-permits', 'tab-map']);
