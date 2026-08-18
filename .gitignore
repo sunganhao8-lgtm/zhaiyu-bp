@@ -50,6 +50,9 @@ node_modules/
 # 孤儿目录：线上入口是仓库根 bp.html，不部署 bps/store-front/bp.html
 bps/store-front/
 
+# 合作着陆页：独立 git 仓库 github.com/sunganhao8-lgtm/zhaiyu-coop（线上 sunganhao8-lgtm.github.io/zhaiyu-coop），不并入主仓库
+bps/landing-for-coop/
+
 # 装修/效果图/搜索结果/抓取素材 — 本地工作目录，not for 仓库
 装修/
 
