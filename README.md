@@ -24,7 +24,7 @@
 | 读最新会议笔记 | [[meetings/2026-06-26-孙淦浩快速会议.md]] |
 | 看商业计划书（网页版 · 线上入口） | [[bp.html]] |
 | 看商业计划书（Markdown 源 · 镜像） | [[bps/store-front/bp.md]] |
-| 看合作着陆页 | [[bps/landing-for-coop/landing.html]] |
+| 看合作着陆页 | [sunganhao8-lgtm.github.io/zhaiyu-coop](https://sunganhao8-lgtm.github.io/zhaiyu-coop/)（独立仓库 · 本地源码 `bps/landing-for-coop/`，不入主仓库 git） |
 | 看优化后的执行方案 | [[docs/optimization-plan.md]] |
 | 准备投资人问答话术 | [[docs/investor-objection-playbook.md]] |
 | 查事实/数字（唯一数据源） | [[data/facts.yaml]] |
@@ -51,8 +51,8 @@ zhaiyu-bp/
 ├── data/              ← 📊 事实与决策数据源（YAML，唯一来源）
 ├── meetings/          ← 📝 会议笔记（含冲突追踪）
 ├── bps/               ← 📦 业务交付物
-│   ├── store-front/   ←   门店商业计划书（bp.html/bp.md）
-│   └── landing-for-coop/  ←   合作着陆页
+│   ├── store-front/   ←   门店商业计划书（本地镜像，线上入口是根 bp.html）
+│   └── landing-for-coop/  ←   合作着陆页（独立仓库 zhaiyu-coop，gitignore）
 ├── raw/               ← 📄 原始素材原样归档（纪要/Excel/录屏）
 ├── tools/             ← 🔧 一致性工具（verify.py / render_index.py）
 ├── assets/            ← 🖼️ 共享资源（Logo 等）
@@ -87,7 +87,7 @@ python tools/verify.py
 python tools/render_index.py --write
 ```
 
-互动首页使用 `three@0.185.1` 与 `three-html-render@0.1.2`：真实 HTML 被上传为 Three.js 纹理，吊灯、聚光灯、拖拽摆动和灯光控制均由 WebGL 场景驱动；BP 首页通过同源 iframe 复用同一个 `index.html`，避免两套实现产生偏差。
+互动首页使用 `three@0.185.1` 与 `three-html-render@0.1.2`：真实 HTML 被上传为 Three.js 纹理，吊灯、聚光灯、拖拽摆动和灯光控制均由 WebGL 场景驱动。`bp.html` 的首屏为静态品牌叙事页(早期内嵌吊灯 demo 与 iframe 复用方案已移除,勿在 bp.html 内复活重复实现)。
 
 ---
 
