@@ -23,13 +23,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
           node-version: 24
           cache: npm
+
+      # 数字一致性门禁:verify.py 失败(退出码 2)则阻止部署
+      # 规则见 AGENTS.md「改数字三处同步」与 tools/verify.py 顶部说明
+      - name: Consistency check (tools/verify.py)
+        run: |
+          python3 -m pip install --user pyyaml
+          python3 tools/verify.py
 
       - name: Build interactive homepage
         run: |
@@ -39,13 +46,13 @@ jobs:
           rm -rf node_modules
 
       - name: Configure Pages
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@v6
 
       - name: Upload static site
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v5
         with:
           path: .
 
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sunganhao8-lgtm.github.io/zhaiyu-bp/sitemap.xml

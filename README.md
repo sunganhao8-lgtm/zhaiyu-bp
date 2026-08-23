@@ -23,7 +23,6 @@
 | 看所有关键决策 | [[DECISIONS.md]]（或 [[data/decisions.yaml]] 结构化版） |
 | 读最新会议笔记 | [[meetings/2026-06-26-孙淦浩快速会议.md]] |
 | 看商业计划书（网页版 · 线上入口） | [[bp.html]] |
-| 看商业计划书（Markdown 源 · 镜像） | [[bps/store-front/bp.md]] |
 | 看合作着陆页 | [sunganhao8-lgtm.github.io/zhaiyu-coop](https://sunganhao8-lgtm.github.io/zhaiyu-coop/)（独立仓库 · 本地源码 `bps/landing-for-coop/`，不入主仓库 git） |
 | 看优化后的执行方案 | [[docs/optimization-plan.md]] |
 | 准备投资人问答话术 | [[docs/investor-objection-playbook.md]] |
@@ -51,7 +50,7 @@ zhaiyu-bp/
 ├── data/              ← 📊 事实与决策数据源（YAML，唯一来源）
 ├── meetings/          ← 📝 会议笔记（含冲突追踪）
 ├── bps/               ← 📦 业务交付物
-│   ├── store-front/   ←   门店商业计划书（本地镜像，线上入口是根 bp.html）
+│   ├── store-front/   ←   门店 BP 镜像（独立嵌套仓库,gitlink 已移除;内容随 2026-08-23 本地事故丢失）
 │   └── landing-for-coop/  ←   合作着陆页（独立仓库 zhaiyu-coop，gitignore）
 ├── raw/               ← 📄 原始素材原样归档（纪要/Excel/录屏）
 ├── tools/             ← 🔧 一致性工具（verify.py / render_index.py）
@@ -94,4 +93,4 @@ python tools/render_directory.py --write
 
 ---
 
-> 关于这个项目的完整故事：见 `bps/store-front/PROJECT_HISTORY.md`（仓库内镜像，2026-08-05 团队 review 后该子目录大部分数据已与根 bp.html 同步，但作为完整叙事仍可读）
+> 关于这个项目的完整故事：原 `bps/store-front/PROJECT_HISTORY.md` 镜像（独立嵌套仓库）已随 2026-08-23 本地文件事故丢失且无远端备份；完整叙事需从 DECISIONS.md + data/decisions.yaml + meetings/ 重建。
