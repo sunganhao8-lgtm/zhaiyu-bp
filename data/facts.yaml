@@ -419,3 +419,29 @@ pricing_strategy:
     - id: "R5"
       risk: "核销率失衡"
       mitigation: "< 50% 推送到期前 7 天短信提醒；> 80% 收紧单笔上限至 20%"
+
+# ── 7 件核心设备对比（DEC-035 v5，2026-08-07 霍曼新样机价后重算） ──
+# verify.py 的 check_device_v5 读取此段生成页面校验片段并做算术自检：
+# 改设备数字 = 改这里 + accessories-v5.html / accessories-v5-pictures.html / bp.html 三页同步。
+# 完整工作簿：data/devices-v5.xlsx（2026-08-23 依据 accessories-v5.html 重建入库；
+# 原 装修/效果图/洗护设备/设备对比表-模板-v5.xlsx 随 2026-08-23 本地文件事故丢失）。
+devices_v5:
+  decision_id: "DEC-035"
+  huoman_original_total: 21978   # 原报价 7 件（v3 旧基线）
+  huoman_sample_total: 19019     # 8-7 微信通知样机价：6 件 ¥18,299 + 圆桌 BT10 另买 ¥720
+  alt_total: 12243               # 1688 平替 7 件
+  savings: 6776                  # 展品价基线节省
+  discount_pct: 35.6             # 展品价基线折扣
+  segments:
+    - {seg: 1, item: "低压洗护台", huoman_model: "LGT110", huoman_quote: 3680, huoman_sample: 3300, alt: "山东济宁 304 不锈钢 5 款阶梯 步梯款 1.27m（评分 92 绿）", alt_price: 2850, link: "https://detail.1688.com/offer/1047672857799.html"}
+    - {seg: 2, item: "扫风烘干箱（小）", huoman_model: "SD80", huoman_quote: 2399, huoman_sample: 2099, alt: "A/B 备份：嬉皮狗智能语音（主用 ¥603）+ 嘉兴慧曼 HM-CW03（备份 ¥288）", alt_price: 891, link: "https://detail.1688.com/offer/1010299839236.html"}
+    - {seg: 3, item: "扫风烘干箱（大）", huoman_model: "PDB350", huoman_quote: 8000, huoman_sample: 6500, alt: "东莞蔚德晟 430L 超巨大可折叠（v4 致命修复，容量 1.23x 完美对标 350L）", alt_price: 4880, link: "https://detail.1688.com/offer/965079465804.html"}
+    - {seg: 4, item: "不锈钢电动浴缸", huoman_model: "PB20", huoman_quote: 4620, huoman_sample: 4000, alt: "山东济宁 304 不锈钢电动升降（30 天 1 万+ 单爆款，评分 90 绿）", alt_price: 2466, link: "https://detail.1688.com/offer/1031087956544.html"}
+    - {seg: 5, item: "电动美容方桌", huoman_model: "BT20M", huoman_quote: 2100, huoman_sample: 1800, alt: "佛山酷格 304 不锈钢 124×64（17 款 SKU，评分 88 绿）", alt_price: 519, link: "https://detail.1688.com/offer/1000692968156.html"}
+    - {seg: 6, item: "气动美容圆桌", huoman_model: "BT10", huoman_quote: 720, huoman_sample: 720, alt: "宠物美容台气压圆形 60cm 12 色 SKU（已售 898）", alt_price: 338, link: "https://detail.1688.com/offer/976216930064.html"}
+    - {seg: 7, item: "肩托式挂脖吹水机", huoman_model: "ND10", huoman_quote: 459, huoman_sample: 600, alt: "江苏常州超伦挂脖 310g（2 台起批；ND10 原赠品 ¥459 升正式件 +¥141）", alt_price: 299, link: "https://detail.1688.com/offer/1015772639577.html"}
+  reallocation_v5:
+    equipment_paid: 18243    # 设备实付（7 件平替 + 囤货 + 证照）
+    marketing: 35017
+    working_capital: 48740
+    startup_total_change: 0  # 18.23 万不变，仅分配结构

@@ -2,13 +2,16 @@
 
 > 来自 `data/structure.yaml` 的注解 + 真实文件系统
 > 自动生成于：执行 `python tools/render_directory.py --write`
-> 生成时间：2026-08-23 20:24
+> 生成时间：2026-08-23 20:39
 
 ```
 zhaiyu-bp/  ← 宅域宠物洗护店项目 — 知识库根目录
 ├── .github/
 │   └── workflows/
 │       └── pages.yml
+├── .tmp/
+│   ├── build_devices_xlsx.py
+│   └── npm_ci.log
 ├── archive/
 │   ├── 2026-06-16/
 │   │   ├── inputs/
@@ -74,6 +77,7 @@ zhaiyu-bp/  ← 宅域宠物洗护店项目 — 知识库根目录
 │   └── store-front/
 ├── data/
 │   ├── decisions.yaml
+│   ├── devices-v5.xlsx
 │   ├── facts.yaml
 │   ├── poi.json
 │   └── structure.yaml
@@ -139,13 +143,13 @@ zhaiyu-bp/  ← 宅域宠物洗护店项目 — 知识库根目录
 │           └── 设备对比表-模板-v5.xlsx
 ├── .gitignore
 ├── .nojekyll
+├── 404.html
 ├── AGENTS.md
 ├── DECISIONS.md
 ├── DIRECTORY.md
 ├── INDEX.md
 ├── MOA_REVIEW_FULL_PROMPT.txt
-├── MOA_REVIEW_SYSTEM_PROMPT.md
-└── ... +10 more files
+└── ... +11 more files
 ```
 
 ## 🏷️ 受众标签

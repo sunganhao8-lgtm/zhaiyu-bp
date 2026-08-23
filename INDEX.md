@@ -1,6 +1,6 @@
 # 宅域 — 知识库索引
 
-> 自动生成于 2026-08-23 20:24
+> 自动生成于 2026-08-23 20:39
 
 > 运行 `python tools/render_index.py --write` 更新
 
@@ -17,7 +17,8 @@
 | 文件 | 更新 | 大小 |
 |---|---|---|
 | [[data/decisions.yaml]] | 2026-08-23 | 32KB |
-| [[data/facts.yaml]] | 2026-08-23 | 21KB |
+| [[data/devices-v5.xlsx]] | 2026-08-23 | 14KB |
+| [[data/facts.yaml]] | 2026-08-23 | 24KB |
 | [[data/poi.json]] | 2026-08-23 | 7KB |
 | [[data/structure.yaml]] | 2026-08-23 | 8KB |
 
@@ -55,8 +56,8 @@
 - **[render_index.py](tools/render_index.py)** —  (8KB)
 - **[render_structure.py](tools/render_structure.py)** —  (9KB)
 - **[transcribe_meeting.py](tools/transcribe_meeting.py)** — -*- coding: utf-8 -*- (7KB)
-- **[verify.py](tools/verify.py)** —  (9KB)
+- **[verify.py](tools/verify.py)** —  (12KB)
 
 ---
 
-> 📊 总计 452 个文件 | 最后更新 2026-08-23 20:24
+> 📊 总计 456 个文件 | 最后更新 2026-08-23 20:39

@@ -212,27 +212,50 @@ def check_bp_html(errors, warnings):
 
 
 # ── DEC-035 v5 设备对比口径（2026-08-07 霍曼新样机价后重算） ──
-# 改设备对比数字必须三处同步：accessories-v5.html / accessories-v5-pictures.html / bp.html，
-# 并同步更新下方片段（v2→v5 五次口径漂移的教训，历史见 data/facts.yaml startup.notes）。
-DEVICE_V5_SNIPPETS = ["¥19,019", "¥12,243", "¥6,776", "35.6%"]
+# 数字唯一来源 = data/facts.yaml 的 devices_v5 段；本函数做算术自检 + 三页同步校验：
+# accessories-v5.html / accessories-v5-pictures.html / bp.html（v2→v5 五次口径漂移的教训）。
 DEVICE_V5_PAGES = ["accessories-v5.html", "accessories-v5-pictures.html", "bp.html"]
-DEVICE_V5_SEGMENT_PRICES = ["¥2,850", "¥891", "¥4,880", "¥2,466", "¥519", "¥338", "¥299"]
 
 
-def check_device_v5(errors):
+def check_device_v5(facts, errors):
+    devices = facts.get("devices_v5")
+    if not devices:
+        errors.append("facts.yaml missing devices_v5 section")
+        return
+
+    segments = devices.get("segments", [])
+    seg_alt = sum(s["alt_price"] for s in segments)
+    seg_sample = sum(s["huoman_sample"] for s in segments)
+    seg_quote = sum(s["huoman_quote"] for s in segments)
+    if seg_alt != devices["alt_total"]:
+        errors.append(f"devices_v5: segment alt_price sum {seg_alt} != alt_total {devices['alt_total']}")
+    if seg_sample != devices["huoman_sample_total"]:
+        errors.append(f"devices_v5: segment huoman_sample sum {seg_sample} != huoman_sample_total {devices['huoman_sample_total']}")
+    if seg_quote != devices["huoman_original_total"]:
+        errors.append(f"devices_v5: segment huoman_quote sum {seg_quote} != huoman_original_total {devices['huoman_original_total']}")
+    if devices["huoman_sample_total"] - devices["alt_total"] != devices["savings"]:
+        errors.append("devices_v5: huoman_sample_total - alt_total != savings")
+
+    snippets = [
+        f"¥{devices['huoman_sample_total']:,}",
+        f"¥{devices['alt_total']:,}",
+        f"¥{devices['savings']:,}",
+        f"{devices['discount_pct']}%",
+    ]
     for name in DEVICE_V5_PAGES:
         path = ROOT / name
         if not path.exists():
             errors.append(f"missing device comparison page: {name}")
             continue
         text = path.read_text(encoding="utf-8")
-        for snippet in DEVICE_V5_SNIPPETS:
+        for snippet in snippets:
             if snippet not in text:
                 errors.append(f"{name} missing DEC-035 v5 snippet: {snippet}")
     accessory = (ROOT / "accessories-v5.html").read_text(encoding="utf-8")
-    for price in DEVICE_V5_SEGMENT_PRICES:
+    for segment in segments:
+        price = f"¥{segment['alt_price']:,}"
         if price not in accessory:
-            errors.append(f"accessories-v5.html missing v5 segment price: {price}")
+            errors.append(f"accessories-v5.html missing v5 segment {segment['seg']} price: {price}")
 
 
 def check_text_dec_refs(decisions, warnings):
@@ -262,7 +285,7 @@ def main():
     check_facts(facts, errors)
     check_decisions(decisions, errors)
     check_bp_html(errors, warnings)
-    check_device_v5(errors)
+    check_device_v5(facts, errors)
     check_text_dec_refs(decisions, warnings)
 
     if errors:
