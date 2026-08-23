@@ -580,6 +580,11 @@ strong{color:var(--z-brown)}
 }
 .doc-toc-grid a:hover{background:#FFF4E1;border-color:var(--z-orange);transform:translateX(2px)}
 
+/* 9.1.1 设备图网格：桌面 7 列 · 平板 4 列 · 手机 2 列 */
+.device-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:12px;margin-bottom:16px}
+@media(max-width:1024px){.device-grid{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:640px){.device-grid{grid-template-columns:repeat(2,1fr)}}
+
 /* 打印 */
 @media print{
   .tab-bar,.brand-bar,.zhaimi-watermark,.slide-nav,.slide-thumbs{display:none}
@@ -1298,7 +1303,7 @@ strong{color:var(--z-brown)}
       <li>现有门店多以"夫妻档+大通铺+共享毛巾"为主，<strong>缺少独立单间+全套消毒+透明价格的中端供给</strong></li>
       <li>临港万达广场已运营，万达商圈带来稳定高频客流</li>
     </ul>
-    <h3 class="z-h3">3.4 行业发展趋势</h3>
+    <h3 class="z-h3">3.3 行业发展趋势</h3>
     <ul class="z-list tick">
       <li><strong>从"卖货"到"服务"</strong>——专业化服务占比将持续提升</li>
       <li><strong>从"经验"到"标准化"</strong>——SOP 与可视化运营是新刚需</li>
@@ -1320,7 +1325,7 @@ strong{color:var(--z-brown)}
         <tr><td><strong>养宠类型</strong></td><td>中小型犬 60% / 猫 30% / 中大型犬及其他 10%</td></tr>
       </tbody>
     </table>
-    <h3 class="z-h3">4.3 核心诉求（5 项）</h3>
+    <h3 class="z-h3">4.2 核心诉求（5 项）</h3>
     <div class="feature-grid">
       <div class="feature-card"><div class="feature-title">① 卫生第一</div><div class="feature-desc">愿为独立单间+一宠一换支付溢价</div></div>
       <div class="feature-card"><div class="feature-title">② 专业可信</div><div class="feature-desc">持证、流程规范、有应对能力</div></div>
@@ -1378,7 +1383,7 @@ strong{color:var(--z-brown)}
       <li>实时视频：免费提供</li>
     </ul>
     <p style="margin-top:6px"><strong>寄养 SOP</strong>：寄养前必须出示有效疫苗本（犬：狂犬+四联/八联；猫：三联），未免疫宠物一律拒接——本项目不做免疫补打。</p>
-    <h3 class="z-h3">6.5 合规边界说明</h3>
+    <h3 class="z-h3">6.3 合规边界说明</h3>
     <div class="z-quote">本店不从事：宠物诊疗 / 疫苗注射 / 活体销售 / 宠物殡葬。本店从事：洗护美容 / 短期寄养 / 食品用品零售 / 免费养宠轻咨询。</div>
   </div>
 
@@ -1398,14 +1403,14 @@ strong{color:var(--z-brown)}
     <h3 class="z-h3">7.2 门店布局规划（<strong>59.87㎡</strong> · <strong>实地复测（近似 7m × 7m）</strong>）</h3>
     <p>干湿分区经营：<strong>洗护区（湿区）</strong>独立设置；<strong>寄养区</strong>与零售/等候区物理隔断；动线合理（宠主进门→接待→等候→洗护视线通透）；监控无死角（视频信号同步至等候区屏幕）。</p>
     <p style="margin-top:8px;color:var(--z-brown-soft);font-size:13px">→ 详见 <strong>「门店布局」</strong> 标签页的 SVG 平面图</p>
-    <h3 class="z-h3">7.6 洗护消杀 SOP</h3>
+    <h3 class="z-h3">7.3 洗护消杀 SOP</h3>
         <ul class="z-list tick">
           <li>每只宠物洗护后必做：洗护池消毒 / 美容台擦拭 / 推剪刀头浸泡 5 分钟 / 工具酒精擦拭 / 毛巾一宠一换</li>
           <li>每日营业结束：紫外线消毒 30 分钟 / 笼具擦拭 / 排风口清洁 / 垃圾日产日清</li>
           <li>每周大消：笼具暴晒 / 洗护池深度清洁 / 监控回放自检 / 库存盘点</li>
         </ul>
 
-        <h3 class="z-h3">7.7 价格策略 · 积分返券机制（DEC-033）<span class="tag-hypothesis">⏳ 模式已确定，待上线试运行验证</span></h3>
+        <h3 class="z-h3">7.4 价格策略 · 积分返券机制（DEC-033）<span class="tag-hypothesis">⏳ 模式已确定，待上线试运行验证</span></h3>
         <div class="z-quote">门店售价 = 线上同款到手价（PDD/京东最低有保障价）+10%，赠送消费额 10% 积分；积分仅限下次线下消费抵用。<br><strong>客户感知</strong>：「没多花钱，还赚了 10 分」；<strong>真实效果</strong>：把"裸涨价 10%"拆成"先收 + 后返"，用积分换第二次到店。</div>
 
         <h4 class="z-h4">① 适用范围（边界）</h4>
@@ -1472,14 +1477,14 @@ strong{color:var(--z-brown)}
   <div class="section-card" id="ch8">
     <h2 class="z-h2">第八章 · 全渠道营销获客方案</h2>
     <div class="z-quote">一句话主张：「<span style="color:var(--z-orange-deep);font-weight:900">宅咪·临港 LIN 舍</span>· 楼下那家干净的宠物店」</div>
-    <h3 class="z-h3">8.2 线下社区运营</h3>
+    <h3 class="z-h3">8.1 线下社区运营</h3>
     <ul class="z-list tick">
       <li>入驻周边 8 个小区业主群（先建立信任、再发优惠）</li>
       <li>开业前 2 周地推体验卡（5 元抵 50 元洗护）</li>
       <li>万达广场联名卡与异业合作</li>
       <li>学校家委会专属福利 + 社区活动赞助</li>
     </ul>
-    <h3 class="z-h3">8.3 线上内容运营</h3>
+    <h3 class="z-h3">8.2 线上内容运营</h3>
     <table class="zdata-table">
       <thead><tr><th>平台</th><th>定位</th><th>更新频率</th></tr></thead>
       <tbody>
@@ -1488,7 +1493,7 @@ strong{color:var(--z-brown)}
         <tr><td>微信生态</td><td>主群+2-3 分群 / 朋友圈 / 会员小程序</td><td>每日 1-2 条</td></tr>
       </tbody>
     </table>
-    <h3 class="z-h3">8.4 会员等级体系</h3>
+    <h3 class="z-h3">8.3 会员等级体系</h3>
     <table class="zdata-table">
       <thead><tr><th>等级</th><th>累计消费</th><th>权益</th></tr></thead>
       <tbody>
@@ -1528,7 +1533,7 @@ strong{color:var(--z-brown)}
 
                     <h3 class="z-h3">9.1.1 7 件核心设备 霍曼 vs 1688 平替 · 图对比（DEC-035 v5）</h3>
                     <p style="margin-top:6px;margin-bottom:12px;font-size:0.9em;color:var(--z-gray-600)"><em>左侧为霍曼官方产品手册 PDF 提取图(共 7 页),右侧为 1688 平替按 v5 选品规格 1:1 合成图(下单时以 1688 详情页主图为准)。完整 7 段对比见 <a href="https://sunganhao8-lgtm.github.io/zhaiyu-bp/accessories-v5-pictures.html" target="_blank"><code>accessories-v5-pictures.html</code></a>(部署于 GitHub Pages)。</em></p>
-                    <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:12px;margin-bottom:16px">
+                    <div class="device-grid">
                       <div style="text-align:center"><img src="assets/devices/huoman_lgt110.png" alt="霍曼 LGT110" style="width:100%;height:100px;object-fit:contain;background:#f8f9fa;border-radius:6px;padding:4px"><div style="font-size:11px;margin-top:4px"><strong>段#1 霍曼 LGT110</strong><br><span style="color:var(--z-brown-soft)">¥3,680 → 平替 ¥2,850</span></div></div>
                       <div style="text-align:center"><img src="assets/devices/huoman_sd80.png" alt="霍曼 SD80" style="width:100%;height:100px;object-fit:contain;background:#f8f9fa;border-radius:6px;padding:4px"><div style="font-size:11px;margin-top:4px"><strong>段#2 霍曼 SD80</strong><br><span style="color:var(--z-brown-soft)">¥2,399 → A/B 备份 ¥891</span></div></div>
                       <div style="text-align:center;border:2px solid var(--z-green);border-radius:6px;padding:4px"><img src="assets/devices/huoman_pdb350.png" alt="霍曼 PDB350" style="width:100%;height:100px;object-fit:contain;background:#f8f9fa;border-radius:6px;padding:4px"><div style="font-size:11px;margin-top:4px"><strong>段#3 霍曼 PDB350 ⭐</strong><br><span style="color:var(--z-green);font-weight:700">¥8,000 → 430L 蔚德晟 ¥4,880</span></div></div>
@@ -1537,7 +1542,7 @@ strong{color:var(--z-brown)}
                       <div style="text-align:center"><img src="assets/devices/huoman_bt10.png" alt="霍曼 BT10" style="width:100%;height:100px;object-fit:contain;background:#f8f9fa;border-radius:6px;padding:4px"><div style="font-size:11px;margin-top:4px"><strong>段#6 霍曼 BT10</strong><br><span style="color:var(--z-brown-soft)">¥720 → 美容台 ¥338</span></div></div>
                       <div style="text-align:center"><img src="assets/devices/huoman_nd10.png" alt="霍曼 ND10" style="width:100%;height:100px;object-fit:contain;background:#f8f9fa;border-radius:6px;padding:4px"><div style="font-size:11px;margin-top:4px"><strong>段#7 霍曼 ND10</strong><br><span style="color:var(--z-brown-soft)">¥459 → 超伦 ¥299</span></div></div>
                     </div>
-                    <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:12px;margin-bottom:16px">
+                    <div class="device-grid">
                       <div style="text-align:center"><img src="assets/devices/alt_seg1_xijining_bath.png" alt="平替 段#1" style="width:100%;height:100px;object-fit:contain;background:#f8f9fa;border-radius:6px;padding:4px"><div style="font-size:11px;margin-top:4px;color:var(--z-green);font-weight:700">↓ 1688 平替 段#1<br>山东济宁 1.27m 步梯款</div></div>
                       <div style="text-align:center"><img src="assets/devices/alt_seg2_xipigou.png" alt="平替 段#2" style="width:100%;height:100px;object-fit:contain;background:#f8f9fa;border-radius:6px;padding:4px"><div style="font-size:11px;margin-top:4px;color:var(--z-green);font-weight:700">↓ 1688 平替 段#2<br>嬉皮狗 + 嘉兴慧曼 A/B 备份</div></div>
                       <div style="text-align:center;border:2px solid var(--z-green);border-radius:6px;padding:4px"><img src="assets/devices/alt_seg3_weidesheng.png" alt="平替 段#3" style="width:100%;height:100px;object-fit:contain;background:#f8f9fa;border-radius:6px;padding:4px"><div style="font-size:11px;margin-top:4px;color:var(--z-green);font-weight:700">↓ 1688 平替 段#3 ⭐<br>东莞蔚德晟 430L 完美对标 1.23x</div></div>
@@ -1554,8 +1559,8 @@ strong{color:var(--z-brown)}
         <div class="bar-row"><span class="bar-label">基础人工</span><div class="bar-track"><div class="bar-fill" style="width:23%">1500</div></div></div>
         <div class="bar-row"><span class="bar-label">杂项</span><div class="bar-track"><div class="bar-fill" style="width:14%">880</div></div></div>
         <p style="margin-top:8px;font-size:0.85em;color:var(--z-gray-600)"><em>说明：爬坡期月固定成本按约 6416 元压力测试口径（租金 3233 + 水电气 800 + 基础人工 1500 + 杂项 880，另含约 3 元尾差/四舍五入）；老板无底薪，核心团队纯分红；含 1 名全职核心员工基础人工。租金较旧高租金口径下降约 4767 元，主要因合同 1.8 元/天/㎡ × 59.87㎡ 新口径落地。</em></p>
-    <h3 class="z-h3">9.5 利润测算（经营贡献口径）<span class="tag-hypothesis">⏳ 全部为基于保守假设的预测</span></h3>
-        <p style="margin-top:6px;margin-bottom:10px;font-size:0.85em;color:var(--z-gray-600)"><em>口径说明：本表「月固定」采用 <strong>扩展口径 12416 元</strong>，即 9.2 基础 6416 + 全职核心员工实际薪资约 6000 元（含五险一金/绩效/培训摊销）。老板无底薪，3 股东按纯分红入账，<strong>不计入月固定</strong>。9.6 推算时若按 9.2 基础口径，对应数字应同步换算。本表月净利(经营贡献)= 月营收×综合毛利 − 扩展月固定 − 积分池净增额(10% 返券预提)。</em></p>
+    <h3 class="z-h3">9.3 利润测算（经营贡献口径）<span class="tag-hypothesis">⏳ 全部为基于保守假设的预测</span></h3>
+        <p style="margin-top:6px;margin-bottom:10px;font-size:0.85em;color:var(--z-gray-600)"><em>口径说明：本表「月固定」采用 <strong>扩展口径 12416 元</strong>，即 9.2 基础 6416 + 全职核心员工实际薪资约 6000 元（含五险一金/绩效/培训摊销）。老板无底薪，3 股东按纯分红入账，<strong>不计入月固定</strong>。9.4 推算时若按 9.2 基础口径，对应数字应同步换算。本表月净利(经营贡献)= 月营收×综合毛利 − 扩展月固定 − 积分池净增额(10% 返券预提)。</em></p>
         <table class="zdata-table">
           <thead><tr><th>阶段</th><th>月营收</th><th>综合毛利</th><th>月固定</th><th>月净利（经营贡献）</th><th>剔除积分负债后月净利</th><th>说明</th></tr></thead>
           <tbody>
@@ -1570,7 +1575,7 @@ strong{color:var(--z-brown)}
         </table>
         <p style="margin-top:10px;font-size:0.9em;color:var(--z-brown-soft)"><strong>口径说明</strong>：① "月净利（经营贡献）"= 月营收 × 综合毛利 - 月固定 - 积分返券计提（销售 10%）。② "剔除积分负债后月净利"= 经营贡献 + 当期已核销积分的 10% 冲回（核销时借"积分池"，贷"营业收入"，不进入利润表；只有未核销部分留在递延负债）。③ 爬坡 1-3 月是模型预测可能为负，营销+流动 6.7 万吸收；不要把所有阶段都呈现为正盈利。<span class="tag-hypothesis">⏳ 月经营贡献预测基于保守假设</span></p>
 
-        <h3 class="z-h3">9.6 现金安全垫</h3>
+        <h3 class="z-h3">9.4 现金安全垫</h3>
         <ul class="z-list tick">
           <li><strong>3 个月固定成本安全垫</strong> = 6416 × 3 ≈ <span class="z-number">1.92</span> 万元（不可动用）</li>
                 <li><strong>启动资金 18.23 万分配</strong>：装修 4 万（沉淀）+ 设备+囤货+证照 3.5 万（沉淀）+ 房租预付 3.23 万 + 押金 0.8 万（沉淀）+ <strong>营销 3.0 万 + 流动资金 3.7 万 = 6.7 万</strong>（营销+流动资金明细见 ch9.1 表）</li>
@@ -1579,7 +1584,7 @@ strong{color:var(--z-brown)}
                 <li><strong>递延积分负债的分红处理</strong>：股东分红基数 = 当月经营贡献净利 - 当月积分池净增额（未核销部分）；避免递延负债稀释分红现金</li>
         </ul>
 
-        <h3 class="z-h3">9.7 回本周期</h3>
+        <h3 class="z-h3">9.5 回本周期</h3>
         <ul class="z-list tick">
           <li><strong>现金回本（口径 A · 推荐）</strong>：目标 <span class="z-number">10</span> 个月，稳健口径 <strong>10-14 个月</strong>（含 3 月爬坡期 + 流动资金 3.7 万回收 + 7-10 月稳态累计净利 ~4-5 万）</li>
           <li><strong>累计净利回本（口径 B）</strong>：启动资金 18.23 万 / 累计月净利 → 含前 3 月亏损后约 18-24 月回本</li>
@@ -1590,7 +1595,7 @@ strong{color:var(--z-brown)}
                 <li>若 M4 月营收 < 20000，启动<strong>股东过桥机制</strong>：3 股东按股权比例出借备用资金合计 <strong>5 万</strong>（用于流动资金补充），按 M12 月净利达 6000 后启动归还，并约定 6% 年化占用成本（合规范围内作为股东借款，避免被误读为"对赌"敏感词）</li>
         </ul>
 
-        <h3 class="z-h3">9.8 天使轮 · 资金用途与里程碑<span class="tag-hypothesis">⏳ 待融资到位后确认</span></h3>
+        <h3 class="z-h3">9.6 天使轮 · 资金用途与里程碑<span class="tag-hypothesis">⏳ 待融资到位后确认</span></h3>
         <p><strong>本轮融资 50-80 万元</strong>，按 65 万元中位数测算。资金不优先用于盲目扩品类，而优先用于客户发言档案、内容团队扩编、样板点复制和运营流动资金。每笔支出必须对应 1 个可验证业务结果，里程碑达标再释放下一笔款项。</p>
         <div class="z-table-wrap">
         <table class="zdata-table">
@@ -1608,7 +1613,7 @@ strong{color:var(--z-brown)}
         </table>
         </div>
 
-        <h3 class="z-h3">9.9 投资人回报测算（MOIC 假设）</h3>
+        <h3 class="z-h3">9.7 投资人回报测算（MOIC 假设）</h3>
         <ul class="z-list tick">
           <li><strong>天使轮口径（拆三行避免混淆）</strong>：
                   <ul>
@@ -1628,7 +1633,7 @@ strong{color:var(--z-brown)}
     <div class="risk-grid">
       <div class="risk-card"><div class="risk-title"><span class="pill">R1</span>客源不足</div><div class="risk-body">启动期品牌认知低，3-6 月难达稳态。<strong>应对</strong>：90 天地推、抢占"最干净"心智、老带新双倍券、万达联名卡。</div></div>
       <div class="risk-card"><div class="risk-title"><span class="pill">R2</span>客户纠纷</div><div class="risk-body">洗护受伤、寄养生病、价格纠纷。<strong>应对</strong>：签服务协议、投保公众责任险（1000-2000 元/年）、24 小时投诉响应。</div></div>
-      <div class="risk-card"><div class="risk-title"><span class="pill">R3</span>合规风险</div><div class="risk-body">客户要求代购活体/代打疫苗。<strong>应对</strong>：店内/线上/小票明示"不售活体、不诊疗"，营业执照明确不含。主体架构见附录 7.5：首店走<span class="tag-verified">个体工商户</span>，开业同步上保险三件套（食安责任 / 公众责任 / 雇主责任），触发器到位后走上海"个转企"绿色通道升级有限责任公司。</div></div>
+      <div class="risk-card"><div class="risk-title"><span class="pill">R3</span>合规风险</div><div class="risk-body">客户要求代购活体/代打疫苗。<strong>应对</strong>：店内/线上/小票明示"不售活体、不诊疗"，营业执照明确不含。主体架构见附录「主体架构」段（DEC-036）：首店走<span class="tag-verified">个体工商户</span>，开业同步上保险三件套（食安责任 / 公众责任 / 雇主责任），触发器到位后走上海"个转企"绿色通道升级有限责任公司。</div></div>
       <div class="risk-card"><div class="risk-title"><span class="pill">R3+</span><span class="tag-verified">⏳ DEC-036</span>主体形式与个转企</div><div class="risk-body">首店阶段登记为<span class="tag-verified">个体工商户</span>（非有限责任公司）。原因：① 启动期月省 200-1500 元代账费 + 税务核定征收（月销 10 万以下免增值税）+ 3-5 工作日下证；② 投资人叙事更顺——<strong>个转企时点 = 投资人进场时点</strong>。触发器：<strong>首店月营收稳 ≥ 10 万</strong> / <strong>30 天二次到店 ≥ 35%</strong> / <strong>会员 ≥ 260</strong> / 二店址敲定 / 拟启动 ESOP 或天使轮 — 任一满足即办。个转企走上海市场监管局绿色通道，食品证 / 卫生证 / 员工社保走"变更不注销"，比新办公司省 50% 时间。启动资金 18.23 万、月固定 6416、股权双轨制口径均<strong>不变</strong>。</div></div>
       <div class="risk-card"><div class="risk-title"><span class="pill">R4</span>房租/物业</div><div class="risk-body">房东提涨租金或收回商铺。<strong>应对</strong>：① <strong>争取</strong>签 3-5 年长期合同（剩余租期 + 续约优先权）；② <strong>争取首年不涨</strong>，<strong>年涨幅上限 ≤ CPI 涨幅</strong>（约 2-3%）；③ 房东<strong>提前 3 月书面通知</strong>方可涨租或收回；④ 违约金 <strong>2 个月租金</strong>（<strong>房东违约场景下</strong>由房东支付，作为我们被收回的赔偿保障）；⑤ 预留 Plan B 选址（周边 1km 内备选商铺）。</div></div>
       <div class="risk-card"><div class="risk-title"><span class="pill">R5</span>同行价格战</div><div class="risk-body">夫妻档降价抢客。<strong>应对</strong>：不参与价格战、强化"看得见的卫生"、维护老客户（流失率比获取率更重要）。</div></div>
@@ -1684,7 +1689,7 @@ strong{color:var(--z-brown)}
       <li>雇主责任险 · 商业保险公司 · <strong>强烈建议</strong>（1 名全职员工洗护区工伤保障）</li>
     </ol>
 
-    <h3 class="z-h3" style="margin-top:18px">7.5 主体架构 · 个体户先行 + 个转企时机（DEC-036）</h3>
+    <h3 class="z-h3" style="margin-top:18px">主体架构 · 个体户先行 + 个转企时机（DEC-036）</h3>
     <div class="z-quote">
       <p style="margin:0 0 8px"><strong>首店阶段采用个体工商户</strong>，主要考虑：① 月省代账费 200-1500 元、办证 3-5 工作日、税务走核定征收（月销 10 万以下免增值税）；② 投资人叙事节奏更顺——<strong>个转企时点 = 投资人进场时点</strong>（"首店 + 3 月数据 + 现融资开 2-3 店"才是 BP 该有的故事）；③ 后续融资 / ESOP / 连锁加盟全部承接到转企后的有限责任公司框架。</p>
       <p style="margin:8px 0"><strong>个转企触发条件（任一项满足即启动）</strong>：① 首店月营收稳 ≥ 10 万元；② 30 天二次到店率 ≥ 35%；③ 会员数 ≥ 260；④ 第二店址敲定 + 计划 6 个月内开 2 店；⑤ 拟开放 ESOP / 启动天使轮 / 与外部供应链签带公司主体条款。</p>
@@ -2997,6 +3002,15 @@ let currentSlide = 0;
     }catch(e){console.error('brand-bar hot:',e);}
   }
   tabs.forEach(t=>t.addEventListener('click', ()=>switchTab(t.dataset.tab)));
+  // WAI-ARIA tabs 模式：方向键在标签间移动焦点并切换
+  document.querySelector('.tab-bar').addEventListener('keydown', (e)=>{
+    if(e.key!=='ArrowRight' && e.key!=='ArrowLeft') return;
+    const arr = Array.from(tabs);
+    const i = arr.indexOf(document.activeElement);
+    if(i===-1) return;
+    const next = arr[(i + (e.key==='ArrowRight'?1:-1) + arr.length) % arr.length];
+    next.focus(); switchTab(next.dataset.tab); e.preventDefault();
+  });
   switchTab('zhaiyu');
   window.addEventListener('hashchange', ()=>{
     const h = location.hash.replace('#','');
