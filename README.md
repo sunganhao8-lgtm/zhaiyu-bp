@@ -85,6 +85,9 @@ python tools/verify.py
 
 # 更新 INDEX
 python tools/render_index.py --write
+
+# 更新目录树 DIRECTORY.md
+python tools/render_directory.py --write
 ```
 
 互动首页使用 `three@0.185.1` 与 `three-html-render@0.1.2`：真实 HTML 被上传为 Three.js 纹理，吊灯、聚光灯、拖拽摆动和灯光控制均由 WebGL 场景驱动。`bp.html` 的首屏为静态品牌叙事页(早期内嵌吊灯 demo 与 iframe 复用方案已移除,勿在 bp.html 内复活重复实现)。

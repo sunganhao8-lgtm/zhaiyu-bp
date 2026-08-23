@@ -211,6 +211,30 @@ def check_bp_html(errors, warnings):
         warnings.append("bp.html explains 3233 + 800 + 1500 + 880 = 6413 while headline says 6416")
 
 
+# ── DEC-035 v5 设备对比口径（2026-08-07 霍曼新样机价后重算） ──
+# 改设备对比数字必须三处同步：accessories-v5.html / accessories-v5-pictures.html / bp.html，
+# 并同步更新下方片段（v2→v5 五次口径漂移的教训，历史见 data/facts.yaml startup.notes）。
+DEVICE_V5_SNIPPETS = ["¥19,019", "¥12,243", "¥6,776", "35.6%"]
+DEVICE_V5_PAGES = ["accessories-v5.html", "accessories-v5-pictures.html", "bp.html"]
+DEVICE_V5_SEGMENT_PRICES = ["¥2,850", "¥891", "¥4,880", "¥2,466", "¥519", "¥338", "¥299"]
+
+
+def check_device_v5(errors):
+    for name in DEVICE_V5_PAGES:
+        path = ROOT / name
+        if not path.exists():
+            errors.append(f"missing device comparison page: {name}")
+            continue
+        text = path.read_text(encoding="utf-8")
+        for snippet in DEVICE_V5_SNIPPETS:
+            if snippet not in text:
+                errors.append(f"{name} missing DEC-035 v5 snippet: {snippet}")
+    accessory = (ROOT / "accessories-v5.html").read_text(encoding="utf-8")
+    for price in DEVICE_V5_SEGMENT_PRICES:
+        if price not in accessory:
+            errors.append(f"accessories-v5.html missing v5 segment price: {price}")
+
+
 def check_text_dec_refs(decisions, warnings):
     known_ids = {d["id"] for d in decisions["decisions"]}
     for path in collect_text_files(ROOT):
@@ -238,6 +262,7 @@ def main():
     check_facts(facts, errors)
     check_decisions(decisions, errors)
     check_bp_html(errors, warnings)
+    check_device_v5(errors)
     check_text_dec_refs(decisions, warnings)
 
     if errors:

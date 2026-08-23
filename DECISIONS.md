@@ -1,7 +1,7 @@
 ﻿# 📋 宅域决策记录（DECISIONS / ADR）
 
 > 所有决策的结构化数据源：[[data/decisions.yaml]]
-> 旧版完整决策记录（含 11 条历史）：[[bps/store-front/DECISIONS.md]]
+> 旧版完整决策记录（含 11 条历史）：[[bps/store-front/DECISIONS.md]]（本地镜像；`bps/store-front/` 不入库，线上不可达）
 
 本文件是项目所有关键决策的快照。每条决策记录包含：**日期 / 背景 / 决策 / 冲突 / 影响**。
 
