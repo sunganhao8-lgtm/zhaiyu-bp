@@ -59,3 +59,7 @@ bps/landing-for-coop/
 # 临时目录：审计中间产物（review / audit / test）
 tmp/
 .tmp/
+
+# 本地 Zcode 工作区锚点(含本机绝对路径,公开仓库不入库)
+.zcode/
+*.code-workspace

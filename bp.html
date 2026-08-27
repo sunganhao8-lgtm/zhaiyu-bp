@@ -934,7 +934,7 @@ strong{color:var(--z-brown)}
         <div style="font-size:15px;font-weight:900;color:var(--z-orange-darker);letter-spacing:1px;margin-bottom:10px">📌 核心数据</div>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px">
           <div style="background:#FFFFFF;border:1px solid #F4B860;border-radius:14px;padding:16px;text-align:center"><div style="font-size:13px;color:var(--z-brown-soft);font-weight:800">启动资金</div><div style="font-size:26px;color:var(--z-orange-deep);font-weight:900;line-height:1.2">18.23 万元</div></div>
-          <div style="background:#FFFFFF;border:1px solid #F4B860;border-radius:14px;padding:16px;text-align:center"><div style="font-size:13px;color:var(--z-brown-soft);font-weight:800">回本周期</div><div style="font-size:26px;color:var(--z-orange-deep);font-weight:900;line-height:1.2">12-18 个月</div></div>
+          <div style="background:#FFFFFF;border:1px solid #F4B860;border-radius:14px;padding:16px;text-align:center"><div style="font-size:13px;color:var(--z-brown-soft);font-weight:800">回本周期</div><div style="font-size:26px;color:var(--z-orange-deep);font-weight:900;line-height:1.2">12-18 个月</div><div style="font-size:12px;line-height:1.55;color:var(--z-brown-soft);font-weight:700;margin-top:8px">现金回本 10 月 · 累计净利回本 18-24 月 · 含 3 月爬坡期亏损口径</div></div>
           <div style="background:#FFFFFF;border:1px solid #F4B860;border-radius:14px;padding:16px;text-align:center"><div style="font-size:13px;color:var(--z-brown-soft);font-weight:800">天使轮</div><div style="font-size:22px;color:var(--z-orange-deep);font-weight:900;line-height:1.25">50-80 万<br><span style="font-size:14px;color:var(--z-brown-soft)">预期 A 轮 3-5 倍</span></div></div>
         </div>
       </div>
@@ -3521,7 +3521,7 @@ function buildThumbs(){
   const wrap = document.getElementById('slide-thumbs');
   if(!wrap) return;
   wrap.innerHTML = '';
-  const titles = ['封面','投资人摘要','36月路线图','投资人5问','6大核心叙事','客户发言档案','最后一公里','选品即体验','吃大厂所不屑','客群画像','解决信任感','需求孵化','品牌矩阵','合伙人制','价值观','36月平台路径','封底'];
+  const titles = ['封面','品牌封面','投资人摘要','36月路线图','投资人5问','6大核心叙事','客户发言档案','最后一公里','选品即体验','吃大厂所不屑','客群画像','解决信任感','需求孵化','品牌矩阵','合伙人制','价值观','36月平台路径','封底'];
   titles.forEach((t,i)=>{
     const btn = document.createElement('button');
     btn.className = 'slide-thumb'+(i===currentSlide?' active':'');
